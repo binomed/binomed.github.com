@@ -1482,7 +1482,7 @@ All the results shown after were done with this configuration :
 </ul>
 <h2>Apk Size</h2>
 Now let’s look at the impact of each solution on the final size of the APK
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td></td>
@@ -1503,7 +1503,7 @@ Now let’s look at the impact of each solution on the final size of the APK
 &nbsp;
 <h2>Performant</h2>
 Here is a comparative table for the average with different number of expected results.
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td><strong>Number of expected Results</strong></td>
@@ -1548,7 +1548,7 @@ Here is a comparative table for the average with different number of expected re
 &nbsp;
 <h1>Conclusion</h1>
 &nbsp;
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td>1:Bad -> 5:Perfect</td>

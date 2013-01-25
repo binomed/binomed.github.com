@@ -1,2 +1,18 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+table.binomed_table{
+	border: solid #FFFFFF;
+	border-width: 1px; 
+	border-style: solid; 
+	border-spacing: 0px;" 
+	border:1px; 
+	width:100%;
+}
+
+table.binomed_table td { 
+ border-width:1px;
+ border-style:solid; 
+ border-color:red;
+ width:50%;
+ }
