@@ -1532,7 +1532,7 @@ Here is a comparative table for the average with different number of expected re
 <tr>
 <td>1000</td>
 <td>2644 ms and 3 ms / Obj</td>
-<td>24831 ms and 24 ms / Obj</td>
+<td>24831 ms and 24 ms / Obj</td> 
 <td>1266 ms and 1 ms / Obj</td>
 </tr>
 <tr>
