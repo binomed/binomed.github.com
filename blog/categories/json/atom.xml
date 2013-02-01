@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Json | Binomed blog]]></title>
   <link href="http://binomed.github.com/blog/categories/json/atom.xml" rel="self"/>
   <link href="http://binomed.github.com/"/>
-  <updated>2013-02-01T18:04:19+01:00</updated>
+  <updated>2013-02-01T18:05:18+01:00</updated>
   <id>http://binomed.github.com/</id>
   <author>
     <name><![CDATA[jefBinomed]]></name>
@@ -19,8 +19,6 @@
     <updated>2012-03-15T23:06:00+01:00</updated>
     <id>http://binomed.github.com/blog/2012/03/15/android-communication-between-android-and-google-appengine-with-serialization</id>
     <content type="html"><![CDATA[<p>The purpose of this article is to make a benchmark of 3 frameworks that we could use as developers to make an Android application communicate with a Google AppEngine Server. <img class="right" src="/images/2012-03-15/gae_android.jpg"></p>
-
-<p>test 2</p>
 
 <h1>What is compared and how ?</h1>
 
