@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Java | Binomed blog]]></title>
+  <link href="http://binomed.github.com/blog/categories/java/atom.xml" rel="self"/>
+  <link href="http://binomed.github.com/"/>
+  <updated>2013-02-01T18:04:19+01:00</updated>
+  <id>http://binomed.github.com/</id>
+  <author>
+    <name><![CDATA[jefBinomed]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[OSGI & Spring DM, mise en place d'un environement equinox (partie 1)]]></title>
+    <link href="http://binomed.github.com/blog/2011/02/11/osgi-spring-dm-mise-en-place-dun-environement-equinox-part1/"/>
+    <updated>2011-02-11T00:01:00+01:00</updated>
+    <id>http://binomed.github.com/blog/2011/02/11/osgi-spring-dm-mise-en-place-dun-environement-equinox-part1</id>
+    <content type="html"><![CDATA[<p>Voici mon premier post technologique, je vais tenter d'être bref concis et d'aller droit au but.</p>
+
+<p>Pour ce premier post, je vais traiter d'un sujet que je suis en train d'essayer de mettre en oeuvre actuellement à savoir OSGI avec Spring DM. <!--more--> Si je créé un article, c'est par ce que tous les tutoriaux OSGI que l'on voient traitent de OSGI et Spring DM toujours dans environnement eclipse mais jamais de la mise en place d'une application OSGI en dehors d'un environnement eclipse.</p>
+
+<p>Je vais partir du principe que si vous lisez ce post, vous savez déjà ce qu'est OSGI et spring DM. Si ce n'est pas le cas, je vous invite a aller voir les sites suivants : <a href="http://www.vogella.de/articles/OSGi/article.html">Tutorial OSGI</a> pour les anglophones et sinon ce site là pour les français : <a href="http://t-templier.developpez.com/tutoriel/java/osgi/osgi1/">Tutorial OSGI fr</a> ainsi que ce site : <a href="http://static.springsource.org/osgi/docs/1.2.x/reference/html/">Spring DM</a>. Pour ce tutoriel, je me suis appuyer sur un autre tutoriel très bien fait : <a href="http://sites.google.com/site/springosgi/">http://sites.google.com/site/springosgi/</a>.J'aurais encore plein de site à vous partager mais là n'est pas le sujet.</p>
+
+<p>Commençons donc notre tutoriel.</p>
+
+<h2>Objectifs</h2>
+
+<p>Quels sont les objectifs de ce tutoriel ?</p>
+
+<p>Mettre en oeuvre une application OSGI avec de l'instanciation automatique de services et la possibilité d'instancier des beans avec spring.
+Pour ce tutoriel, j'ai choisi le conteneur OSGI equinox. Je verrais pour tester les autres conteneurs plus tard.</p>
+
+<p>voici la liste des prérequis :</p>
+
+<ul>
+<li>Avoir <a href="http://maven.apache.org/download.html">Maven </a>d'installé</li></li>
+<li>Avoir la version <a href="http://download.eclipse.org/equinox/">3.6.1 d'OSGI equinox</a></li></li>
+<li>les fichiers disponible sur ce tutoriel de osgi. <a href="http://sites.google.com/site/springosgi/springdm-tutorial.zip">samples</a></li></li>
+<li>un <a href="http://www.eclipse.org/downloads/">eclipse helios</a></li></li>
+</ul>
+
+
+<h2>Préparation de l’environnement de développement</h2>
+
+<p>Il faut suivre les étapes décrites <a href="http://sites.google.com/site/springosgi/ch01.html">ici</a>. Ceci vous permettra d'avoir tous les bundles nécessaires.
+Les points 1.2, 1.3 et 1.4 sont ceux à suivre pour notre tutoriel</p>
+
+<h2>Ecriture du bundle</h2>
+
+<p>Nous allons donc créer notre bundle, pour cela dans eclipse,
+<img src="/images/2011-02-11/new_project.jpg"></p>
+
+<p>Nous allons lui donner un nom de package ainsi qu'un nom.</p>
+
+<p><img src="/images/2011-02-11/new_project_1.jpg"></p>
+
+<p><img src="/images/2011-02-11/new_project_2.jpg"></p>
+
+<h3>Création des services</h3>
+
+<p>Nous allons maintenant créé 2 services OSGI très basiques, ces derniers n'ont en objectif que d'afficher une chaîne de caractères. L'idée est de pouvoir instancier un bean avec le scope prototype et l'autre pas.</p>
+
+<p>Nous allons donc créer les packages et classes suivantes :</p>
+
+<p><img src="/images/2011-02-11/packages_services.jpg"></p>
+
+<p>Voici le code des classes utilisées :</p>
+
+<h4>IClassIOC.java</h4>
+
+<p>```java
+package com.binomed.osgi.spring.test.api;</p>
+
+<p>public interface IClassIOC {</p>
+
+<pre><code>void helloWorld();
+</code></pre>
+
+<p>}
+```</p>
+
+<h4>IClassIOCPrototype.java</h4>
+
+<p>```java
+package com.binomed.osgi.spring.test.api;</p>
+
+<p>public interface IClassIOCPrototype {</p>
+
+<pre><code>void helloWorld();
+</code></pre>
+
+<p>}
+```</p>
+
+<h4>ClassIOC.java</h4>
+
+<p>```java
+package com.binomed.osgi.spring.test.api.impl;</p>
+
+<p>import com.binomed.osgi.spring.test.api.IClassIOC;</p>
+
+<p>public class ClassIOC implements IClassIOC {</p>
+
+<pre><code>public ClassIOC() {
+    super();
+    System.out.println("LOAD!!!!");
+}
+
+public void helloWorld() {
+    System.out.println("Hello World Spring with OSGI");
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h4>ClassIOCPrototype.java</h4>
+
+<p>```java
+package com.binomed.osgi.spring.test.api.impl;</p>
+
+<p>import com.binomed.osgi.spring.test.api.IClassIOCPrototype;</p>
+
+<p>public class ClassIOCPrototype implements IClassIOCPrototype {</p>
+
+<pre><code>public ClassIOCPrototype() {
+    super();
+    System.out.println("LOAD PROTO!!!!");
+}
+
+public void helloWorld() {
+    System.out.println("Hello World Spring with OSGI From Proto");
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<h3>Edition du manifest.mf</h3>
+
+<p>Nous allons maintenant configurer notre manifest.MF afin d'avoir les bonnes dépendances de bundle.</p>
+
+<p><code>properties
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OsgiSpringTest
+Bundle-SymbolicName: com.binomed.osgi.spring.test
+Bundle-Version: 1.0.0
+Bundle-Activator: com.binomed.osgi.spring.test.Activator
+Bundle-Vendor: binomed
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgi.framework
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.springframework.context,
+ org.springframework.beans,
+ org.springframework.aop,
+ org.springframework.core
+</code></p>
+
+<p>de cette manière on peut distinguer qu'on sera dépendant de beans, context pour pouvoir instancier notre bean.</p>
+
+<h3>Ecriture des fichiers springs</h3>
+
+<p>Nous allons maintenant créer 2 fichiers spring qui seront reconnus par un bundle et instanciés automatiquement dans notre conteneur OSGI :</p>
+
+<p><img src="/images/2011-02-11/xml_files.jpg"></p>
+
+<p>Ces deux fichiers vont contenir respectivement la description des beans et services osgi à utiliser.</p>
+
+<p>Voici le contenu des 2 fichiers</p>
+
+<h4>applicationContext.xml</h4>
+
+<p>```xml
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;beans  xmlns="http://www.springframework.org/schema/beans"</p>
+
+<pre><code>    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/osgi 
+                        http://www.springframework.org/schema/osgi/spring-osgi.xsd"&gt;
+
+&lt;bean name="ClassIOC"
+    class="com.binomed.osgi.spring.test.api.impl.ClassIOC"&gt;
+&lt;/bean&gt;
+&lt;bean name="ClassIOCPrototype"
+    scope="prototype"
+    class="com.binomed.osgi.spring.test.api.impl.ClassIOCPrototype"&gt;
+&lt;/bean&gt;
+</code></pre>
+
+<p></beans>
+```</p>
+
+<h4>applicationContext-osgi.xml</h4>
+
+<p>```xml
+&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;beans  xmlns="http://www.springframework.org/schema/beans"</p>
+
+<pre><code>    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:osgi="http://www.springframework.org/schema/osgi"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/osgi 
+                        http://www.springframework.org/schema/osgi/spring-osgi.xsd"&gt;
+
+&lt;osgi:service   id="ClassIOCOsgi"
+            ref="ClassIOC"
+            interface="com.binomed.osgi.spring.test.api.IClassIOC"/&gt;
+&lt;osgi:service   id="ClassIOCPrototypeOsgi"
+            ref="ClassIOCPrototype"
+            interface="com.binomed.osgi.spring.test.api.IClassIOCPrototype"/&gt;
+</code></pre>
+
+<p></beans>
+```</p>
+
+<p>On peut donc voir que notre bean ClassIOCPrototype est avec le scope prototype, il sera donc créé autant d'instance de ClassIOPrototype que l'on invoque le bean avec spring.</p>
+
+<h3>Ecrtitue de l'Activator</h3>
+
+<p>Nous allons maintenant nous interessé au code notre activator dans lequel on va vérifier plusieurs choses sur le fonctionnement d'OSGI avec Spring.</p>
+
+<p>```java
+package com.binomed.osgi.spring.test;</p>
+
+<p>import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceReference;
+import org.springframework.context.ApplicationContext;</p>
+
+<p>import com.binomed.osgi.spring.test.api.IClassIOC;
+import com.binomed.osgi.spring.test.api.IClassIOCPrototype;</p>
+
+<p>public class Activator implements BundleActivator {</p>
+
+<pre><code>private static BundleContext context;
+
+static BundleContext getContext() {
+    return context;
+}
+
+/*
+ * (non-Javadoc)
+ * 
+ * @see
+ * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext
+ * )
+ */
+public void start(BundleContext bundleContext) throws Exception {
+    Activator.context = bundleContext;
+    Thread thread = new Thread(new Runnable() {
+
+        @Override
+        public void run() {
+            try {
+                Thread.sleep(5000);
+                inject();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    });
+    thread.start();
+}
+
+private void inject() throws Exception {
+
+    String beanIdProt = "ClassIOCPrototype";
+
+    IClassIOC classIOC = (IClassIOC) getContext().getService(getContext().getServiceReference(IClassIOC.class.getName()));
+    IClassIOCPrototype classIOCPrototype = (IClassIOCPrototype) getContext().getService(context.getServiceReference(IClassIOCPrototype.class.getName()));
+
+    classIOC.helloWorld();
+    classIOCPrototype.helloWorld();
+    classIOCPrototype = (IClassIOCPrototype) getContext().getService(context.getServiceReference(IClassIOCPrototype.class.getName()));
+    classIOCPrototype.helloWorld();
+
+    ServiceReference webContext = context.getAllServiceReferences("org.springframework.context.ApplicationContext", "(org.springframework.context.service.name=com.binomed.osgi.spring.test)")[0];
+
+    ApplicationContext ac = (ApplicationContext) context.getService(webContext);
+    ac.getBean(beanIdProt);
+    ac.getBean(beanIdProt);
+
+}
+
+/*
+ * (non-Javadoc)
+ * 
+ * @see
+ * org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)
+ */
+public void stop(BundleContext bundleContext) throws Exception {
+    Activator.context = null;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>On peut voir que j'invoque plusieurs instruction dans le but de tester les instanciations faites sur mes beans.</p>
+
+<p>Nous allons maintenant lancer notre bundle dans eclipse et analyser les résultats.</p>
+
+<h2>Lancement du bundle dans eclipse</h2>
+
+<p>Nous allons créer une nouvelle configuration osgi :</p>
+
+<p><img src="/images/2011-02-11/new_configuration.jpg"></p>
+
+<p>Nous allons cocher tous les plugins visible sur l'écran suivant. Pour des besoins de lisibilités, j'ai affiché uniquement les bundles à prendre :</p>
+
+<p><img src="/images/2011-02-11/bundles.jpg"></p>
+
+<p>Il est très important que le bundle <strong>org.springframework.osgi.extender</strong> soit coché !  c'est lui qui s'occupe de charger les applications context dans notre conteneur OSGI au moment de l'installation du bundle.</p>
+
+<p>Penser aussi à ajouter dans l'onglet Arguments dans VM Arguments l'option <strong>* -Dosgi.clean=true</strong> de façon à bien penser à nettoyer le cache OSGI à chaque lancement.</p>
+
+<p>Vous pouvez maintenant valider et lancer le bundle. Vous devrez avoir une sortie console similaire à celle ci :</p>
+
+<p><code>sh
+osgi&gt; log4j:WARN No appenders could be found for logger (org.springframework.osgi.extender.internal.activator.ContextLoaderListener).
+log4j:WARN Please initialize the log4j system properly.
+LOAD!!!!
+LOAD PROTO!!!!
+Hello World Spring with OSGI
+Hello World Spring with OSGI From Proto
+Hello World Spring with OSGI From Proto
+LOAD PROTO!!!!
+LOAD PROTO!!!!
+</code></p>
+
+<p>Qu'est ce qu'on peut en conclure en fonction de nos instructions et notre configuration.</p>
+
+<ul>
+<li>Le permier LOAD!!!! nous indique que notre premier service c'est loader tout seul au moment où le bundle est installé.</li>
+<li>Le LOAD PROTO !!! apparaît avec un décalage indiquant qu'un service OSGI pointant vers un bean en scope prototype n'est pas pas chargé automatiquement avec le bundle extender</li>
+<li>Le premier Hello World montre bien que l'on a réussi très simplement à invoquer un service de notre conteneur</li>
+<li>idem pour les 2 autres appels sauf que l'on constate que un service OSGI utilisant un bean en scope prototype restera en mémoire, il ne sera pas réinstancié à chaque appel du service.</li>
+<li>Enfin mes 2 derniers LOAD PROTO !!! montre que l'on peut quand même appeler l'application context de notre bundle en vue d'instancier des bean. Attention toute fois, cette pratique n'est pas recommendée, il est préférable en OSGI de gérer soit même dans ce cas l'instanciation plutot que de passer par l'application Context.</li>
+</ul>
+
+
+<p>Bon tout marche dans eclipse. Ok c'est bien mais c'est comme dans tout tutoriel OSGI ! Nous allons maintenant voir comment faire marcher cet exemple en dehors d'eclipse.</p>
+
+<h2>Lancement du bundle en dehors d'eclipse</h2>
+
+<p>Nous allons commencer par générer un  jar de notre bundle. Pour cela cliquer sur votre projet et faites exporter et choississez de l'exporter en tant que plugin</p>
+
+<p><img src="/images/2011-02-11/export.jpg"></p>
+
+<p>Nous allons choisir un répertoire d'export :</p>
+
+<p><img src="/images/2011-02-11/export_2.jpg"></p>
+
+<h3>Préparation du conteneur equinox</h3>
+
+<p>Nous allons donc maintenant préparer notre conteneur equinox. Nous avons besoin de plusieurs choses :</p>
+
+<ul>
+<li>extraire le zip de notre sdk equinox</li>
+<li>Préparer un répertoire de la façon suivante</li>
+</ul>
+
+
+<p>```
+MonTestSpringOSGI</p>
+
+<pre><code>|
+`-&gt;org.eclipse.equinox.common_3.6.0.v20100503.jar
+`-&gt;org.eclipse.osgi_3.6.1.jar
+`-&gt;org.eclipse.update.configurator_3.3.100.v20100512.jar
++-- configuration
+        |
+        `-&gt;config.ini
++-- plugins
+        |
+        `-&gt;com.springsource.javax.activation-1.1.1.jar
+        `-&gt;com.springsource.javax.annotation-1.0.0.jar
+        `-&gt;com.springsource.javax.el-2.1.0.jar
+        `-&gt;com.springsource.javax.mail-1.4.0.jar
+        `-&gt;com.springsource.javax.persistence-1.0.0.jar
+        `-&gt;com.springsource.javax.xml.bind-2.0.0.jar
+        `-&gt;com.springsource.javax.xml.soap-1.3.0.jar
+        `-&gt;com.springsource.javax.xml.stream-1.0.1.jar
+        `-&gt;com.springsource.javax.xml.ws-2.1.1.jar
+        `-&gt;com.springsource.org.aopalliance-1.0.0.jar
+        `-&gt;com.springsource.org.apache.commons.collections-3.2.0.jar
+        `-&gt;com.springsource.org.apache.commons.logging-1.1.1.jar
+        `-&gt;com.springsource.org.apache.log4j-1.2.15.jar
+        `-&gt;com.springsource.slf4j.api-1.5.0.jar
+        `-&gt;com.springsource.slf4j.jcl-1.5.0.jar
+        `-&gt;com.springsource.slf4j.log4j-1.5.0.jar
+        `-&gt;org.springframework.aop-2.5.6.A.jar
+        `-&gt;org.springframework.beans-2.5.6.A.jar
+        `-&gt;org.springframework.context-2.5.6.A.jar
+        `-&gt;org.springframework.core-2.5.6.A.jar
+        `-&gt;org.springframework.osgi.core-1.1.3.RELEASE.jar
+        `-&gt;org.springframework.osgi.extender-1.1.3.RELEASE.jar
+        `-&gt;org.springframework.osgi.io-1.1.3.RELEASE.jar
+        `-&gt;com.binomed.osgi.spring.test_1.0.0.jar
+</code></pre>
+
+<p>```</p>
+
+<p>les jars org.eclipse.equinox.common_3.6.0.v20100503.jar et org.eclipse.osgi_3.6.1.jar (je l'ai renommé de façon à simplifier son invocation)  sont à récupérer dans le répertoire plugins du sdk equinox, le jar org.eclipse.update.configurator_3.3.100.v20100512.jar est à récupérer dans le répertoire plugins de votre eclipse. Ce dernier sert à installer automatiquement tous les bundles présents dans le répertoire plugins
+Les autres jars sont à récupérer dans la target platform générée au début du tutoriel.
+Vous constaterez que j'ai mis notre bundle com.binomed.osgi.spring.test_1.0.0.jar</p>
+
+<p>Nous allons maintenant éditer le fichier config.ini afin de définir le démarrage de notre application</p>
+
+<p><code>ini
+osgi.bundles=org.eclipse.equinox.common@2:start\
+, org.eclipse.update.configurator@3:start\
+,reference\:file\:plugins/org.springframework.osgi.extender-1.1.3.RELEASE.jar@start\
+,reference\:file\:plugins/com.springsource.javax.activation-1.1.1.jar@start\
+,reference\:file\:plugins/com.binomed.osgi.spring.test_1.0.0.jar@start
+osgi.bundles.defaultStartLevel=4
+eclipse.ignoreApp=true
+osgi.noShutdown=true
+osgi.clean=true
+</code></p>
+
+<p>Cette configuration permet de spécifier l'installation auto des bundles, l'auto instanciation des services contenus dans nos bundles démarrés et enfin le démarrage de notre bundle.</p>
+
+<p>Nous allons donc maintenant lancer notre application, ouvrons donc une console  et lançons l'instruction suivante :</p>
+
+<p><code>sh
+java -jar org.eclipse.osgi_3.6.1.jar -consoleLog -console
+</code></p>
+
+<p>nous avons donc bien la sortie suivante :</p>
+
+<p><code>sh
+osgi&gt; log4j:WARN No appenders could be found for logger (org.springframework.osgi.extender.internal.activator.ContextLoaderListener).
+log4j:WARN Please initialize the log4j system properly.
+LOAD!!!!
+LOAD PROTO!!!!
+Hello World Spring with OSGI
+Hello World Spring with OSGI From Proto
+Hello World Spring with OSGI From Proto
+LOAD PROTO!!!!
+LOAD PROTO!!!!
+</code></p>
+
+<p>C'est tout pour le moment. :)</p>
+]]></content>
+  </entry>
+  
+</feed>

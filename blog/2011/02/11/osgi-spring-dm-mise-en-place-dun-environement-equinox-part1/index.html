@@ -1,0 +1,913 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>OSGI & Spring DM, mise en place d'un environement equinox (partie 1) - Binomed blog</title>
+  <meta name="author" content="jefBinomed">
+
+  
+  <meta name="description" content="Voici mon premier post technologique, je vais tenter d&#8217;être bref concis et d&#8217;aller droit au but. Pour ce premier post, je vais traiter d &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://binomed.github.com/blog/2011/02/11/osgi-spring-dm-mise-en-place-dun-environement-equinox-part1/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Binomed blog" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Binomed blog</a></h1>
+  
+    <h2>A technical blog</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:binomed.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">OSGI & Spring DM, Mise en Place D'un Environement Equinox (Partie 1)</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-11T00:01:00+01:00" pubdate data-updated="true">Feb 11<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>Voici mon premier post technologique, je vais tenter d&#8217;être bref concis et d&#8217;aller droit au but.</p>
+
+<p>Pour ce premier post, je vais traiter d&#8217;un sujet que je suis en train d&#8217;essayer de mettre en oeuvre actuellement à savoir OSGI avec Spring DM. <!--more--> Si je créé un article, c&#8217;est par ce que tous les tutoriaux OSGI que l&#8217;on voient traitent de OSGI et Spring DM toujours dans environnement eclipse mais jamais de la mise en place d&#8217;une application OSGI en dehors d&#8217;un environnement eclipse.</p>
+
+<p>Je vais partir du principe que si vous lisez ce post, vous savez déjà ce qu&#8217;est OSGI et spring DM. Si ce n&#8217;est pas le cas, je vous invite a aller voir les sites suivants : <a href="http://www.vogella.de/articles/OSGi/article.html">Tutorial OSGI</a> pour les anglophones et sinon ce site là pour les français : <a href="http://t-templier.developpez.com/tutoriel/java/osgi/osgi1/">Tutorial OSGI fr</a> ainsi que ce site : <a href="http://static.springsource.org/osgi/docs/1.2.x/reference/html/">Spring DM</a>. Pour ce tutoriel, je me suis appuyer sur un autre tutoriel très bien fait : <a href="http://sites.google.com/site/springosgi/">http://sites.google.com/site/springosgi/</a>.J&#8217;aurais encore plein de site à vous partager mais là n&#8217;est pas le sujet.</p>
+
+<p>Commençons donc notre tutoriel.</p>
+
+<h2>Objectifs</h2>
+
+<p>Quels sont les objectifs de ce tutoriel ?</p>
+
+<p>Mettre en oeuvre une application OSGI avec de l&#8217;instanciation automatique de services et la possibilité d&#8217;instancier des beans avec spring.
+Pour ce tutoriel, j&#8217;ai choisi le conteneur OSGI equinox. Je verrais pour tester les autres conteneurs plus tard.</p>
+
+<p>voici la liste des prérequis :</p>
+
+<ul>
+<li>Avoir <a href="http://maven.apache.org/download.html">Maven </a>d&#8217;installé</li></li>
+<li>Avoir la version <a href="http://download.eclipse.org/equinox/">3.6.1 d&#8217;OSGI equinox</a></li></li>
+<li>les fichiers disponible sur ce tutoriel de osgi. <a href="http://sites.google.com/site/springosgi/springdm-tutorial.zip">samples</a></li></li>
+<li>un <a href="http://www.eclipse.org/downloads/">eclipse helios</a></li></li>
+</ul>
+
+
+<h2>Préparation de l’environnement de développement</h2>
+
+<p>Il faut suivre les étapes décrites <a href="http://sites.google.com/site/springosgi/ch01.html">ici</a>. Ceci vous permettra d&#8217;avoir tous les bundles nécessaires.
+Les points 1.2, 1.3 et 1.4 sont ceux à suivre pour notre tutoriel</p>
+
+<h2>Ecriture du bundle</h2>
+
+<p>Nous allons donc créer notre bundle, pour cela dans eclipse,
+<img src="/images/2011-02-11/new_project.jpg"></p>
+
+<p>Nous allons lui donner un nom de package ainsi qu&#8217;un nom.</p>
+
+<p><img src="/images/2011-02-11/new_project_1.jpg"></p>
+
+<p><img src="/images/2011-02-11/new_project_2.jpg"></p>
+
+<h3>Création des services</h3>
+
+<p>Nous allons maintenant créé 2 services OSGI très basiques, ces derniers n&#8217;ont en objectif que d&#8217;afficher une chaîne de caractères. L&#8217;idée est de pouvoir instancier un bean avec le scope prototype et l&#8217;autre pas.</p>
+
+<p>Nous allons donc créer les packages et classes suivantes :</p>
+
+<p><img src="/images/2011-02-11/packages_services.jpg"></p>
+
+<p>Voici le code des classes utilisées :</p>
+
+<h4>IClassIOC.java</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">binomed</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">api</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IClassIOC</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">void</span> <span class="nf">helloWorld</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>IClassIOCPrototype.java</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">binomed</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">api</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">IClassIOCPrototype</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kt">void</span> <span class="nf">helloWorld</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>ClassIOC.java</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">binomed</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">impl</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.binomed.osgi.spring.test.api.IClassIOC</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassIOC</span> <span class="kd">implements</span> <span class="n">IClassIOC</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">ClassIOC</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;LOAD!!!!&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">helloWorld</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World Spring with OSGI&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>ClassIOCPrototype.java</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">binomed</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">test</span><span class="o">.</span><span class="na">api</span><span class="o">.</span><span class="na">impl</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.binomed.osgi.spring.test.api.IClassIOCPrototype</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ClassIOCPrototype</span> <span class="kd">implements</span> <span class="n">IClassIOCPrototype</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="nf">ClassIOCPrototype</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="kd">super</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;LOAD PROTO!!!!&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">helloWorld</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World Spring with OSGI From Proto&quot;</span><span class="o">);</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Edition du manifest.mf</h3>
+
+<p>Nous allons maintenant configurer notre manifest.MF afin d&#8217;avoir les bonnes dépendances de bundle.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class='properties'><span class='line'><span class="na">Manifest-Version</span><span class="o">:</span> <span class="s">1.0</span>
+</span><span class='line'><span class="na">Bundle-ManifestVersion</span><span class="o">:</span> <span class="s">2</span>
+</span><span class='line'><span class="na">Bundle-Name</span><span class="o">:</span> <span class="s">OsgiSpringTest</span>
+</span><span class='line'><span class="na">Bundle-SymbolicName</span><span class="o">:</span> <span class="s">com.binomed.osgi.spring.test</span>
+</span><span class='line'><span class="na">Bundle-Version</span><span class="o">:</span> <span class="s">1.0.0</span>
+</span><span class='line'><span class="na">Bundle-Activator</span><span class="o">:</span> <span class="s">com.binomed.osgi.spring.test.Activator</span>
+</span><span class='line'><span class="na">Bundle-Vendor</span><span class="o">:</span> <span class="s">binomed</span>
+</span><span class='line'><span class="na">Bundle-RequiredExecutionEnvironment</span><span class="o">:</span> <span class="s">JavaSE-1.6</span>
+</span><span class='line'><span class="na">Import-Package</span><span class="o">:</span> <span class="s">org.osgi.framework</span>
+</span><span class='line'><span class="na">Bundle-ActivationPolicy</span><span class="o">:</span> <span class="s">lazy</span>
+</span><span class='line'><span class="na">Require-Bundle</span><span class="o">:</span> <span class="s">org.springframework.context,</span>
+</span><span class='line'> <span class="err">org.springframework.beans,</span>
+</span><span class='line'> <span class="err">org.springframework.aop,</span>
+</span><span class='line'> <span class="err">org.springframework.core</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>de cette manière on peut distinguer qu&#8217;on sera dépendant de beans, context pour pouvoir instancier notre bean.</p>
+
+<h3>Ecriture des fichiers springs</h3>
+
+<p>Nous allons maintenant créer 2 fichiers spring qui seront reconnus par un bundle et instanciés automatiquement dans notre conteneur OSGI :</p>
+
+<p><img src="/images/2011-02-11/xml_files.jpg"></p>
+
+<p>Ces deux fichiers vont contenir respectivement la description des beans et services osgi à utiliser.</p>
+
+<p>Voici le contenu des 2 fichiers</p>
+
+<h4>applicationContext.xml</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;beans</span>     <span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span>
+</span><span class='line'>      <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+</span><span class='line'>      <span class="na">xmlns:osgi=</span><span class="s">&quot;http://www.springframework.org/schema/osgi&quot;</span>
+</span><span class='line'>      <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.springframework.org/schema/beans </span>
+</span><span class='line'><span class="s">                          http://www.springframework.org/schema/beans/spring-beans.xsd</span>
+</span><span class='line'><span class="s">                          http://www.springframework.org/schema/osgi </span>
+</span><span class='line'><span class="s">                          http://www.springframework.org/schema/osgi/spring-osgi.xsd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nt">&lt;bean</span> <span class="na">name=</span><span class="s">&quot;ClassIOC&quot;</span>
+</span><span class='line'>      <span class="na">class=</span><span class="s">&quot;com.binomed.osgi.spring.test.api.impl.ClassIOC&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/bean&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;bean</span> <span class="na">name=</span><span class="s">&quot;ClassIOCPrototype&quot;</span>
+</span><span class='line'>      <span class="na">scope=</span><span class="s">&quot;prototype&quot;</span>
+</span><span class='line'>      <span class="na">class=</span><span class="s">&quot;com.binomed.osgi.spring.test.api.impl.ClassIOCPrototype&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;/bean&gt;</span>
+</span><span class='line'>  
+</span><span class='line'><span class="nt">&lt;/beans&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h4>applicationContext-osgi.xml</h4>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='xml'><span class='line'><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+</span><span class='line'><span class="nt">&lt;beans</span>     <span class="na">xmlns=</span><span class="s">&quot;http://www.springframework.org/schema/beans&quot;</span>
+</span><span class='line'>      <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+</span><span class='line'>      <span class="na">xmlns:osgi=</span><span class="s">&quot;http://www.springframework.org/schema/osgi&quot;</span>
+</span><span class='line'>      <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://www.springframework.org/schema/beans </span>
+</span><span class='line'><span class="s">                          http://www.springframework.org/schema/beans/spring-beans.xsd</span>
+</span><span class='line'><span class="s">                          http://www.springframework.org/schema/osgi </span>
+</span><span class='line'><span class="s">                          http://www.springframework.org/schema/osgi/spring-osgi.xsd&quot;</span><span class="nt">&gt;</span>
+</span><span class='line'>  
+</span><span class='line'>  <span class="nt">&lt;osgi:service</span>    <span class="na">id=</span><span class="s">&quot;ClassIOCOsgi&quot;</span>
+</span><span class='line'>              <span class="na">ref=</span><span class="s">&quot;ClassIOC&quot;</span>
+</span><span class='line'>              <span class="na">interface=</span><span class="s">&quot;com.binomed.osgi.spring.test.api.IClassIOC&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>  <span class="nt">&lt;osgi:service</span>    <span class="na">id=</span><span class="s">&quot;ClassIOCPrototypeOsgi&quot;</span>
+</span><span class='line'>              <span class="na">ref=</span><span class="s">&quot;ClassIOCPrototype&quot;</span>
+</span><span class='line'>              <span class="na">interface=</span><span class="s">&quot;com.binomed.osgi.spring.test.api.IClassIOCPrototype&quot;</span><span class="nt">/&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nt">&lt;/beans&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On peut donc voir que notre bean ClassIOCPrototype est avec le scope prototype, il sera donc créé autant d&#8217;instance de ClassIOPrototype que l&#8217;on invoque le bean avec spring.</p>
+
+<h3>Ecrtitue de l&#8217;Activator</h3>
+
+<p>Nous allons maintenant nous interessé au code notre activator dans lequel on va vérifier plusieurs choses sur le fonctionnement d&#8217;OSGI avec Spring.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+<span class='line-number'>67</span>
+<span class='line-number'>68</span>
+<span class='line-number'>69</span>
+<span class='line-number'>70</span>
+<span class='line-number'>71</span>
+<span class='line-number'>72</span>
+<span class='line-number'>73</span>
+<span class='line-number'>74</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kn">package</span> <span class="n">com</span><span class="o">.</span><span class="na">binomed</span><span class="o">.</span><span class="na">osgi</span><span class="o">.</span><span class="na">spring</span><span class="o">.</span><span class="na">test</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.osgi.framework.BundleActivator</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.osgi.framework.BundleContext</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.osgi.framework.ServiceReference</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">org.springframework.context.ApplicationContext</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.binomed.osgi.spring.test.api.IClassIOC</span><span class="o">;</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">com.binomed.osgi.spring.test.api.IClassIOCPrototype</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Activator</span> <span class="kd">implements</span> <span class="n">BundleActivator</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kd">static</span> <span class="n">BundleContext</span> <span class="n">context</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">static</span> <span class="n">BundleContext</span> <span class="nf">getContext</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>      <span class="k">return</span> <span class="n">context</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/*</span>
+</span><span class='line'><span class="cm">  * (non-Javadoc)</span>
+</span><span class='line'><span class="cm">  * </span>
+</span><span class='line'><span class="cm">  * @see</span>
+</span><span class='line'><span class="cm">  * org.osgi.framework.BundleActivator#start(org.osgi.framework.BundleContext</span>
+</span><span class='line'><span class="cm">  * )</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">start</span><span class="o">(</span><span class="n">BundleContext</span> <span class="n">bundleContext</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">Activator</span><span class="o">.</span><span class="na">context</span> <span class="o">=</span> <span class="n">bundleContext</span><span class="o">;</span>
+</span><span class='line'>      <span class="n">Thread</span> <span class="n">thread</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Thread</span><span class="o">(</span><span class="k">new</span> <span class="n">Runnable</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="nd">@Override</span>
+</span><span class='line'>          <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+</span><span class='line'>              <span class="k">try</span> <span class="o">{</span>
+</span><span class='line'>                  <span class="n">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">5000</span><span class="o">);</span>
+</span><span class='line'>                  <span class="n">inject</span><span class="o">();</span>
+</span><span class='line'>              <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                  <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+</span><span class='line'>              <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>          <span class="o">}</span>
+</span><span class='line'>      <span class="o">});</span>
+</span><span class='line'>      <span class="n">thread</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">inject</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">String</span> <span class="n">beanIdProt</span> <span class="o">=</span> <span class="s">&quot;ClassIOCPrototype&quot;</span><span class="o">;</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">IClassIOC</span> <span class="n">classIOC</span> <span class="o">=</span> <span class="o">(</span><span class="n">IClassIOC</span><span class="o">)</span> <span class="n">getContext</span><span class="o">().</span><span class="na">getService</span><span class="o">(</span><span class="n">getContext</span><span class="o">().</span><span class="na">getServiceReference</span><span class="o">(</span><span class="n">IClassIOC</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+</span><span class='line'>      <span class="n">IClassIOCPrototype</span> <span class="n">classIOCPrototype</span> <span class="o">=</span> <span class="o">(</span><span class="n">IClassIOCPrototype</span><span class="o">)</span> <span class="n">getContext</span><span class="o">().</span><span class="na">getService</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="na">getServiceReference</span><span class="o">(</span><span class="n">IClassIOCPrototype</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">classIOC</span><span class="o">.</span><span class="na">helloWorld</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">classIOCPrototype</span><span class="o">.</span><span class="na">helloWorld</span><span class="o">();</span>
+</span><span class='line'>      <span class="n">classIOCPrototype</span> <span class="o">=</span> <span class="o">(</span><span class="n">IClassIOCPrototype</span><span class="o">)</span> <span class="n">getContext</span><span class="o">().</span><span class="na">getService</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="na">getServiceReference</span><span class="o">(</span><span class="n">IClassIOCPrototype</span><span class="o">.</span><span class="na">class</span><span class="o">.</span><span class="na">getName</span><span class="o">()));</span>
+</span><span class='line'>      <span class="n">classIOCPrototype</span><span class="o">.</span><span class="na">helloWorld</span><span class="o">();</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">ServiceReference</span> <span class="n">webContext</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getAllServiceReferences</span><span class="o">(</span><span class="s">&quot;org.springframework.context.ApplicationContext&quot;</span><span class="o">,</span> <span class="s">&quot;(org.springframework.context.service.name=com.binomed.osgi.spring.test)&quot;</span><span class="o">)[</span><span class="mi">0</span><span class="o">];</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="n">ApplicationContext</span> <span class="n">ac</span> <span class="o">=</span> <span class="o">(</span><span class="n">ApplicationContext</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getService</span><span class="o">(</span><span class="n">webContext</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">beanIdProt</span><span class="o">);</span>
+</span><span class='line'>      <span class="n">ac</span><span class="o">.</span><span class="na">getBean</span><span class="o">(</span><span class="n">beanIdProt</span><span class="o">);</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="cm">/*</span>
+</span><span class='line'><span class="cm">  * (non-Javadoc)</span>
+</span><span class='line'><span class="cm">  * </span>
+</span><span class='line'><span class="cm">  * @see</span>
+</span><span class='line'><span class="cm">  * org.osgi.framework.BundleActivator#stop(org.osgi.framework.BundleContext)</span>
+</span><span class='line'><span class="cm">  */</span>
+</span><span class='line'>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">stop</span><span class="o">(</span><span class="n">BundleContext</span> <span class="n">bundleContext</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+</span><span class='line'>      <span class="n">Activator</span><span class="o">.</span><span class="na">context</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+</span><span class='line'>  <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>On peut voir que j&#8217;invoque plusieurs instruction dans le but de tester les instanciations faites sur mes beans.</p>
+
+<p>Nous allons maintenant lancer notre bundle dans eclipse et analyser les résultats.</p>
+
+<h2>Lancement du bundle dans eclipse</h2>
+
+<p>Nous allons créer une nouvelle configuration osgi :</p>
+
+<p><img src="/images/2011-02-11/new_configuration.jpg"></p>
+
+<p>Nous allons cocher tous les plugins visible sur l&#8217;écran suivant. Pour des besoins de lisibilités, j&#8217;ai affiché uniquement les bundles à prendre :</p>
+
+<p><img src="/images/2011-02-11/bundles.jpg"></p>
+
+<p>Il est très important que le bundle <strong>org.springframework.osgi.extender</strong> soit coché !  c&#8217;est lui qui s&#8217;occupe de charger les applications context dans notre conteneur OSGI au moment de l&#8217;installation du bundle.</p>
+
+<p>Penser aussi à ajouter dans l&#8217;onglet Arguments dans VM Arguments l&#8217;option <strong>* -Dosgi.clean=true</strong> de façon à bien penser à nettoyer le cache OSGI à chaque lancement.</p>
+
+<p>Vous pouvez maintenant valider et lancer le bundle. Vous devrez avoir une sortie console similaire à celle ci :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>osgi&gt; log4j:WARN No appenders could be found <span class="k">for </span>logger <span class="o">(</span>org.springframework.osgi.extender.internal.activator.ContextLoaderListener<span class="o">)</span>.
+</span><span class='line'>log4j:WARN Please initialize the log4j system properly.
+</span><span class='line'>LOAD!!!!
+</span><span class='line'>LOAD PROTO!!!!
+</span><span class='line'>Hello World Spring with OSGI
+</span><span class='line'>Hello World Spring with OSGI From Proto
+</span><span class='line'>Hello World Spring with OSGI From Proto
+</span><span class='line'>LOAD PROTO!!!!
+</span><span class='line'>LOAD PROTO!!!!
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Qu&#8217;est ce qu&#8217;on peut en conclure en fonction de nos instructions et notre configuration.</p>
+
+<ul>
+<li>Le permier LOAD!!!! nous indique que notre premier service c&#8217;est loader tout seul au moment où le bundle est installé.</li>
+<li>Le LOAD PROTO !!! apparaît avec un décalage indiquant qu&#8217;un service OSGI pointant vers un bean en scope prototype n&#8217;est pas pas chargé automatiquement avec le bundle extender</li>
+<li>Le premier Hello World montre bien que l&#8217;on a réussi très simplement à invoquer un service de notre conteneur</li>
+<li>idem pour les 2 autres appels sauf que l&#8217;on constate que un service OSGI utilisant un bean en scope prototype restera en mémoire, il ne sera pas réinstancié à chaque appel du service.</li>
+<li>Enfin mes 2 derniers LOAD PROTO !!! montre que l&#8217;on peut quand même appeler l&#8217;application context de notre bundle en vue d&#8217;instancier des bean. Attention toute fois, cette pratique n&#8217;est pas recommendée, il est préférable en OSGI de gérer soit même dans ce cas l&#8217;instanciation plutot que de passer par l&#8217;application Context.</li>
+</ul>
+
+
+<p>Bon tout marche dans eclipse. Ok c&#8217;est bien mais c&#8217;est comme dans tout tutoriel OSGI ! Nous allons maintenant voir comment faire marcher cet exemple en dehors d&#8217;eclipse.</p>
+
+<h2>Lancement du bundle en dehors d&#8217;eclipse</h2>
+
+<p>Nous allons commencer par générer un  jar de notre bundle. Pour cela cliquer sur votre projet et faites exporter et choississez de l&#8217;exporter en tant que plugin</p>
+
+<p><img src="/images/2011-02-11/export.jpg"></p>
+
+<p>Nous allons choisir un répertoire d&#8217;export :</p>
+
+<p><img src="/images/2011-02-11/export_2.jpg"></p>
+
+<h3>Préparation du conteneur equinox</h3>
+
+<p>Nous allons donc maintenant préparer notre conteneur equinox. Nous avons besoin de plusieurs choses :</p>
+
+<ul>
+<li>extraire le zip de notre sdk equinox</li>
+<li>Préparer un répertoire de la façon suivante</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>MonTestSpringOSGI
+</span><span class='line'>    |
+</span><span class='line'>    <span class="sb">`</span>-&gt;org.eclipse.equinox.common_3.6.0.v20100503.jar
+</span><span class='line'>    <span class="sb">`</span>-&gt;org.eclipse.osgi_3.6.1.jar
+</span><span class='line'>    <span class="sb">`</span>-&gt;org.eclipse.update.configurator_3.3.100.v20100512.jar
+</span><span class='line'>    +-- configuration
+</span><span class='line'>            |
+</span><span class='line'>            <span class="sb">`</span>-&gt;config.ini
+</span><span class='line'>    +-- plugins
+</span><span class='line'>            |
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.activation-1.1.1.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.annotation-1.0.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.el-2.1.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.mail-1.4.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.persistence-1.0.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.xml.bind-2.0.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.xml.soap-1.3.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.xml.stream-1.0.1.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.javax.xml.ws-2.1.1.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.org.aopalliance-1.0.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.org.apache.commons.collections-3.2.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.org.apache.commons.logging-1.1.1.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.org.apache.log4j-1.2.15.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.slf4j.api-1.5.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.slf4j.jcl-1.5.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.springsource.slf4j.log4j-1.5.0.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;org.springframework.aop-2.5.6.A.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;org.springframework.beans-2.5.6.A.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;org.springframework.context-2.5.6.A.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;org.springframework.core-2.5.6.A.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;org.springframework.osgi.core-1.1.3.RELEASE.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;org.springframework.osgi.extender-1.1.3.RELEASE.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;org.springframework.osgi.io-1.1.3.RELEASE.jar
+</span><span class='line'>            <span class="sb">`</span>-&gt;com.binomed.osgi.spring.test_1.0.0.jar
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>les jars org.eclipse.equinox.common_3.6.0.v20100503.jar et org.eclipse.osgi_3.6.1.jar (je l&#8217;ai renommé de façon à simplifier son invocation)  sont à récupérer dans le répertoire plugins du sdk equinox, le jar org.eclipse.update.configurator_3.3.100.v20100512.jar est à récupérer dans le répertoire plugins de votre eclipse. Ce dernier sert à installer automatiquement tous les bundles présents dans le répertoire plugins
+Les autres jars sont à récupérer dans la target platform générée au début du tutoriel.
+Vous constaterez que j&#8217;ai mis notre bundle com.binomed.osgi.spring.test_1.0.0.jar</p>
+
+<p>Nous allons maintenant éditer le fichier config.ini afin de définir le démarrage de notre application</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='ini'><span class='line'><span class="na">osgi.bundles</span><span class="o">=</span><span class="s">org.eclipse.equinox.common@2:start\</span>
+</span><span class='line'><span class="err">,</span> <span class="err">org.eclipse.update.configurator@3:start\</span>
+</span><span class='line'><span class="err">,reference\:file\:plugins/org.springframework.osgi.extender-1.1.3.RELEASE.jar@start\</span>
+</span><span class='line'><span class="err">,reference\:file\:plugins/com.springsource.javax.activation-1.1.1.jar@start\</span>
+</span><span class='line'><span class="err">,reference\:file\:plugins/com.binomed.osgi.spring.test_1.0.0.jar@start</span>
+</span><span class='line'><span class="na">osgi.bundles.defaultStartLevel</span><span class="o">=</span><span class="s">4</span>
+</span><span class='line'><span class="na">eclipse.ignoreApp</span><span class="o">=</span><span class="s">true</span>
+</span><span class='line'><span class="na">osgi.noShutdown</span><span class="o">=</span><span class="s">true </span>
+</span><span class='line'><span class="na">osgi.clean</span><span class="o">=</span><span class="s">true</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Cette configuration permet de spécifier l&#8217;installation auto des bundles, l&#8217;auto instanciation des services contenus dans nos bundles démarrés et enfin le démarrage de notre bundle.</p>
+
+<p>Nous allons donc maintenant lancer notre application, ouvrons donc une console  et lançons l&#8217;instruction suivante :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>java -jar org.eclipse.osgi_3.6.1.jar -consoleLog -console
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>nous avons donc bien la sortie suivante :</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>osgi&gt; log4j:WARN No appenders could be found <span class="k">for </span>logger <span class="o">(</span>org.springframework.osgi.extender.internal.activator.ContextLoaderListener<span class="o">)</span>.
+</span><span class='line'>log4j:WARN Please initialize the log4j system properly.
+</span><span class='line'>LOAD!!!!
+</span><span class='line'>LOAD PROTO!!!!
+</span><span class='line'>Hello World Spring with OSGI
+</span><span class='line'>Hello World Spring with OSGI From Proto
+</span><span class='line'>Hello World Spring with OSGI From Proto
+</span><span class='line'>LOAD PROTO!!!!
+</span><span class='line'>LOAD PROTO!!!!
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>C&#8217;est tout pour le moment. :)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">jefBinomed</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-02-11T00:01:00+01:00" pubdate data-updated="true">Feb 11<span>th</span>, 2011</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/java/'>Java</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://binomed.github.com/blog/2011/02/11/osgi-spring-dm-mise-en-place-dun-environement-equinox-part1/" data-via="binomed" data-counturl="http://binomed.github.com/blog/2011/02/11/osgi-spring-dm-mise-en-place-dun-environement-equinox-part1/" >Tweet</a>
+  
+  
+  <div class="g-plusone" data-size="medium"></div>
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/03/15/android-communication-between-android-and-google-appengine-with-serialization/" title="Next Post: [Android] Communication between Android and Google AppEngine with serialization">[Android] Communication between Android and Google AppEngine with serialization &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/03/15/android-communication-between-android-and-google-appengine-with-serialization/">[Android] Communication between Android and Google AppEngine with serialization</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/11/osgi-spring-dm-mise-en-place-dun-environement-equinox-part1/">OSGI & Spring DM, mise en place d'un environement equinox (partie 1)</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/binomed">@binomed</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'binomed',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("binomed", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/binomed" class="twitter-follow-button" data-show-count="false">Follow @binomed</a>
+  
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - jefBinomed -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var script = document.createElement('script'); script.type = 'text/javascript'; script.async = true;
+      script.src = 'https://apis.google.com/js/plusone.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(script, s);
+    })();
+  </script>
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
