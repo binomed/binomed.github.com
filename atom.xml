@@ -4,7 +4,7 @@
   <title><![CDATA[Binomed blog]]></title>
   <link href="http://binomed.github.com/atom.xml" rel="self"/>
   <link href="http://binomed.github.com/"/>
-  <updated>2013-02-01T18:05:18+01:00</updated>
+  <updated>2013-02-05T09:18:35+01:00</updated>
   <id>http://binomed.github.com/</id>
   <author>
     <name><![CDATA[jefBinomed]]></name>
@@ -2704,7 +2704,7 @@ Normaly, you should have the same image for yours projects<br/>
 
 <p>Now let’s look at the impact of each solution on the final size of the APK</p>
 
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td></td>
@@ -2731,7 +2731,7 @@ Normaly, you should have the same image for yours projects<br/>
 
 <p>Here is a comparative table for the average with different number of expected results.</p>
 
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td><strong>Number of expected Results</strong></td>
@@ -2760,7 +2760,7 @@ Normaly, you should have the same image for yours projects<br/>
 <tr>
 <td>1000</td>
 <td>2644 ms and 3 ms / Obj</td>
-<td>24831 ms and 24 ms / Obj</td>
+<td>24831 ms and 24 ms / Obj</td> 
 <td>1266 ms and 1 ms / Obj</td>
 </tr>
 <tr>
@@ -2782,7 +2782,7 @@ Normaly, you should have the same image for yours projects<br/>
 
 <p>&nbsp;</p>
 
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td>1:Bad -> 5:Perfect</td>
@@ -2835,6 +2835,15 @@ The <b>Java Json Rpc</b> be use for others cases.
 All code of this tutorial is available on my <a href="https://github.com/binomed/android_sandbox/tree/master/RpcTests" target="_blank">github</a></p>
 
 <p>Thank you to Benjamin who helps me for the redaction.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Binomed under Github]]></title>
+    <link href="http://binomed.github.com/blog/2011/03/25/binomed-under-github/"/>
+    <updated>2011-03-25T23:27:00+01:00</updated>
+    <id>http://binomed.github.com/blog/2011/03/25/binomed-under-github</id>
+    <content type="html"><![CDATA[<p>Binomed has moved from Google Code to Binomed, you can follow our project on : <a href="https://github.com/organizations/binomed">GitHub</a></p>
 ]]></content>
   </entry>
   

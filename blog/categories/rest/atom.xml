@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Rest | Binomed blog]]></title>
   <link href="http://binomed.github.com/blog/categories/rest/atom.xml" rel="self"/>
   <link href="http://binomed.github.com/"/>
-  <updated>2013-02-01T18:05:18+01:00</updated>
+  <updated>2013-02-05T09:18:35+01:00</updated>
   <id>http://binomed.github.com/</id>
   <author>
     <name><![CDATA[jefBinomed]]></name>
@@ -1616,7 +1616,7 @@ break;
 
 <p>Now let’s look at the impact of each solution on the final size of the APK</p>
 
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td></td>
@@ -1643,7 +1643,7 @@ break;
 
 <p>Here is a comparative table for the average with different number of expected results.</p>
 
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td><strong>Number of expected Results</strong></td>
@@ -1672,7 +1672,7 @@ break;
 <tr>
 <td>1000</td>
 <td>2644 ms and 3 ms / Obj</td>
-<td>24831 ms and 24 ms / Obj</td>
+<td>24831 ms and 24 ms / Obj</td> 
 <td>1266 ms and 1 ms / Obj</td>
 </tr>
 <tr>
@@ -1694,7 +1694,7 @@ break;
 
 <p>&nbsp;</p>
 
-<table style="border: solid #FFFFFF;border-width: 1px; border-style: hidden; border-spacing: 0px;" border="1" width="400px" height="400px">
+<table class="binomed_table">
 <tbody>
 <tr>
 <td>1:Bad -> 5:Perfect</td>
