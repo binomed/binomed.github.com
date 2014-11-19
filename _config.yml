@@ -7,7 +7,7 @@ title: Binomed Blog
 subtitle:
 description:  Un blog technique pour le développpement sur des technos variées
 author: jefBinomed (Jean-François Garreau)
-email: jef@gdgnantes.com
+email: jean.francois.garreau+blog@gmail.com
 language: fr-FR
 
 # URL
@@ -65,7 +65,7 @@ logger_format: dev
 ## Hexo uses Moment.js to parse and display date
 ## You can customize the date format as defined in
 ## http://momentjs.com/docs/#/displaying/format/
-date_format: MMM D YYYY
+date_format: D MMM YYYY
 time_format: H:mm:ss
 
 # Pagination
