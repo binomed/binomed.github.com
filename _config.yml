@@ -4,9 +4,9 @@
 
 # Site
 title: Binomed Blog
-subtitle:
+subtitle: Encore un blog de G33k 
 description:  Un blog technique pour le développpement sur des technos variées
-author: jefBinomed (Jean-François Garreau)
+author: jefBinomed
 email: jean.francois.garreau+blog@gmail.com
 language: fr-FR
 
@@ -31,8 +31,8 @@ default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
-render_drafts: false
-post_asset_folder: false
+render_drafts: true
+post_asset_folder: true
 relative_link: false
 highlight:
   enable: true
@@ -81,6 +81,20 @@ disqus_shortname: binomedblog
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
 theme: binomed_pacman
 exclude_generator:
+
+#RSS
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
+
+#Sitemap
+sitemap:
+  path: sitemap.xml
+
+#livereload
+livereload:
+  port: 35729
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html

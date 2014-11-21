@@ -14,6 +14,12 @@ Si c'est la première qu'on récupère le site :
 
 ## Ajout d'un article
 
-exécuter ```hexo new <title>```
+exécuter ```hexo new "<title>"```
 
 lien utile : http://hexo.io/docs/commands.html
+
+## Ajout d'un draft
+
+exécuter ```hexo new draf "<title>"```
+
+et une fois l'article fini : ```hexo publish <filename>```
