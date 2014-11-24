@@ -1,9 +1,10 @@
 title: Un nouveau (?) blog 
 category: 
-- Blog
+- News
 tags:
 - hexo
 - octopress
+- nodeJS
 ---
 ## Pourquoi ? 
 
@@ -31,4 +32,12 @@ J'ai donc essayé de réinstaller mon environement de blog à savoir, Ruby, Rake
 3. Je n'apporte pas particulièrement d'importance au fait que le site soit généré ou dynamique. Dans le cas d'un site généré, je pourrais toujours trouvé une PIC (Plateforme d'Intégration Continue) qui me fasse le job
 4. Je veux pouvoir installer relativement simplement si je suis en mission chez un client et que ça soit simple quelque soit l'OS.
 
-En partant de là, mon premier critère m'a ammené à regardé du côté de Octopress / Jeckyll que j'avais déjà essayé mais je voulais essayé autre chose.... En discutant avec un collègue. J'ai découvert [Hexo](http://hexo.io/)
+En partant de là, mon premier critère m'a ammené à regarder du côté de Octopress / Jeckyll que j'avais déjà essayé mais je voulais essayer autre chose.... En discutant avec un collègue, j'ai découvert [Hexo](http://hexo.io/) un générateur de sites statiques à la Octopress. Regardons de plus prêt les fonctionnalités qui ont fait de Hexo ma solution favorite : 
+
+* Il est basé sur NodeJS => facile à mettre en place même en mission chez un client
+* Il est possible de déployer sur github => J'ai ce que je voulais : pas de serveur PHP ! 
+* Il propose un système de plugins assez riches et les thèmes sont facilement customisable => Je peux le faire évoluer comme je veux
+* Le contenu est  écrit en markdown
+* Il affiche des performances de génération de site bien meilleur à Octo **[Why I Switch My Blog From Octopress To Hexo](http://www.techelex.org/why-switch-blog-from-octopress-to-hexo/)**
+
+Le seul point noir est que c'est un moteur tres présent en asie et donc, un grand nombre de ressources / thèmes sont en Japonais ou Chinois... 
