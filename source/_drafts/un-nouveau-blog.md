@@ -20,7 +20,7 @@ http://blog.binomed.fr renait donc de ses cendres et ce pour traiter de nouveaux
 
 ### L'ancien blog sous Octopress
 
-En voulant reprendre mon blog, je me suis retrouvé face à un problème de taille. Comment on s'y prend déjà pour quand on a un blog sous [Octopress](http://octopress.org/) ? Il faut avouer aussi qu'en 2 ans, j'avais un peu perdu la configuration nécessaire et les prérequis en matière d'écriture de blog... 
+En voulant reprendre mon blog, je me suis retrouvé face à un problème de taille. Comment ça marche [Octopress](http://octopress.org/) ? Il faut avouer aussi qu'en 2 ans, j'avais un peu perdu la configuration nécessaire et les prérequis en matière d'écriture de blog... 
 
 J'ai donc essayé de réinstaller mon environement de blog à savoir, Ruby, Rake, ... et je me suis dit que c'était assez compliqué que si je voulais blogguer pendant mes missions chez des clients, il me fallait un environement plus "work friendly". En bon développeur, je me suis dit : **Quel est le cahier des Charges ?**
 
