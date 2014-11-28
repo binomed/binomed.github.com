@@ -10,7 +10,7 @@ tags:
 
 Ca y est je me suis décidé à reblogguer si on peut dire ainsi.
 
-http://blog.binomed.fr renait donc de ses cendres et ce pour traiter de nouveaux sujets. L'objectif de se blog est simple : 
+http://blog.binomed.fr laisse donc sa place à http://binomed.fr et ce pour traiter de nouveaux sujets. L'objectif de se blog est simple : 
 
 * Partager mes dernières trouvailles en terme de code / technologies
 * Faire des retours sur les événements où je serais allé soit en tant que speaker, soit en tant que participant
@@ -20,7 +20,7 @@ http://blog.binomed.fr renait donc de ses cendres et ce pour traiter de nouveaux
 
 ### L'ancien blog sous Octopress
 
-En voulant reprendre mon blog, je me suis retrouvé face à un problème de taille. Comment ça marche [Octopress](http://octopress.org/) ? Il faut avouer aussi qu'en 2 ans, j'avais un peu perdu la configuration nécessaire et les prérequis en matière d'écriture de blog... 
+En voulant reprendre mon blog, je me suis retrouvé face à un problème de taille. Comment fonctionne [Octopress](http://octopress.org/) déjà ? Il faut avouer aussi qu'en 2 ans, j'avais un peu perdu la configuration nécessaire et les prérequis en matière d'écriture de blog... 
 
 J'ai donc essayé de réinstaller mon environnement de blog à savoir, Ruby, Rake, ... et je me suis dit que c'était assez compliqué que si je voulais blogguer pendant mes missions chez des clients, il me fallait un environnement plus "work friendly". En bon développeur, je me suis dit : **Quel est le cahier des Charges ?**
 
@@ -29,9 +29,9 @@ J'ai donc essayé de réinstaller mon environnement de blog à savoir, Ruby, Rak
 
 
 1. Je ne veux pas d'un site où j'aurais besoin d'un serveur php => je veux un site statique genre githubpages
-2. Je veux un site que j'écrive en markdown car je ne suis pas un artiste, je suis geek et je veux me concentrer sur mon contenu et non sur la forme.
+2. Je veux un site que j'écrive en markdown car je ne suis pas un artiste, j'aime juste faire mon geek et je préfère me concentrer sur mon contenu plutôt que sur la forme.
 3. Je n'apporte pas particulièrement d'importance au fait que le site soit généré ou dynamique. Dans le cas d'un site généré, je pourrais toujours trouver une PIC (Plateforme d'Intégration Continue) qui me fasse le job
-4. Je veux pouvoir installer relativement simplement la solution si je suis en mission chez un client et que ça soit simple quel que soit l'OS.
+4. Je veux pouvoir installer relativement simplement la solution si je change de pc et que ça soit simple quel que soit l'OS.
 
 En partant de là, mon premier critère m'a amené à regarder du côté de Octopress / Jeckyll que j'avais déjà essayé mais je voulais essayer autre chose.... En discutant avec un collègue, j'ai découvert [Hexo](http://hexo.io/) un générateur de sites statiques à la Octopress. Regardons de plus prêt les fonctionnalités qui ont fait de Hexo ma solution favorite : 
 

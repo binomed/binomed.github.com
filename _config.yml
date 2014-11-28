@@ -99,4 +99,5 @@ livereload:
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: github
+  repo: https://github.com/binomed/binomed.github.com.git
