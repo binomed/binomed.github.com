@@ -1,16 +1,18 @@
-title: Un nouveau (?) blog 
-category: 
-- News
+title: Un nouveau (?) blog
 tags:
-- hexo
-- octopress
-- nodeJS
+  - hexo
+  - octopress
+  - nodeJS
+category:
+  - News
+date: 2014-11-29 15:14:06
 ---
+
 ## Pourquoi ? 
 
 Ca y est je me suis décidé à reblogguer si on peut dire ainsi.
 
-http://blog.binomed.fr laisse donc sa place à http://binomed.fr et ce pour traiter de nouveaux sujets. L'objectif de se blog est simple : 
+http://blog.binomed.fr laisse donc sa place à http://jef.binomed.fr et ce pour traiter de nouveaux sujets. L'objectif de se blog est simple : 
 
 * Partager mes dernières trouvailles en terme de code / technologies
 * Faire des retours sur les événements où je serais allé soit en tant que speaker, soit en tant que participant
