@@ -85,12 +85,12 @@ exclude_generator:
 #RSS
 feed:
   type: atom
-  path: ./atom.xml
+  path: /atom.xml
   limit: 20
 
 #Sitemap
 sitemap:
-  path: ./sitemap.xml
+  path: /sitemap.xml
 
 #livereload
 livereload:
