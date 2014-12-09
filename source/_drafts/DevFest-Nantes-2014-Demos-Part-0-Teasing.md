@@ -1,6 +1,8 @@
 title: DevFest Nantes 2014 - Demos Part 0 - Teasing
 tags:
   - myo
+  - leap motion
+  - arduino
   - ev3
   - devfest
   - nodeJS
@@ -9,7 +11,7 @@ category:
 ---
 # DevFest Nantes ?
 
-Pour ceux qui ne le savent pas, je suis un des organisateur du [DevFest Nantes](http://devfest.gdgnantes.com).  C'est un événement est un événement organisé à Nantes dédié aux développeurs avec un fort focus autour des technologies Google. Cependant cet événement offre aussi sa part de découverte et en venant au DevFest Nantes, vous ne trouverez pas que des conférences autour de Google ! 
+Pour ceux qui ne le savent pas, je suis un des organisateur du [DevFest Nantes](http://devfest.gdgnantes.com).  C'est un événement organisé à Nantes dédié aux développeurs avec un fort focus autour des technologies Google. Cependant cet événement offre aussi sa part de découverte et en venant au DevFest Nantes, vous ne trouverez pas que des conférences autour de Google ! 
 
 J'organise avec mes collègues du [GDG Nantes](http://gdgnantes.com) cet événement depuis maintenant 3 ans. Voici un petit retour sur les chiffres clés de ces dernières éditions pour mieux cerner l'événement : 
 
@@ -48,13 +50,20 @@ J'organise avec mes collègues du [GDG Nantes](http://gdgnantes.com) cet événe
 
  # Démos
 
- Si je parles de tout ça c'est pour m'attarder sur les démos que j'ai eu l'occasion de coder pour l'événement. En plus du site, j'ai eu la chance d'écrire les choses suivantes : 
+ Si je parle de tout ça c'est pour m'attarder sur les démos que j'ai eu l'occasion de coder pour l'événement. En plus du site, j'ai eu la chance d'écrire les choses suivantes : 
 
  1. Contrôle d'un robot [Lego Mindstorm](http://www.lego.com/en-us/mindstorms/?domainredir=mindstorms.lego.com) par le bracelet connecté [Myo](thalmic.com)
  2. Interface Gestuelle pour consulter le programme de l'événement avec la [Leap Motion](https://www.leapmotion.com/)
  3. Quizz mobile en html pour s'amuser autrement
- 4. Réalisation d'un jeux vidéo animé par les mouvements fait depuis un rameur d'appartement.
- 5. Mise en place d'un comptes à rebours personnalisé pour le lancement de la keynote du DevFest.
+ 4. Réalisation d'un jeu vidéo animé par les mouvements fait depuis un rameur d'appartement.
+ 5. Mise en place d'un compte à rebours personnalisé pour le lancement de la keynote du DevFest.
 
- Je vais donc traiter à travers mes prochains billets chacune de ces démos afin de revenir sur mes motivations et sur les enjeux techniques ou non de ces dernières.
+ Je vais donc traiter à travers mes prochains billets chacune de ces démos. Je reviendrais ainsi sur mes motivations et sur les enjeux techniques de ces démos.
 
+ # Avant-Gout
+
+ Voici en avant-gout ce que j'ai pu faire lors de mes essais avec le Myo
+
+<video controls>
+	<source src="/assets/2014-12-DevFestDemos/videos/demo_myo_arduino.mp4" type="video/mp4">
+</video>
