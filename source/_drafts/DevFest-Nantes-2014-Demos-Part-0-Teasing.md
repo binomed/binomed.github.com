@@ -11,7 +11,7 @@ category:
 ---
 # DevFest Nantes ?
 
-Pour ceux qui ne le savent pas, je suis un des organisateur du [DevFest Nantes](http://devfest.gdgnantes.com).  C'est un événement organisé à Nantes dédié aux développeurs avec un fort focus autour des technologies Google. Cependant cet événement offre aussi sa part de découverte et en venant au DevFest Nantes, vous ne trouverez pas que des conférences autour de Google ! 
+Pour ceux qui ne le savent pas, je suis un des organisateurs du [DevFest Nantes](http://devfest.gdgnantes.com).  C'est un événement organisé à Nantes dédié aux développeurs avec un fort focus autour des technologies Google. Cependant, cet événement offre aussi sa part de découvertes et en venant au DevFest Nantes, vous ne trouverez pas que des conférences autour de Google ! 
 
 J'organise avec mes collègues du [GDG Nantes](http://gdgnantes.com) cet événement depuis maintenant 3 ans. Voici un petit retour sur les chiffres clés de ces dernières éditions pour mieux cerner l'événement : 
 
@@ -23,7 +23,7 @@ J'organise avec mes collègues du [GDG Nantes](http://gdgnantes.com) cet événe
  * 6 Sponsors
  * 4 Organisateurs
  * 12 Bénévoles
- * 1 Lieu Epitech Nantes
+ * 1 Lieu : Epitech Nantes
 * [DevFest Nantes 2013](http://devfest2013.gdgnantes.com/)
  * 300 Participants
  * 23 Sessions
@@ -55,14 +55,14 @@ J'organise avec mes collègues du [GDG Nantes](http://gdgnantes.com) cet événe
  1. Contrôle d'un robot [Lego Mindstorm](http://www.lego.com/en-us/mindstorms/?domainredir=mindstorms.lego.com) par le bracelet connecté [Myo](thalmic.com)
  2. Interface Gestuelle pour consulter le programme de l'événement avec la [Leap Motion](https://www.leapmotion.com/)
  3. Quizz mobile en html pour s'amuser autrement
- 4. Réalisation d'un jeu vidéo animé par les mouvements fait depuis un rameur d'appartement.
- 5. Mise en place d'un compte à rebours personnalisé pour le lancement de la keynote du DevFest.
+ 4. Réalisation d'un jeu vidéo animé par les mouvements fait depuis un rameur d'appartement
+ 5. Mise en place d'un compte à rebours personnalisé pour le lancement de la keynote du DevFest
 
- Je vais donc traiter à travers mes prochains billets chacune de ces démos. Je reviendrais ainsi sur mes motivations et sur les enjeux techniques de ces démos.
+ Je vais donc traiter à travers mes prochains billets chacune de ces démos. Je reviendrai ainsi sur mes motivations et sur les enjeux techniques de ces démos.
 
  # Avant-Gout
 
- Voici en avant-gout ce que j'ai pu faire lors de mes essais avec le Myo
+ Voici un avant-gout de ce que j'ai pu faire lors de mes essais avec le Myo
 
 <video controls>
 	<source src="/assets/2014-12-DevFestDemos/videos/demo_myo_arduino.mp4" type="video/mp4">
