@@ -8,7 +8,9 @@ tags:
   - nodeJS
 category:
   - Event
+date: 2014-12-10 11:57:15
 ---
+
 # DevFest Nantes ?
 
 Pour ceux qui ne le savent pas, je suis un des organisateurs du [DevFest Nantes](http://devfest.gdgnantes.com).  C'est un événement organisé à Nantes dédié aux développeurs avec un fort focus autour des technologies Google. Cependant, cet événement offre aussi sa part de découvertes et en venant au DevFest Nantes, vous ne trouverez pas que des conférences autour de Google ! 
