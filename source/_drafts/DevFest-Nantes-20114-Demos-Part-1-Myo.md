@@ -61,6 +61,24 @@ Ce qui différencie le Myo des autres bracelets connectés c'est les sensors él
 
 En fonction de la version du SDK que vous avez, une 5ème gesture est disponible mais les gestes représentés ci-dessus sont ceux qui fonctionnent le mieux et qui sont les plus simple à déclencher.
 
+### Que dois-je analyser ?
+
+Avant d'attaquer le code, j'ai du me poser une question cruciale : **Comment vais-je contrôler mon robot ?** 
+
+Je viens de vous présenter  les sensors qui sont à notre disposition : accéléromètre, Gyroscope, sensors électriques. Je dois donc choisir le moyen le plus simple pour contrôler ce dernier. Il convient donc de réfléchir en terme de mouvement dits "naturels". Quel va être le mouvement le plus naturel pour contrôler un robot ? A défaut d'avoir trouvé le plus naturel, j'en ai trouvé un qui était simple à exploiter et simple à faire comprendre car c'est aussi un des enjeux majeurs de ce genre de devices : Si l'on doit passer un considérable à expliquer le fonctionnement, c'est que l'on a raté quelque chose ! 
+
+Voici un schéma qui traduit le vocabulaire utilisé par Thalmic pour retranscrire les informations du bracelet
+
+![](/assets/2014-12-DevFestDemos/images/Mark-blog-Diagrams-01.jpg)
+
+Pour ma part, j'ai donc choisi d'exploiter le **"Pitch"** et le **"yaw"**. Cela reste relativement intuitif et facile à expliquer : 
+
+* Baissez votre bras et ça fera avancer le robot. Remontez le et ça le fera reculer
+* Bougez votre bras vers la gauche ou vers la droite pour le faire tourner.
+
+J'aurais pu utiliser le **"Roll"** mais après quelques essais, je me suis rendu comptes que le roll était facile à faire pour l'utilisateur vers la partie extérieur de son corps mais pas vers l'intérieur... Ceci implique que si l'on pouvait facilement tourner dans un sens mais difficilement dans l'autre.... D'où mon choix de tourner avec le **"Yaw"**. Faites l'essai, si vous êtes droitiers par exemple, vous vous rendrez vite compte que tourner sa main vers la droite est simple, mais la tourner la gauche nécessite une certaine contortion du bras qui rend le mouvement pas du tout naturel.
+
+
 ### On code comment avec ?
 
 Aujourd'hui [Thalmic](https://www.thalmic.com) (la société derrière le bracelet) a développé 3 SDK permettant d'interagir avec des objets que l'on peut manipuler :
@@ -72,9 +90,6 @@ Aujourd'hui [Thalmic](https://www.thalmic.com) (la société derrière le bracel
 à partir de là, on peut commencer à jouer. Je ne rentrerais pas trop dans le détail car je comptes rédiger plus tard un billet sur le développement avec Myo. Je vais donc m'attarder sur la solution retenue pour la démo.
 
 
-### Que dois-je analyser ?
-
-Avant d'attaquer le code, j'ai du me poser une question cruciale : **Comment vais-je contrôler mon robot ?**
 
 
 ### Partie C++
