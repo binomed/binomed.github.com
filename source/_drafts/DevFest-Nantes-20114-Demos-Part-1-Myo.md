@@ -9,7 +9,7 @@ category:
 ---
 # Myo et EV3
 
-Regardons en premier le résultat et attardons nous ensuite à en comprendre le fonctionnement.
+Voici le résultat final
 
 ## Déplacement
 
@@ -35,70 +35,70 @@ mais ...
 
 # Je ne suis pas un jedi mais juste un développeur
 
-Voici le schéma de communication de nos différents composants : 
+Voici donc le schéma de communication des différents composants : 
 
 ![](/assets/2014-12-DevFestDemos/images/schema_myo_ev3.png)
 
-Le fonctionnement est donc très simple. Un programme C++ tourne sur mon ordinateur récupérant tous les messages du Bracelet Myo via le SDK de Myo. Ce dernier envoie toutes les commandes à un serveur NodeJS qui s'occupe de communiquer en Bluetooth avec le Lego Mindstorm. Nous allons donc regarder chacune des composantes des acteurs en jeux.
+Le fonctionnement est donc très simple. Un programme C++ tourne sur mon ordinateur récupérant tous les messages du Bracelet Myo via le SDK de Myo. Ce dernier envoie toutes les commandes à un serveur NodeJS qui s'occupe de communiquer en Bluetooth avec le Lego Mindstorm. 
 
 ## Myo
 
 ### C'est quoi ?
 
-Avant de parler de Myo, revenons un peu sur ce qu'est Myo et comment cela fonctionne. Le Myo c'est ça : 
+Avant de parler de Myo, revenons un peu sur ce que c'est et comment cela fonctionne. 
 
 ![](/assets/2014-12-DevFestDemos/images/myo-overview.png)
 
-C'est donc un bracelet connecté qui possède un certains nombre de sensors : 
+C'est donc un bracelet connecté qui possède un certain nombre de sensors : 
 
 * Sensors Électriques
 * Accéléromètre
 * Gyroscope
 
-Ce qui différencie le Myo des autres bracelets connectés c'est les sensors électriques qui lui permettre de reconnaître des **"gestes"**. De cette façon en plus d'envoyer des informations de types : orientation / vitesse, nous sommes capable de détecter si le porteur du bracelet a fait un geste précis. Les gestes aujourd'hui reconnus sont : 
+Ce qui différencie le Myo des autres bracelets connectés, c'est les sensors électriques qui lui permettre de reconnaître des **"gestes"**. De cette façon, en plus d'envoyer des informations de types : orientation / vitesse, nous sommes capable de détecter si le porteur du bracelet a fait un geste précis. Les gestes aujourd'hui reconnus sont : 
 
 ![](/assets/2014-12-DevFestDemos/images/myo_gestures.png)
 
-En fonction de la version du SDK que vous avez, une 5ème gesture est disponible mais les gestes représentés ci-dessus sont ceux qui fonctionnent le mieux et qui sont les plus simple à déclencher.
+En fonction de la version du SDK, que vous avez un 5ème geste qui est disponible mais les gestes représentés ci-dessus sont ceux qui fonctionnent le mieux et qui sont les plus simple à déclencher.
 
 ### Que dois-je analyser ?
 
 Avant d'attaquer le code, j'ai du me poser une question cruciale : **Comment vais-je contrôler mon robot ?** 
 
-Je viens de présenter les sensors qui sont à notre disposition : Accéléromètre, Gyroscope, Sensors électriques. Je dois donc choisir le moyen le plus simple pour contrôler le robot. Il convient donc de réfléchir en terme de mouvement dits "naturels". 
+Je viens de présenter les sensors qui sont à notre disposition : Accéléromètre, Gyroscope, Sensors électriques. Je dois donc choisir le moyen le plus simple pour contrôler le robot. 
 
-Quel va être le mouvement le plus naturel pour contrôler un robot ? A défaut d'avoir trouvé le plus naturel, j'en ai trouvé un qui était simple à exploiter et simple à faire comprendre car c'est aussi un des enjeux majeurs de ce genre de devices : Si l'on doit passer un temps considérable à expliquer le fonctionnement, c'est que l'on a raté quelque chose ! 
+Quel va être le mouvement le plus "naturel" pour contrôler un robot ? A défaut d'avoir trouvé le plus naturel, j'en ai trouvé un qui était simple à exploiter et simple à faire comprendre car c'est aussi un des enjeux majeurs de ce genre de devices : Si l'on doit passer un temps considérable à expliquer le fonctionnement, c'est que l'on a raté quelque chose ! 
 
-Voici un schéma qui traduit le vocabulaire utilisé par Thalmic pour retranscrire les informations du bracelet
+Voici un schéma qui traduit le vocabulaire utilisé par [Thalmic](https://www.thalmic.com) (la société derrière le bracelet) pour retranscrire les informations du bracelet
 
 ![](/assets/2014-12-DevFestDemos/images/Mark-blog-Diagrams-01.jpg)
 
 Pour ma part, j'ai choisi d'exploiter le **"Pitch"** et le **"Yaw"**. Cela reste relativement intuitif et facile à expliquer : 
 
-* Baissez votre bras et ça fera avancer le robot. Remontez le et ça le fera reculer. Le bras à l'horizontal représente le point 0 (robot à l'arrêt).
+* Baissez votre bras et ça fera avancer le robot. Remontez-le et ça le fera reculer. Le bras à l'horizontal représente le point 0 (robot à l'arrêt).
 * Bougez votre bras vers la gauche ou vers la droite pour le faire tourner.
 
-J'aurais pu utiliser le **"Roll"** mais après quelques essais, je me suis rendu comptes que le Roll était facile à faire pour l'utilisateur vers la partie extérieur de son corps mais pas vers l'intérieur... Cela avait le désavantage que l'on pouvait facilement tourner dans un sens mais difficilement dans l'autre.... D'où mon choix de tourner avec le **"Yaw"**. 
+J'aurais pu utiliser le **"Roll"** mais après quelques essais, je me suis rendu compte que le Roll était facile à faire pour l'utilisateur vers la partie extérieur de son corps mais pas vers l'intérieur... Cela avait le désavantage suivant : On peut facilement tourner dans un sens mais difficilement dans l'autre.... D'où mon choix de tourner avec le **"Yaw"**. 
 
-Faites l'essai : Si vous êtes droitier, vous vous rendrez vite compte que tourner sa main vers la droite est simple, mais la tourner vers la gauche nécessite une certaine contorsion du bras qui rend le mouvement non naturel.
+Faites l'essai : Si vous êtes droitier, vous vous rendrez vite compte que tourner sa main vers la droite est simple, mais la tourner vers la gauche nécessite une certaine contorsion du bras qui rend le mouvement non naturel. De plus la combinaison Roll + Pitch complexifiait beaucoup le code.
 
 
 
 ### On code comment avec ?
 
-Aujourd'hui [Thalmic](https://www.thalmic.com) (la société derrière le bracelet) a développé 3 SDKs permettant d'interagir avec des objets (programmation objets) que l'on peut manipuler :
+Aujourd'hui Thalmic a développé 3 SDKs permettant d'interagir avec des objets (programmation objets) que l'on peut manipuler :
 
-* Un SDK en C++ exploitable pour les pcs
+* Un SDK en C++ exploitable pour les ordinateurs
 * Un SDK en Java pour Android
 * Un SDK en ObjectiveC pour Iphone
 
-à partir de là, on peut commencer à jouer. Je ne rentrerais pas trop dans le détail car je comptes rédiger plus tard un billet sur le développement avec Myo. Je vais donc m'attarder sur la solution retenue pour la démo.
+A partir de là, on peut commencer à jouer. Je ne rentrerais pas trop dans le détail car je compte rédiger plus tard un billet sur le développement avec Myo. Je vais donc m'attarder sur la solution retenue pour la démo.
 
 
 
 ### Partie C++
 
-Pour la démo, j'ai donc choisi d'exploiter le SDK C++ car utiliser mon téléphone présentait un soucis en terme de batterie notamment au niveau de la communication bluetooth classique avec le Lego.
+Pour la démo, j'ai donc choisi d'exploiter le SDK C++ car utiliser mon téléphone présentait un soucis en termes de batterie notamment au niveau de la communication bluetooth classique avec le Lego.
 
 Je suis parti du code fournit avec le SDK pour exploiter les données que je voulais. Le principe du SDK est simple, nous posons un listener et nous récupérons des informations construites : 
 
@@ -138,22 +138,6 @@ public:
 		}
 	}
 
-	void onGyroscopeData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& gyro)
-	{
-		gyro_x = gyro.x();
-		gyro_y = gyro.y();
-		gyro_z = gyro.z();
-
-	}
-
-	void onAccelerometerData(myo::Myo* myo, uint64_t timestamp, const myo::Vector3<float>& accel)
-	{
-		acc_x = accel.x();
-		acc_y = accel.y();
-		acc_z = accel.z();
-
-	}
-
 	// Méthode appelée dans le main
 	void print()
 	{
@@ -172,8 +156,6 @@ public:
 		result += ",\"pitch\":" + std::to_string(pitch);
 		result += ",\"yaw\":" + std::to_string(yaw);
 		result += ",\"pose\":\"" + currentPose.toString() + "\"";
-		result += ",\"acc\":[" + std::to_string(acc_x) + "," + std::to_string(acc_y) + "," + std::to_string(acc_z) + "]";
-		result += ",\"gyro\":[" + std::to_string(gyro_x) + "," + std::to_string(gyro_y) + "," + std::to_string(gyro_z) + "]";
 		result += "}";
 		return result;
 
@@ -222,15 +204,15 @@ int main(int argc, char** argv)
 
 ```
 
-Une fois ce code exécuté, nous récupérons donc 20 fois par seconde un JSON nous donnant l'état du bracelet. Et ce JSON est envoyé à un serveur tournant en local sur notre machine.
+Une fois ce code exécuté, nous récupérons 20 fois par seconde un JSON nous donnant l'état du bracelet. Et ce JSON est envoyé à un serveur tournant en local sur notre machine.
 
 
-### Partie NodeJS
+## Partie NodeJS
 
-La partie NodeJS est un peu plus compliquée car c'est qui possède l'intelligence du programme et l'aspect conversion. Le code est donc réparti en 3 composantes principales : 
+La partie NodeJS est un peu plus compliquée car c'est elle qui possède l'intelligence du programme et l'aspect conversion. Le code est donc réparti en 3 composantes principales : 
 
 1. La partie Serveur : Dans cette partie, le programme reçoit les informations provenant du bracelet
-2. La partie Analyse  : Dans cette partie, le programme décide quoi faire des données. Le robot doit-il avancer ? reculer ? ...
+2. La partie Analyse : Dans cette partie, le programme décide quoi faire des données. Le robot doit-il avancer ? Reculer ? ...
 3. La partie communication : Dans cette partie, le programme communique en bluetooth avec le Lego. Il y a donc un protocole à respecter et à implémenter.
 
 Voici mon package.json 
@@ -248,7 +230,7 @@ Voici mon package.json
 }
 ```
 
-####  Le Serveur NodeJS
+###  Le Serveur NodeJS
 
 Pour la partie serveur, je suis parti sur un simple serveur à base d'express. 
 
@@ -264,11 +246,11 @@ console.log('-------------------------------');
 console.log('Start Http server on port : '+8090);
 ```
 
-#### L'analyse des trames
+### L'analyse des trames
 
-Plutôt que de rentrer dans le détails du code, je vais vous expliquer la démarche adoptée pour répondre au besoin. 
+Plutôt que de rentrer dans le détail du code, je vais vous expliquer la démarche adoptée pour répondre au besoin. 
 
-Le programme est bombardé de messages (20 / secondes) et donc nous devons les filtrer en entrées. Il est important de noter que tout geste détecté par le bracelet remplira le champ "pose" de mon json avec une valeur qui est différente de **"rest"**. Nous devons donc traiter 2 cas : 
+Le programme est bombardé de messages (20 / secondes) et donc nous devons les filtrer en entrée. Il est important de noter que tout geste détecté par le bracelet remplira le champ "pose" de mon json avec une valeur qui est différente de **"rest"**. Nous devons donc traiter 2 cas : 
 
 1. Mon utilisateur a fait un geste et cela peut potentiellement signifier quelque chose à interpréter : pose != "rest"
 2. Mon utilisateur bouge son bras : pose === "rest"
@@ -276,11 +258,11 @@ Le programme est bombardé de messages (20 / secondes) et donc nous devons les f
 Le cas 1 me permet de détecter plusieurs choses : 
 
 * L'utilisateur veut effectuer un tir d'élastiques (pose === 'fist')
-* L'utilisateur veut prendre la main sur le robot (enchaînement de gestes). En effet, étant donné que le bracelet émet en continue des informations, il était primordial de définir un geste de départ ainsi qu'un geste de fin permettant d'indiquer au programme que l'on prend volontairement la main sur le robot. Il serait en effet désagréable de voir le robot se balader alors que l'on n'a pas décidé qu'on voulait le contrôler. De plus ! afin d'éviter un déclanchement accidentel du geste, j'ai pris le parti de demander la prise de contrôle suite à l’exécution de 3 gestes en moins de 2 secondes. Si l'utilisateur, exécutait les gestes "waveOut" ; "waveIn" ; "FingerSpread" dans un délais de 2 seconde, l'utilisateur prenait la main sur le robot.
+* L'utilisateur veut prendre la main sur le robot (enchaînement de gestes). Étant donné que le bracelet émet en continue des informations, il était primordial de définir une cinématique de départ ainsi qu'une cinématique de fin permettant d'indiquer au programme que l'on prend volontairement la main sur le robot. En effet, il serait désagréable de voir le robot se balader alors que l'on n'a pas décidé qu'on voulait le contrôler. De plus, afin d'éviter un déclenchement accidentel suite à un geste, j'ai pris le parti de demander la prise de contrôle suite à l’exécution de 3 gestes en moins de 2 secondes. Si l'utilisateur, exécute les gestes "waveOut" -> "waveIn" -> "FingerSpread", il prend la main sur le robot.
 
 Le cas 2 me permet de contrôler le déplacement du robot : 
 
-Pour mettre en place, cette partie, j'ai du faire beaucoup d'essais et analyser précisément les métriques renvoyées par le Myo en fonction du positionnement de mon bras. 
+Pour mettre en place cette partie, j'ai dû faire beaucoup d'essais et analyser précisément les métriques renvoyées par le Myo en fonction du positionnement de mon bras. 
 
 ![](/assets/2014-12-DevFestDemos/images/Myo_gestes_metrics.jpg)
 
@@ -292,11 +274,13 @@ Pour mettre en place, cette partie, j'ai du faire beaucoup d'essais et analyser 
  * -0.3 < ΔYaw => On dirige notre bras vers gauche et donc demande à notre robot d'aller à gauche
  * -0.3 < ΔYaw < 0.3  => Notre bras est au point 0 et donc demande à notre robot de s’arrêter
  * 0.3 < ΔYaw => On dirige notre bras vers droite et donc demande à notre robot d'aller à droite
+ * La cinématique de prise de contrôle me sert donc à initialiser un point "zéro" pour le Yaw et toutes les données provenant après correspondront au delta de ce point de référence avec l'orientation de mon bras.
 
-####  L'envoie des données
+
+###  L'envoi des données
 
 
-La communication avec le mindstorm s'est faite par bluetooth en suivant un système de messages : 
+La communication avec le Mindstorm s'est faite par bluetooth en suivant un système de messages : 
 
 * "fire" : Demande au robot de tirer un élastique
 * "start" : Demande au robot de joueur un son de démarrage (utilisé quand l'utilisateur prend le contrôle)
@@ -309,8 +293,10 @@ La communication avec le mindstorm s'est faite par bluetooth en suivant un syst�
 
 L'envoie des données à du respecter un protocole bluetooth fixé par Lego : [Bluetooth Protocol for EV3](http://www.mindstorms.rwth-aachen.de/trac/wiki/EV3).
 
+Un projet NodeJS existait pour la communication avec un EV3 mais ce dernier ne fonctionnait pas avec la version de Mindstorm que j'avais et son utilisation était trop compliquée. J'ai donc du tout recoder.
 
-### Partie EV3
+
+## Partie EV3
 
 Cette partie est relativement simple car je me suis contenté de recevoir les messages envoyés par le programme Node et en fonction du message, j'ai simplement  activé les bons moteurs.
 
@@ -318,6 +304,20 @@ Pour ceux qui n'ont jamais vu à quoi ressemblait du code Mindstorm, mon code re
 
 ![](/assets/2014-12-DevFestDemos/images/ev3_ide.png)
 
+
+# Conclusion
+
+Mon retour d'expérience sur cette démo est le suivant : Beaucoup de personnes on put essayer le bracelet pendant le devfest mais seulement un petit nombre ont réussi à faire fonctionner correctement la démo. Voici donc les points positifs et négatifs de ce retour : 
+
+* (-) Le bracelet ne s'adapte clairement pas à tous les bras. Certaines femmes avaient par exemple un bras trop fin et les gestes ne pouvaient pas être reconnus
+* (-) Les gestes que je considérais comme facile à faire ne l'étaient pas pour tous et même certains des gestes basiques n'arrivaient pas à être joué rendant impossible la prise de contrôle du robot. Le WaveOut était par exemple un geste impossible pour certains.
+* (-) La prise de contrôle à partir de 3 gestes est trop longue. 3 gestes c'est trop ! J'aurais dû réduire cela à 2 gestes. Un grand nombre de personnes n'arrivaient pas à jouer correctement les 3 gestes et l'on perdait beaucoup de temps à configurer cela ! 
+* (+) Le fait d'avoir mis un log des gestes effectués dans une ligne de commande était après coup, une très bonne idée car cela m'a permis d'expliquer plus facilement aux personnes ce qu'elles devaient faire et cela me permettait aussi de vérifier avec eux les gestes effectués. 
+* (+) Le fait d'avoir mis en places des vibrations à des moments clés s'est révélé utile pour l'utilisateur car cela lui donne une impression plus forte de feedback.
+* (+) Le fait d'avoir joué des sons sur le mindstorm pour signifier le démarrage du contrôle ou au contraire l’arrêt du contrôle s'est révélé aussi fort utile pour ce même feedback
+* Si je devais rejouer cette démo, je réduirais donc la phase de contrôle et je mettrais en place une interface graphique affichant à l'utilisateur la donnée interprétée par le programme pour qu'il ait un feedback plus fort sur ce qu'il fait.
+
+En conclusion, Myo est un outil	 très utile et relativement facile à intégrer dans des solutions logicielles mais il faut complètement repenser la façon que l'on a de donner du feedback à l'utilisateur ! Dans le cadre de ma démo, une ihm aurait été un bon moyen de donner de l'information à l'utilisateur. L'utilisation de la vibration du bracelet est aussi importante car elle permet à l'utilisateur de comprendre que ce qu'il fait est interprété.
 
 # Code source
 
