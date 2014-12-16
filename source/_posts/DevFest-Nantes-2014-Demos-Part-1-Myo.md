@@ -1,4 +1,4 @@
-title: DevFest Nantes 20114 - Demos Part 1 - Myo
+title: DevFest Nantes 2014 - Demos Part 1 - Myo
 tags:
   - myo
   - ev3
@@ -6,7 +6,9 @@ tags:
   - nodeJS
 category:
   - Event
+date: 2014-12-16 15:24:40
 ---
+
 # Myo et EV3
 
 Voici le résultat final
