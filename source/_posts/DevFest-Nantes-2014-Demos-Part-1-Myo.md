@@ -27,7 +27,7 @@ Voici le résultat final
 
 ## Commandes
 
-Pour résumer, j’utilise mon bras pour diriger le robot et si je serre le point, alors ce dernier tir des élastiques. 
+Pour résumer, j’utilise mon bras pour diriger le robot et si je serre le poing, alors ce dernier tir des élastiques. 
 
 Certains m'ont dit avec humour que ceci était la prochaine étape : 
 
@@ -134,7 +134,7 @@ public:
 	{
 		currentPose = pose;
 
-		// Sur la pose Point, on fait vibrer le bracelet
+		// Sur la pose Poing, on fait vibrer le bracelet
 		if (pose == myo::Pose::fist) {
 			myo->vibrate(myo::Myo::vibrationMedium);
 		}
