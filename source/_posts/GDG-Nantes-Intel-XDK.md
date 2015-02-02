@@ -1,9 +1,10 @@
 title: "GDG Nantes : Intel XDK"
 tags:
-- GDG Nantes
-- XDK
+  - GDG Nantes
+  - XDK
 category:
-- Event
+  - Event
+date: 2015-02-02 14:30:30
 ---
 
 # Soirée GDG Nantes : présentation du intel XDK
