@@ -13,7 +13,7 @@ Suite des articles sur les démos que j'ai eu l'occasion de coder pour le [DevFe
 
 # Leap Motion
 
-La [Leap Motion](https://www.leapmotion.com/) (j'ai personnellement toujours dit la, après beaucoup de monde dit "le") est un capteur infra rouge qui détecte vos mains de façon très précise et qui permet de récupérer les coordonnées de nos mains dans un espace en 3D.  
+La [Leap Motion](https://www.leapmotion.com/) (j'ai personnellement toujours dit “la”, après beaucoup de monde dit "le") est un capteur infrarouge qui détecte vos mains de façon très précise et qui permet de récupérer leur coordonnées dans un espace en 3D.  
 
 Pour beaucoup de monde la Leap Motion, c'était la promesse de ça :  
 
@@ -23,7 +23,7 @@ Mais en réalité ce n'est pas tout à fait ça....
 
 ## Théorie
 
-Regardons d'un peu plus prêt la Leap et comment cela fonctionne.
+Regardons d'un peu plus près la Leap et comment elle fonctionne.
 
 ### Petit boîtier
 
@@ -31,16 +31,16 @@ La Leap c'est donc ce petit boîtier :
 
 ![](/assets/2014-12-DevFestDemos/images/leap_motion.png)
 
-Il fonctionne avec l'infra rouge et renvoie les informations interprétées à l'ordinateur via une web socket. On peut récupérer ce genre d'informations : 
+Il fonctionne avec l'infrarouge et renvoie les informations interprétées à l'ordinateur via une web socket. On peut récupérer ce genre d'informations : 
 
-* Position d'une (plusieurs mains) dans un espace en 3D
+* Position d'une (ou plusieurs) mains dans un espace en 3D
 * Position d'un doigt / phalange / paume de main dans un espace en 3D
 * Position d'un stylo dans un espace en 3D (pour la partie écriture)
-* Reconnaissance de geste : 
+* Reconnaissance de gestes : 
     - Swype
     - Cercles
     - Pinch
-    - Point fermé 
+    - Poing fermé 
     - ...
 
 Pour avoir la liste complète, je vous invite à aller consulter la doc du SDK : [https://developer.leapmotion.com/](https://developer.leapmotion.com/) 
@@ -48,21 +48,21 @@ Pour avoir la liste complète, je vous invite à aller consulter la doc du SDK :
 
 ### Reconnaissance dans l'espace
 
-Ne vous attendez pas à placer votre Leap Motion proche de télé à contrôler cette dernière depuis votre canapé, la distance de détection de la Leap est relativement courte (<1m). Elle reconnaît ce qui est placé dans son cône de détection.
+Ne vous attendez pas à placer votre Leap Motion proche de la télé, et à contrôler cette dernière depuis votre canapé, la distance de détection de la Leap est relativement courte (<1m). Elle reconnaît ce qui est placé dans son cône de détection.
 
 ![](/assets/2014-12-DevFestDemos/images/Leap_InteractionBox.png)
 
 Ce qui est représenté ici, ce sont 2 choses : 
 
 * Le cône de détection qui représente la zone globale de détection de la Leap
-* L'interaction Box qui représente une boite servant de référence pour le placement des mains / objets.
+* L'Interaction Box qui représente une boite servant de référence pour le placement des mains / objets.
 
 
 ### SDK
 
-Le SDK est assez facile d'accès et permet de développer des programmes en JavaScript / Unity, C# / C++ / Java / Python / Objective-C. Ils ont aussi rajouté récemment une API pour interagir plus facilement avec des casques de Virtual Reality type Occulus Rift ([Leap Motion VR](https://developer.leapmotion.com/vr))! 
+Le SDK est assez facile d'accès et permet de développer des programmes en JavaScript / Unity, C# / C++ / Java / Python / Objective-C. Ils ont aussi rajouté récemment une API pour interagir plus facilement avec des casques de réalité virtuelle type Occulus Rift ([Leap Motion VR](https://developer.leapmotion.com/vr))! 
 
-Concrètement, quand l'on veut simplement utiliser les résultats de notre Leap, il suffit de créer un objet Leap Motion issue du SDK, puis d'écouter les événements correspondants à notre demande. Par exemple, si l'on veut récupérer les mains, il suffit d'écrire ça : 
+Concrètement, quand on veut simplement utiliser les résultats de notre Leap, il suffit de créer un objet Leap Motion issu du SDK, puis d'écouter les événements correspondants à notre demande. Par exemple, si l'on veut récupérer les mains, il suffit d'écrire ça : 
 
 ```html
 <script src="//js.leapmotion.com/leap-0.6.4.js"></script>
@@ -82,7 +82,7 @@ L'utilisation du "screenPosition" nous permet de récupérer des positions en li
 
 # Démo réalisée
 
-N'étant pas un as du graphisme ni de la 3D, j'ai voulu réfléchir à l'utilisation de la Leap Motion sur une interface 2D. Quelles pourraient être les interactions possibles ? Etc. Le projet choisi permettait de naviguer dans le programme du devfest. On pouvait ainsi consulter les sessions et aussi regarder les fiches speakers.
+N'étant pas un as du graphisme ni de la 3D, j'ai voulu réfléchir à l'utilisation de la Leap Motion sur une interface 2D. Quelles pourraient être les interactions possibles ? Etc. Le projet choisi permettait de naviguer dans le programme du DevFest. On pouvait ainsi consulter les sessions et aussi regarder les fiches speakers.
 
 ![](/assets/2014-12-DevFestDemos/images/leap_navigation.png)
 
@@ -103,15 +103,15 @@ Il est important de retenir les questions posées plutôt que les réponses appo
 
 ## Interaction Naturelle ?
 
-Le premier point est pour moi un des plus importants à traiter lors de l'utilisation de nouveaux devices non tactiles !  Le tactile joui d'une forte adoption et les standards d'utilisations sont fortement rependus et connus. 
+Le premier point est pour moi un des plus importants à traiter lors de l'utilisation de nouveaux devices non tactiles !  Le tactile jouit d'une forte adoption et les standards d'utilisation sont fortement répandus et connus. 
 
-A titre d'exemple, tout le monde sait que "pincer" l'écran permettra de dezoomer, etc. Mais quand il est question d'interactions non tactiles ? 
+A titre d'exemple, tout le monde sait que "pincer" l'écran permettra de dezoomer, etc.Mais qu’en est il est interactions non tactiles ?
 
-Que ce soit avec la Leap, la kinect ou le bracelet Myo, les possibilités offertes par les technologies ne sont pas les mêmes et pourtant il faut trouver un moyen d'interagir avec. La seule réponse à trouver est : Qu'est ce qui est naturel ? Quels sont les gestes que je ferais si je devais manipuler cette interface dans le monde réel ?
+Que ce soit avec la Leap, la Kinect ou le bracelet Myo, les possibilités offertes par les technologies ne sont pas les mêmes et pourtant il faut trouver un moyen d'interagir avec. La seule réponse à trouver est : Qu'est ce qui est naturel ? Quels sont les gestes que je ferais si je devais manipuler cette interface dans le monde réel ?
 
-Cela prend d'autant plus du sens si l'on se retrouve à manipuler des objets en 3D. Dans le cadre de ma démo, le "naturel" est venu de la duplication de standards connus du web : la gestion des menus dans le web. Je suis aussi resté sur des gestes simples. 
+Cela prend davantage de sens si l'on se retrouve à manipuler des objets en 3D. Dans le cadre de ma démo, le "naturel" est venu de la duplication de standards connus du web : la gestion des menus dans le web. Je suis aussi resté sur des gestes simples. 
 
-* Je n'ai pas introduit de gestures car ils peuvent ne pas êtres compris par l'utilisateur
+* Je n'ai pas introduit de gestures car ils peuvent ne pas être compris par l'utilisateur
 * Le doigt fait office de souris. De cette manière, la navigation est grandement simplifiée.
 
 ## Interaction claire
@@ -120,15 +120,15 @@ Quand bien même, on aura trouvé des gestes naturels, il faut expliquer à l'ut
 
 ![](/assets/2014-12-DevFestDemos/images/details_leap.png)
 
-1. Une pop-up est affichée si personne n'utilise l'application afin d'indiquer quelle est la première action La police de caractère et la taille de l'image est importante car cela doit être la première information que l'utilisateur voit.
-2. Une zone de légende permet à l'utilisateur d'avoir une information complémentaire. La taille de la police et de l'icône est plus petite pour ne pas interférer avec la première information. L'icône utilisé montre la main dans une certaine configuration et invite l'utilisateur à pointer son doigt dans une direction.
+1. Une pop-up est affichée si personne n'utilise l'application afin d'indiquer quelle est la première action. La police de caractère et la taille de l'image sont importantes car cela doit être la première information que l'utilisateur voit.
+2. Une zone de légende permet à l'utilisateur d'avoir une information complémentaire. La taille de la police et de l'icône est plus petite pour ne pas interférer avec la première information. L'icône utilisée montre la main dans une certaine configuration et invite l'utilisateur à pointer son doigt dans une direction.
 3. La barre bleue permet de cacher le menu s'il n'y a aucune interaction. De cette façon l'utilisateur n'est pas pollué d'informations inutiles.
 
 J'ai beau préciser comment interagir avec l'écran, il faut une chose importante pour l'utilisateur : le FEEDBACK ! 
 
 ![](/assets/2014-12-DevFestDemos/images/leap_feedback.png)
 
-Le SDK de Leap Motion fournit un modèle 3D unity de la main détectée. J'ai donc intégré cette dernière à mon interface en guise de feedback. J'ai aussi rajouté un point blanc correspondant à  équivalent de curseur de souris. Étant donné que mon application est en 2D et orientée "consultation de contenu", il me fallait un élément de sélection
+Le SDK de Leap Motion fournit un modèle 3D Unity de la main détectée. J'ai donc intégré cette dernière à mon interface en guise de feedback. J'ai aussi rajouté un point blanc correspondant à l’équivalent du curseur d’une souris. Étant donné que mon application est en 2D et orientée "consultation de contenu", il me fallait un élément de sélection.
 
 ## Interaction avec l'écran
 
@@ -142,9 +142,9 @@ Reste à voir maintenant comment valider un choix ?
 
 J'ai dans un premier temps expérimenté la sélection en mode push. C'est à dire, utiliser la profondeur pour donner à l'utilisateur l'impression qu'il clique sur le bouton. 
 
-En pratique, il s'est avéré que cette interaction était assez peu intuitive et plus difficile à calibrer en premier lieu. Je pense cependant que si j'avais eu plus de temps elle aurait pu être assez intéressante et pertinente. Mais passons, la sélection dans l'application c'est fait de 2 façon.
+En pratique, il s'est avéré que cette interaction était assez peu intuitive et plus difficile à calibrer en premier lieu. Je pense cependant que si j'avais eu plus de temps elle aurait pu être assez intéressante et pertinente. Mais passons, la sélection dans l'application s'est faite de 2 façons.
 
-La première, par un mécanisme de glisse qui permet à l'utilisateur de remplir une jauge. Une fois la jauge remplit l'action est validée
+La première, par un mécanisme de glisse qui permet à l'utilisateur de remplir une jauge. Une fois la jauge remplie l'action est validée
 
 ![](/assets/2014-12-DevFestDemos/images/leap_selection.png)
 
@@ -152,11 +152,11 @@ La seconde, tout droit issue du monde Kinect avec la validation d'une sélection
 
 ![](/assets/2014-12-DevFestDemos/images/leap_selection_2.png)
 
-J'ai volontairement gardé les 2 sélections pour voir la réaction des utilisateurs. Globalement les 2 validations ont étés bien comprises et utilisées.
+J'ai volontairement gardé les 2 sélections pour voir la réaction des utilisateurs. Globalement les 2 validations ont été bien comprises et utilisées.
 
 ### Hack sur le mouse move
 
-J'ai quand même dû faire un petit hack pour cette démo. En effet, un des écrans affiche des graphiques dynamiques et la légende des graphiques n’apparaît que sur un calcul fait avec le "mousemove". La Leap n'émulant pas nativement la souris, i'ai donc récupéré les événements de positions de ma main et je les ai transformé en "mousemove". Le code suivant est une directive AngularJS mais la théorie reste la même.
+J'ai quand même dû faire un petit hack pour cette démo. En effet, un des écrans affiche des graphiques dynamiques et la légende des graphiques n’apparaît que sur un calcul fait avec le "mousemove". La Leap n'émulant pas nativement la souris, j'ai donc récupéré les événements de position de ma main et je les ai transformés en "mousemove". Le code suivant est une directive AngularJS mais la théorie reste la même.
 
 ```javascript
 components.directive('leapMouseMove', ['$rootScope'
@@ -245,6 +245,7 @@ components.directive('leapMouseMove', ['$rootScope'
 
 # Sources
 
-Les sources de ce projet sont disponible ici [Github - LeapDevFest](https://github.com/GDG-Nantes/leap-devfest2014)
+Les sources de ce projet sont disponibles ici [Github - LeapDevFest](https://github.com/GDG-Nantes/leap-devfest2014)
 
 Merci aussi à [Baptiste Rongier](http://twitter.com/brongier) qui est l'ergonome (le cerveau des interactions) qui m'a aidé dans la réalisation de cette démo.
+
