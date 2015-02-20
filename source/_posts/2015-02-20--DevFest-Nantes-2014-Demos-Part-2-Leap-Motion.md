@@ -4,6 +4,7 @@ tags:
   - devfest
 category:
   - Event
+date: 2015-02-20 13:04:19
 ---
 
 Suite des articles sur les démos que j'ai eu l'occasion de coder pour le [DevFest Nantes](http://devfest.gdgnantes.com).
