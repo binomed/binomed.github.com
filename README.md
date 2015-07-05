@@ -5,7 +5,7 @@
 
 * Installer NodeJS (configurer éventuellement les proxys)
 * Installer Git (configurer éventuellement les proxys)
-* Installer hexo : ```npm install -g hexo```
+* Installer hexo : ```npm install -g hexo-cli```
 
 Si c'est la première qu'on récupère le site : 
 
