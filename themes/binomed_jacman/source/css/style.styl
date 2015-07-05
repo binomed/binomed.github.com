@@ -9,9 +9,11 @@ global-reset()
 @import '_partial/helper'
 @import '_partial/aside'
 @import '_partial/footer'
-if highlight
-  @import '_base/highlight/highlight'//@import '_base/code'
-if duoshuo
-  @import '_partial/duoshuo'
+
+@import '_base/highlight/highlight'
+
 if fancybox
   @import '_partial/gallery'
+
+if totop
+  @import '_partial/totop'

@@ -79,7 +79,7 @@ disqus_shortname: binomedblog
 # Extensions
 ## Plugins: https://github.com/hexojs/hexo/wiki/Plugins
 ## Themes: https://github.com/hexojs/hexo/wiki/Themes
-theme: binomed_pacman
+theme: binomed_jacman
 exclude_generator:
 
 #RSS
