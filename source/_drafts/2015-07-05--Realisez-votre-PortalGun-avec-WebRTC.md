@@ -4,25 +4,29 @@ tags:
     - Canvas
 category:
     - Tech
+toc: false
 ---
+
 
 ## Réalisez votre PortalGun avec WebRTC
 
-![](/assets/2015-07-PortalWebRTC/homer.png)
+<img src="/assets/2015-07-PortalWebRTC/homer.png" class="left homer">
+
 Vous avez toujours rêvé d’avoir votre “Portal Gun”* afin de pouvoir imiter Homer Simpson et ainsi pouvoir attraper les bières de votre frigo depuis votre canapé.
 
 Et bien c’est dors et déjà possible ! Enfin presque… vous pourrez surveiller votre frigo mais vous ne pourrez pas attraper ces précieuses bières.
 
 Ce que je vous propose c’est de réaliser des Portails similaires au jeux Portal basés uniquement sur les technologies du Web ! 
 
+<div style="clear:both"></div>
 
 ## Le projet Portal WebRTC
 
 Voici le rendu de ce qu’on allons réaliser : Le portail bleu voit ce qui se passe dans le portail orange et inversement :
 
-![](/assets/2015-07-PortalWebRTC/jf_0.png)
+<img src="/assets/2015-07-PortalWebRTC/jf_0.png" class="jf first">
 
-![](/assets/2015-07-PortalWebRTC/jf_1.png)
+<img src="/assets/2015-07-PortalWebRTC/jf_1.png" class="jf">
 
 
 Avant d’attaquer le code, regardons un peu de quoi nous avons besoin : 
@@ -43,14 +47,16 @@ Voyons maintenant comment nous pouvons répondre à ces différents  besoins à 
 
 * Chaque ordinateur se trouve sur le réseau et se connecte à un serveur Web uniquement pour afficher le contenu de la page. Le serveur est un serveur NodeJS. 
 * Ce Serveur expose aussi une WebSocket dont le rôle sera expliqué plus tard dans l’article
-* L’échange des données vidéos se fait en “direct” entre les 2 ordinateurs via la technologie WebRTC ![](/assets/2015-07-PortalWebRTC/logo_webrtc.png)
+* L’échange des données vidéos se fait en “direct” entre les 2 ordinateurs via la technologie WebRTC <img src="/assets/2015-07-PortalWebRTC/logo_webrtc.png" class="logo">
 
 ## WebRTC What ?
 
 
-![](/assets/2015-07-PortalWebRTC/meme_webrtc.png)
+<img src="/assets/2015-07-PortalWebRTC/meme_webrtc.png" class="left meme">
 
 WebRTC pour Real Time Communication est une des technologies les plus importantes du projet. Grâce à cette API, on peut  faire plusieurs choses :
+
+<div style="clear:both"></div>
 
 * Obtenir l’audio et la vidéo.
 * Etablir une connexion entre 2 hôtes.
@@ -993,4 +999,5 @@ Tout le code source est disponible ici : [https://github.com/GDG-Nantes/portal-d
 
 
 
-
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2015-07-PortalWebRTC/portal-custo.js"></script>
