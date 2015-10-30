@@ -28,9 +28,7 @@ La version présentée dans cet article est une V1 dépendant d’un ordinateur.
 
 Grâce à l’[API serial](https://developer.chrome.com/apps/serial) de Google Chrome, nous allons relier directement notre rameur à notre navigateur pour créer un jeu qui nous permettra de jouer à un jeu 8bit. Voici globalement un schéma symbolisant le montage à effectuer : 
 
-<div class="center">
-    <img src="/assets/2015-10-Skiff/schema_skiff.png" class="center">
-</div>
+![](/assets/2015-10-Skiff/schema_skiff.png)
 
 Nous allons faire communiquer 2 programmes entre eux : 
 1. un sketch Arduino qui va mesurer la distance du joueur sur le rameur
