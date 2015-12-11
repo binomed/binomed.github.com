@@ -22,4 +22,4 @@ lien utile : http://hexo.io/docs/commands.html
 
 exécuter ```hexo new draf "<title>"```
 
-et une fois l'article fini : ```hexo publish <filename>```
+et une fois l'article fini : ```hexo publish <filename>``` : si le draft name était "un super titre" alors le fichier dans draft se nomme un-super-titre.md et donc la commande à taper pour la publication est ```hexo publish un-super-titre```
