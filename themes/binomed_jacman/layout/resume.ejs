@@ -1,0 +1,31 @@
+<!--<%- partial('_partial/post/sub_resume', {item: page, index: false,table: false, date:false, 
+comments:false}) %>-->
+<%
+ var item = page;
+ var index = false;
+ var table = false;
+%>
+
+<div id="main" class="<%= item.layout %>" itemscope itemprop="blogPost">
+  <% if (page.layout=='photo' && item.photos && item.photos.length){ %>
+    <%- partial('gallery') %>
+  <% } %>
+	<article itemprop="articleBody"> 
+		<%- partial('_partial/post/header', {item: page, index: false,table: false}) %>
+	<div class="article-content">
+		<% if( table&&(item.toc !== false) && theme.toc.article){ %>
+		<div id="toc" class="toc-article">
+			<strong class="toc-title"><%= __('contents') %></strong>
+		<% if(item.list_number == false) {%>
+		<%- toc(item.content,{list_number:false}) %>
+		<% }else{ %>
+			<%- toc(item.content) %>
+		<% } %>
+		</div>
+		<% } %>
+		<%- item.content %>  
+	</div>
+		<%- partial('_partial/post/footer', {item: page, index: false,table: false}) %>   	       
+	</article>
+	<%- partial('_partial/post/pagination', {item: page, index: false,table: false}) %>
+</div>  

@@ -81,7 +81,7 @@ $(document).ready(function(){
 });
 </script>
 <% } %>
-<% if ((page.layout=='post'||page.layout=='page'||page.layout=='photo')&&!theme.jiathis.enable) { %>
+<% if ((page.layout=='post'||page.layout=='page'||page.layout=='resume'||page.layout=='photo')&&!theme.jiathis.enable) { %>
 <script type="text/javascript">
 $(document).ready(function(){ 
   var $this = $('.share'),
