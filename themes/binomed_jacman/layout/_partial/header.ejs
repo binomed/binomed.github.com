@@ -12,12 +12,32 @@ function root_for(path){
   return path;
 }
 %>
-<div>
+	<% if (page.layout=='resume'){ %>
+		<div class="resume-header">
+		<% if	(theme.imglogo.enable&&theme.imglogo.src){ %>
+			<div id="imglogo">
+				<a href="<%- config.root %>"><img src="<%- config.root %><%= theme.resume_img %>" alt="<%= config.authorName %>" title="<%= config.authorName %>"/></a>
+			</div>
+		<% } %>
+			<div id="textlogo">
+				<h1 class="site-name"><a href="<%- config.root %>" title="<%= config.authorName %>"><%= config.authorName %></a></h1>
+				<h2 class="blog-motto"><% if (config.jobTitle){ %><%= config.jobTitle %><% } %></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="<%= __('menu') %>">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<li><a href="<%- root_for(theme.menu['Home']) %>">Blog</a></li>
+					
+				</ul>
+			</nav>			
+	<% }else{ %>
+	<div>
 		<% if	(theme.imglogo.enable&&theme.imglogo.src){ %>
 			<div id="imglogo">
 				<a href="<%- config.root %>"><img src="<%- config.root %><%= theme.imglogo.src %>" alt="<%= config.title %>" title="<%= config.title %>"/></a>
 			</div>
-			<% } %>
+		<% } %>
 			<div id="textlogo">
 				<h1 class="site-name"><a href="<%- config.root %>" title="<%= config.title %>"><%= config.title %></a></h1>
 				<h2 class="blog-motto"><% if (config.subtitle){ %><%= config.subtitle %><% } %></h2>
@@ -56,4 +76,5 @@ function root_for(path){
 					</li>
 				</ul>
 			</nav>			
+	<% } %>
 </div>

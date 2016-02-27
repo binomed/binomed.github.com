@@ -1,0 +1,20 @@
+SQLI: 
+  id: sqli
+  title: SQLI
+  start-year: 2012
+  main-mission: 
+  missions:
+    client:
+      title: sncf
+      job: développeur en innovation
+GDG: 
+  id: gdg
+  title: GDG Nantes
+  start-year: 2011
+  role: Animateur de communauté
+  main-mission: Le GDG Pour Google Developper Group est une communauté de développeurs dédiés aux technologies. Cette association à pour vocation d’organiser tous les mois des événements à destination des profils techniques sur une thématique technique autour des technologies Google. Je suis l’un des créateurs et j’anime de façon active ce groupe depuis ses débuts
+Ausy: 
+  id: ausy
+  title: Ausy
+  start-year: 2009
+  end-year: 2012

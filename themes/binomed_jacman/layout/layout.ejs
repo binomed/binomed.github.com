@@ -12,7 +12,7 @@
     <%- partial('_partial/after_footer') %>
   </body>
 </html>
-<% } else if(page.layout=='page'||page.layout=='resume'){ %>
+<% } else if(page.layout=='page'){ %>
   <% if(page.source.match(/\.md$/)){ %>
     <%- partial('_partial/head') %>
       <body>
@@ -21,6 +21,24 @@
         </header>
         <div id="container">
           <%- body %>
+        </div>
+        <footer><%- partial('_partial/footer') %></footer>
+        <%- partial('_partial/after_footer') %>
+      </body>
+     </html>
+     <% }else{ %>
+    <%- page.content %>
+  <% } %>
+<% } else if(page.layout=='resume'){ %>
+  <% if(page.source.match(/\.md$/)){ %>
+    <%- partial('_partial/head') %>
+      <body>
+        <header>
+          <%- partial('_partial/header') %>
+        </header>
+        <div id="container">          
+          <%- body %>
+          <%- partial('_partial/sidebar_resume',{item: page,table: true}) %>
         </div>
         <footer><%- partial('_partial/footer') %></footer>
         <%- partial('_partial/after_footer') %>

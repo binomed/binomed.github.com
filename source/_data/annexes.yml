@@ -1,0 +1,10 @@
+Langagues:
+	title: Langages
+	data: 
+    language1: java
+    language2: javascript
+Frameworks: 
+	title: Frameworks
+	data:
+    fwk1: Android
+    fwk2: NodeJS
