@@ -20,21 +20,40 @@
 			    	<time datetime="<%= experience['start-year'] %>" itemprop="datePublished"> Depuis <%= experience['start-year'] %></time>
 			  	<% } %>
 			  </p>
+			  <h2><%= experience.role %></h2>
+			  <p><%= experience['main-mission'] %></p>
 			</header>
 		<div class="article-content">
-			<% if( table&&(item.toc !== false) && theme.toc.article){ %>
-			<div id="toc" class="toc-article">
-				<strong class="toc-title"><%= __('contents') %></strong>
-			<% if(item.list_number == false) {%>
-			<%- toc(item.content,{list_number:false}) %>
-			<% }else{ %>
-				<%- toc(item.content) %>
+			<% for (keyMission in experience.missions){ 
+				var mission = experience.missions[keyMission]%>
+				<h1> <%= mission.title %></h1>
+				<p class="article-time">
+			  	<% if (mission['end-year']){ %>
+			  		Entre <time datetime="<%= mission['start-year'] %>" itemprop="datePublished"> <%= mission['start-year'] %></time> & <time datetime="<%= mission['end-year'] %>" itemprop="datePublished"> <%= mission['end-year'] %></time>
+			  	<% }else{  %>
+			    	<time datetime="<%= mission['start-year'] %>" itemprop="datePublished"> Depuis <%= mission['start-year'] %></time>
+			  	<% } %>
+			  </p>
+			  <h3> <%= mission.job %></h3>
+			  <p><%= mission['main-mission'] %></p>
+			  <% if (mission.tasks){ %>
+			  		<p><strong> Taches effectuées : </strong></p>
+			  		<ul>
+			  		<% mission.tasks.forEach(function(task){ %>
+			  			<li> <%= task %></li>
+			  		<% });%>
+			  		</ul>
+			   <% } %>
+			   <% if (mission.technos){ %>
+			  		<p><strong> Technologies abordées : </strong></p>
+			  		<ul>
+			  		<% mission.technos.forEach(function(techno){ %>
+			  			<li> <%= techno %></li>
+			  		<% });%>
+			  		</ul>
+			   <% } %>
+				<%- item.content %>  
 			<% } %>
-			</div>
-			<% } %>
-			
-			<h1> <%= experience.title %></h1>
-			<%- item.content %>  
 		</div>
 			<!--<%- partial('_partial/post/footer', {item: page, index: false,table: false}) %> -->
 		</article>

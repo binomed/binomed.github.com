@@ -1,10 +1,110 @@
 Langagues:
 	title: Langages
+  type: tag
 	data: 
-    language1: java
-    language2: javascript
+    - Javascript
+    - Java
+    - SQL
+    - HTML
+    - XML
+    - C
+    - PHP    
 Frameworks: 
 	title: Frameworks
+  type: tag
 	data:
-    fwk1: Android
-    fwk2: NodeJS
+    - Android
+    - NodeJS
+    - AngularJS
+    - WebRTC
+    - Myo
+    - LeapMotion
+    - Google Glass
+    - Arduino
+    - XStream
+    - Sax
+    - Stax
+    - Hibernate
+    - Solr
+Sources:
+  title: Gestionnaires de versions
+  type: tag
+  data:
+    - CVS
+    - SVN
+    - GIT
+Database:
+  title: Base de données
+  type: tag
+  data: 
+    - IndexedDB
+    - Oracle
+    - MySQL
+    - PostgreSQL
+    - HQL
+    - Access
+    - SQL Server
+    - H2
+OS:
+  title: Systèmes d'exploitation
+  type: tag
+  data:
+    - Windows
+    - Linux
+    - MacOS
+Hobbies:
+  title: Loisirs
+  type: tag
+  data:
+    - Cinéma
+    - Jonglage
+Asso:
+  title: Vie Associative
+  type: list
+  data:
+    gdg:
+      date: 2011-Aujourd'hui
+      title: GDG Nantes
+      link: https://gdgnantes.com
+    devfest:
+      date: 2012-Aujourd'hui
+      title: DevFest Nantes
+      link: https://devfest.gdgnantes.com
+    wit: 
+      date: 2014-2015
+      title: Nantes WIT
+      link: http://nantes-wit.fr/
+    devoxx4Kids:
+      date: 2014-Aujourd'hui
+      title: Devoxx4Kids
+      link: http://www.devoxx4kids.org/france/
+    codingGouter:
+      date: 2015
+      title: Coding Goûter
+      link: https://nantescodinggouters.wordpress.com/
+    roulemaboule:
+      date: 2003-2010
+      title: Roule Maboule
+      link: http://roulemaboule.free.fr
+    cfm:
+      date: 2006
+      title: Coupe de france de monocyle
+    convJongle:
+      date: 2004-2005
+      title: Organisation d'un festival de jonglerie    
+Formation: 
+  title: Formation
+  type: list
+  data: 
+    inge:
+      date: 2003-2006
+      title: Ingénieur informatique
+      place: Polytech Nantes
+    fac:
+      date: 2001-2003
+      title: DEUG MIAS
+      place: Université de Nantes
+    lycee:
+      date: 2001
+      title: Bac S 
+      place: Lycée Nicolas Appert, Orvault

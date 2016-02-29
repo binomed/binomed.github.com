@@ -14,17 +14,29 @@
 <aside class="clearfix">
 	<% if (site.data.annexes){ 
 	for (key in site.data.annexes){
-	var annexe = site.data.annexes[key] %>
-	<div class="tagslist">
-	<p class="asidetitle"><%= annexe.title %></p>
-		<ul class="clearfix">
-		<% site.tags.sort('posts.length','desc').limit(20).each(function(item){ %>
-			<% if(item.posts.length){ %>
-				<li><a href="<%- config.root %><%- item.path %>" title="<%= item.name %>"><%= item.name %><sup><%= item.posts.length %></sup></a></li>
-			<% } %>
-		<% }); %>
-		</ul>
-	</div>
-	<% } } %>
+		var annexe = site.data.annexes[key]
+		if (annexe.type === 'tag'){ %>
+		<div class="tagslist">
+			<p class="asidetitle"><%= annexe.title %></p>
+			<ul class="clearfix">
+				<% annexe.data.forEach(function(keyAnnexe){ %>
+					<li><a title="<%= keyAnnexe %>"><%= keyAnnexe %></a></li>			
+				<% }); %>
+			</ul>
+		</div>
+		<% }else if (annexe.type === 'list'){ %>
+		<div class="categorieslist">
+			<p class="asidetitle"><%= annexe.title %></p>
+			<ul>
+				<% for (keyAnnexe in annexe.data){ 
+					var annexeData = annexe.data[keyAnnexe] %>
+					<li><a <% if (annexeData.link) { %> href="<%= annexeData.link %>" <% }%> title="<%= annexeData.title %>"><%= annexeData.title %><sup><%= annexeData.date %></sup><% if (annexeData.place){ %><br>&nbsp;
+						<%= annexeData.place %><% } %></a></li>
+				<% } %>
+			</ul>
+		</div>
+		<% } 
+	  } 
+	} %>
 </aside>
 </div>

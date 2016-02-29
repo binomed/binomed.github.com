@@ -2,19 +2,44 @@ SQLI:
   id: sqli
   title: SQLI
   start-year: 2012
-  main-mission: 
+  role: IOT manager & Senior Developeur en innovation
+  main-mission: Je suis en charge du pole IOT de SQLI Nantes et j'anime aussi la communauté des conférenciers de l'agence de Nantes 
   missions:
-    client:
-      title: sncf
+    laposte:
+      title: La Poste
+      start-year: 2015
+      job: Développeur / Expert Android
+      main-mission: J'interviens sur divers sujets en lien avec l'innovation sur des projets mobile de la banque postale. La poste possède en effet un parc d'appareils sous Android et faisant tourner des applications hybrides
+      technos:
+        - Android
+        - Cordova
+        - Javascript
+        - OpenCV
+      tasks:
+        - une tache 1
+        - une tache 2
+    sncf:
+      title: Sncf
+      start-year: 2014
+      end-year: 2015
       job: développeur en innovation
+      main-mission: un super blabla encore
+      technos:
+        - techno 1
+        - techno 2
+      tasks:
+        - une tache 1
+        - une tache 2
 GDG: 
   id: gdg
   title: GDG Nantes
   start-year: 2011
   role: Animateur de communauté
   main-mission: Le GDG Pour Google Developper Group est une communauté de développeurs dédiés aux technologies. Cette association à pour vocation d’organiser tous les mois des événements à destination des profils techniques sur une thématique technique autour des technologies Google. Je suis l’un des créateurs et j’anime de façon active ce groupe depuis ses débuts
+  missions:    
 Ausy: 
   id: ausy
   title: Ausy
   start-year: 2009
   end-year: 2012
+  missions:
