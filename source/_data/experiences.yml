@@ -2,34 +2,154 @@ SQLI:
   id: sqli
   title: SQLI
   start-year: 2012
-  role: IOT manager & Senior Developeur en innovation
+  role: Responsable du pôle IOT & Dévelopeur Senior en innovation
   main-mission: Je suis en charge du pole IOT de SQLI Nantes et j'anime aussi la communauté des conférenciers de l'agence de Nantes 
   missions:
     laposte:
       title: La Poste
       start-year: 2015
       job: Développeur / Expert Android
-      main-mission: J'interviens sur divers sujets en lien avec l'innovation sur des projets mobile de la banque postale. La poste possède en effet un parc d'appareils sous Android et faisant tourner des applications hybrides
-      technos:
-        - Android
-        - Cordova
-        - Javascript
-        - OpenCV
-      tasks:
-        - une tache 1
-        - une tache 2
+      main-mission: J'interviens sur divers sujets en lien avec l'innovation et la R&D sur des projets mobile de La Poste. Beaucoup de POCs sont réalisés dans cette mission afin d'éprouver certains concepts
+      lists:
+        technos: 
+          - Android
+          - Cordova
+          - Javascript
+          - OpenCV
+          - NFC
+          - Impression 3D
+        tasks:
+          - Mise en place d'un plugin de contrôle de passeport avec lecteur de la puce RFID
+          - Réalisation d'un prototype de lampe UV pouvant se brancher sur un téléphone pour faire ressortir les caractéristiques UV
+          - Mise en place de processus de détection de faux documents à partir d'une photo
+          - Mise en place d'un portail pour permettre à des usagers anonymes de surfer sur internet depuis une tablette Android
+          - Mise en place de plugin Cordva pour contrôler un lecteur de code barre en bluetooth
     sncf:
       title: Sncf
       start-year: 2014
       end-year: 2015
-      job: développeur en innovation
-      main-mission: un super blabla encore
-      technos:
-        - techno 1
-        - techno 2
-      tasks:
-        - une tache 1
-        - une tache 2
+      job: Développeur en innovation
+      main-mission: |
+                    La DSI de la SNCF possède une cellule innovation chargée de faire de la veille technologique et d’implémentée des prototypes.
+                    Il est question sur poste de faire de la R&D et aussi de l’implémentation de processus en avances de phases pour de futurs projets de la SNCF.
+                    Beaucoup de POC sont réalisés dans cette mission afin d’éprouver certains concepts
+      lists:
+        technos:
+          - Android
+          - Javascript
+          - AngularJS
+          - WebRTC
+          - Leap Motion
+          - Arduino
+          - Google Glass
+          - Myo
+          - RequireJS
+          - NodeJS
+          - ThreeJS
+          - Chrome App
+        tasks:
+          - Mise en place d’application de contrôle sur Android
+          - Réalisation d’un prototype HTML5 sur android.
+          - Participations aux réunions visant à sortir les bonnes pratiques du développement sous Android.
+          - Participations au développement sous NFC
+          - Mise en place d’une plateforme de visio 100% HTML5 via le WebRTC
+          - Réalisation de prototype avec la LeapMotion en vue de créer des interfaces innovantes sans contact.
+          - Mise en place d’une application HTML5 servant de démonstrateur technologique pour les agents en gare. L’objectif était de monter la faisabilité de mettre en place une application HTML5 moderne avec des WebSockets, du SEE dans l’environnement sécurisé du SI de la SNCF.
+          - Mise en place d’un sapin connecté. Un Sapin de noël connecté en Arduino reçoit ses instructions d’une application mobile développée en HTML5 et allume les boules de ce dernier en conséquence.
+          - Mise en place d’une télécommande de présentation HTML5 via une interface mobile
+          - Mise en place d’un prototype avec les Google Glass pour les controleurs de la SNCF
+          - Mise en place d’une application android pour le contrôle des agents
+    animation:
+      title: Animation interne
+      start-year: 2012
+      job: Animateur de communautés interne
+      main-mission: J'ai de multiples reprises mis en place un certains nombre d'événements ou pocs ayant soit des visibilités internes ou externes. Mes interventions allaient aussi bien de la réalisation de projets de démos pour des événements comme la mise en place d'un cursus de formation pour conférenciers.
+      lists:
+        technos:
+          - AngularJS
+          - Android
+          - ChromeApp
+          - Myo
+          - Javascript
+          - Arduino
+          - Leap Motion
+          - WebRTC
+          - NodeJS
+          - OcculusRift
+        tasks: 
+          - Mise en place d'une animation avec un vélo d'appartement branché sur un arduino et retransmettant dans un casque occuslus le résultat d'une sphere Google StreetView
+          - Mise en place d'une animation avec un rameur connecté. Un jeu a été réaliser en web pour retranscrire le déplacement du joueur sur le rameur à l'écran.
+          - TODO
+    ibp:
+      title: IBP
+      start-year: Déc 2014
+      end-year: Déc 2014
+      job: Audit API Rest
+      main-mission: |
+                    IBP a de plus d’API REST qu’elle souhaite documenter et ainsi mettre en place un portail d’api web.
+                    L’objectif de cette mission est d’identifier et choisir une solution du marché pour la documentation des APIs. 
+                    Un POC doit aussi être réalisé afin de vérifier l’intégration de cette solution dans les processus de développement et de réalisation d’IBP.
+      lists:
+        technos:
+          - Raml
+          - Swagger
+          - Blueprint
+        tasks:
+          - "Etude des solutions disponibles sur le marché : RAML / SWAGGER / BLUEPRINT API"
+          - Réalisation d’un POC
+    epsi:
+      title: EPSI
+      start-year: Sept 2013
+      end-year: Jan 2014
+      job: Cours mobilité
+      main-mission: L’école EPSI a mis en place un cours HTML5 Mobiles et Android. Il s’agissait de donner des cours sur ce sujet pour 27h
+      lists:
+        technos:
+          - HTML
+          - Javascript
+          - Android
+        tasks:
+          - Mise en place du programme
+          - Rédaction des cours
+          - Dispense des cours
+    formation:
+      title: Société Générale
+      start-year: Mars 2013
+      end-year: Mars 2014
+      job: Formation GWT
+      main-mission: La Société Générale avait besoin de former certains de ses collaborateurs au framework GWT
+      lists:
+        technos:
+          - GWT
+        tasks:
+          - Mise en place de la formation et exécution de cette dernière
+    celtipharm:
+      title: Celtipharm
+      start-year: Aout 2013
+      end-year: Aout 2013
+      job: Audit Android
+      main-mission: La Société Celtipharm a souhaité passer son application IPhone sous Android et voulait avoir un audit sur la qualité du code déjà produit afin de ne pas partir dans une mauvaise direction.
+      lists:
+        technos:
+          - Android
+        tasks:
+          - Etude du besoin et de l’application existante afin de dégager les bonnes pratiques à mettre en place pour le futur développement de l’application.
+          - Rédaction d’un document de synthèse.
+    cbp:
+      title: CBP
+      start-year: Dec 2012
+      end-year: Dec 2012
+      job: Audit Métrologie
+      main-mission: CBP possède une application GWT dont il voulait tester la montée en charge en vue d’une migration future d’un gros client.
+      lists:
+        technos:
+          - Neoload4J
+          - Selenium
+        tasks:
+          - Mise en place des tests Selenium
+          - Mise en place des scénarios Neoload
+          - Exécution / analyse des tests de montées en charge de l’application
+          - Rédaction d’un document de synthèse.
 GDG: 
   id: gdg
   title: GDG Nantes
