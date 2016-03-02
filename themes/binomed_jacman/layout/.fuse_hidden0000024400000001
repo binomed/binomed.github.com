@@ -36,25 +36,22 @@
 			  </p>
 			  <h3> <%= mission.job %></h3>
 			  <p><%= mission['main-mission'] %></p>
-			  <% if (mission.lists){ 
-			  		for (keyList in mission.lists){
-			  			var list = mission.lists[keyList] 
-			  			var label = "Autres infos : "
-			  			if (keyList === 'tasks'){
-			  				label = "Taches effectuées"
-			  			}else if (keyList === 'technos'){
-			  				label = "Technologies abordées"
-			  			}else{
-			  				label = keyList
-			  			} %>
-				  		<p><strong> <%= label %>  </strong></p>
-				  		<ul>
-				  		<% list.forEach(function(listItem){ %>
-				  			<li> <%= listItem %></li>
-				  		<% });%>
-				  		</ul>
-				  	<% } 
-			    } %>			   
+			  <% if (mission.tasks){ %>
+			  		<p><strong> Taches effectuées : </strong></p>
+			  		<ul>
+			  		<% mission.tasks.forEach(function(task){ %>
+			  			<li> <%= task %></li>
+			  		<% });%>
+			  		</ul>
+			   <% } %>
+			   <% if (mission.technos){ %>
+			  		<p><strong> Technologies abordées : </strong></p>
+			  		<ul>
+			  		<% mission.technos.forEach(function(techno){ %>
+			  			<li> <%= techno %></li>
+			  		<% });%>
+			  		</ul>
+			   <% } %>
 				<%- item.content %>  
 			<% } %>
 		</div>

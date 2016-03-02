@@ -284,6 +284,34 @@ Binomed:
         technos: 
           - Android
           - AndEngine
+    conf:
+      title: Conférences & Evénements
+      job: Conférencier
+      start-year: 2012
+      main-mission: J'anime régulièrement des conférences afin de partager mes connaissances aquises lors de ma veille ou pour faire des retours sur les événements où j'ai pu avoir la chance d'aller.
+      lists:
+        Conférences:
+          - 2012 - Android pour les débutants - GDG Nantes
+          - 2013 - Bonnes pratiques du développement Android - DroidCon FR
+          - 2013 - Android & le NFC - DevFest Nantes / DroidCon Tunis / Breizhcamp
+          - 2013 - WebGL - GDG Nantes
+          - 2013 - Sensors & HTML5 - Codelab à Stéréolux
+          - 2013 - AndroidBootstrap - Breizhcamp
+          - 2013 - WebRTC - DevFest Nantes
+          - 2014 - Sensors & HTML5 - Quickie au Breizhcamp
+          - 2014 - WebRTC - Breizhcamp & Web2Day
+          - 2014 - Une Fille dans mon équipe - Quickie au Breizhcamp
+          - 2014 - Animation sur le stand DevoxxFR FuturDevoxx
+          - 2014 - Table ronde sur le rôle de la femme dans le numérique - Web2Day
+          - 2014 - Animation de pusieurs Devoxx4Kids & Coding Gouters
+          - 2015 - WebRTC - DevFest Paris / Bdx.io
+          - 2015 - ChromeDevTools - Devoxx Paris / Web2Day
+          - 2015 - Codelab PolymerJS - GDG Nantes
+          - 2015 - Formation Android dans le cadre du programme Android Study Jam - GDG Nantes
+          - 2015 - Soirée Google X dans le cadre de la Digital Week - GDG Nantes
+          - 2015 - Animation de plusieurs Devoxx4Kids & Coding Gouters
+          - 2016 - Les nouveaux supers pouvoirs du Web - DevFest Paris / Breizhcamp
+
 Ausy: 
   id: ausy
   title: Ausy
