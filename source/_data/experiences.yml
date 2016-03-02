@@ -150,13 +150,140 @@ SQLI:
           - Mise en place des scénarios Neoload
           - Exécution / analyse des tests de montées en charge de l’application
           - Rédaction d’un document de synthèse.
-GDG: 
-  id: gdg
-  title: GDG Nantes
-  start-year: 2011
+community: 
+  id: community
+  title: Associations
+  start-year: 2003
   role: Animateur de communauté
-  main-mission: Le GDG Pour Google Developper Group est une communauté de développeurs dédiés aux technologies. Cette association à pour vocation d’organiser tous les mois des événements à destination des profils techniques sur une thématique technique autour des technologies Google. Je suis l’un des créateurs et j’anime de façon active ce groupe depuis ses débuts
+  main-mission: J'anime et je créer depuis des années des associations que ce soit dans le domaine de l'informatique ou aussi dans le domaine de loisirs
   missions:    
+    gdg: 
+      title: GDG Nantes
+      start-year: 2011
+      job: Fondateur / Animateur
+      main-mission: Le GDG Pour Google Developper Group est une communauté de développeurs dédiés aux technologies. Cette association à pour vocation d’organiser tous les mois des événements à destination des profils techniques sur une thématique technique autour des technologies Google. Je suis l’un des créateurs et j’anime de façon active ce groupe depuis ses débuts
+      lists: 
+        technos: 
+          - AngularJS
+          - WebComponents avec Polymer
+          - Go
+          - Dart
+          - GWT
+          - Android
+          - ThreeJS
+          - WebRTC
+          - Myo
+          - Node
+          - Gulp 
+          - Grunt
+          - LeapMotion
+          - OcculusRift
+          - Arduino
+          - Lego
+          - Python
+          - Raspberry Pi
+          - AppEngine
+          - CodeShip
+          - C++
+          - Google AppScript
+        tasks: 
+          - Création de l'association
+          - Organisation de conférences mensuelles
+          - Animation de la communauté
+          - Organisation du DevFest Nantes
+          - Gestion du site du DevFest Nantes
+          - "Réalisation de démos pour le devfest : Vélo connecté avec l'occulusRift / Miroir WebRTC Portal / Quizz Interactif / Lego Mindstorm controlé par Myo / Interface gestuelle du programme / Jeux de gamification du devfest / ..."
+          - Animation de multiples présentations / ateliers 
+          - "Aide à l'organisation d'événement communautaires : Web2Day / Breizhcamp / Nantes Digital Week / Devoxx4Kids"
+    kids:
+      title: Devoxx4Kids & Coding Gouter
+      start-year: 2013
+      job: Animateur de sessions
+      main-mission: les Devoxx4kids & Coding Gouter sont des intiatives à destination des enfants pour leur permettre d'avoir un accès à des outils de code adapté à leur age. Ces initiatives permettent d'initier les plus jeunes aider par des adultes.
+      lists: 
+        technos: 
+          - scratch
+          - lego mindstorm
+        tasks: 
+          - Import du concept sur Nantes avec d'autres personnes
+          - Animation des ateliers
+          - Mise en place du programme à jouer sur Nantes
+          - Gestion des équipes d'animation
+    wit:
+      title: Nantes WIT
+      start-year: 2013
+      job: Co-fondateur & animateur
+      main-mission: |
+                    Créé en 2013, le groupe Women In Technology a pour but de soutenir les femmes dans les métiers de l'IT.
+                    Constitué à parts égales de femmes et d'hommes, nous souhaitons proposer un espace d'échanges et de partage. En mettant en avant des rôles modèles de femmes dans la technique, nous voulons montrer que ces métiers ne sont pas réservés qu'aux hommes.
+      lists:
+        tasks:
+          - Création du groupe
+          - Animation d'ateliers & soirées en lien avec le thème de l'association
+    rmb:
+      title: Roule Maboule
+      start-year: 2003
+      end-year: 2010
+      job: créateur & animateur
+      main-mission: Roule Maboule est une associaiton de cirque basée à Orvault dont le but est promouvoir les arts du cirque en offrant un lieu & du matériel à ses adhérents.
+      lists: 
+        tasks:
+          - Création & animation de l'association
+          - Gestion et participation à des conventions nationnales
+          - Organisation de la coupe de France de monocyle 2006
+Binomed:
+  id: binomed
+  title: JefBinomed
+  role: Développeur passioné
+  start-year: 2009
+  main-mission: En tant que développeur passioné, je suis souvent en train de créer des sides projects pour expérimenter les nouvelles technologies. De plus, j'aime bien ne pas garder pour moi mes connaissances et donc je donne régulièrement des conférences dans des événements technologiques.
+  missions:
+    revealsockets: 
+      title: RevealSockets
+      job: Créateur / Développeur
+      start-year: 2014
+      main-mission: Reval Socket est un projet de télécommande présentation html5 qui permet de passer ses slides en ayant un retour sur son téléphone. La V1 a été codée pour RevealJS, la V2 est cours de développement et sera moins dépendante de RevealJS
+      lists: 
+        technos:
+          - AngularJS
+          - Grunt
+          - Gulp
+          - Sass
+          - Node
+          - RevealJS
+    cst:
+      title: CineShowTime
+      job: Créateur / Développeur
+      start-year: 2009
+      end-year: 2014
+      main-mission: Cineshowtime est une application qui donne accès aux séances proche de chez soi. Ce projet me servait avant tout de projet sandbox car ayant un scope de fonctionnalités assez large, je pouvais découvrir de façon appronfondi un langage autour d'un cas d'utilisation concret.
+      lists:
+        technos:
+          - Android
+          - GWT
+          - HTML5/ AngularJS
+          - WebOS
+          - FireFox OS
+    nfa:
+      title: NFA, Nfc For Android
+      job: Créateur / Développeur
+      start-year: 2012
+      end-year: 2013
+      main-mission: NFA est une librairie pour simplifier l'écriture du code NFC dans une application Android. Il s'agit avant tout d'un ensemble de Helper utiles.
+      lists: 
+        technos:
+          - Android
+          - NFC
+    codeguess:
+      title: Code Guess
+      job:  Développeur
+      start-year: 2011
+      end-year: 2012
+      main-mission: Code guess est un jeux iphone permettant de jouer au mastermind. L'auteur du jeux m'avait demander de faire le portage de l'application sur Android
+      lists: 
+        technos: 
+          - Android
+          - AndEngine
 Ausy: 
   id: ausy
   title: Ausy
