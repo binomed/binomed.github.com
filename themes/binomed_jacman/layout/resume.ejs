@@ -20,13 +20,13 @@
 			    	<time datetime="<%= experience['start-year'] %>" itemprop="datePublished"> Depuis <%= experience['start-year'] %></time>
 			  	<% } %>
 			  </p>
-			  <h2><%= experience.role %></h2>
+			  <h2><%= experience.role %><% if (experience.role2){ %> <br> <%= experience.role2 %> <%}%> </h2>
 			  <p><%= experience['main-mission'] %></p>
 			</header>
 		<div class="article-content">
 			<% for (keyMission in experience.missions){ 
 				var mission = experience.missions[keyMission]%>
-				<h1> <%= mission.title %></h1>
+				<h1 id="<%= mission.id%>" class="title-click"> <%= mission.title %></h1>
 				<p class="article-time">
 			  	<% if (mission['end-year']){ %>
 			  		Entre <time datetime="<%= mission['start-year'] %>" itemprop="datePublished"> <%= mission['start-year'] %></time> & <time datetime="<%= mission['end-year'] %>" itemprop="datePublished"> <%= mission['end-year'] %></time>
@@ -36,6 +36,7 @@
 			  </p>
 			  <h3> <%= mission.job %></h3>
 			  <p><%= mission['main-mission'] %></p>
+			  <div id="detail-<%= mission.id%>" class="detail-hide">
 			  <% if (mission.lists){ 
 			  		for (keyList in mission.lists){
 			  			var list = mission.lists[keyList] 
@@ -54,8 +55,8 @@
 				  		<% });%>
 				  		</ul>
 				  	<% } 
-			    } %>			   
-				<%- item.content %>  
+			    } %>		
+			</div>	   
 			<% } %>
 		</div>
 			<!--<%- partial('_partial/post/footer', {item: page, index: false,table: false}) %> -->
@@ -65,3 +66,4 @@
 	<% } %>
 	</div>
 <% } %>
+<%- item.content %>

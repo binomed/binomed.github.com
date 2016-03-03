@@ -2,10 +2,12 @@ SQLI:
   id: sqli
   title: SQLI
   start-year: 2012
-  role: Responsable du pôle IOT & Dévelopeur Senior en innovation
+  role: Responsable du pôle IOT &         
+  role2: Dévelopeur Senior en innovation 
   main-mission: Je suis en charge du pole IOT de SQLI Nantes et j'anime aussi la communauté des conférenciers de l'agence de Nantes 
   missions:
     laposte:
+      id: laposte
       title: La Poste
       start-year: 2015
       job: Développeur / Expert Android
@@ -25,6 +27,7 @@ SQLI:
           - Mise en place d'un portail pour permettre à des usagers anonymes de surfer sur internet depuis une tablette Android
           - Mise en place de plugin Cordva pour contrôler un lecteur de code barre en bluetooth
     sncf:
+      id: sncf
       title: Sncf
       start-year: 2014
       end-year: 2015
@@ -60,6 +63,7 @@ SQLI:
           - Mise en place d’un prototype avec les Google Glass pour les controleurs de la SNCF
           - Mise en place d’une application android pour le contrôle des agents
     animation:
+      id: animsqli
       title: Animation interne
       start-year: 2012
       job: Animateur de communautés interne
@@ -79,8 +83,12 @@ SQLI:
         tasks: 
           - Mise en place d'une animation avec un vélo d'appartement branché sur un arduino et retransmettant dans un casque occuslus le résultat d'une sphere Google StreetView
           - Mise en place d'une animation avec un rameur connecté. Un jeu a été réaliser en web pour retranscrire le déplacement du joueur sur le rameur à l'écran.
-          - TODO
+          - Mise en place d'un jeu vidéo relié au téléphone pour diriger le personne à l'écran
+          - Mise en place de quizz interactifs 
+          - Mise en place de retours clients autour de l'IOT / Google IO / Web
+          - Mise en place d'un cursus speaker visant à former de nouveau conférenciers au sein de la société
     ibp:
+      id: ibp
       title: IBP
       start-year: Déc 2014
       end-year: Déc 2014
@@ -98,6 +106,7 @@ SQLI:
           - "Etude des solutions disponibles sur le marché : RAML / SWAGGER / BLUEPRINT API"
           - Réalisation d’un POC
     epsi:
+      id: epsi
       title: EPSI
       start-year: Sept 2013
       end-year: Jan 2014
@@ -113,6 +122,7 @@ SQLI:
           - Rédaction des cours
           - Dispense des cours
     formation:
+      id: sg
       title: Société Générale
       start-year: Mars 2013
       end-year: Mars 2014
@@ -124,6 +134,7 @@ SQLI:
         tasks:
           - Mise en place de la formation et exécution de cette dernière
     celtipharm:
+      id: celtipharm
       title: Celtipharm
       start-year: Aout 2013
       end-year: Aout 2013
@@ -136,6 +147,7 @@ SQLI:
           - Etude du besoin et de l’application existante afin de dégager les bonnes pratiques à mettre en place pour le futur développement de l’application.
           - Rédaction d’un document de synthèse.
     cbp:
+      id: cbp
       title: CBP
       start-year: Dec 2012
       end-year: Dec 2012
@@ -158,6 +170,7 @@ community:
   main-mission: J'anime et je créer depuis des années des associations que ce soit dans le domaine de l'informatique ou aussi dans le domaine de loisirs
   missions:    
     gdg: 
+      id: gdg
       title: GDG Nantes
       start-year: 2011
       job: Fondateur / Animateur
@@ -196,6 +209,7 @@ community:
           - Animation de multiples présentations / ateliers 
           - "Aide à l'organisation d'événement communautaires : Web2Day / Breizhcamp / Nantes Digital Week / Devoxx4Kids"
     kids:
+      id: kids
       title: Devoxx4Kids & Coding Gouter
       start-year: 2013
       job: Animateur de sessions
@@ -210,6 +224,7 @@ community:
           - Mise en place du programme à jouer sur Nantes
           - Gestion des équipes d'animation
     wit:
+      id: wit
       title: Nantes WIT
       start-year: 2013
       job: Co-fondateur & animateur
@@ -221,6 +236,7 @@ community:
           - Création du groupe
           - Animation d'ateliers & soirées en lien avec le thème de l'association
     rmb:
+      id: rmb
       title: Roule Maboule
       start-year: 2003
       end-year: 2010
@@ -239,6 +255,7 @@ Binomed:
   main-mission: En tant que développeur passioné, je suis souvent en train de créer des sides projects pour expérimenter les nouvelles technologies. De plus, j'aime bien ne pas garder pour moi mes connaissances et donc je donne régulièrement des conférences dans des événements technologiques.
   missions:
     revealsockets: 
+      id: revealsocket
       title: RevealSockets
       job: Créateur / Développeur
       start-year: 2014
@@ -252,6 +269,7 @@ Binomed:
           - Node
           - RevealJS
     cst:
+      id: cst
       title: CineShowTime
       job: Créateur / Développeur
       start-year: 2009
@@ -265,6 +283,7 @@ Binomed:
           - WebOS
           - FireFox OS
     nfa:
+      id: nfa
       title: NFA, Nfc For Android
       job: Créateur / Développeur
       start-year: 2012
@@ -275,6 +294,7 @@ Binomed:
           - Android
           - NFC
     codeguess:
+      id: codeguess
       title: Code Guess
       job:  Développeur
       start-year: 2011
@@ -285,36 +305,141 @@ Binomed:
           - Android
           - AndEngine
     conf:
+      id: confs
       title: Conférences & Evénements
       job: Conférencier
       start-year: 2012
       main-mission: J'anime régulièrement des conférences afin de partager mes connaissances aquises lors de ma veille ou pour faire des retours sur les événements où j'ai pu avoir la chance d'aller.
       lists:
         Conférences:
-          - 2012 - Android pour les débutants - GDG Nantes
-          - 2013 - Bonnes pratiques du développement Android - DroidCon FR
-          - 2013 - Android & le NFC - DevFest Nantes / DroidCon Tunis / Breizhcamp
-          - 2013 - WebGL - GDG Nantes
-          - 2013 - Sensors & HTML5 - Codelab à Stéréolux
-          - 2013 - AndroidBootstrap - Breizhcamp
-          - 2013 - WebRTC - DevFest Nantes
-          - 2014 - Sensors & HTML5 - Quickie au Breizhcamp
-          - 2014 - WebRTC - Breizhcamp & Web2Day
-          - 2014 - Une Fille dans mon équipe - Quickie au Breizhcamp
-          - 2014 - Animation sur le stand DevoxxFR FuturDevoxx
-          - 2014 - Table ronde sur le rôle de la femme dans le numérique - Web2Day
-          - 2014 - Animation de pusieurs Devoxx4Kids & Coding Gouters
+          - 2016 - Les nouveaux supers pouvoirs du Web - DevFest Paris / Breizhcamp
           - 2015 - WebRTC - DevFest Paris / Bdx.io
           - 2015 - ChromeDevTools - Devoxx Paris / Web2Day
           - 2015 - Codelab PolymerJS - GDG Nantes
           - 2015 - Formation Android dans le cadre du programme Android Study Jam - GDG Nantes
           - 2015 - Soirée Google X dans le cadre de la Digital Week - GDG Nantes
           - 2015 - Animation de plusieurs Devoxx4Kids & Coding Gouters
-          - 2016 - Les nouveaux supers pouvoirs du Web - DevFest Paris / Breizhcamp
-
+          - 2014 - Sensors & HTML5 - Quickie au Breizhcamp
+          - 2014 - WebRTC - Breizhcamp & Web2Day
+          - 2014 - Une Fille dans mon équipe - Quickie au Breizhcamp
+          - 2014 - Animation sur le stand DevoxxFR FuturDevoxx
+          - 2014 - Table ronde sur le rôle de la femme dans le numérique - Web2Day
+          - 2014 - Animation de pusieurs Devoxx4Kids & Coding Gouters
+          - 2013 - Bonnes pratiques du développement Android - DroidCon FR
+          - 2013 - Android & le NFC - DevFest Nantes / DroidCon Tunis / Breizhcamp
+          - 2013 - WebGL - GDG Nantes
+          - 2013 - Sensors & HTML5 - Codelab à Stéréolux
+          - 2013 - AndroidBootstrap - Breizhcamp
+          - 2013 - WebRTC - DevFest Nantes
+          - 2012 - Android pour les débutants - GDG Nantes
 Ausy: 
   id: ausy
   title: Ausy
+  role: Ingénieur d'études
   start-year: 2009
   end-year: 2012
+  main-mission: J'étais ingénieur d'études java
   missions:
+    systemeu: 
+      id: systemeu
+      title: Système U
+      job:  Ingénieur d'études Java
+      start-year: 2012
+      end-year: 2012
+      main-mission: Réalisation d'une application web pour la grande distribution
+      lists: 
+        technos: 
+          - Maven
+          - Hudson
+          - Java
+          - Spring (Beans, DAO, Batch, AOP)
+          - WebLogic
+          - Hibernate
+          - ExtJS 3.4
+        tasks:
+          - Ecriture des documents techniques et fonctionnels.
+          - Réalisation de prototypes et maquettes.
+          - En charge des installations et de la correction des applications
+          - Tests unitaires
+          - Externalisation de chaînes de caractère
+          - Responsable technique des développeurs sur le développement des applications.
+    euriware:
+      id: euriware
+      title: Euriware
+      job: Ingénieur d'études Java
+      start-year: 2009
+      end-year: 2012
+      main-mission: Mise en place d'une application GWT servant de référentiel de données pour d'autres applications.
+      lists:
+        technos:
+          - Java
+          - sql
+          - SVN
+          - Serveur Tomcat
+          - XML
+          - XSLT
+          - Solr
+          - Spring (Beans, DAO, Batch, IOC)
+          - Maven 2 et 3
+          - Hibernate
+          - JackRabbit
+          - XStream
+          - GWT 2.4
+          - Oracle
+        tasks: 
+          - Mise en place d'une Librairie de gestion de jar
+          - Mise en place d'une Librairie d'archivage de fichiers avec le framework JackRabbit
+          - Mise en place d'une Libraire de comparaison de xml de grande taille
+          - Mise en place d'une Librairie de filtrage de jar
+          - Mise en place d'une Librairie d'utilisation du framework Solr, installation et configuration du framework
+          - Création d'exécutables des différentes libraires écrites
+          - Xml (Parser SAX, Stax, Sxtream)
+          - Test unitaires
+          - Externalisation de chaînes de caractère
+          - Mise en place d'un module d'historisation de données.
+          - Mise en place d'un module de cycle de vie métier.
+          - Mise en place d'un moteur de recherche SQL basée sur une structure d'arbre.
+          - J'ai fait parti de l'équipe chargé d'optimiser et refactorer le code afin d'en améliorer les performances.
+          - Réflexion sur la mise en place d'OSGI
+          - Réalisation de documentation sous TRAC, Redmine
+Catamania: 
+  id: catamania
+  title: Cat-Amania
+  role: Ingénieur R&D Java
+  start-year: 2006
+  end-year: 2009
+  main-mission: J'étais ingénieur d'études java junior
+  missions:
+    sneda: 
+      id: sneda
+      title: Sneda
+      job:  Ingénieur R&D Java
+      start-year: 206
+      end-year: 2009
+      main-mission: Réalisation d'une application progicielle de gestion immobilière. J'ai participé de façon active à la mise en place de toutes les briques techniques ainsi que le framework utilisé pour le développement.
+      lists: 
+        technos: 
+          - Java RCP
+          - sql
+          - CVS
+          - Serveur Tomcat
+          - XML
+          - XSLT
+          - Progress
+          - H2
+        tasks: 
+          - Mise en place d'une première architecture applicative 
+          - Développement de l'architecture
+          - Participation active à la conception de l'architecture applicative définitive
+          - Développement de cette architecture
+          - Réalisation de 90 % des outils graphiques spécifiques
+          - Mise en place de nombreux frameWork
+          - MVC (Objets génériques facilitant le développement)
+          - Graphiques (Objets génériques facilitant le développement)
+          - Base de données (jdbc, exportation de bases)
+          - Test unitaires (JUnit)
+          - XML (Parser Jdom, SAX)
+          - Externalisation de chaînes de caractère
+          - Réalisation de nombreuses documentations références servant à la mise en place des développements
+          - Mise en place de documents de formation et mise en place de cours en vue de former les nouveaux arrivant.
+          - Développement des modules

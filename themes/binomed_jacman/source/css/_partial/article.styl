@@ -21,11 +21,18 @@
       font-smoothing antialiased
     >p
       padding 0.01em 1%
+    p.article-time
+      @media screen and (max-width: 1024px)
+        position:relative
+        top:-40px;  
   p.article-time
     padding-top 0.5em
     font-size 0.8em
     text-align center
     margin-bottom -2.7em
+    @media screen and (max-width: 1024px)
+        position:relative
+        top:-10px;  
     @media mini
       float right
       margin-right 1em
@@ -40,6 +47,27 @@
     padding 0.5em 4%
     h1, h2
       margin-top 0.75em
+  h1.title-click
+    cursor:pointer
+    position:relative
+  h1.title-click::after
+    content:'\f01a'
+    font-family font-icon-family
+    font-size font-size - 20
+    font-smoothing()      
+    position:absolute
+    right:0
+  h1.title-click.show::after
+    content:'\f01b'
+  div.detail-hide
+    opacity:0
+    transition: height 0s, opacity 0s
+    display:none
+  div.detail-hide.show
+    opacity:1
+    display:block
+    transition: height ease 1s, opacity ease 1s
+    
 
 article
   header.article-info
