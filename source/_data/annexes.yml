@@ -1,3 +1,19 @@
+Formation: 
+  title: Formation
+  type: list
+  data: 
+    inge:
+      date: 2003-2006
+      title: Ingénieur informatique
+      place: Polytech Nantes
+    fac:
+      date: 2001-2003
+      title: DEUG MIAS
+      place: Université de Nantes
+    lycee:
+      date: 2001
+      title: Bac S 
+      place: Lycée Nicolas Appert, Orvault
 Langagues:
 	title: Langages
   type: tag
@@ -92,19 +108,4 @@ Asso:
     convJongle:
       date: 2004-2005
       title: Organisation d'un festival de jonglerie    
-Formation: 
-  title: Formation
-  type: list
-  data: 
-    inge:
-      date: 2003-2006
-      title: Ingénieur informatique
-      place: Polytech Nantes
-    fac:
-      date: 2001-2003
-      title: DEUG MIAS
-      place: Université de Nantes
-    lycee:
-      date: 2001
-      title: Bac S 
-      place: Lycée Nicolas Appert, Orvault
+

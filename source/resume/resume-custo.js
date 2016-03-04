@@ -5,15 +5,16 @@ var JefResume = JefResume || function(){
 	function init(){
 
 		var elements = document.querySelectorAll('.title-click');
-		[].forEach.call(elements, function(h1Elt){
+		for (var i = 0 ; i < elements.length; i++){
+			var h1Elt = elements[i];
 			h1Elt.addEventListener('click', function(evt){
-				var elt = evt.srcElement;
+				var elt = evt.target;
 				elt.classList.toggle('show');
 				var detailElt = document.querySelector('#detail-'+elt.getAttribute('id'));
 				detailElt.classList.toggle('show');				
 			});
 			console.log(h1Elt);
-		});
+		}		
 
 		var easter_egg = new Konami(function() { 
             console.log("konami !");
