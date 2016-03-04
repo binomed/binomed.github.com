@@ -2,6 +2,8 @@
 
 var JefResume = JefResume || function(){
 	
+	var domAnimator = null;
+
 	function init(){
 
 		var elements = document.querySelectorAll('.title-click');
@@ -65,7 +67,10 @@ var JefResume = JefResume || function(){
 	}
 
 	function asciiAnimation(){
-		var domAnimator = new DomAnimator();
+		if (domAnimator){
+			return;
+		}
+		domAnimator = new DomAnimator();
 	    domAnimator.addFrame([
 	    	'  +   o    o   +   o  +  +  o  +  o  o    o   ++ *   +    +  o  o  + ',
 	    	'+   o    o  * +   o  +  o  +    *  +  o  +   o  o  ++  o  +  +  o   +',	    	
