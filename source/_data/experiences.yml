@@ -4,14 +4,14 @@ SQLI:
   start-year: 2012
   role: Responsable du pôle IOT &         
   role2: Développeur Senior en innovation 
-  main-mission: Je suis en charge du pole IOT de SQLI Nantes et j'anime aussi la communauté des conférenciers de l'agence de Nantes 
+  main-mission: En charge du pole IOT de SQLI Nantes, j'anime également la communauté des conférenciers de l'agence. 
   missions:
     laposte:
       id: laposte
       title: La Poste
       start-year: 2015
       job: Développeur / Expert Android
-      main-mission: J'interviens sur divers sujets en lien avec l'innovation et la R&D sur des projets mobile de La Poste. Beaucoup de POCs sont réalisés dans cette mission afin d'éprouver certains concepts
+      main-mission: J'interviens sur divers sujets en lien avec l'innovation et la R&D sur des projets mobile de La Poste. Beaucoup de POC sont réalisés lors de cette mission.
       lists:
         technos: 
           - Android
@@ -21,11 +21,11 @@ SQLI:
           - NFC
           - Impression 3D
         tasks:
-          - Mise en place d'un plugin de contrôle de passeport avec lecteur de la puce RFID
-          - Réalisation d'un prototype de lampe UV pouvant se brancher sur un téléphone pour faire ressortir les caractéristiques UV
-          - Mise en place de processus de détection de faux documents à partir d'une photo
-          - Mise en place d'un portail pour permettre à des usagers anonymes de surfer sur internet depuis une tablette Android
-          - Mise en place de plugin Cordva pour contrôler un lecteur de code barre en bluetooth
+          - Mise en place d'un plugin de contrôle de passeport avec lecture de la puce RFID.
+          - Réalisation d'un prototype de lampe UV pouvant se brancher sur un téléphone afin de faire ressortir les caractéristiques cachées de la carte.
+          - Mise en place de processus de détection de faux documents.
+          - Mise en place d'un portail afin de permettre à des usagers anonymes de surfer sur internet depuis une tablette Android.
+          - Mise en place de plugin Cordova pour contrôler un lecteur de code barre en bluetooth.
     sncf:
       id: sncf
       title: Sncf
@@ -33,9 +33,8 @@ SQLI:
       end-year: 2015
       job: Développeur en innovation
       main-mission: |
-                    La DSI de la SNCF possède une cellule innovation chargée de faire de la veille technologique et d’implémenter des prototypes.
-                    Il est question sur poste de faire de la R&D et aussi de l’implémentation de processus en avance de phase pour de futurs projets de la SNCF.
-                    Beaucoup de POC sont réalisés dans cette mission afin d’éprouver certains concepts
+                    Il était question sur ce poste de faire de la R&D et aussi de l’implémentation de processus en avance de phase pour de futurs projets de la SNCF.
+                    Beaucoup de POC sont réalisés lors de cette mission.
       lists:
         technos:
           - Android
@@ -51,23 +50,23 @@ SQLI:
           - ThreeJS
           - Chrome App
         tasks:
-          - Mise en place d’application de contrôle sur Android
-          - Réalisation d’un prototype HTML5 sur android.
-          - Participations aux réunions visant à sortir les bonnes pratiques du développement sous Android.
-          - Participations au développement sous NFC
-          - Mise en place d’une plateforme de visio 100% HTML5 via le WebRTC
-          - Réalisation de prototype avec la LeapMotion en vue de créer des interfaces innovantes sans contact.
-          - Mise en place d’une application HTML5 servant de démonstrateur technologique pour les agents en gare. L’objectif était de monter la faisabilité de mettre en place une application HTML5 moderne avec des WebSockets, du SEE dans l’environnement sécurisé du SI de la SNCF.
-          - Mise en place d’un sapin connecté. Un Sapin de noël connecté en Arduino reçoit ses instructions d’une application mobile développée en HTML5 et allume les boules de ce dernier en conséquence.
-          - Mise en place d’une télécommande de présentation HTML5 via une interface mobile
-          - Mise en place d’un prototype avec les Google Glass pour les contrôleurs de la SNCF
-          - Mise en place d’une application android pour le contrôle des agents
+          - Mise en place d’applications de contrôle sur Android
+          - Réalisation d’un prototype HTML5 sur Android.
+          - Participations aux réunions visant à sortir les bonnes pratiques du développement sur Android.
+          - Participations à des développements sur NFC.
+          - Mise en place d’une plateforme de visio 100% HTML5 via WebRTC
+          - Réalisation d'un prototype avec la LeapMotion en vue de créer des interfaces innovantes sans contact.
+          - Mise en place d’une application HTML5 servant de démonstrateur technologique pour les agents en gare. L’objectif étant de montrer la faisabilité de la mise en place d'une application HTML5 moderne avec des WebSockets, du SEE dans l’environnement sécurisé du SI de la SNCF.
+          - Mise en place d’un sapin connecté en Arduino recevant ses instructions d’une application mobile développée en HTML5.
+          - Mise en place d’une télécommande de présentation HTML5 via une interface mobile.
+          - Mise en place d’un prototype avec les Google Glass pour les contrôleurs de la SNCF.
+          - Mise en place d’une application Android pour les contrôleurs.
     animation:
       id: animsqli
       title: Animation interne
       start-year: 2012
-      job: Animateur de communautés interne
-      main-mission: J'ai a de multiples reprises mis en place un certains nombre d'événements ou pocs (Proof of Concepts) ayant des visibilités internes ou externes. Mes interventions couvraient aussi bien la réalisation de projets de démos que des événements comme la mise en place d'un cursus de formation pour conférenciers.
+      job: Animateur de communautés internes
+      main-mission: J'ai mis en place de nombreux POC à visibilités internes ou externes.
       lists:
         technos:
           - AngularJS
@@ -81,12 +80,12 @@ SQLI:
           - NodeJS
           - OcculusRift
         tasks: 
-          - Mise en place d'une animation avec un vélo d'appartement branché sur un arduino et retransmettant dans un casque occuslus le résultat d'une sphere Google StreetView
+          - Mise en place d'un cursus de formation pour conférenciers.
+          - Mise en place d'une animation avec un vélo d'appartement branché sur un arduino et retransmettant dans un casque Occulus le résultat d'une sphère Google StreetView.
           - Mise en place d'une animation avec un rameur connecté. Un jeu a été réaliser en web pour retranscrire le déplacement du joueur sur le rameur à l'écran.
-          - Mise en place d'un jeu vidéo relié au téléphone pour diriger le personne à l'écran
-          - Mise en place de quizz interactifs 
-          - Mise en place de retours clients autour de l'IOT / Google IO / Web
-          - Mise en place d'un cursus speaker visant à former de nouveau conférenciers au sein de la société
+          - Mise en place d'un jeu vidéo HTML5.
+          - Mise en place de quizz interactifs. 
+          - Mise en place de retours clients autour de l'IOT / Google IO / Web.
     ibp:
       id: ibp
       title: IBP
@@ -94,9 +93,8 @@ SQLI:
       end-year: Déc 2014
       job: Audit API Rest
       main-mission: |
-                    IBP a de plus d’API REST qu’elle souhaitait documenter et ainsi mettre en place un portail d’api web.
-                    L’objectif de cette mission est d’identifier et choisir une solution du marché pour la documentation des APIs. 
-                    Un POC doit aussi être réalisé afin de vérifier l’intégration de cette solution dans les processus de développement et de réalisation d’IBP.
+                    L’objectif de cette mission était d’identifier une solution du marché pour la documentation des APIs REST. 
+                    Un POC a été réalisé afin de vérifier l’intégration de cette solution dans les processus internes.
       lists:
         technos:
           - Raml
@@ -111,40 +109,40 @@ SQLI:
       start-year: Sept 2013
       end-year: Jan 2014
       job: Cours mobilité
-      main-mission: L’école EPSI a mis en place un cours HTML5 Mobiles et Android. Il s’agissait de donner des cours sur ce sujet pour 27h
+      main-mission: J'ai dispensé des cours sur le développement web & Android.
       lists:
         technos:
           - HTML
           - Javascript
           - Android
         tasks:
-          - Mise en place du programme
-          - Rédaction des cours
-          - Dispense des cours
+          - Mise en place du programme.
+          - Rédaction des cours.
+          - Dispense des cours.
     formation:
       id: sg
       title: Société Générale
       start-year: Mars 2013
       end-year: Mars 2014
       job: Formation GWT
-      main-mission: La Société Générale avait besoin de former certains de ses collaborateurs au framework GWT
+      main-mission: Réalisation d'un formation GWT.
       lists:
         technos:
           - GWT
         tasks:
-          - Mise en place de la formation et exécution de cette dernière
+          - Préparation et dispense de la formation
     celtipharm:
       id: celtipharm
       title: Celtipharm
       start-year: Aout 2013
       end-year: Aout 2013
       job: Audit Android
-      main-mission: La Société Celtipharm a souhaité migrer son application IPhone sous Android et voulait avoir un audit sur la qualité du code déjà produit.
+      main-mission: Réalisation d'un audit pour une migration d'application Iphone vers Android.
       lists:
         technos:
           - Android
         tasks:
-          - Etude du besoin et de l’application existante afin de dégager les bonnes pratiques à mettre en place pour le futur développement de l’application.
+          - Audit pour identifier les bonnes pratiques à mettre en place pour le futur développement de l’application.
           - Rédaction d’un document de synthèse.
     cbp:
       id: cbp
@@ -152,29 +150,29 @@ SQLI:
       start-year: Dec 2012
       end-year: Dec 2012
       job: Audit Métrologie
-      main-mission: CBP possède une application GWT dont il voulait tester la montée en charge en vue d’une migration future d’un gros client.
+      main-mission: Audit de montée en charge d'une application GWT.
       lists:
         technos:
           - Neoload4J
           - Selenium
         tasks:
-          - Mise en place des tests Selenium
-          - Mise en place des scénarios Neoload
-          - Exécution / analyse des tests de montées en charge de l’application
+          - Mise en place des tests Selenium.
+          - Mise en place des scénarii Neoload.
+          - Exécution / analyse des tests de montées en charge de l’application.
           - Rédaction d’un document de synthèse.
 community: 
   id: community
   title: Associations
   start-year: 2003
   role: Animateur de communauté
-  main-mission: J'anime et je créé depuis des années des associations dans le domaine de l'informatique ou dans le domaine de loisirs
+  main-mission: J'anime et je crée depuis des années des associations dans le domaine de l'informatique ou dans le domaine des loisirs.
   missions:    
     gdg: 
       id: gdg
       title: GDG Nantes
       start-year: 2011
       job: Fondateur / Animateur
-      main-mission: Le GDG pour Google Developper Group est une communauté de développeurs dédiés aux technologies. Cette association à pour vocation d’organiser tous les mois des événements à destination des profils techniques sur une technologie Google. Je suis l’un des créateurs et j’anime de façon active ce groupe depuis ses débuts
+      main-mission: Le GDG (Google Developper Group) est une communauté de développeurs dédiée aux technologies Google organisant des événements mensuels. J'en suis l’un des créateurs et animateur actif.
       lists: 
         technos: 
           - AngularJS
@@ -200,29 +198,29 @@ community:
           - C++
           - Google AppScript
         tasks: 
-          - Création de l'association
-          - Organisation de conférences mensuelles
-          - Animation de la communauté
-          - Organisation du DevFest Nantes
-          - Gestion du site du DevFest Nantes
-          - "Réalisation de démos pour le devfest : Vélo connecté avec l'occulusRift / Miroir WebRTC Portal / Quizz Interactif / Lego Mindstorm contrôlé par Myo / Interface gestuelle du programme / Jeux de gamification du devfest / ..."
-          - Animation de multiples présentations / ateliers 
-          - "Aide à l'organisation d'événement communautaires : Web2Day / Breizhcamp / Nantes Digital Week / Devoxx4Kids"
+          - Création de l'association.
+          - Organisation de conférences mensuelles.
+          - Animation de la communauté.
+          - Organisation du DevFest Nantes depuis 5 ans (événement regroupant 700 développeurs en 2015 à la cité des congrès de Nantes).
+          - Gestion du site du DevFest Nantes.
+          - "Réalisation de démos pour le DevFest Nantes : vélo connecté avec l'Occulus / miroir WebRTC Portal / quizz Intéractif / Lego Mindstorm contrôlé par Myo / interface gestuelle du programme avec une LeapMotion / gamification du DevFest / ..."
+          - Animation de multiples présentations / ateliers.
+          - "Aide à l'organisation d'événements communautaires : Web2day / BreizhCamp / Nantes Digital Week / Devoxx4Kids."
     kids:
       id: kids
-      title: Devoxx4Kids & Coding Gouter
+      title: Devoxx4Kids & Coding Goûters
       start-year: 2013
       job: Animateur de sessions
-      main-mission: les Devoxx4kids & Coding Goûter sont des initiatives à destination des enfants pour leur permettre d'avoir un accès à des outils de programmation adapté à leur âge. Ces moments conviviaux permettent d'initier les plus jeunes aidés par des adultes.
+      main-mission: Les Devoxx4kids & Coding Goûters sont des initiatives à destination des enfants pour leur permettre d'avoir un accès à des outils de programmation adaptés à leur âge.
       lists: 
         technos: 
-          - scratch
-          - lego mindstorm
+          - Scratch
+          - Lego Mindstorm
         tasks: 
-          - Import du concept sur Nantes avec d'autres personnes
-          - Animation des ateliers
-          - Mise en place du programme à jouer sur Nantes
-          - Gestion des équipes d'animation
+          - Co-importation du concept sur Nantes.
+          - Animation des ateliers.
+          - Mise en place du programme à jouer sur Nantes.
+          - Gestion des équipes d'animation.
     wit:
       id: wit
       title: Nantes WIT
@@ -230,36 +228,36 @@ community:
       job: Co-fondateur & animateur
       main-mission: |
                     Créé en 2013, le groupe Women In Technology a pour but de soutenir les femmes dans les métiers de l'IT.
-                    Constitué à parts égales de femmes et d'hommes, nous souhaitons proposer un espace d'échanges et de partage. En mettant en avant des rôles modèles de femmes dans la technique, nous voulons montrer que ces métiers ne sont pas réservés qu'aux hommes.
+                    Constitué à parts égales de femmes et d'hommes, ce groupe souhaite proposer un espace d'échanges et de partage.
       lists:
         tasks:
-          - Création du groupe
-          - Animation d'ateliers & soirées en lien avec le thème de l'association
+          - Création du groupe.
+          - Animation d'ateliers & soirées en lien avec le thème de l'association.
     rmb:
       id: rmb
       title: Roule Maboule
       start-year: 2003
       end-year: 2010
-      job: créateur & animateur
-      main-mission: Roule Maboule est une association de cirque basée à Orvault dont le but est promouvoir les arts du cirque en offrant un lieu & du matériel à ses adhérents.
+      job: Créateur & animateur
+      main-mission: Roule Maboule est une association de cirque basée à Orvault dont le but est de promouvoir les arts du cirque en offrant un lieu & du matériel à ses adhérents.
       lists: 
         tasks:
-          - Création & animation de l'association
-          - Gestion et participation à des conventions nationales
-          - Organisation de la coupe de France de monocycle 2006
+          - Création & animation de l'association.
+          - Organisation de conventions nationales.
+          - Organisation de la coupe de France de monocycle 2006.
 Binomed:
   id: binomed
   title: JefBinomed
   role: Développeur passionné
   start-year: 2009
-  main-mission: En tant que développeur passionné, je créé des sides projects pour expérimenter les nouvelles technologies. De plus, j'aime bien ne pas garder pour moi mes connaissances et donc je donne régulièrement des conférences dans des événements technologiques.
+  main-mission: En tant que développeur passionné, j'ai de nombreux sides projects pour expérimenter les nouvelles technologies. De plus, je donne régulièrement des conférences dans des événements.
   missions:
     revealsockets: 
       id: revealsocket
       title: RevealSockets
       job: Créateur / Développeur
       start-year: 2014
-      main-mission: Reval Socket est un projet de télécommande présentation html5 qui permet de passer ses slides en ayant un retour sur son téléphone. La V1 a été codée pour RevealJS, la V2 est cours de développement et sera moins dépendante de RevealJS
+      main-mission: RevealSockets est un projet de télécommande de présentation HTML5 qui permet de passer ses slides en ayant un retour sur son téléphone.
       lists: 
         technos:
           - AngularJS
@@ -274,7 +272,7 @@ Binomed:
       job: Créateur / Développeur
       start-year: 2009
       end-year: 2014
-      main-mission: Cineshowtime est une application qui donne accès aux séances proches de chez soi. Ce projet me servait avant tout de projet sandbox car ayant un scope de fonctionnalités assez large, je pouvais découvrir de façon approfondie un langage autour d'un cas d'utilisation concret.
+      main-mission: CineShowTime est une application qui donne accès aux séances de cinéma proches de chez soi (primé et 130 000+ téléchargements).
       lists:
         technos:
           - Android
@@ -288,7 +286,7 @@ Binomed:
       job: Créateur / Développeur
       start-year: 2012
       end-year: 2013
-      main-mission: NFA est une librairie pour simplifier l'écriture du code NFC dans une application Android. Il s'agit avant tout d'un ensemble de Helper utiles.
+      main-mission: NFA est une librairie destinée à simplifier l'écriture du code NFC dans une application Android.
       lists: 
         technos:
           - Android
@@ -299,7 +297,7 @@ Binomed:
       job:  Développeur
       start-year: 2011
       end-year: 2012
-      main-mission: Code guess est un jeux iphone permettant de jouer au mastermind. L'auteur du jeu m'avait demandé de faire le portage de l'application sur Android
+      main-mission: Code guess est un jeux Iphone permettant de jouer au mastermind. L'auteur du jeu m'avait demandé de faire le portage de l'application sur Android
       lists: 
         technos: 
           - Android
@@ -309,7 +307,7 @@ Binomed:
       title: Conférences & Evénements
       job: Conférencier
       start-year: 2012
-      main-mission: J'anime régulièrement des conférences afin de partager mes connaissances acquises lors de ma veille ou pour faire des retours sur les événements où j'ai pu avoir la chance d'aller.
+      main-mission: J'anime régulièrement des conférences.
       lists:
         Conférences:
           - 2016 - Les nouveaux supers pouvoirs du Web - DevFest Paris / Breizhcamp
@@ -338,15 +336,15 @@ Ausy:
   role: Ingénieur d'études
   start-year: 2009
   end-year: 2012
-  main-mission: J'étais ingénieur d'études java
+  main-mission: J'étais ingénieur d'études java.
   missions:
     systemeu: 
       id: systemeu
       title: Système U
-      job:  Ingénieur d'études Java
+      job:  Référent technique Java
       start-year: 2012
       end-year: 2012
-      main-mission: Réalisation d'une application web pour la grande distribution
+      main-mission: Réalisation d'une application web pour la grande distribution.
       lists: 
         technos: 
           - Maven
@@ -358,18 +356,16 @@ Ausy:
           - ExtJS 3.4
         tasks:
           - Ecriture des documents techniques et fonctionnels.
-          - Réalisation de prototypes et maquettes.
-          - En charge des installations et de la correction des applications
-          - Tests unitaires
-          - Externalisation de chaînes de caractère
-          - Responsable technique des développeurs sur le développement des applications.
+          - Réalisation des prototypes et maquettes.
+          - Installation et correction des applications.
+          - Réalisation de tests unitaires.
     euriware:
       id: euriware
       title: Euriware
       job: Ingénieur d'études Java
       start-year: 2009
       end-year: 2012
-      main-mission: Mise en place d'une application GWT servant de référentiel de données pour d'autres applications.
+      main-mission: Mise en place d'une application GWT servant de référentiel de données.
       lists:
         technos:
           - Java
@@ -384,31 +380,28 @@ Ausy:
           - Hibernate
           - JackRabbit
           - XStream
+          - Stax
+          - SAX
           - GWT 2.4
           - Oracle
         tasks: 
-          - Mise en place d'une Librairie de gestion de jar
-          - Mise en place d'une Librairie d'archivage de fichiers avec le framework JackRabbit
-          - Mise en place d'une Libraire de comparaison de xml de grande taille
-          - Mise en place d'une Librairie de filtrage de jar
-          - Mise en place d'une Librairie d'utilisation du framework Solr, installation et configuration du framework
-          - Création d'exécutables des différentes libraires écrites
-          - Xml (Parser SAX, Stax, Sxtream)
-          - Test unitaires
-          - Externalisation de chaînes de caractère
+          - Mise en place d'une librairie de gestion de jar.
+          - Mise en place d'une librairie d'archivage de fichiers avec le framework JackRabbit.
+          - Mise en place d'une libraire de comparaison de xml de grande taille.
+          - Mise en place d'une librairie de filtrage de jar.
+          - Mise en place d'une librairie d'utilisation du framework Solr, installation et configuration du framework.
+          - Création d'exécutables des différentes libraires écrites.
+          - Réalistation de tests unitaires.
           - Mise en place d'un module d'historisation de données.
-          - Mise en place d'un module de cycle de vie métier.
           - Mise en place d'un moteur de recherche SQL basée sur une structure d'arbre.
-          - J'ai fait parti de l'équipe chargé d'optimiser et refactorer le code afin d'en améliorer les performances.
-          - Réflexion sur la mise en place d'OSGI
-          - Réalisation de documentation sous TRAC, Redmine
+          - Réflexion sur la mise en place d'OSGI.
 Catamania: 
   id: catamania
   title: Cat-Amania
   role: Ingénieur R&D Java
   start-year: 2006
   end-year: 2009
-  main-mission: J'étais ingénieur d'études java junior
+  main-mission: J'étais ingénieur d'études java junior.
   missions:
     sneda: 
       id: sneda
@@ -416,7 +409,7 @@ Catamania:
       job:  Ingénieur R&D Java
       start-year: 206
       end-year: 2009
-      main-mission: Réalisation d'une application progicielle de gestion immobilière. J'ai participé de façon active à la mise en place de toutes les briques techniques ainsi que le framework utilisé pour le développement.
+      main-mission: Réalisation d'une application progicielle de gestion immobilière. J'ai participé de façon active à la mise en place de toutes les briques techniques.
       lists: 
         technos: 
           - Java RCP
@@ -428,18 +421,7 @@ Catamania:
           - Progress
           - H2
         tasks: 
-          - Mise en place d'une première architecture applicative 
-          - Développement de l'architecture
-          - Participation active à la conception de l'architecture applicative définitive
-          - Développement de cette architecture
-          - Réalisation de 90 % des outils graphiques spécifiques
-          - Mise en place de nombreux frameWork
-          - MVC (Objets génériques facilitant le développement)
-          - Graphiques (Objets génériques facilitant le développement)
-          - Base de données (jdbc, exportation de bases)
-          - Test unitaires (JUnit)
-          - XML (Parser Jdom, SAX)
-          - Externalisation de chaînes de caractère
-          - Réalisation de nombreuses documentations références servant à la mise en place des développements
-          - Mise en place de documents de formation et mise en place de cours en vue de former les nouveaux arrivant.
-          - Développement des modules
+          - Mise en place d'une première architecture applicative et développement de cette dernière.
+          - Participation active à la conception de l'architecture applicative définitive.
+          - Mise en place de nombreux framework
+          - Mise en place de documents de formation et de cours à destination des équipes techniques.
