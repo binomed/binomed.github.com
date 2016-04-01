@@ -74,4 +74,76 @@ Listons ici quelques conférences dans lesquelles des CFP sont ouverts et où vo
 La première règle du CFP est : "Je ne suis pas sur d'être retenu"
 La second règle du CFP est : "Ce n'est pas grave si je ne suis pas retenu"
 
-J'insiste un peu 
+J'insiste un peu mais il est essentiel de bien prendre conscience que le CFP est une épreuve très dure et ne donnant pas souvent satisfaction. Cependant, ayez bien conscience aussi ne pas être pris à un CFP ne veut pas dire pour autant que l'on est mauvais ! Il y a vraiment une très forte concurence.
+
+## Stats
+
+Prenons l'exemple de 2 conférences : DevoxxFR et le DevFest Nantes.
+
+### DevFest Nantes
+
+En 2015, le DevFest a reçu **114 sujets** pour ne retenir que **34 sujets**. Si l'on détail encore un peu plus **90 sujets conférences** proposés pour seulement **28 sujets** retenus. Globalement les speakers avaient une chance sur 3 d'être retenus...
+
+### DevoxxFR
+
+En 2016, le Devoxx a reçu en tout **797 sujets** dont **444 pour des conférences** pour seulement **90 conférences** au final seulement 1 speaker sur 5 a vu son sujet retenu ! 
+
+### Ne désespérez pas
+
+Bref, vous l'aurez compris, ne pas avoir son sujet sélectionner fait parti du jeux. Et j'insiste, ce n'est pas par ce que vous n'êtes pas retenus que vous n'êtes pas bon ! Beaucoup d'éléments rentrent en compte
+
+## Feedback : pourquoi j'ai pas été retenu 
+
+Une autre chose qui est très frustrante avec les CFPs : c'est le manque de feedback lors d'un refus... En effet, quelque soit la conférence, vous ne saurez pas pourquoi vous n'avez pas été retenu. Au début, je trouvais ça injuste et je ne comprenais pas car je cherchais à progresser et donc j'aurais été bien content de savoir si qui avait joué en ma défaveur. Mais ça c'était avant ! Depuis, je suis devenu organisateur du DevFest à Nantes et l'équipe organisatrice a adopté le même positionnement. 
+
+La raison est très simple : Les raisons qui nous poussent à choisir tel ou tel sujet sont très subjectives. C'est un mix entre les gouts technologiques de l'organisateur, ce qu'il estime que son audience va vouloir, le fait d'avoir vu où non tel ou tel speaker, si un autre speaker propose le même sujet, ... Bref, il y a encore plein d'autres raisons et finalement, chaque choix est unique et dépend du speaker et de sa proposition. Vu les nombres importants de propositions reçu, nous ne pouvons pas formuler de mail de refus individuel, cela prendrait trop de temps :(. Par contre si jamais vous êtes vraiment trop frustré, vous pourrez toujours tenter d'envoyer un mail à l'équipe organisatrice pour avoir un peu plus de détail mais rien en garanti que vous aurez une réponse.
+
+Cependant, voici comment maximiser vos chances d'être retenu !
+
+## Conseils
+
+### Soyez concis
+
+### Mettez vous à la place des participants
+
+### Mettez vous à la place de l'organisateur
+
+### Expliquez votre talk
+
+### Donner les slides, liens vers vidéos
+
+### Le titre
+
+### La Description
+
+### Notes pour les organisateurs
+
+## Pour aller plus loin : 
+
+Je vous invite à aller lire l'article de [https://twitter.com/karesti](Katia Aresti) sur le sujet [http://www.duchess-france.org/jai-teste-pour-vous-etre-dans-le-comite-du-cfp-de-devoxx-france/]("J’ai testé pour vous : être dans le comité du CFP de Devoxx France"). Cet article partage beaucoup des éléments que j'ai pu évoquer et aborde d'autres aspect que je n'avais pas le temps de traiter.
+
+# Bien préparer ses slides
+
+## Pas de gif
+
+## Se poser les bonnes questions 
+
+## Conseils
+
+### Misez sur la simplicité
+
+# Le jour J
+
+## Se Lancer
+
+## Attention à votre image
+
+## Poser des questions
+
+## Faire des pauses
+
+## Osez dire : je ne sais pas
+
+## Expliquez ce que vous faites
+
+## Ayez un plan B
