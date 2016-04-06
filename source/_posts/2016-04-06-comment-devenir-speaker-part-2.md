@@ -5,7 +5,9 @@ tags:
 category:
   - Tips
 toc: false
+date: 2016-04-06 21:17:13
 ---
+
 
 ![](/assets/2016-03-speakers/audience.jpg)
 
