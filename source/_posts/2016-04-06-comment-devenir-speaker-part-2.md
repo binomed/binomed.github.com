@@ -1,4 +1,4 @@
-title: Commment devenir speaker  ? (Partie 2)
+title: Comment devenir speaker  ? (Partie 2)
 tags:
   - tips
   - speaker
