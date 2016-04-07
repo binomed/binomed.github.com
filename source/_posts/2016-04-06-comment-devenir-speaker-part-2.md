@@ -82,7 +82,7 @@ Listons ici quelques conférences dans lesquelles des CFP sont ouverts et où vo
 * ![](/assets/2016-03-speakers/logo-mixit.png) MixIT : Lyon : Multi technos
 * ![](/assets/2016-03-speakers/seocamp.png) SEO Camp : Partout en France : SEO
 * ![](/assets/2016-03-speakers/Devoxx-UK-NORMAL.png) DevoxxFR : Paris : Multi technos
-* ![](/assets/2016-03-speakers/scalaio_medium.png) Scala.io : Paris : Scala
+* ![](/assets/2016-03-speakers/scalaio_medium.png) Scala.io : Lyon : Scala
 * ![](/assets/2016-03-speakers/cropped-DC_logo.png) DroidConFR : Paris : Android
 * ![](/assets/2016-03-speakers/eclipsecon.png) EclipseCon : Toulouse : Eclipse
 * ![](/assets/2016-03-speakers/dotcss-logo.png) Dot conf : Paris : JS / CSS / Go
