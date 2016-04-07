@@ -77,7 +77,7 @@ Listons ici quelques conférences dans lesquelles des CFP sont ouverts et où vo
 * ![](/assets/2016-03-speakers/kiwiparty2-logo.png) KiwiParty : Strasbourg : Web
 * ![](/assets/2016-03-speakers/logo-parisweb.png) Paris Web : Paris : Web
 * ![](/assets/2016-03-speakers/devfest.png) DevFest : Nantes : Multi technos
-* ![](/assets/2016-03-speakers/Logo-Web2day.png) Web2Day : Nantes : Marketing & influenceurs
+* ![](/assets/2016-03-speakers/Logo-Web2day.png) Web2Day & Tech2Day : Nantes : Marketing & influenceurs & Multi technos
 * ![](/assets/2016-03-speakers/blend_webmix.png) BlendWebMix : Lyon : Marketing & influenceurs
 * ![](/assets/2016-03-speakers/logo-mixit.png) MixIT : Lyon : Multi technos
 * ![](/assets/2016-03-speakers/seocamp.png) SEO Camp : Partout en France : SEO
