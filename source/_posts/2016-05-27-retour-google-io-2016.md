@@ -24,7 +24,7 @@ Pour se rendre compte de l'ambiance, Google a mis à disposition une vidéos 360
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/E5lrU5v17Qo" frameborder="0" allowfullscreen></iframe>
 
-Je n'ai pas utilisé le terme festival au hasard car cette année, le Google I/O était avant tout un festival. Dès que l'on a récupéré nos badges, on a eu le droit a un kit du festivalier avec : 
+Je n'ai pas utilisé le terme festival au hasard car cette année, le Google I/O en était clairement un. Dès que l'on a récupéré nos badges, on a eu le droit a un kit du festivalier avec : 
 
 * Des lunettes de soleil.
 * De la crème solaire.
@@ -39,9 +39,9 @@ En lisant ces quelques lignes, vous vous dites que quelque-chose ne colle pas. N
 
 ![](/assets/2016-05-IO/queue.png)
 
-J'ai déjà un peu laissé sous entendre ce qui représentait le point négatif : les conférences. Non pas sur leur qualité, mais sur la quantité de conférences que j'ai pu voir. En effet, lors de la Keynote, Google annonce 7000 participants (c'est énorme !). Je fut très surpris de voir que sur les 11 espaces de conférences, 7 d’entre eux avaient des capacités d'environ 100 places ! Pour les salles restantes, on devait atteindre les 400/500 voir 800 places. Je vous laisse faire vos petits calculs : tout le monde ne rentre pas. 
+J'ai déjà un peu laissé sous-entendre ce qui représentait le point négatif : les conférences. Non pas sur leur qualité, mais sur la quantité de conférences que j'ai pu voir. En effet, lors de la Keynote, Google annonce 7000 participants (c'est énorme !). Je fut très surpris de voir que sur les 11 espaces de conférences, 7 d’entre eux avaient des capacités d'environ 100 places ! Pour les salles restantes, on devait atteindre les 400/500 voir 800 places. Je vous laisse faire vos petits calculs : tout le monde ne rentre pas. 
 
-Le résultat ne s'est pas fait attendre, quand on voulait voir une conférence il fallait faire la queue 1h avant. De plus, nous n'avions pas le droit de rester dans une salle une fois une conférence terminée même si la session suivante nous intéressait....
+Le résultat ne s'est pas fait attendre, pour voir une conférence, il fallait faire la queue 1h avant. De plus, nous n'avions pas le droit de rester dans une salle une fois une conférence terminée même si la session suivante nous intéressait....
 
 Voici un aperçu de ce que ça donnait : 
 
@@ -68,7 +68,7 @@ Malheureusement, beaucoup des annonces de la keynote ou d'ATAP étaient en **"co
 
 ![](/assets/2016-05-IO/networking.jpg)
 
-Clairement, un des grand avantages du I/O, l'opportunité que l'on a de rencontrer des gens que l'on verra pas en dehors ! J'ai pu croiser et discuter avec des gens comme [Christian Heilmann](https://www.christianheilmann.com/) ou encore les développeurs de l'équipe Chrome. 
+Clairement, un des grand avantages du I/O est l'opportunité que l'on a de rencontrer des gens que l'on verra pas en dehors ! J'ai pu croiser et discuter avec des gens comme [Christian Heilmann](https://www.christianheilmann.com/) ou encore les développeurs de l'équipe Chrome. 
 
 ### La qualité des conférences
 
@@ -80,7 +80,7 @@ Bref, le codeur que je suis étais ravis !
 
 ### L'arrivée sur le site
 
-Bien qu'il y avait 7000 personnes à enregistrer, cela c'est très bien orchestré. Google a en effet permis aux gens de venir récupérer leur badge dès la veille et cela a permis d'éviter de longues files d'attentes pour récupérer son précieux badge. Rien a dire si ce n'est bravo !
+Malgré 7000 personnes à enregistrer, cela a c'est très bien orchestré. Google a en effet permis aux gens de venir récupérer leur badge dès la veille et cela a permis d'éviter de longues files d'attentes pour récupérer son précieux badge. Rien a dire si ce n'est bravo !
 
 ### Les à côté 
 
