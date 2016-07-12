@@ -61,11 +61,21 @@ En fait les intérêts sont nombreux :
 * On pourra mettre à jour l'url de l'appareil si on le souhaite contrairement à un QR Code.
 * Les notifications sont silencieuses !  En effet, ce n'est pas par ce que l'on est proche d'un appareil que notre téléphone va passer son temps à sonner. L'utilisateur ne verra la notification que si ce dernier regarde les notifications de son téléphone !
 
-# Principe du bluetooth low energy
+# Rappels du fonctionnement d'un appareil bluetooth low energy
+
+Voici un petit rappel sur le fonctionnement d'un appareil Bluetooth Low Energy.
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/ble_hierarchy.jpg">
+</div>
+
+Un appareil via un **serveur** bluetooth va exposer un ensemble de **services**. Chaque service va lui même exposer des **charactéristiques** sur lesquelles on pourra lire / écrire / s'abonner. L'appareil, les services et les charactérisques sont identifiées par un **UUID** qui est unique.
 
 # Hack du protocol
 
-cf article
+Afin de savoir quels services je devais appeler et quel type de données, je devais transféré, je me suis lancé dans une opération de "reverse engineering" du mBot pour comprendre comment l'utiliser. Je me suis appuyer sur cet article : [Reverse Engineering a Bluetooth Low Energy Ligth Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/) qui m'a grandement aidé et je vous conseille de le lire car il rentre en détail dans les étapes à suivre pour Hacker un protocole.
+
+Je me contenterais ici de simplement lister les étapes principales à suivre et les résultats que j'ai obtenir.
 
 # Fonctionnement de l'api 
 
