@@ -26,6 +26,8 @@ Je me suis donc posé la question suivante : Et si je pouvais enrichir mon Mbot 
 
 # Physical Web
 
+Prenez un périphérique bluetooth low energy. Fait lui émettre une url avec la norme [EddyStone](https://github.com/google/eddystone). Vous obtiendrez un device Physical Web !
+
 # Principe du bluetooth low energy
 
 # Hack du protocol
