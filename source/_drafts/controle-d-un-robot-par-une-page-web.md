@@ -28,6 +28,39 @@ Je me suis donc posé la question suivante : Et si je pouvais enrichir mon Mbot 
 
 Prenez un périphérique bluetooth low energy. Fait lui émettre une url avec la norme [EddyStone](https://github.com/google/eddystone). Vous obtiendrez un device Physical Web !
 
+Le principe du Physical Web est très simple. Il s'agit juste d'un appareil BLE qui emet une URL. Vous pouvez le comparer grossièrement à un QR Code sauf que ce dernier est bluetooth.
+
+## Comment ça marche ?
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/Principe_PhysicalWeb.jpg">
+</div>
+
+
+1. L'appareil doit emmettre une trame [EddyStone Url](https://github.com/google/eddystone/tree/master/eddystone-url) de façon à que votre téléphone puisse le capter. 
+2. Le navigateur du téléphone (ou une application compatible Physical Web) va intérroger son serveur pour vérifier si l'url exposée est une url blacklistée.
+3. Le serveur va intéroger la page.
+4. Les méta données sont renvoyées au serveur
+5. Le serveur va pouvoir répondre au téléphone pour que ce dernier affiche une notification sur le téléphone
+
+Voici à quoi ressemble une notification Physical Web : 
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/physical_web_android_res.png">
+</div>
+
+
+## Quel est l'intérêt du coup par rapport à un QR Code ?
+
+En fait les intérêts sont nombreux : 
+
+* C'est aussi simple d'utilisation qu'un QR Code et ça permet plus !
+* Contrairement à un QR Code, aucune application n'a besoin  d'être installée pour capter l'appareil si ce n'est votre navigateur.
+* Les sites malveillants ne seront pas exposés au public car ils auront été filtré par le serveur.
+* L'appareil qui emet l'url pourra intéragir avec le téléphone une fois que l'on s'y sera connecté.
+* On pourra mettre à jour l'url de l'appareil si on le souhaite contrairement à un QR Code.
+* Les notifications sont silencieuses !  En effet, ce n'est pas par ce que l'on est proche d'un appareil que notre téléphone va passer son temps à sonner. L'utilisateur ne verra la notification que si ce dernier regarde les notifications de son téléphone !
+
 # Principe du bluetooth low energy
 
 # Hack du protocol
