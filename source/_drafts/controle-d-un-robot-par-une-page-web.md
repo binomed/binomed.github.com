@@ -77,6 +77,99 @@ Afin de savoir quels services je devais appeler et quel type de données, je dev
 
 Je me contenterais ici de simplement lister les étapes principales à suivre et les résultats que j'ai obtenir.
 
+## 0. Avoir un téléphone Android
+
+Le téléphone Android est obligatoire car nous allons analyser les trames bluetooth émises par l'application officielle [Mbot](https://play.google.com/store/apps/details?id=cc.makeblock.mbot). La possibilité de "sniffer" les trames bluetooth est disponible depuis Android 4.4. 
+
+
+## 1. Préparation du téléphone
+
+Il faut installer l'application Mbot précédement citée et aussi l'application [nRF Connect for Mobile](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en). Cette dernière va nous permettre d'analyser les services disponibles et ainsi de connaitre les bons UUID à cibler.
+
+## 2. Détection des services  
+
+A l'aide nRF, je me suis connecté à mon mBot : 
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/nrf_devices.png">
+</div>
+
+J'ai ensuite analysé les services bluetooth qui étaient disponibles : 
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/nrf_service_1.png">
+</div>
+
+On peut voir que les UUID des services sont disponibles. Seulement à ce moment là, je ne sais pas lequel choisir. Il faut donc cliquer sur les 2 services pour analyser leurs caractéristiques.
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/nrf_service_2.png">
+</div>
+
+En regardeant les flèches sur la droite. On comprend facilement que le premier service expose une caractéristique en mode "notification" et une caractéristique en mode écriture. J'ai donc supposé que les UUID qui m'intéressaient étaient  : 
+
+* Le Service avec l'UUID : **0000ffe1-0000-1000-8000-00805f9b34fb**
+* La caractéristique avec l'UUID : **0000ffe3-0000-1000-8000-00805f9b34fb**
+
+J'ai aussi noté que le nom de mon appareil était "**Makeblock_LE**"
+
+
+## 3. Ecoute des trames
+
+Il faut maintenant configurer son téléphone pour écouter les trames Bluetooth : **Paramètres->Options de développement->Journal snoop HCI Bluetooth**
+
+Le fait d'activer cette option fait que le téléphone va écrire dans un fichier de log les trames bluetooth. Sur mon nexus le fichier est disponible sous `/sdcard/btsnoop_hci.log` mais sous mon galaxy, le fichier est disponible sous `/sdcard/Android/data/btsnoop_hci.log`
+
+## 4. Générer les fichiers de logs
+
+Afin de comprendre et analyser au mieux les trames j'ai procédé par étape. En effet, j'ai généré plusieurs fichiers de logs afin d'isoler les instructions envoyées. 
+
+Voici par exemple des fichiers de logs générés : 
+
+* Logs des moteurs : [btsnoop_hci_motor.log](/assets/2016-07-Mbot/btsnoop_hci_motor.log)
+* Logs des leds RGB : [btsnoop_hci_rbg.log](/assets/2016-07-Mbot/btsnoop_hci_rgb.log)
+
+## 5. Analyse des trames
+
+Afin d'analyser les trames, je me suis servit de [WireShark](https://www.wireshark.org/).
+
+J'ai donc injecté mes fichiers dans le logiciels pour faire ressortir les trames qui m'intéressait. Contrairement à l'exemple fournit sur l'article de reverse engineering. Les instructions envoyées ne sont pas des instructions BLE mais bluetooth classiques. Heuresement pour moi, les instructions restent les mêmes.
+
+J'ai aussi eu la chance que le code soit disponible en open source. Ceci m'a permis d'être sur des instructions à regarder et de comment les interpréter. J'ai pris pour exemple l'application android : [MeModule.java](https://github.com/Makeblock-official/Makeblock-App-For-Android/blob/master/src/cc/makeblock/modules/MeModule.java)
+
+## 6. Catalogue des instructions
+
+Voici ce que j'ai pu comprendre. Une instructions bluetooth du Mbot doit respecter le format suivant : 
+
+```javascript
+ /*
+ff 55 len idx action device port  slot  data a
+0  1  2   3   4      5      6     7     8
+*/
+```
+
+Chaque message fait 12 bytes à répartir comme suit : 
+
+```javascript
+var byte0 = 0xff, // Static header
+    byte1 = 0x55, // Static header
+    byte2 = 0x09, // len
+    byte3 = 0x00, // idx
+    byte4 = 0x02, // action
+    byte5 = type, // device
+    byte6 = port, // port
+    byte7 = slot; // slot
+//dynamics values
+var byte8 = 0x00, // data
+    byte9 = 0x00, // data
+    byte10 = 0x00, // data
+    byte11 = 0x00; // data
+//End of message
+var byte12 = 0x0a,
+```
+
+
+
 # Fonctionnement de l'api 
 
 faire la détection générique d'appareils
