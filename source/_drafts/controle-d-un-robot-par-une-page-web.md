@@ -133,7 +133,11 @@ Voici par exemple des fichiers de logs générés :
 
 Afin d'analyser les trames, je me suis servit de [WireShark](https://www.wireshark.org/).
 
-J'ai donc injecté mes fichiers dans le logiciels pour faire ressortir les trames qui m'intéressait. Contrairement à l'exemple fournit sur l'article de reverse engineering. Les instructions envoyées ne sont pas des instructions BLE mais bluetooth classiques. Heuresement pour moi, les instructions restent les mêmes.
+J'ai donc injecté mes fichiers dans le logiciels pour faire ressortir les trames qui m'intéressait. Contrairement à l'exemple fournit sur l'article de reverse engineering. Les instructions envoyées ne sont pas des instructions BLE mais bluetooth classiques. Heureusement pour moi, les instructions restent les mêmes.
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/wireshark.png">
+</div>
 
 J'ai aussi eu la chance que le code soit disponible en open source. Ceci m'a permis d'être sur des instructions à regarder et de comment les interpréter. J'ai pris pour exemple l'application android : [MeModule.java](https://github.com/Makeblock-official/Makeblock-App-For-Android/blob/master/src/cc/makeblock/modules/MeModule.java)
 
@@ -172,10 +176,206 @@ var byte12 = 0x0a,
 
 # Fonctionnement de l'api 
 
-faire la détection générique d'appareils
+Maintenant que nous savons comment contrôler notre robot, il nous faut nous intéresser à l'api WebBluetooth.
 
-# Subtilité de l'écriture
+Pour accéder à un appareil Bluetooth, il faut passer par plusieurs étapes : 
 
+1. Rechercher l'appareil
+2. Se connecter 
+3. Récupérer le service
+4. Récupérer la caractéristique
+5. Ecrire / Lire
+
+Toute l'api du WebBluetooth fonctionne sur des promesses, ainsi chaque appel à l'api renvera une promesse.
+
+## Rechercher l'appareil
+
+```javascript
+let options = {
+    "filters": [{
+        "name": "Makeblock_LE"
+    }],
+    "optionalServices": ["0000ffe1-0000-1000-8000-00805f9b34fb"]
+};
+navigator.bluetooth.requestDevice(options)
+    .then(device => {
+        return device;
+});
+```
+
+En précisant le nom du service dans le champ optionalServices, je pourrais me connecter au service. En effet, si on ne précise pas le nom du service, on ne pourra par la suite s'y connecter.
+
+## Connection à l'appareil
+
+```javascript
+device.gatt.connect()
+.then(server=>{
+    return server;
+})
+```
+
+Une fois connecté nous récupérerons un serveur qui nous permettra de nous connecter à notre service.
+
+## Récupération du service
+
+2 possibilités s'offrent à nous pour nous connecter à notre service. Depuis l'objet `device` ou à partir du serveur récupéré lors de la connection.
+
+```javascript
+// A partir du serveur
+device.gatt.connect()
+.then(server=>{
+    return server.getPrimaryService('UUID_Service');
+})
+.then(service=>{
+    return service
+});
+
+// A partir du gatt (on doit s'être connecté préalablement)
+device.gatt.getPrimaryService('UUID_Service')
+.then(service=>{
+    return service
+})
+```
+
+**/!\ Le UUID Service doit respecter le format suivant : `0000ffe1-0000-1000-8000-00805f9b34fb`. En effet, `0000ffe100001000800000805f9b34fb` ne sera pas reconnu. Il est donc important lors des connexions de faire attention à ça !**
+
+## Caractéristique
+
+La caractéristique doit se récupérer elle sur l'objet service
+
+```javascript
+// A partir du gatt (on doit s'être connecté préalablement)
+service.getCharacteristic('UUID_Char')
+.then(characteristic=>{
+    return characteristic
+})
+```
+
+## Lecture / Ecriture / Abonnement
+
+On va pouvoir intéragir de 3 façon avec une caractéristique : 
+
+
+```javascript
+// Lecture
+characteristic.readValue()
+.then(value=>{
+    return value
+})
+
+// Ecriture
+characteristic.writeValue(bufferValue)
+.then(_=>{})
+
+// Notification start
+characteristic.startNotifications().then(_=>{
+    characteristic.addEventListener('characteristicvaluechanged', callback);
+})
+// Notification stop
+characteristic.stopNotifications().then(_=>{
+    characteristic.removeEventListener('characteristicvaluechanged', callback);
+})
+```
+
+
+## Helper 
+
+Tout ce code peut être généré grâce à [François Beaufort](https://plus.google.com/u/0/+FrancoisBeaufort) qui a mis à disposition un générateur [WebBluetoothGenerator](http://beaufortfrancois.github.io/sandbox/web-bluetooth/generator/)
+
+## Attention aux données
+
+Les données manipulées sont des données binaires. Il convient donc de faire les transformations nécessaires pour lire / écrire correctement les données. Pour les données textuelles il faut utiliser les objets `TextEncoder` et `TextDecoder` pour encoder et decoder correctement vos données !
+
+## Démo
+
+Voici un exemple de lecture des caractéristiques de n'importe quel appareil : 
+
+<button>Get Bluetooth Device Information Characteristics</button>
+
+<h3>Live Output</h3>
+<div id="output" class="output">
+  <div id="content"></div>
+  <div id="status"></div>
+  <div id="log"></div>
+</div>
+
+<i> Ce code est récupéré du sample [Device Information Characteristics Sample](https://googlechrome.github.io/samples/web-bluetooth/device-information-characteristics.html)</i>
+
+# Controle du mBot
+
+Maintenant que l'on a vu comment manipuler l'api, nous allons essayer de passer les inscructions à notre robot pour l'annimer.
+
+## Rappel sur le protocol du Mbot
+
+Pour rappel, le Mbot répond aux contraintes suivantes : 
+
+* Nom : **Makeblock_LE**
+* Service : **0000ffe1-0000-1000-8000-00805f9b34fb**
+* Caractéristique : **0000ffe3-0000-1000-8000-00805f9b34fb**
+* Format d'échange : 
+
+```javascript
+/*
+ff 55 len idx action device port  slot  data a
+0  1  2   3   4      5      6     7     8
+*/
+```
+
+## Comment donner à manger des données déjà binaires ?
+
+Quand on regarde le format des instructions bluetooth, on se rend bien compte qu'on ne manipule pas ici des chiffres ou des chaines de caractères mais bel et bien un instruction binaire. Comment faire pour que cette donnée soit transférée correctement au Mbot ?
+
+C'est très simple, la fonction `writeValue` d'une caractéristique attend un buffer et on va lui donner des données binaires. 
+
+Prenons en exemple l'instruction suivante : `ff:55:09:00:02:0a:09:64:00:00:00:00:0a` Il s'agit d'une instruction moteur qui fait 13 bytes. Le buffer étant **une puissance de 2** il va falloir compléter le buffer avec des 0 et ainsi préparer un buffer de **16 bytes**.
+
+Une des subtilité de l'utilisation d'un buffer est qu'il faut inverser par pair de 2 les bytes à envoyer sinon la donnée n'est pas reçu dans l'ordre ! Ainsi pour envoyer `ff:55:09:00:02:0a:09:64:00:00:00:00:0a` , je me retrouve à envoyer quelque chose comme ça : `0x55ff;0x0009;0x0a02;0x0964;0x0000;0x0000;0x000a;0x0000;`
+
+Voici donc le code associé à l'écriture de l'instruction précédente : 
+
+```javascript
+// UUIDs
+var SERVICE_UUID = "0000ffe1-0000-1000-8000-00805f9b34fb";
+var CHAR_UUID = "0000ffe3-0000-1000-8000-00805f9b34fb";
+
+// Static values
+var buf = new ArrayBuffer(16);
+var bufView = new Uint16Array(buf);
+
+var byte0 = 0xff, // Static header
+    byte1 = 0x55, // Static header
+    byte2 = 0x09, // len
+    byte3 = 0x00, // idx
+    byte4 = 0x02, // action
+    byte5 = 0x0a, // device
+    byte6 = 0x09, // port
+    byte7 = 0x64; // slot
+//dynamics values
+var byte8 = 0x00, // data
+    byte9 = 0x00, // data
+    byte10 = 0x00, // data
+    byte11 = 0x00; // data
+//End of message
+var byte12 = 0x0a,
+    byte13 = 0x00,
+    byte14 = 0x00,
+    byte15 = 0x00;
+
+// Gestion de l'inversion par pair des bytes
+bufView[0] = byte1 << 8 | byte0;
+bufView[1] = byte3 << 8 | byte2;
+bufView[2] = byte5 << 8 | byte4;
+bufView[3] = byte7 << 8 | byte6;
+bufView[4] = byte9 << 8 | byte8;
+bufView[5] = byte11 << 8 | byte10;
+bufView[6] = byte13 << 8 | byte12;
+bufView[7] = byte15 << 8 | byte14;   
+
+// Envoie des données
+device.gatt.getPrimaryService(SERVICE_UUID)
+.then(service=>service.getCharacteristic(this.config.charateristic()))
+.then(characteristic => characteristic.writeValue(buf));
+```
 
 # Résultat
 
@@ -183,4 +383,4 @@ vidéo + lien vers l'app
 
 
 <script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
-<script type="text/javascript" src="/assets/2015-07-PortalWebRTC/portal-custo.js"></script>
+<script type="text/javascript" src="/assets/2016-07-Mbot/mbot.js"></script>
