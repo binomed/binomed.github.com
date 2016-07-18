@@ -379,7 +379,39 @@ device.gatt.getPrimaryService(SERVICE_UUID)
 
 # Résultat
 
-vidéo + lien vers l'app
+Voici l'application résultatante 
+
+## Connexion
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/mbot_demo_1.png">
+</div>
+
+## Contrôle des moteurs
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/mbot_demo_2.png">
+</div>
+
+## Contrôle des leds
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/mbot_demo_2.png">
+</div>
+
+## Contrôle du buzzer
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/mbot_demo_4.png">
+</div>
+
+## Vidéo 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j7VDRXxgqRE" frameborder="0" allowfullscreen></iframe>
+
+# Crédits
+
+Le code source du projet est disponible ici : [Mbot-webbluetooth](https://github.com/binomed/mbot-webbluetooth/blob/master/index.html)
 
 
 <script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
