@@ -9,20 +9,20 @@ category:
 toc: false
 ---
 
-J'ai acheté pour ma fille il y a quelques temps ce robot : [MBot](http://makeblock.com/mbot-stem-educational-robot-kit-for-kids/). C'est un robot basé sur un shield Arduino et pouvant être programmé via [Scratch](https://scratch.mit.edu/). Le modèle que j'ai choisi est celui avec la version Bluetooth car je savais que cela allait me laisser plus de possibilités pour le hacker plus tard.
+J'ai acheté pour ma fille il y a quelque temps ce robot : [MBot](http://makeblock.com/mbot-stem-educational-robot-kit-for-kids/). C'est un robot basé sur un shield Arduino et pouvant être programmé via [Scratch](https://scratch.mit.edu/). Le modèle que j'ai choisi est celui avec la version Bluetooth, car je savais que cela allait me laisser plus de possibilités pour le hacker plus tard.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/mbot-blue-pink-.jpg">
 </div>
 
 
-Il y a peu moins d'un an, j'ai appris l'existence de l'[API WebBluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! A peu près au même moment, j'ai entendu parlé du [Physical Web](https://google.github.io/physical-web/). 
+Il y a peu moins d'un an, j'ai appris l'existence de l'[API WebBluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! À peu près au même moment, j'ai entendu parlé du [Physical Web](https://google.github.io/physical-web/). 
 
-Je me suis donc posé la question suivante : Et si je pouvais enrichir mon Mbot pour qu'il me propose d'interagir avec lui mais sans que j'ai d'application à installer ? C'est ce que nous allons voir dans cet article !
+Je me suis donc posé la question suivante : et si je pouvais enrichir mon Mbot pour qu'il me propose d'interagir avec lui mais sans que j'ai d'application à installer. C'est ce que nous allons voir dans cet article !
 
 # Physical Web
 
-Prenez un périphérique BLE. Faites lui émettre une url avec la norme [EddyStone](https://github.com/google/eddystone). Vous obtiendrez un appareil Physical Web !
+Prenez un périphérique BLE. Faites lui émettre une URL avec la norme [EddyStone](https://github.com/google/eddystone). Vous obtiendrez un appareil Physical Web !
 
 Le principe du Physical Web est très simple. Il s'agit juste d'un appareil BLE qui émet une URL. Vous pouvez le comparer grossièrement à un QR Code sauf que ce dernier est Bluetooth.
 
@@ -33,10 +33,10 @@ Le principe du Physical Web est très simple. Il s'agit juste d'un appareil BLE 
 </div>
 
 
-1. L'appareil doit émettre une trame [EddyStone Url](https://github.com/google/eddystone/tree/master/eddystone-url) de façon à ce que votre téléphone puisse la capter. 
-2. Le navigateur du téléphone (ou une application compatible Physical Web) va interroger son serveur pour vérifier si l'url exposée est une url blacklistée.
+1. L'appareil doit émettre une trame [EddyStone URL](https://github.com/google/eddystone/tree/master/eddystone-url) de façon à ce que votre téléphone puisse la capter. 
+2. Le navigateur du téléphone (ou une application compatible Physical Web) va interroger son serveur pour vérifier si l'URL exposée est une URL blacklistée.
 3. Le serveur va interroger la page.
-4. Les métas données sont renvoyées au serveur.
+4. Les métas données sont renvoyés au serveur.
 5. Le serveur va pouvoir répondre au téléphone pour que ce dernier affiche une notification sur le téléphone.
 
 Voici à quoi ressemble une notification Physical Web : 
@@ -53,9 +53,9 @@ En fait les intérêts sont nombreux :
 * C'est aussi simple d'utilisation qu'un QR Code et ça permet plus !
 * Contrairement à un QR Code, aucune application n'a besoin  d'être installée pour capter l'appareil si ce n'est votre navigateur.
 * Les sites malveillants ne seront pas exposés au public car ils auront été filtrés par le serveur.
-* L'appareil qui émet l'url pourra interagir avec le téléphone une fois que l'on y sera connecté.
-* On pourra mettre à jour l'url de l'appareil si on le souhaite contrairement à un QR Code.
-* Les notifications sont silencieuses !  En effet, ce n'est pas par ce que l'on est proche d'un appareil Physical Web que notre téléphone va passer son temps à sonner. L'utilisateur ne verra la notification que si ce dernier regarde les notifications de son téléphone !
+* L'appareil qui émet l'URL pourra interagir avec le téléphone une fois que l'on y sera connecté.
+* On pourra mettre à jour l'URL de l'appareil si on le souhaite contrairement à un QR Code.
+* Les notifications sont silencieuses !  En effet, ce n'est pas parce que l'on est proche d'un appareil Physical Web que notre téléphone va passer son temps à sonner. L'utilisateur ne verra la notification que si ce dernier regarde les notifications de son téléphone !
 
 # Rappel sur le fonctionnement d'un appareil Bluetooth Low Energy
 
@@ -69,7 +69,7 @@ Un appareil via un **serveur** Bluetooth va exposer un ensemble de **services**.
 
 Afin de savoir quels services je dois appeler et quel type de données, je dois transférer, je me suis lancé dans une opération de "reverse engineering" du Mbot pour comprendre comment l'utiliser. Je me suis appuyé sur cet article : [Reverse Engineering a Bluetooth Low Energy Ligth Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/) qui m'a beaucoup aidé. Je vous conseille de le lire car il rentre un peu plus en détail que moi sur les étapes à suivre pour Hacker un appareil BLE.
 
-Je me contenterais ici de simplement lister les étapes principales que j'ai suivi et les résultats que j'ai obtenu.
+Je me contenterais ici de simplement lister les étapes principales que j'ai suivies et les résultats que j'ai obtenus.
 
 ## 0. Avoir un téléphone Android 4.4+
 
@@ -78,11 +78,11 @@ Le téléphone Android est obligatoire car nous allons analyser les trames Bluet
 
 ## 1. Préparation du téléphone
 
-Il faut installer l'application Mbot et aussi l'application [nRF Connect for Mobile](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en). Cette dernière va nous permettre de connaître les services disponibles et donc de trouver les bons UUID.
+Il faut installer l'application Mbot et aussi l'application [nRF Connect for Mobile](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en). Cette dernière va nous permettre de connaître les services disponibles et donc de trouver les bons UUIDs.
 
 ## 2. Détection des services  
 
-A l'aide nRF, je me suis connecté à mon Mbot : 
+À l'aide nRF, je me suis connecté à mon Mbot : 
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/nrf_devices.png">
@@ -94,7 +94,7 @@ J'ai ensuite analysé les services Bluetooth qui étaient disponibles :
     <img src="/assets/2016-07-Mbot/nrf_service_1.png">
 </div>
 
-On peut voir que les UUID des services sont disponibles. A ce moment-là, je ne sais pas lequel choisir. Il faut donc cliquer sur les 2 services pour analyser leurs caractéristiques.
+On peut voir que les UUID des services sont disponibles. À ce moment-là, je ne sais pas lequel choisir. Il faut donc cliquer sur les deux services pour analyser leurs caractéristiques.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/nrf_service_2.png">
@@ -108,7 +108,7 @@ En regardant les flèches sur la droite. On comprend facilement que le premier s
 J'ai aussi noté que le nom de mon appareil était "**Makeblock_LE**"
 
 
-## 3. Ecoute des trames
+## 3. Écoute des trames
 
 Il faut maintenant configurer son téléphone pour écouter les trames Bluetooth : **Paramètres->Options de développement->Journal snoop HCI Bluetooth**
 
@@ -116,7 +116,7 @@ Le fait d'activer cette option fait que le téléphone va écrire dans un fichie
 
 ## 4. Générer les fichiers de logs
 
-Afin de comprendre et analyser au mieux les trames, j'ai procédé par étape. J'ai ainsi généré plusieurs fichiers de logs afin d'isoler les instructions envoyées. 
+Afin de comprendre et analyser au mieux les trames, j'ai procédé par étapes. J'ai ainsi généré plusieurs fichiers de logs afin d'isoler les instructions envoyées. 
 
 Voici par exemple des fichiers de logs générés : 
 
@@ -127,7 +127,7 @@ Voici par exemple des fichiers de logs générés :
 
 Afin d'analyser les trames, je me suis servi de [WireShark](https://www.wireshark.org/).
 
-J'ai ensuite injecté mes fichiers dans WireShark pour faire ressortir les trames qui m'intéressait. Contrairement à l'exemple fournit sur l'article de reverse engineering. Les instructions envoyées ne sont pas des instructions BLE mais Bluetooth classiques. Heureusement pour moi, les instructions restent les mêmes.
+J'ai ensuite injecté mes fichiers dans WireShark pour faire ressortir les trames qui m'intéressaient. Contrairement à l'exemple fourni sur l'article de "reverse engineering". Les instructions envoyées ne sont pas des instructions BLE mais Bluetooth classiques. Heureusement pour moi, les instructions restent les mêmes.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/wireshark.png">
@@ -214,7 +214,7 @@ Une fois connecté, nous récupérerons un serveur qui nous permettra de récup�
 
 ## Récupération du service
 
-2 possibilités s'offrent à nous pour nous connecter à notre service :  Depuis l'objet `device` ou à partir du serveur récupéré lors de la connexion.
+Deux possibilités s'offrent à nous pour nous connecter à notre service :  Depuis l'objet `device` ou à partir du serveur récupéré lors de la connexion.
 
 ```javascript
 // A partir du serveur
