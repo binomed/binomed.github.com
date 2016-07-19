@@ -9,18 +9,14 @@ category:
 toc: false
 ---
 
-J'ai acheté pour ma fille il y a quelques temps ce robot : [MBot](http://makeblock.com/mbot-stem-educational-robot-kit-for-kids/). C'est un robot basé sur un shield Arduino et pouvant être programmé via le célèbre IDE [Scratch](https://scratch.mit.edu/). 
+J'ai acheté pour ma fille il y a quelques temps ce robot : [MBot](http://makeblock.com/mbot-stem-educational-robot-kit-for-kids/). C'est un robot basé sur un shield Arduino et pouvant être programmé via [Scratch](https://scratch.mit.edu/). Le modèle que j'ai choisi est celui avec la version Bluetooth car je savais que cela allait me laisser plus de possibilités pour le hacker plus tard.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/mbot-blue-pink-.jpg">
 </div>
 
 
-Le modèle que j'ai choisi est celui avec la version Bluetooth car je savais que cela allait me laisser plus de possibilités pour jouer avec.
-
-Il y a peu moins d'un an, j'ai appris l'existence de l'[API WebBluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette api permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! 
-
-A peu près au même moment, j'ai entendu parlé du [Physical Web](https://google.github.io/physical-web/). 
+Il y a peu moins d'un an, j'ai appris l'existence de l'[API WebBluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! A peu près au même moment, j'ai entendu parlé du [Physical Web](https://google.github.io/physical-web/). 
 
 Je me suis donc posé la question suivante : Et si je pouvais enrichir mon Mbot pour qu'il me propose d'interagir avec lui mais sans que j'ai d'application à installer ? C'est ce que nous allons voir dans cet article !
 
@@ -37,7 +33,7 @@ Le principe du Physical Web est très simple. Il s'agit juste d'un appareil BLE 
 </div>
 
 
-1. L'appareil doit émettre une trame [EddyStone Url](https://github.com/google/eddystone/tree/master/eddystone-url) de façon à que votre téléphone puisse la capter. 
+1. L'appareil doit émettre une trame [EddyStone Url](https://github.com/google/eddystone/tree/master/eddystone-url) de façon à ce que votre téléphone puisse la capter. 
 2. Le navigateur du téléphone (ou une application compatible Physical Web) va interroger son serveur pour vérifier si l'url exposée est une url blacklistée.
 3. Le serveur va interroger la page.
 4. Les métas données sont renvoyées au serveur.
@@ -61,9 +57,7 @@ En fait les intérêts sont nombreux :
 * On pourra mettre à jour l'url de l'appareil si on le souhaite contrairement à un QR Code.
 * Les notifications sont silencieuses !  En effet, ce n'est pas par ce que l'on est proche d'un appareil Physical Web que notre téléphone va passer son temps à sonner. L'utilisateur ne verra la notification que si ce dernier regarde les notifications de son téléphone !
 
-# Rappels du fonctionnement d'un appareil Bluetooth Low Energy
-
-Voici un petit rappel sur le fonctionnement d'un appareil BLE.
+# Rappel sur le fonctionnement d'un appareil Bluetooth Low Energy
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/ble_hierarchy.jpg">
@@ -71,20 +65,20 @@ Voici un petit rappel sur le fonctionnement d'un appareil BLE.
 
 Un appareil via un **serveur** Bluetooth va exposer un ensemble de **services**. Chaque service va lui-même exposer des **caractéristiques** sur lesquelles on pourra lire / écrire / s'abonner. L'appareil, les services et les caractéristiques sont identifiées par un **UUID** qui est unique.
 
-# Hack du protocole
+# Hack du protocole du Mbot
 
-Afin de savoir quels services je dois appeler et quel type de données, je dois transférer, je me suis lancé dans une opération de "reverse engineering" du Mbot pour comprendre comment l'utiliser. Je me suis appuyer sur cet article : [Reverse Engineering a Bluetooth Low Energy Ligth Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/) qui m'a grandement aidé et je vous conseille de le lire car il rentre en détail dans les étapes à suivre pour Hacker un appareil Bluetooth.
+Afin de savoir quels services je dois appeler et quel type de données, je dois transférer, je me suis lancé dans une opération de "reverse engineering" du Mbot pour comprendre comment l'utiliser. Je me suis appuyé sur cet article : [Reverse Engineering a Bluetooth Low Energy Ligth Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/) qui m'a beaucoup aidé. Je vous conseille de le lire car il rentre un peu plus en détail que moi sur les étapes à suivre pour Hacker un appareil BLE.
 
-Je me contenterais ici de simplement lister les étapes principales qu j'ai suivi et les résultats que j'ai obtenu.
+Je me contenterais ici de simplement lister les étapes principales que j'ai suivi et les résultats que j'ai obtenu.
 
 ## 0. Avoir un téléphone Android 4.4+
 
-Le téléphone Android est obligatoire car nous allons analyser les trames Bluetooth émises par l'application officielle [Mbot](https://play.google.com/store/apps/details?id=cc.makeblock.mbot). La possibilité de "sniffer" les trames Bluetooth est disponible depuis Android 4.4. 
+Le téléphone Android est obligatoire car nous allons analyser les trames Bluetooth émises par l'application officielle [Mbot](https://play.google.com/store/apps/details?id=cc.makeblock.mbot). La fonctionnalité qui permet de "sniffer" les trames Bluetooth n'est disponible que depuis Android 4.4. 
 
 
 ## 1. Préparation du téléphone
 
-Il faut installer l'application Mbot précédemment citée et aussi l'application [nRF Connect for Mobile](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en). Cette dernière va nous permettre d'analyser les services disponibles et ainsi de connaitre les bons UUID à cibler.
+Il faut installer l'application Mbot et aussi l'application [nRF Connect for Mobile](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en). Cette dernière va nous permettre de connaître les services disponibles et donc de trouver les bons UUID.
 
 ## 2. Détection des services  
 
@@ -100,7 +94,7 @@ J'ai ensuite analysé les services Bluetooth qui étaient disponibles :
     <img src="/assets/2016-07-Mbot/nrf_service_1.png">
 </div>
 
-On peut voir que les UUID des services sont disponibles. Seulement à ce moment-là, je ne sais pas lequel choisir. Il faut donc cliquer sur les 2 services pour analyser leurs caractéristiques.
+On peut voir que les UUID des services sont disponibles. A ce moment-là, je ne sais pas lequel choisir. Il faut donc cliquer sur les 2 services pour analyser leurs caractéristiques.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/nrf_service_2.png">
@@ -139,7 +133,7 @@ J'ai ensuite injecté mes fichiers dans WireShark pour faire ressortir les trame
     <img src="/assets/2016-07-Mbot/wireshark.png">
 </div>
 
-J'ai aussi eu la chance que le Mbot soit un projet open source. Ceci m'a permis d'être sur des instructions à regarder et comment les interpréter. J'ai pris pour exemple l'application Android : [MeModule.java](https://github.com/Makeblock-official/Makeblock-App-For-Android/blob/master/src/cc/makeblock/modules/MeModule.java)
+J'ai aussi eu la chance que le Mbot soit un projet open source. Ça m'a permis d'être sur des instructions à regarder et comment les interpréter. J'ai pris pour exemple l'application Android : [MeModule.java](https://github.com/Makeblock-official/Makeblock-App-For-Android/blob/master/src/cc/makeblock/modules/MeModule.java)
 
 ## 6. Catalogue des instructions
 
@@ -174,11 +168,11 @@ var byte12 = 0x0a,
 
 
 
-# Fonctionnement de l'api 
+# Fonctionnement de l'API 
 
-Maintenant que nous savons comment contrôler notre robot, il nous faut nous intéresser à l'api WebBluetooth.
+Maintenant que nous savons comment contrôler notre robot, il nous faut nous intéresser à l'API WebBluetooth.
 
-Avant toute chose, cette api est encore expérimentale et il faut encore l'activée pour l'instant dans Chrome. [Web Bluetooth](chrome://flags/#enable-web-bluetooth) Elle fonctionne sous Linux / Chrome OS / Mac / Android 6- (Chromium) / Android 6+ (Chrome). Veuillez vous référer à cette page pour consulter le [Tableau de compatibilité](https://github.com/WebBluetoothCG/web-bluetooth/blob/gh-pages/implementation-status.md)
+Avant toute chose, cette API est encore expérimentale et il faut encore l'activer dans Chrome : [enable-web-bluetooth](chrome://flags/#enable-web-bluetooth). Elle fonctionne sous Linux / Chrome OS / Mac / Android 6- (Chromium) / Android 6+ (Chrome). Veuillez vous référer à cette page pour consulter le [Tableau de compatibilité](https://github.com/WebBluetoothCG/web-bluetooth/blob/gh-pages/implementation-status.md)
 
 Pour accéder à un appareil Bluetooth, il faut passer par plusieurs étapes : 
 
@@ -186,9 +180,9 @@ Pour accéder à un appareil Bluetooth, il faut passer par plusieurs étapes :
 2. Se connecter 
 3. Récupérer le service
 4. Récupérer la caractéristique
-5. Ecrire / Lire
+5. Écrire / Lire
 
-Toute l'api du WebBluetooth fonctionne sur des promesses. Chaque appel à l'api renverra une promesse.
+Toute l'API du WebBluetooth fonctionne sur des promesses. Chaque appel à l'API renverra une promesse.
 
 ## Rechercher l'appareil
 
@@ -205,7 +199,7 @@ navigator.bluetooth.requestDevice(options)
 });
 ```
 
-En précisant le nom du service dans le champ optionalServices, je pourrais me connecter au service. En effet, si on ne précise pas le nom du service, on ne pourra pas par la suite s'y connecter.
+En précisant le nom du service dans le champ `optionalServices`, je pourrais me connecter au service. En effet, si on ne précise pas le nom du service, on ne pourra pas par la suite s'y connecter.
 
 ## Connexion à l'appareil
 
@@ -301,11 +295,11 @@ Voici un exemple de lecture des caractéristiques de n'importe quel appareil :
   <div id="log"></div>
 </div>
 
-<i> Ce code est extrait du sample [Device Information Characteristics Sample](https://googlechrome.github.io/samples/web-bluetooth/device-information-characteristics.html)</i>
+<i> Ce code est extrait du [Device Information Characteristics Sample](https://googlechrome.github.io/samples/web-bluetooth/device-information-characteristics.html)</i>
 
-# Controle du Mbot
+# Contrôle du Mbot
 
-Maintenant que l'on a vu comment manipuler l'api, nous allons essayer de passer les instructions à notre robot pour l'animer.
+Maintenant que l'on a vu comment manipuler l'API, nous allons essayer de passer les instructions à notre robot pour l'animer.
 
 ## Rappel sur le protocole du Mbot
 
@@ -331,7 +325,7 @@ C'est très simple, la fonction `writeValue` d'une caractéristique attend un bu
 
 Prenons en exemple l'instruction suivante : `ff:55:09:00:02:0a:09:64:00:00:00:00:0a` Il s'agit d'une instruction moteur qui fait 13 bytes. Le buffer étant **une puissance de 2**, il va falloir compléter le buffer avec des 0 et ainsi préparer un buffer de **16 bytes**.
 
-Une des subtilités de l'utilisation d'un buffer est qu'il faut inverser par paire de 2 les bytes à envoyer, sinon la donnée n'est pas reçue dans l'ordre ! Ainsi pour envoyer `ff:55:09:00:02:0a:09:64:00:00:00:00:0a` , je me retrouve à envoyer quelque chose comme ça : `0x55ff;0x0009;0x0a02;0x0964;0x0000;0x0000;0x000a;0x0000;`
+Une des subtilités de l'utilisation d'un buffer est qu'il faut inverser par paire les bytes à envoyer, sinon la donnée n'est pas reçue dans l'ordre ! Ainsi pour envoyer `ff:55:09:00:02:0a:09:64:00:00:00:00:0a` , je me retrouve à envoyer quelque chose comme ça : `0x55ff;0x0009;0x0a02;0x0964;0x0000;0x0000;0x000a;0x0000;`
 
 Voici donc le code associé à l'écriture de l'instruction précédente : 
 
@@ -363,7 +357,7 @@ var byte12 = 0x0a,
     byte14 = 0x00,
     byte15 = 0x00;
 
-// Gestion de l'inversion par pair des bytes
+// Gestion de l'inversion par paire des bytes
 bufView[0] = byte1 << 8 | byte0;
 bufView[1] = byte3 << 8 | byte2;
 bufView[2] = byte5 << 8 | byte4;
