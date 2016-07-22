@@ -1,9 +1,9 @@
 title: "Contrôle d'un robot par une page web"
 tags:
   - Chrome
-  - WebBluetooth
+  - Web Bluetooth
   - HTML5
-  - Bluetooth 4.0
+  - Bluetooth 4.1
 category:
   - Tech
 toc: false
@@ -20,7 +20,7 @@ J'ai acheté pour ma fille il y a quelque temps ce robot : [MBot](http://makeblo
 
 Il y a environ un an, j'ai aussi appris l'existence de deux APIs : 
 
-* L'[API WebBluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! 
+* L'[API Web Bluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! 
 * Le [Physical Web](https://google.github.io/physical-web/). 
 
 Je me suis donc posé la question suivante : et si je pouvais enrichir mon Mbot pour qu'il me propose d'interagir avec lui mais sans que j'ai d'application à installer. C'est ce que nous allons voir dans cet article !
@@ -39,10 +39,10 @@ Le principe du Physical Web est très simple. Il s'agit juste d'un appareil BLE 
 
 
 1. L'appareil doit émettre une trame [EddyStone URL](https://github.com/google/eddystone/tree/master/eddystone-url) de façon à ce que votre téléphone puisse la capter. 
-2. Le navigateur du téléphone (ou une application compatible Physical Web) va interroger son serveur pour vérifier si l'URL exposée est une URL blacklistée.
-3. Le serveur va interroger la page.
-4. Les métas données sont renvoyés au serveur.
-5. Le serveur va pouvoir répondre au téléphone pour que ce dernier affiche une notification sur le téléphone.
+2. Le navigateur du téléphone (ou une application compatible Physical Web) va interroger son [service](https://github.com/google/physical-web/tree/master/web-service#physical-web-service) pour vérifier si l'URL exposée est une URL HTTPS et non blacklistée.
+3. Le service interroge la page.
+4. Les métas données sont renvoyés au service.
+5. Le service va pouvoir répondre au téléphone pour que ce dernier affiche une notification native sur le téléphone.
 
 Voici à quoi ressemble une notification Physical Web : 
 
@@ -57,7 +57,7 @@ En fait les intérêts sont nombreux :
 
 * C'est aussi simple d'utilisation qu'un QR Code et ça permet plus !
 * Contrairement à un QR Code, aucune application n'a besoin  d'être installée pour capter la balise si ce n'est votre navigateur.
-* Les sites malveillants ne seront pas exposés au public car ils auront été filtrés par le serveur.
+* Les sites malveillants ne seront pas exposés au public car ils auront été filtrés par le service.
 * L'appareil qui émet l'URL pourra interagir avec le téléphone une fois que l'on y sera connecté.
 * On pourra mettre à jour l'URL de l'appareil si on le souhaite contrairement à un QR Code.
 * Les notifications sont silencieuses !  En effet, ce n'est pas parce que l'on est proche d'un appareil Physical Web que notre téléphone va passer son temps à sonner. L'utilisateur ne verra la notification que si ce dernier regarde les notifications de son téléphone !
@@ -68,7 +68,7 @@ En fait les intérêts sont nombreux :
     <img src="/assets/2016-07-Mbot/ble_hierarchy.jpg">
 </div>
 
-Un appareil via un **serveur** Bluetooth va exposer un ensemble de **services**. Chaque service va lui-même exposer des **caractéristiques** sur lesquelles on pourra lire / écrire / s'abonner. L'appareil, les services et les caractéristiques sont identifiées par un **UUID** qui est unique.
+Un appareil via un **serveur** GATT Bluetooth va exposer un ensemble de **services** GATT. Chaque service va lui-même exposer des **caractéristiques** sur lesquelles on pourra lire / écrire / s'abonner. L'appareil, les services et les caractéristiques sont identifiées par un **UUID** qui est unique.
 
 Maintenant que la partie théorie est passée, nous allons nous intéresser à notre cas d'utilisation : le Mbot.
 
@@ -76,7 +76,7 @@ Maintenant que la partie théorie est passée, nous allons nous intéresser à n
 
 Afin de savoir quels services je dois appeler et quel type de données je dois transférer, je me suis lancé dans une opération de "reverse engineering" du Mbot pour comprendre comment l'utiliser. Je me suis appuyé sur cet article : [Reverse Engineering a Bluetooth Low Energy Ligth Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/) qui m'a beaucoup aidé. Je vous conseille de le lire car il rentre un peu plus en détail que moi sur les étapes à suivre pour Hacker un appareil BLE.
 
-Je me contenterais ici de simplement lister les étapes principales que j'ai suivies et les résultats que j'ai obtenus.
+Je me contenterai ici simplement de lister les étapes principales que j'ai suivies et les résultats que j'ai obtenus.
 
 ## 0. Avoir un téléphone Android 4.4+
 
@@ -140,7 +140,7 @@ J'ai ensuite injecté mes fichiers dans WireShark pour faire ressortir les trame
     <img src="/assets/2016-07-Mbot/wireshark.png">
 </div>
 
-J'ai aussi eu la chance que le Mbot soit un projet open source. Ça m'a permis d'être sur des instructions à regarder et comment les interpréter. J'ai pris pour exemple l'application Android : [MeModule.java](https://github.com/Makeblock-official/Makeblock-App-For-Android/blob/master/src/cc/makeblock/modules/MeModule.java)
+J'ai aussi eu la chance que le Mbot soit un projet open source. Ça m'a permis d'être sûr des instructions à regarder et comment les interpréter. J'ai pris pour exemple l'application Android : [MeModule.java](https://github.com/Makeblock-official/Makeblock-App-For-Android/blob/master/src/cc/makeblock/modules/MeModule.java)
 
 ## 6. Catalogue des instructions
 
@@ -177,9 +177,9 @@ var byte12 = 0x0a,
 
 # Fonctionnement de l'API 
 
-Maintenant que nous savons comment contrôler notre robot, il nous faut nous intéresser à l'API WebBluetooth.
+Maintenant que nous savons comment contrôler notre robot, il nous faut nous intéresser à l'API Web Bluetooth.
 
-Avant toute chose, cette API est encore expérimentale et il faut encore l'activer dans Chrome : [enable-web-bluetooth](chrome://flags/#enable-web-bluetooth). Elle fonctionne sous Linux / Chrome OS / Mac / Android 6- (Chromium) / Android 6+ (Chrome). Veuillez vous référer à cette page pour savoir ce qui est compatible : [Tableau de compatibilité](https://github.com/WebBluetoothCG/web-bluetooth/blob/gh-pages/implementation-status.md)
+Avant toute chose, cette API est encore expérimentale et il faut encore l'activer dans Chrome : [chrome://flags/#enable-web-bluetooth](chrome://flags/#enable-web-bluetooth). Au moment où j'écris ces lignes, elle fonctionne sous Linux / Chrome OS / macOS / Android 5+ (Chromium) / Android 6+ (Chrome & Opera). Veuillez vous référer à cette page pour savoir ce qui est compatible : [Tableau de compatibilité](https://github.com/WebBluetoothCG/web-bluetooth/blob/gh-pages/implementation-status.md)
 
 Pour accéder à un appareil Bluetooth, il faut passer par plusieurs étapes : 
 
@@ -189,7 +189,7 @@ Pour accéder à un appareil Bluetooth, il faut passer par plusieurs étapes :
 4. Récupérer la caractéristique
 5. Écrire / Lire
 
-Toute l'API du WebBluetooth fonctionne sur des promesses. Chaque appel à l'API renverra une promesse.
+Toute l'API Web Bluetooth fonctionne sur des promesses JavaScript. Chaque appel à l'API renverra une promesse.
 
 ## Rechercher l'appareil
 
@@ -212,7 +212,7 @@ En précisant le nom du service dans le champ `optionalServices`, je pourrais me
 
 ```javascript
 device.gatt.connect()
-.then(server=>{
+.then(server => {
     return server;
 })
 ```
@@ -226,16 +226,16 @@ Deux possibilités s'offrent à nous pour nous connecter à notre service :  Dep
 ```javascript
 // A partir du serveur
 device.gatt.connect()
-.then(server=>{
+.then(server => {
     return server.getPrimaryService('UUID_Service');
 })
-.then(service=>{
+.then(service => {
     return service
 });
 
 // A partir du device (on doit s'être connecté préalablement)
 device.gatt.getPrimaryService('UUID_Service')
-.then(service=>{
+.then(service => {
     return service
 })
 ```
@@ -249,7 +249,7 @@ La caractéristique doit se récupérer sur l'objet service
 ```javascript
 // A partir du gatt (on doit s'être connecté préalablement)
 service.getCharacteristic('UUID_Char')
-.then(characteristic=>{
+.then(characteristic => {
     return characteristic
 })
 ```
@@ -262,20 +262,20 @@ On va pouvoir interagir de 3 façons avec une caractéristique :
 ```javascript
 // Lecture
 characteristic.readValue()
-.then(value=>{
+.then(value => {
     return value
 })
 
 // Ecriture
 characteristic.writeValue(bufferValue)
-.then(_=>{})
+.then(_ => {})
 
 // Notification start
-characteristic.startNotifications().then(_=>{
+characteristic.startNotifications().then(_ => {
     characteristic.addEventListener('characteristicvaluechanged', callback);
 })
 // Notification stop
-characteristic.stopNotifications().then(_=>{
+characteristic.stopNotifications().then(_ => {
     characteristic.removeEventListener('characteristicvaluechanged', callback);
 })
 ```
@@ -283,7 +283,7 @@ characteristic.stopNotifications().then(_=>{
 
 ## Helper 
 
-Tout ce code peut être généré grâce à [François Beaufort](https://plus.google.com/u/0/+FrancoisBeaufort) qui a mis à disposition un générateur [WebBluetoothGenerator](http://beaufortfrancois.github.io/sandbox/web-bluetooth/generator/)
+Tout ce code peut être généré grâce à [François Beaufort](https://plus.google.com/+FrancoisBeaufort) qui a mis à disposition un [générateur de code Web Bluetooth](http://beaufortfrancois.github.io/sandbox/web-bluetooth/generator/)
 
 ## Attention aux données
 
@@ -376,7 +376,7 @@ bufView[7] = byte15 << 8 | byte14;
 
 // Envoie des données
 device.gatt.getPrimaryService(SERVICE_UUID)
-.then(service=>service.getCharacteristic(this.config.charateristic()))
+.then(service => service.getCharacteristic(CHAR_UUID))
 .then(characteristic => characteristic.writeValue(buf));
 ```
 
@@ -386,7 +386,7 @@ Voici le résultat en vidéo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/j7VDRXxgqRE" frameborder="0" allowfullscreen></iframe>
 
-Vous pouvez accéder à l'application à l'adresse suivante : [App Mbot-WebBluetooth](https://jef.binomed.fr/mbot-webbluetooth) (/!\ à bien avoir configuré son navigateur pour autoriser le web-bluetooth)
+Vous pouvez accéder à l'application à l'adresse suivante : [App Mbot-WebBluetooth](https://jef.binomed.fr/mbot-webbluetooth) (/!\ à bien avoir configuré son navigateur pour autoriser le Web Bluetooth)
 
 # Crédits
 
