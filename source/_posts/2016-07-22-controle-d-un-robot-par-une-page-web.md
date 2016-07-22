@@ -7,7 +7,9 @@ tags:
 category:
   - Tech
 toc: false
+date: 2016-07-22 10:31:34
 ---
+
 
 J'ai acheté pour ma fille il y a quelque temps ce robot : [MBot](http://makeblock.com/mbot-stem-educational-robot-kit-for-kids/). C'est un robot basé sur un shield Arduino et pouvant être programmé via [Scratch](https://scratch.mit.edu/). Le modèle que j'ai choisi est celui avec la version Bluetooth, car je savais que cela allait me laisser plus de possibilités pour le hacker plus tard.
 
@@ -16,7 +18,10 @@ J'ai acheté pour ma fille il y a quelque temps ce robot : [MBot](http://makeblo
 </div>
 
 
-Il y a peu moins d'un an, j'ai appris l'existence de l'[API WebBluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! À peu près au même moment, j'ai entendu parlé du [Physical Web](https://google.github.io/physical-web/). 
+Il y a environ un an, j'ai aussi appris l'existence de deux APIs : 
+
+* L'[API WebBluetooth](https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth). Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! 
+* Le [Physical Web](https://google.github.io/physical-web/). 
 
 Je me suis donc posé la question suivante : et si je pouvais enrichir mon Mbot pour qu'il me propose d'interagir avec lui mais sans que j'ai d'application à installer. C'est ce que nous allons voir dans cet article !
 
@@ -46,12 +51,12 @@ Voici à quoi ressemble une notification Physical Web :
 </div>
 
 
-## Quel est l'intérêt du coup par rapport à un QR Code ?
+## Quel intérêt par rapport à un QR Code ?
 
 En fait les intérêts sont nombreux : 
 
 * C'est aussi simple d'utilisation qu'un QR Code et ça permet plus !
-* Contrairement à un QR Code, aucune application n'a besoin  d'être installée pour capter l'appareil si ce n'est votre navigateur.
+* Contrairement à un QR Code, aucune application n'a besoin  d'être installée pour capter la balise si ce n'est votre navigateur.
 * Les sites malveillants ne seront pas exposés au public car ils auront été filtrés par le serveur.
 * L'appareil qui émet l'URL pourra interagir avec le téléphone une fois que l'on y sera connecté.
 * On pourra mettre à jour l'URL de l'appareil si on le souhaite contrairement à un QR Code.
@@ -65,9 +70,11 @@ En fait les intérêts sont nombreux :
 
 Un appareil via un **serveur** Bluetooth va exposer un ensemble de **services**. Chaque service va lui-même exposer des **caractéristiques** sur lesquelles on pourra lire / écrire / s'abonner. L'appareil, les services et les caractéristiques sont identifiées par un **UUID** qui est unique.
 
+Maintenant que la partie théorie est passée, nous allons nous intéresser à notre cas d'utilisation : le Mbot.
+
 # Hack du protocole du Mbot
 
-Afin de savoir quels services je dois appeler et quel type de données, je dois transférer, je me suis lancé dans une opération de "reverse engineering" du Mbot pour comprendre comment l'utiliser. Je me suis appuyé sur cet article : [Reverse Engineering a Bluetooth Low Energy Ligth Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/) qui m'a beaucoup aidé. Je vous conseille de le lire car il rentre un peu plus en détail que moi sur les étapes à suivre pour Hacker un appareil BLE.
+Afin de savoir quels services je dois appeler et quel type de données je dois transférer, je me suis lancé dans une opération de "reverse engineering" du Mbot pour comprendre comment l'utiliser. Je me suis appuyé sur cet article : [Reverse Engineering a Bluetooth Low Energy Ligth Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/) qui m'a beaucoup aidé. Je vous conseille de le lire car il rentre un peu plus en détail que moi sur les étapes à suivre pour Hacker un appareil BLE.
 
 Je me contenterais ici de simplement lister les étapes principales que j'ai suivies et les résultats que j'ai obtenus.
 
@@ -118,7 +125,7 @@ Le fait d'activer cette option fait que le téléphone va écrire dans un fichie
 
 Afin de comprendre et analyser au mieux les trames, j'ai procédé par étapes. J'ai ainsi généré plusieurs fichiers de logs afin d'isoler les instructions envoyées. 
 
-Voici par exemple des fichiers de logs générés : 
+Voici par exemple, des fichiers de logs générés : 
 
 * Logs des moteurs : [btsnoop_hci_motor.log](/assets/2016-07-Mbot/btsnoop_hci_motor.log)
 * Logs des leds RGB : [btsnoop_hci_rbg.log](/assets/2016-07-Mbot/btsnoop_hci_rgb.log)
@@ -127,7 +134,7 @@ Voici par exemple des fichiers de logs générés :
 
 Afin d'analyser les trames, je me suis servi de [WireShark](https://www.wireshark.org/).
 
-J'ai ensuite injecté mes fichiers dans WireShark pour faire ressortir les trames qui m'intéressaient. Contrairement à l'exemple fourni sur l'article de "reverse engineering". Les instructions envoyées ne sont pas des instructions BLE mais Bluetooth classiques. Heureusement pour moi, les instructions restent les mêmes.
+J'ai ensuite injecté mes fichiers dans WireShark pour faire ressortir les trames qui m'intéressaient. Contrairement à l'exemple fourni sur l'article de "reverse engineering". Les instructions envoyées ne sont pas des instructions BLE mais Bluetooth classiques. Heureusement pour moi, les instructions binaires restent les mêmes.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-07-Mbot/wireshark.png">
@@ -146,7 +153,7 @@ ff 55 len idx action device port  slot  data a
 */
 ```
 
-Chaque message fait 12 bytes à répartir comme suit : 
+Chaque message fait 13 bytes à répartir comme suit : 
 
 ```javascript
 var byte0 = 0xff, // Static header
@@ -172,7 +179,7 @@ var byte12 = 0x0a,
 
 Maintenant que nous savons comment contrôler notre robot, il nous faut nous intéresser à l'API WebBluetooth.
 
-Avant toute chose, cette API est encore expérimentale et il faut encore l'activer dans Chrome : [enable-web-bluetooth](chrome://flags/#enable-web-bluetooth). Elle fonctionne sous Linux / Chrome OS / Mac / Android 6- (Chromium) / Android 6+ (Chrome). Veuillez vous référer à cette page pour consulter le [Tableau de compatibilité](https://github.com/WebBluetoothCG/web-bluetooth/blob/gh-pages/implementation-status.md)
+Avant toute chose, cette API est encore expérimentale et il faut encore l'activer dans Chrome : [enable-web-bluetooth](chrome://flags/#enable-web-bluetooth). Elle fonctionne sous Linux / Chrome OS / Mac / Android 6- (Chromium) / Android 6+ (Chrome). Veuillez vous référer à cette page pour savoir ce qui est compatible : [Tableau de compatibilité](https://github.com/WebBluetoothCG/web-bluetooth/blob/gh-pages/implementation-status.md)
 
 Pour accéder à un appareil Bluetooth, il faut passer par plusieurs étapes : 
 
@@ -199,7 +206,7 @@ navigator.bluetooth.requestDevice(options)
 });
 ```
 
-En précisant le nom du service dans le champ `optionalServices`, je pourrais me connecter au service. En effet, si on ne précise pas le nom du service, on ne pourra pas par la suite s'y connecter.
+En précisant le nom du service dans le champ `optionalServices`, je pourrais me connecter au service. En effet, si on ne précise pas le nom du service, on ne pourra pas s'y connecter par la suite.
 
 ## Connexion à l'appareil
 
@@ -317,7 +324,7 @@ ff 55 len idx action device port  slot  data a
 */
 ```
 
-## Comment donner à manger des données déjà binaires ?
+## Comment donner à manger des données qui sont déjà binaires ?
 
 Quand on regarde le format des instructions Bluetooth, on se rend compte qu'on ne manipule pas ici des chiffres ou des chaines de caractères mais bel et bien une instruction binaire. Comment faire pour que cette donnée soit transférée correctement au Mbot ?
 
@@ -375,35 +382,11 @@ device.gatt.getPrimaryService(SERVICE_UUID)
 
 # Résultat
 
-Voici l'application résultante  
-
-## Connexion
-
-<div style="text-align:center; width:100%;">
-    <img src="/assets/2016-07-Mbot/mbot_demo_1.png">
-</div>
-
-## Contrôle des moteurs
-
-<div style="text-align:center; width:100%;">
-    <img src="/assets/2016-07-Mbot/mbot_demo_2.png">
-</div>
-
-## Contrôle des leds
-
-<div style="text-align:center; width:100%;">
-    <img src="/assets/2016-07-Mbot/mbot_demo_2.png">
-</div>
-
-## Contrôle du buzzer
-
-<div style="text-align:center; width:100%;">
-    <img src="/assets/2016-07-Mbot/mbot_demo_4.png">
-</div>
-
-## Vidéo 
+Voici le résultat en vidéo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/j7VDRXxgqRE" frameborder="0" allowfullscreen></iframe>
+
+Vous pouvez accéder à l'application à l'adresse suivante : [App Mbot-WebBluetooth](https://jef.binomed.fr/mbot-webbluetooth) (/!\ à bien avoir configuré son navigateur pour autoriser le web-bluetooth)
 
 # Crédits
 
