@@ -392,6 +392,14 @@ Vous pouvez accéder à l'application à l'adresse suivante : [App Mbot-WebBluet
 
 Le code source du projet est disponible ici : [Mbot-webbluetooth](https://github.com/binomed/mbot-webbluetooth/blob/master/index.html)
 
+Pour aller plus loin : 
+
+* [Communauté Google +](https://plus.google.com/u/0/communities/108953318610326025178) : La communauté officielle 
+* [Web Bluetooth Samples](https://googlechrome.github.io/samples/web-bluetooth/) : Des exemples de code
+* [Communauté W3C](https://www.w3.org/community/web-bluetooth/) : La communauté W3C dédié au Web Bluetooth
+* [Spec](https://webbluetoothcg.github.io/web-bluetooth/) : La spécification / documentation officielle.
+* [Interact With BLE Device On The Web](https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web) : Article d'introduction de Google pour apprendre à utiliser l'API.
+
 
 <script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
 <script type="text/javascript" src="/assets/2016-07-Mbot/mbot.js"></script>
