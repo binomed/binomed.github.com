@@ -1,165 +1,26 @@
-SQLI: 
-  id: sqli
-  title: SQLI
-  start-year: 2012
-  role: Responsable du pôle IOT &         
+Lucca:
+  id: Lucca
+  title: Lucca
+  start-year: 2016
+  role: Ingénieur R&D
   role2: Développeur Senior en innovation 
-  main-mission: En charge du pole IOT de SQLI Nantes, j'anime également la communauté des conférenciers de l'agence. 
+  main-mission: Développer & améliorer les solutions Lucca. 
   missions:
-    laposte:
-      id: laposte
-      title: La Poste
-      start-year: 2015
-      job: Développeur / Expert Android
-      main-mission: J'interviens sur divers sujets en lien avec l'innovation et la R&D sur des projets mobile de La Poste. Beaucoup de POC sont réalisés lors de cette mission.
-      lists:
-        technos: 
-          - Android
-          - Cordova
-          - Javascript
-          - OpenCV
-          - NFC
-          - Impression 3D
-        tasks:
-          - Mise en place d'un plugin de contrôle de passeport avec lecture de la puce RFID.
-          - Réalisation d'un prototype de lampe UV pouvant se brancher sur un téléphone afin de faire ressortir les caractéristiques cachées de la carte.
-          - Mise en place de processus de détection de faux documents.
-          - Mise en place d'un portail afin de permettre à des usagers anonymes de surfer sur internet depuis une tablette Android.
-          - Mise en place de plugin Cordova pour contrôler un lecteur de code barre en bluetooth.
-    sncf:
-      id: sncf
-      title: Sncf
-      start-year: 2014
-      end-year: 2015
-      job: Développeur en innovation
-      main-mission: |
-                    Il était question sur ce poste de faire de la R&D et aussi de l’implémentation de processus en avance de phase pour de futurs projets de la SNCF.
-                    Beaucoup de POC sont réalisés lors de cette mission.
-      lists:
-        technos:
-          - Android
-          - Javascript
-          - AngularJS
-          - WebRTC
-          - Leap Motion
-          - Arduino
-          - Google Glass
-          - Myo
-          - RequireJS
-          - NodeJS
-          - ThreeJS
-          - Chrome App
-        tasks:
-          - Mise en place d’applications de contrôle sur Android
-          - Réalisation d’un prototype HTML5 sur Android.
-          - Participations aux réunions visant à sortir les bonnes pratiques du développement sur Android.
-          - Participations à des développements sur NFC.
-          - Mise en place d’une plateforme de visio 100% HTML5 via WebRTC
-          - Réalisation d'un prototype avec la LeapMotion en vue de créer des interfaces innovantes sans contact.
-          - Mise en place d’une application HTML5 servant de démonstrateur technologique pour les agents en gare. L’objectif étant de montrer la faisabilité de la mise en place d'une application HTML5 moderne avec des WebSockets, du SEE dans l’environnement sécurisé du SI de la SNCF.
-          - Mise en place d’un sapin connecté en Arduino recevant ses instructions d’une application mobile développée en HTML5.
-          - Mise en place d’une télécommande de présentation HTML5 via une interface mobile.
-          - Mise en place d’un prototype avec les Google Glass pour les contrôleurs de la SNCF.
-          - Mise en place d’une application Android pour les contrôleurs.
-    animation:
-      id: animsqli
-      title: Animation interne
-      start-year: 2012
-      job: Animateur de communautés internes
-      main-mission: J'ai mis en place de nombreux POC à visibilités internes ou externes.
-      lists:
-        technos:
-          - AngularJS
-          - Android
-          - ChromeApp
-          - Myo
-          - Javascript
-          - Arduino
-          - Leap Motion
-          - WebRTC
-          - NodeJS
-          - OcculusRift
-        tasks: 
-          - Mise en place d'un cursus de formation pour conférenciers.
-          - Mise en place d'une animation avec un vélo d'appartement branché sur un arduino et retransmettant dans un casque Occulus le résultat d'une sphère Google StreetView.
-          - Mise en place d'une animation avec un rameur connecté. Un jeu a été réaliser en web pour retranscrire le déplacement du joueur sur le rameur à l'écran.
-          - Mise en place d'un jeu vidéo HTML5.
-          - Mise en place de quizz interactifs. 
-          - Mise en place de retours clients autour de l'IOT / Google IO / Web.
-    ibp:
-      id: ibp
-      title: IBP
-      start-year: Déc 2014
-      end-year: Déc 2014
-      job: Audit API Rest
-      main-mission: |
-                    L’objectif de cette mission était d’identifier une solution du marché pour la documentation des APIs REST. 
-                    Un POC a été réalisé afin de vérifier l’intégration de cette solution dans les processus internes.
-      lists:
-        technos:
-          - Raml
-          - Swagger
-          - Blueprint
-        tasks:
-          - "Etude des solutions disponibles sur le marché : RAML / SWAGGER / BLUEPRINT API"
-          - Réalisation d’un POC
-    epsi:
-      id: epsi
-      title: EPSI
-      start-year: Sept 2013
-      end-year: Jan 2014
-      job: Cours mobilité
-      main-mission: J'ai dispensé des cours sur le développement web & Android.
-      lists:
-        technos:
-          - HTML
-          - Javascript
-          - Android
-        tasks:
-          - Mise en place du programme.
-          - Rédaction des cours.
-          - Dispense des cours.
-    formation:
-      id: sg
-      title: Société Générale
-      start-year: Mars 2013
-      end-year: Mars 2014
-      job: Formation GWT
-      main-mission: Réalisation d'un formation GWT.
-      lists:
-        technos:
-          - GWT
-        tasks:
-          - Préparation et dispense de la formation
-    celtipharm:
-      id: celtipharm
-      title: Celtipharm
-      start-year: Aout 2013
-      end-year: Aout 2013
-      job: Audit Android
-      main-mission: Réalisation d'un audit pour une migration d'application Iphone vers Android.
-      lists:
-        technos:
-          - Android
-        tasks:
-          - Audit pour identifier les bonnes pratiques à mettre en place pour le futur développement de l’application.
-          - Rédaction d’un document de synthèse.
-    cbp:
-      id: cbp
-      title: CBP
-      start-year: Dec 2012
-      end-year: Dec 2012
-      job: Audit Métrologie
-      main-mission: Audit de montée en charge d'une application GWT.
-      lists:
-        technos:
-          - Neoload4J
-          - Selenium
-        tasks:
-          - Mise en place des tests Selenium.
-          - Mise en place des scénarii Neoload.
-          - Exécution / analyse des tests de montées en charge de l’application.
-          - Rédaction d’un document de synthèse.
+      internelucca:
+        id: internelucca
+        title: BU GrowthHacking
+        start-year: 2016
+        job: Ingénieur R&D
+        main-mission: J'anime et je développe les solutions et produits Lucca sur la BU GrowthHacking. J'interviens aussi bien sur la partie Back que Front
+        lists: 
+          technos: 
+            - AngularJS
+            - Ionic
+            - Javascript
+            - C#
+            - TypeScript
+          taks: 
+            - Développement des solutions Poplee, Poplee Mobile, Paga, ...
 community: 
   id: community
   title: Associations
@@ -330,6 +191,169 @@ Binomed:
           - 2013 - AndroidBootstrap - Breizhcamp
           - 2013 - WebRTC - DevFest Nantes
           - 2012 - Android pour les débutants - GDG Nantes
+SQLI: 
+  id: sqli
+  title: SQLI
+  start-year: 2012
+  end-year: 2016
+  role: Responsable du pôle IOT &         
+  role2: Développeur Senior en innovation 
+  main-mission: En charge du pole IOT de SQLI Nantes, j'anime également la communauté des conférenciers de l'agence. 
+  missions:
+    laposte:
+      id: laposte
+      title: La Poste
+      start-year: 2015
+      job: Développeur / Expert Android
+      main-mission: J'interviens sur divers sujets en lien avec l'innovation et la R&D sur des projets mobile de La Poste. Beaucoup de POC sont réalisés lors de cette mission.
+      lists:
+        technos: 
+          - Android
+          - Cordova
+          - Javascript
+          - OpenCV
+          - NFC
+          - Impression 3D
+        tasks:
+          - Mise en place d'un plugin de contrôle de passeport avec lecture de la puce RFID.
+          - Réalisation d'un prototype de lampe UV pouvant se brancher sur un téléphone afin de faire ressortir les caractéristiques cachées de la carte.
+          - Mise en place de processus de détection de faux documents.
+          - Mise en place d'un portail afin de permettre à des usagers anonymes de surfer sur internet depuis une tablette Android.
+          - Mise en place de plugin Cordova pour contrôler un lecteur de code barre en bluetooth.
+    sncf:
+      id: sncf
+      title: Sncf
+      start-year: 2014
+      end-year: 2015
+      job: Développeur en innovation
+      main-mission: |
+                    Il était question sur ce poste de faire de la R&D et aussi de l’implémentation de processus en avance de phase pour de futurs projets de la SNCF.
+                    Beaucoup de POC sont réalisés lors de cette mission.
+      lists:
+        technos:
+          - Android
+          - Javascript
+          - AngularJS
+          - WebRTC
+          - Leap Motion
+          - Arduino
+          - Google Glass
+          - Myo
+          - RequireJS
+          - NodeJS
+          - ThreeJS
+          - Chrome App
+        tasks:
+          - Mise en place d’applications de contrôle sur Android
+          - Réalisation d’un prototype HTML5 sur Android.
+          - Participations aux réunions visant à sortir les bonnes pratiques du développement sur Android.
+          - Participations à des développements sur NFC.
+          - Mise en place d’une plateforme de visio 100% HTML5 via WebRTC
+          - Réalisation d'un prototype avec la LeapMotion en vue de créer des interfaces innovantes sans contact.
+          - Mise en place d’une application HTML5 servant de démonstrateur technologique pour les agents en gare. L’objectif étant de montrer la faisabilité de la mise en place d'une application HTML5 moderne avec des WebSockets, du SEE dans l’environnement sécurisé du SI de la SNCF.
+          - Mise en place d’un sapin connecté en Arduino recevant ses instructions d’une application mobile développée en HTML5.
+          - Mise en place d’une télécommande de présentation HTML5 via une interface mobile.
+          - Mise en place d’un prototype avec les Google Glass pour les contrôleurs de la SNCF.
+          - Mise en place d’une application Android pour les contrôleurs.
+    animation:
+      id: animsqli
+      title: Animation interne
+      start-year: 2012
+      job: Animateur de communautés internes
+      main-mission: J'ai mis en place de nombreux POC à visibilités internes ou externes.
+      lists:
+        technos:
+          - AngularJS
+          - Android
+          - ChromeApp
+          - Myo
+          - Javascript
+          - Arduino
+          - Leap Motion
+          - WebRTC
+          - NodeJS
+          - OcculusRift
+        tasks: 
+          - Mise en place d'un cursus de formation pour conférenciers.
+          - Mise en place d'une animation avec un vélo d'appartement branché sur un arduino et retransmettant dans un casque Occulus le résultat d'une sphère Google StreetView.
+          - Mise en place d'une animation avec un rameur connecté. Un jeu a été réaliser en web pour retranscrire le déplacement du joueur sur le rameur à l'écran.
+          - Mise en place d'un jeu vidéo HTML5.
+          - Mise en place de quizz interactifs. 
+          - Mise en place de retours clients autour de l'IOT / Google IO / Web.
+    ibp:
+      id: ibp
+      title: IBP
+      start-year: Déc 2014
+      end-year: Déc 2014
+      job: Audit API Rest
+      main-mission: |
+                    L’objectif de cette mission était d’identifier une solution du marché pour la documentation des APIs REST. 
+                    Un POC a été réalisé afin de vérifier l’intégration de cette solution dans les processus internes.
+      lists:
+        technos:
+          - Raml
+          - Swagger
+          - Blueprint
+        tasks:
+          - "Etude des solutions disponibles sur le marché : RAML / SWAGGER / BLUEPRINT API"
+          - Réalisation d’un POC
+    epsi:
+      id: epsi
+      title: EPSI
+      start-year: Sept 2013
+      end-year: Jan 2014
+      job: Cours mobilité
+      main-mission: J'ai dispensé des cours sur le développement web & Android.
+      lists:
+        technos:
+          - HTML
+          - Javascript
+          - Android
+        tasks:
+          - Mise en place du programme.
+          - Rédaction des cours.
+          - Dispense des cours.
+    formation:
+      id: sg
+      title: Société Générale
+      start-year: Mars 2013
+      end-year: Mars 2014
+      job: Formation GWT
+      main-mission: Réalisation d'un formation GWT.
+      lists:
+        technos:
+          - GWT
+        tasks:
+          - Préparation et dispense de la formation
+    celtipharm:
+      id: celtipharm
+      title: Celtipharm
+      start-year: Aout 2013
+      end-year: Aout 2013
+      job: Audit Android
+      main-mission: Réalisation d'un audit pour une migration d'application Iphone vers Android.
+      lists:
+        technos:
+          - Android
+        tasks:
+          - Audit pour identifier les bonnes pratiques à mettre en place pour le futur développement de l’application.
+          - Rédaction d’un document de synthèse.
+    cbp:
+      id: cbp
+      title: CBP
+      start-year: Dec 2012
+      end-year: Dec 2012
+      job: Audit Métrologie
+      main-mission: Audit de montée en charge d'une application GWT.
+      lists:
+        technos:
+          - Neoload4J
+          - Selenium
+        tasks:
+          - Mise en place des tests Selenium.
+          - Mise en place des scénarii Neoload.
+          - Exécution / analyse des tests de montées en charge de l’application.
+          - Rédaction d’un document de synthèse.
 Ausy: 
   id: ausy
   title: Ausy
