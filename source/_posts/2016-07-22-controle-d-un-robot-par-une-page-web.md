@@ -1,9 +1,9 @@
 title: "Contrôle d'un robot par une page web"
 tags:
-  - Chrome
-  - Web Bluetooth
-  - HTML5
-  - Bluetooth 4.1
+  - chrome
+  - web Bluetooth
+  - html5
+  - bluetooth 4.1
 category:
   - Tech
 toc: false

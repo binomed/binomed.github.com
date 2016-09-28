@@ -1,7 +1,7 @@
 title: Réalisez votre PortalGun avec WebRTC
 tags:
-  - WebRTC
-  - Canvas
+  - webRTC
+  - canvas
 category:
   - Tech
 toc: false

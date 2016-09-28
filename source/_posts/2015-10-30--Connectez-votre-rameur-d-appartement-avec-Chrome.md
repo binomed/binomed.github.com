@@ -1,10 +1,10 @@
 title: "Connectez votre rameur d'appartement avec Chrome"
 tags:
-  - Chrome
-  - Arduino
-  - Canvas
-  - HTML5
-  - Jeux
+  - chrome
+  - arduino
+  - canvas
+  - html5
+  - jeux
 category:
   - Tech
 toc: false

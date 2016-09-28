@@ -1,9 +1,9 @@
 title: Retour sur le Google I/O 2016
 tags:
-  - VR
-  - PWA
-  - CSS
-  - Polymer
+  - vr
+  - pwa
+  - css
+  - polymer
 category:
   - Event
 toc: false
