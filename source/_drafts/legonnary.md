@@ -9,7 +9,8 @@ category:
 toc: false
 ---
 
-IMAGE COOL ! 
+![](/assets/2016-12-legonnary/devfest_photo.jpg)
+
 
 ## Tout ça pour un compte à rebours !
 
@@ -17,19 +18,22 @@ Dans le cadre du [DevFest Nantes 2017](https://devfestnantes.gdgnantes.com) j'ai
 
 ### Origin story
 
-Ayant eu la chance d'aller au [Google I/O](https://events.google.com/io), j'ai beaucoup apprécié les animations qu'il y a eu et qui permettait aux participants de joueur avec une application codée spécialement pour l'occasion : [LIEN VERS AIRPLAINE]().
+Ayant eu la chance d'aller au [Google I/O](https://events.google.com/io), j'ai beaucoup apprécié les animations qu'il y a eu et qui permettait aux participants de joueur avec une application codée spécialement pour l'occasion : [Paper Planes](https://paperplanes.world/).
 
 N'ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J'ai donc cherché un autre concept ! 
 
 ### Thème : les Lego ©
 
-[IMAGE lego]
+![](/assets/2016-12-legonnary/theme_lego.jpg)
 
 En 2016, le thème graphique était l'univers Lego, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui permettrait de faire un jeux multijoueur basé sur les legos. 
 
 Ma première idée fue de laisser les participants contruire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants et le résultat final ! L'idée était intéressante mais j'ai du me rendre à l'évidence, je n'ai ni le temps, ni les compétences pour mettre en place un tel système... il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et à la fois réalisable pour mes compétences graphiques : J'allais faire un Pixel art Lego © dont le résultat final se verrait à l'écran ! Legonnary était né !
 
-[IMAGE legonnary ]
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/gdg_logo_legonnary.png">
+</div>
+
 
 ### Le concept
 
@@ -44,7 +48,7 @@ Le concept est du coup relativement simple :
 
 Avant de rentrer dans le détail de l'implémentation choisie, j'ai voulu me fixer quelques contraintes : 
 
-- Je voulais faire une Progressive Web App [PWA - TODO](LIEN A METTRE) afin d'être : mobile first / offline / installable.
+- Je voulais faire une Progressive Web App [PWA](https://developers.google.com/web/progressive-web-apps/) afin d'être : mobile first / offline / installable.
 - Je voulais un jeu temps réel mais en même temps sans serveur.
 - Je voulais une application sécurisée, à la fois au niveau des données mais aussi au niveau de son accès. Globalement, je voudrais que mes utilisateurs soient loggués.
 - Afin d'éviter aux participants de saisir une url, je voulais que l'application soit détectable en physical web
@@ -55,13 +59,14 @@ Avant de rentrer dans le détail de l'implémentation choisie, j'ai voulu me fix
 
 Pour faire marcher tout ça ensemble, j'ai choisi l'architecture suivante : 
 
-TODO : refaire le schéma
-![](/assets/2016-12-legonnary/ArchiCountDown.jpg)
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/Legonnary_Archi.png">
+</div>
 
 ### Firebase
 
 Firebase me permet en effet de répondre à beaucoup de besoins : 
-* En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à [firebase login -TODO]() je peux faire de l'authentification sécurisée sans me soucier de mettre en place des mécanismes d'OAuth !
+* En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à [Firebase Authentication](https://firebase.google.com/docs/auth/) je peux faire de l'authentification sécurisée sans me soucier de mettre en place des mécanismes d'OAuth !
 * Je vais pouvoir "hoster" mon application
 * Mes données vont être synchronisées en temps réel et chacune des applications va pouvoir communiquer de façon instanée sans que j'ai quoi que ce soit à coder au niveau serveur.
 * Enfin pour finir, le jeux fonctionnera aussi offline grace à Firebase car je sais qu'il est du ressort de la librairie de gérer les push d'événements.
@@ -78,9 +83,13 @@ Face à tous possibles problèmes, j'ai préféré me reposer sur une libraire p
 
 ### Déployement automatique avec CodeShip
 
-Enfin pour pousser mon code en production, je me suis reposé sur [codeship TODO]() qui propose de se brancher sur les commits faits sur github et donc permettre un redéployement automatique de mon code. 
+Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](https://codeship.com/) qui propose de se brancher sur les commits faits sur github et donc permettre un redéployement automatique de mon code. 
 
 ### Workflow de validation des dessins
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/Legonnary_Validation.png">
+</div>
 
 Afin de faire communiquer correctement chacun des écrans / applications, j'ai défini une notion d'états pour les dessins fait via l'application. Un dessin va pouvoir se retrouer avec plusieurs états en même pour permettre un affichage conditionnel. 
 
@@ -93,7 +102,9 @@ Etats additionnels :
 * **Archived** : Un dessin est dans cet état dès que le dessin est validé. Un dessin dans cet état est considéré comme public et peut donc être consulté par n'importe qui.
 
 
-[IMAGE faisant passer d'un état à un autre]
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/Legonnary_Workflow.png">
+</div>
 
 
 ## Workflow de dev choisi
@@ -129,7 +140,7 @@ ES6 m'a permis de structurer tout aussi éfficacement mon code, en créant des c
 
 Côté build, je n'avais pas forcément envie de partir sur webpack car soyons franc, je n'avais pas les compétences ni l'envie d'apprendre un nouvel outils de build. J'avais déjà bien assez à apprendre avec ce jeux. Je ne voulais pas me rajouter un nouveau challenge. A terme, je ne pas par contre que mes prochains projets n'utiliseront pas webpack ou le task runner tendance du moment. Bref ! J'ai choisi Gulp & Browserify. Gulp, par ce que je l'aime bien et Browserify par ce je voulais coder mon application en utilisant les imports de modules javascript.
 
-La seule complexité que j'ai eu avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel & Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin [babelify - TODO](). Voici les tasks spécifiques à mon build qui gère cette partie
+La seule complexité que j'ai eu avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel & Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin [babelify](https://github.com/babel/babelify). Voici les tasks spécifiques à mon build qui gère cette partie
 
 ```javascript
 "use strict";
@@ -178,7 +189,7 @@ J'ai du prévoir un certains de choses assez spécifiques car  :
 
 ## Progressive Web App
 
-Les [Progressives Web App - TODO]() sont un des grands concepts regroupant un ensemble de bonnes pratiques sur les applications web. Voici en vrac les choses que l'ont peut retrouver sur un PWA : 
+Les Progressives Web App (PWA) sont un des grands concepts regroupant un ensemble de bonnes pratiques sur les applications web. Voici en vrac les choses que l'ont peut retrouver sur un PWA : 
 
 * OffLine
 * Responsive
@@ -235,10 +246,11 @@ Revenons sur les différents champs :
 * `icons` : ensemble de combinaisons possibles de résolutions de votre icône. Cela va dépendre du téléphone
 * `start_url` : url de démarage du site une fois qu'on a cliqué sur l'icône. On peut donc spécifier une url spécifique dans le cas d'une PWA ! 
 * `display` : il s'agit d'un flag permettant de définir le mode de lancement de l'application. Voici les valeurs possibles : 
-    - TODO
+    - `standalone` : n'affiche pas la barre de navigation du navigateur
+    - `browser` : affiche la barre de navigation 
 * `orientation` : définit l'orientation de l'application
-* `background_color` : TODO
-* `theme_color` : TODO
+* `background_color` : définit la couleur de fond que vous aller avoir pour le spash screen
+* `theme_color` : définit une couleur de thème qui pourra être utilisée par le navigateur pour colorer la barre d'url
 
 Pour ajouter ce manifest à votre page il suffit simplement d'ajouter la balise suivante dans la partie header : 
 
@@ -260,6 +272,9 @@ Concernant IOS & Windows, il faut ajouter quelques balises supplémentaires (tou
 ```
 
 **/!\ Le fait de préciser le manifest dans l'index.html ne suffit pas à transformer votre application en application "installable" ! En effet, une application installée sur votre home doit être capable de démarer même sans internet !  Donc une PWA avec un manifest ne sera réellement installable que si vous avez un service worker installé. **
+
+Pour plus d'infos, vous pouvez consulter cette doc : [Web App Manifest](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/)
+
 ### Offline
 
 ### Responsive
