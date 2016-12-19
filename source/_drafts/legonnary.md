@@ -4,6 +4,8 @@ tags:
   - HTML5
   - Firebase
   - DevFest
+  - Service Worker
+  - Web App Manifest
 category:
   - Tech
 toc: false
@@ -112,8 +114,7 @@ Etats additionnels :
 
 ### Structure du code
 
-```bash
-Legonnary
+```bash Legonnary/
 /public # Build du projet
 /src # Sources du projet
   /assets # Assets audio / vidéos / font / images
@@ -142,7 +143,7 @@ Côté build, je n'avais pas forcément envie de partir sur webpack car soyons f
 
 La seule complexité que j'ai eu avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel & Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin [babelify](https://github.com/babel/babelify). Voici les tasks spécifiques à mon build qui gère cette partie
 
-```javascript
+```javascript gulpfile.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js
 "use strict";
 // Include gulp
 var gulp = require("gulp");
@@ -170,13 +171,13 @@ La déclaration des extensions es6 est obligatoire pour indiquer au plugin ce qu
 
 **/!\\** Il est très important aussi d'ajouter à la racine de son projet un ficher `.babelrc` qui permet de spécifier quelle est la cible de compilation
 
-```javascript
+```javascript .babelrc https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/.babelrc
 {
   "presets": ["es2015"]
 }
 ```
 
-Pour le reste, j'ai utilisé sass /  browsersync afin de me garentir un workflow de dev complet. Voici le lien vers mon [gulp file - TODO]()
+Pour le reste, j'ai utilisé sass /  browsersync afin de me garentir un workflow de dev complet. Voici le lien vers mon [Gulp File](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js)
 
 ### Spécifiques du build
 
@@ -214,7 +215,7 @@ Une des choses les plus simple à mettre en oeuvre c'est le manifest. Il s'agit 
 
 Prenons en exemple le manifest de l'application joueur.
 
-```json
+```json manifest_phone.json https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/manifest_phone.json
 {
     "name": "Legonnary",
     "short_name": "Legonnary",
@@ -254,13 +255,13 @@ Revenons sur les différents champs :
 
 Pour ajouter ce manifest à votre page il suffit simplement d'ajouter la balise suivante dans la partie header : 
 
-```html
+```html index.html(header) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/index.html#L9
 <link rel="manifest" href="manifest_phone.json">
 ```
 
 Concernant IOS & Windows, il faut ajouter quelques balises supplémentaires (toujours dans le header) pour avoir l'ajout à l'écran d'accueil.
 
-```html
+```html index.html(header) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/index.html#L10
 <!-- Add to home screen for Safari on iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -277,9 +278,206 @@ Pour plus d'infos, vous pouvez consulter cette doc : [Web App Manifest](https://
 
 ### Offline
 
+Passons maintenant à la mise en place du service worker.
+
+Pour ceux qui ne savent pas ce qu'est un service worker, je vous invite à consulter ce site : [Is ServiceWorker Ready ?](https://jakearchibald.github.io/isserviceworkerready/). En plus de vous donner l'état d'avancement de l'implémentation de la spec sur les différents navigateurs, il vous donnera accès à plein de ressources, documentation nécessaire à la compréhension du service worker.
+
+Comme je le disais au début, j'ai préféré coder moi même mon service worker car je souhaitais monter en compétences et comprendre précisement ce que je codais. Je n'ai donc pas utilisé d'outils pour m'aider à réaliser ce dernier et si vous êtes intéressés par de la génération de services workers, je vous invite à regarder ceci : [sw-precache](https://github.com/GoogleChrome/sw-precache).
+
+Concernant mon application, j'avais envie d'éviter de surcharger mon serveur en bande passante et donc je me suis appuyé sur des CDN pour délivrer mes librairies javascript. Une des premières choses que j'ai donc mis en place c'est la spération entre mon cache de CDN et le cache des mes ressources que je considérais comme dynamiques (css / js / ...) 
+
+```javascript service-worker-phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js
+'use strict';
+
+let cacheFileName = "legonnaryCache-v{timestamp}";
+let cacheCdnName = "legonnaryCdnCache-v1";
+
+let filesToCache = [
+    './',
+    './index.html',
+    './bundle_phone.js',
+    './css/phone.css',
+    './assets/img/favicon.ico',
+    './assets/img/launcher_144.png',
+    './assets/img/launcher_192.png',
+    './assets/img/launcher_512.png',
+    './assets/img/lego_painter.png',
+    './assets/img/lego_painter_128.png',
+    './assets/fonts/LEGO_BRIX.ttf',
+    './manifest_phone.json'
+];
+
+let cdnToCache = [
+  "https://fonts.googleapis.com/",
+  "https://cdnjs.cloudflare.com/",
+  "https://www.gstatic.com/",
+  "https://ajax.googleapis.com/",
+  "https://rawgit.com/",
+  "https://www.google-analytics.com/",
+  "https://code.getmdl.io/",
+  "https://fonts.gstatic.com/"  
+];
+```
+
+Ce fichier est issue des tutoriels de Google, donc on va y retrouver les éléments classiques : 
+
+**1. Installation avec mise en cache**
+
+```javascript service-worker-phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js#L32
+self.addEventListener('install', function(e) {
+    console.log('[ServiceWorker] Install');
+    e.waitUntil(
+        caches.open(cacheFileName)
+            .then(function(cache) {
+                console.log('[ServiceWorker] Caching app shell');
+                return cache.addAll(filesToCache);
+            })
+    );
+});
+```
+
+**2. Activation du cache avec invalidation du précédent cache** 
+
+```javascript service-worker-phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js#L43
+self.addEventListener('activate', function(e) {
+    console.log('[ServiceWorker] Activate');
+    e.waitUntil(
+        caches.keys().then(function(keyList) {
+            return Promise.all(keyList.map(function(key) {
+                if (key !== cacheFileName && key != cacheCdnName) {
+                    console.log('[ServiceWorker] Removing old cache', key);
+                    return caches.delete(key);
+                }
+            }));
+        })
+    );
+});
+```
+
+La particularité de mon service worker réside au niveau de la mise en cache du CDN. J'attends en effet de voir si la ressource demandée fait partie de ma liste de ressources à mettre à cache et si c'est le cas, je délivre soit le fichier 'caché', soit je le récupère sur le réseau et ensuite je le met en cache.
+
+Si la ressource ne fait pas partie des fichiers à mettre en cache, alors, je vais chercher la ressource sur le web.
+
+```javascript service-worker-phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js#L57
+self.addEventListener('fetch', function(e) {
+    console.log('[ServiceWorker] Fetch', e.request.url);
+    if (cdnToCache.find((element)=>{return e.request.url.indexOf(element) === 0;})) {
+        e.respondWith(
+            caches.match(e.request.url).then(function(response) {
+                if (response){
+                    return response
+                }else{
+                    return fetch(e.request)
+                            .then(function(response) {
+                                return caches.open(cacheCdnName).then(function(cache) {
+                                    cache.put(e.request.url, response.clone());
+                                    console.log('[ServiceWorker] Fetched&Cached Data');
+                                    return response;
+                                });
+                            })
+                }
+            })            
+        );
+    } else {
+        e.respondWith(
+            caches.match(e.request).then(function(response) {
+                return response || fetch(e.request);
+            })
+        );
+    }
+});
+```
+
+Fichier complet : [ServiceWorker Legonnary](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js)
+
+enfin, n'oublions pas d'inclure l'installation du service worker dans l'application.
+
+```javascript app_phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_phone.js#L186
+ if ('serviceWorker' in navigator) {        
+    navigator.serviceWorker.register('./service-worker-phone.js', {scope : location.pathname}).then(function(reg) {
+        console.log('Service Worker Register for scope : %s',reg.scope);
+    });
+}
+```
+
+#### Gestion du build 
+
+Comme je n'ai pas utilisé d'outils de build pour gérer pour moi le service worker, j'ai du mettre en place quelques *"astuces"* pour garder un workflow de dev facile. En effet, en développement mon service worker n'est pas actif et la mise à jour du numéro de cache est gérée automatiquement par mon build 
+
+**1. Service désactivé pendant le dev**
+
+J'aurais très bien pu utiliser l'option des devtools qui me permet de mettre à jour mon cache à chaque refresh mais cela nécessite que les devtools soient toujours ouverts, ce qui n'était pas toujours mon cas. Pour palier à ça, j'ai simplement commenté l'activation de mon service dans mon code et mon build va simplement supprimer ces commentaires.
+
+```javascript app_phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_phone.js#L185
+/* SERVICE_WORKER_REPLACE
+if ('serviceWorker' in navigator) {        
+    navigator.serviceWorker.register('./service-worker-phone.js', {scope : location.pathname}).then(function(reg) {
+        console.log('Service Worker Register for scope : %s',reg.scope);
+    });
+}
+SERVICE_WORKER_REPLACE */
+```
+
+Mon build s'occupe ensuite de décommenter le code : 
+
+```javascript gulpfile.js (task replace) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js#L98
+gulp.task("replace", function(){
+  gulp.src(['./public/bundle_phone.js', './public/bundle_moderator.js'])
+  .pipe(replace('/* SERVICE_WORKER_REPLACE', ''))
+  .pipe(replace('SERVICE_WORKER_REPLACE */', ''))
+  .pipe(gulp.dest('./public/'));
+});
+```
+
+De cette manière le code final ressemble à ça : 
+
+```javascript bundle_phone.js
+
+    
+    if ('serviceWorker' in navigator) {        
+        navigator.serviceWorker.register('./service-worker-phone.js', {scope : location.pathname}).then(function(reg) {
+            console.log('Service Worker Register for scope : %s',reg.scope);
+        });
+    }
+    
+```
+
+
+**2. Incrémentation automatique**
+
+Etant donné que les ressources qui vont évoluées sont à mon cache `let cacheFileName = "legonnaryCache-v{timestamp}";` 
+
+le timestamp est remplacé à la génération de la façon suivante :
+
+```javascript gulpfile.js (task replace_timestamp) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js#L105
+gulp.task("replace_timestamp", function(){
+  gulp.src(['./public/service-worker-phone.js', './public/service-worker-moderator.js'])
+  .pipe(replace('{timestamp}', Date.now()))
+  .pipe(gulp.dest('./public/'));
+})
+```
+
+De cette manière, le numéro de mon cache sera toujours en lien avec la dernière version de mon code.
+
+**3. Pour aller plus loin**
+
+Si je devais revoir mon service worker, je tacherais d'utiliser des outils tels que sw-precache et je séparerais encore plus mes caches pour dissocier la partie js / css / html de mes ressources graphiques / font. 
+
 ### Responsive
 
+La partie responsive a été géré très simplement grâce à la librairie [GetMdl.io](https://getmdl.io/) (Get Material Design Lite) qui me permet sans trop de complexité d'avoir une application avec un look Material Design.
+
+Un des avantages que propose cette librairie est d'utiliser une variante graphique jouant sur les couleurs primaire du material design : [Customize Getmdl](https://getmdl.io/customize/index.html). De cette manière, j'ai pu proposé sans sourcouhe un style graphique différent pour chacune des applications créé. De cette manière, j'avais un style graphique reconnaissable pour l'application joueur ou pour l'application modérateur.
+
+N'oublions quand même pas l'inclusion dans le header de la balise meta permettant de gérer le zoom navigateur pour les mobiles 
+
+```html index.html (header) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/index.html#L22
+ <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+```
+
 ## Sécurisation de l'app 
+
+### Authentification
 
 ### Structure de l'arbre firebase
 
