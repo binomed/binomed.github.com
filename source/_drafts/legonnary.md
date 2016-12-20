@@ -495,7 +495,7 @@ Dans mes précédents projets j'utilisais [Hello.js](https://adodson.com/hello.j
 
 Cette solution permet d'utiliser un mécanisme d'authentification des utilisateurs qui sera reconnu dans l'arbre Firebase. De plus, en se basant sur cette solution, on peut facilement paramétrer des solutions de social login ce qui est d'autant plus appréciable !
 
-Afin de faciliter la vie du développeur. Firebase a mis à disposition une librairie web qui permet d'intégrer ce mécanisme : [FirebaseUI-Web](https://github.com/firebase/FirebaseUI-Web)
+Afin de faciliter la vie du développeur. Firebase a mis à disposition une librairie web qui permet d'intégrer ce mécanisme : [FirebaseUI-Web](https://github.com/firebase/FirebaseUI-Web). Il reste quand même à configurer les différentes plateformes pour récupérer les différentes clés d'API OAuth. 
 
 ```javascript firebaseAuth.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/firebase/firebaseAuth.js#L11
 let uiConfig = {
@@ -531,7 +531,7 @@ A travers ce code, je suis capable gérer une popup de login, je suis capable d'
     <img src="/assets/2016-12-legonnary/legonnary_auth.png">
 </div>
 
-Un des avantages de la solution Firebase est que l'auto login est géré qu'une api est proposée pour récupérer les informations sur le user
+Un des avantages de la solution Firebase est que l'auto login est géré et qu'une api est proposée pour récupérer les informations sur le user
 
 **Comparatif**
 
@@ -557,14 +557,32 @@ Un des avantages de la solution Firebase est que l'auto login est géré qu'une 
 | Flickr Login      | ✓ | ✗ |
 | Vk Login      | ✗ | ✓ |
 
-
-helloJS : indépendant / gère plus de réseaux / pas d'ui 
-
-FireBase : autoreconnect / ui intégrée
-
 ### Https
 
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase-hosting.png">
+</div>
+
+Firebase propose depuis quelques temps déjà la possibilité de hoster son application sur leurs serveurs. [Firebase Hosting](https://firebase.google.com/docs/hosting/)
+
+Par défaut, le site est hébergé sur une url type `https://[MON_APPLICATION].firebaseapp.com`. Cependant si on le souhaite, on peut utiliser son propre nom de domaine. Dans mon cas l'application est disponible à l'adresse suivante : https://legonnary.firebaseapp.com 
+
+Pour déployer son site, rien de plus simple : 
+
+1. Installez les [firebase-tools](https://firebase.google.com/docs/cli/) : `npm install -g firebase-tools`
+2. Logguez vous : `firebase login`
+3. Initialisez votre projet pour préparer le déployement firebase : `firebase init`
+4. Lancer la procédure de déployement avec `firebase deploy`
+
+Si vous voulez utiliser `firebase deploy` derrière une plateforme de CI, rien de plus simple : 
+
+1. tapez dans une console : `firebase login:ci`. Vous allez ainsi récupérer un token
+2. Utilisez ce token sur votre plateforme d'intégration pour déployer avec la commande suivante : `firebase deploy --token <token>`
+
 ### Structure de l'arbre firebase
+
+
 
 ### Gestion de l'admin
 
