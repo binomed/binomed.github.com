@@ -477,7 +477,92 @@ N'oublions quand même pas l'inclusion dans le header de la balise meta permetta
 
 ## Sécurisation de l'app 
 
+Aux jours d'aujourd'hui, nous ne pouvons passer à côté d'applications sécurisées. Je voulais donc mettre en place les choses suivantes : 
+
+* Les joueurs doivent être indentifiés pour jouer et je voulais proposer un social login afin d'éviter d'avoir à saisir un nouveau login / mdp
+* Le site est servi en https
+* L'accès aux données et dessins produits n'est pas accessible par tout le monde
+
+Grâce aux dernières apis sorties côté firebase, j'ai pu résoudre tous ces problèmes le plus simplement du monde ! 
+
 ### Authentification
+
+Dans mes précédents projets j'utilisais [Hello.js](https://adodson.com/hello.js/) cette librairie est très facile à installer et très pratique. Je vous conseil d'y jetter un coup d'oeil !  Mais pour ce projet, j'ai voulu essayer quelque chose de différent pour comparer et voir les avantages inconvénients de chaque solution. Je suis donc parti sur [Firebase Authentication](https://firebase.google.com/docs/auth/). 
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase-authentication-logo1.png">
+</div>
+
+Cette solution permet d'utiliser un mécanisme d'authentification des utilisateurs qui sera reconnu dans l'arbre Firebase. De plus, en se basant sur cette solution, on peut facilement paramétrer des solutions de social login ce qui est d'autant plus appréciable !
+
+Afin de faciliter la vie du développeur. Firebase a mis à disposition une librairie web qui permet d'intégrer ce mécanisme : [FirebaseUI-Web](https://github.com/firebase/FirebaseUI-Web)
+
+```javascript firebaseAuth.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/firebase/firebaseAuth.js#L11
+let uiConfig = {
+    'callbacks': {
+        // Called when the user has been successfully signed in.
+        'signInSuccess': function(user, credential, redirectUrl) {
+            // Do not redirect.
+            return false;
+        }
+    },
+    // Opens IDP Providers sign-in flow in a popup.
+    'signInFlow': 'popup',
+    'signInOptions': [
+        {
+        provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        scopes: ['https://www.googleapis.com/auth/plus.login']
+        },
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service url.
+    'tosUrl': 'https://gdgnantes.com'
+};
+this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+this.ui.start('#firebaseui-auth-container', uiConfig);
+```
+
+A travers ce code, je suis capable gérer une popup de login, je suis capable d'avoir un login social avec Google / Facebook / Github / Twitter et ça donne ça : 
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/legonnary_auth.png">
+</div>
+
+Un des avantages de la solution Firebase est que l'auto login est géré qu'une api est proposée pour récupérer les informations sur le user
+
+**Comparatif**
+
+|Fonctionnalité|Hello.JS|FireBase|
+|:------------:|:----------:|:--------:|
+| Auto login      | ✗ | ✓ |
+| Facile à intégrer dans firebase      | ✗ | ✓ |
+| Peut être utilisé indépendant de firebase      | ✓ | ✗ |
+| Interface graphique      | ✗ | ✓ |
+| Single Email Login      | ✗ | ✓ |
+| Google Login      | ✓ | ✓ |
+| Facebook Login      | ✓ | ✓ |
+| Twitter Login      | ✓ | ✓ |
+| Github Login      | ✓ | ✓ |
+| LinkedIn Login      | ✓ | ✗ |
+| Live Login      | ✓ | ✗ |
+| DropBox Login      | ✓ | ✗ |
+| Instagram Login      | ✓ | ✗ |
+| Yahoo Login      | ✓ | ✗ |
+| Joinme Login      | ✓ | ✗ |
+| Soundcloud Login      | ✓ | ✗ |
+| Foursquare Login      | ✓ | ✗ |
+| Flickr Login      | ✓ | ✗ |
+| Vk Login      | ✗ | ✓ |
+
+
+helloJS : indépendant / gère plus de réseaux / pas d'ui 
+
+FireBase : autoreconnect / ui intégrée
+
+### Https
 
 ### Structure de l'arbre firebase
 
