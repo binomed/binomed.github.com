@@ -561,7 +561,7 @@ Un des avantages de la solution Firebase est que l'auto login est géré et qu'u
 
 
 <div style="text-align:center; width:100%;">
-    <img src="/assets/2016-12-legonnary/firebase-hosting.png">
+    <img src="/assets/2016-12-legonnary/firebase_hosting.png">
 </div>
 
 Firebase propose depuis quelques temps déjà la possibilité de hoster son application sur leurs serveurs. [Firebase Hosting](https://firebase.google.com/docs/hosting/)
@@ -582,6 +582,187 @@ Si vous voulez utiliser `firebase deploy` derrière une plateforme de CI, rien d
 
 ### Structure de l'arbre firebase
 
+J'ai fait reposer mon application sur la partie [Realtime Database](https://firebase.google.com/docs/database/) de Firebase car ça me permettait une réactivité et une interaction instantanée entre les différents acteurs. Pour ceux qui ne savent pas ce qu'est le Realtime Database, il s'agit d'un arbre json disponible sur firebase sur lequel on peut s'abonner. On peut écouter un ajout / modification / suppression de noeud ou d'attributs de l'arbre json.
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase-database-logo.png">
+</div>
+
+Voici comment mon arbre est structuré : 
+
+```json Realtime Database
+{
+    "admins":{
+        "mon*email@me*com":true
+    },
+    "draw": {
+        "XXXXX_FIREBASE_AUTO_UID_XXXX": {
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            }
+            "user": "pseudo user",
+            "userId": "XXXX_UUID_OAUTH_USER_XXXX"
+        },
+        "YYYY_FIREBASE_AUTO_UID_YYYY":{}
+    },
+    "drawValidated": {
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            },
+            "user": "pseudo user",
+            "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+        }
+    },
+    "drawSaved":{
+        "XXXX_UUID_OAUTH_USER_XXXX":{
+            "YYYY_FIREBASE_AUTO_UID_YYYY":{
+                "accepted":false,
+                "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+                "user": "pseudo user",
+                "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+            }
+        }
+    },
+    "drawShow":{
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "accepted" : true,
+            "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+            "user": "pseudo user"
+        }
+    }
+
+}
+```
+
+Si l'on regarde de plus prêt cet arbre, on peut voir 5 noeuds principaux : 
+
+* **admins** :  Liste des emails des administrateurs
+* **draw** : Liste des dessins soumis qui doivent être validés ou non par le modérateur
+* **drawValidated** : Liste des dessins validés par le modérateur qui sont en attente d'affichage sur l'écran du comptes à rebours
+* **drawSaved** : Liste des dessins qui ont été soit validés, soit refusés par utilisateur
+* **drawShow** : Liste des dessins qui ont été validés et qui sont disponibles pour l'affichage de restitution
+
+```json admins
+{
+    "admins":{
+        "mon*email@me*com":true
+    }
+}
+```
+
+Pour chaque admin, on indique son email. On est obligé par contre de remplacer les "." par des "*" car sinon firebase n'acceptes pas le json et le considère comme invalide
+
+
+```json draw
+{
+    "draw": {
+        "XXXXX_FIREBASE_AUTO_UID_XXXX": {
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            }
+            "user": "pseudo user",
+            "userId": "XXXX_UUID_OAUTH_USER_XXXX"
+        },
+        "YYYY_FIREBASE_AUTO_UID_YYYY":{}
+    }
+}
+```
+
+Pour chaque dessin, un uuid généré automatiquement par firebase est ajouté. S'en suit ensuite un descriptif du dessin avec l'utilisateur à l'origine du dessin et les instructions à appliquer pour reproduire le dessin. 
+
+A une instruction correspond 1 brique. Sa position dans le dessin est disponible ainsi que sa couleur et son angle. Pour un dessin, nous aurons autant d'instructions qu'il y a de briques.
+
+```json drawValidated
+{
+    "drawValidated": {
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            },
+            "user": "pseudo user",
+            "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+        }
+    }
+}
+```
+
+Dans cet arbre, on va retrouver toutes les informations nécéssaire à l'affichage d'un dessin à savoir : qui a fait le dessin et quelles sont les instructions pour dessiner. De cette manière, l'écran de compte à rebours est capable d'afficher les bonnes informations et de reproduire le dessin.
+
+```json drawSaved
+{
+    "drawSaved":{
+        "XXXX_UUID_OAUTH_USER_XXXX":{
+            "YYYY_FIREBASE_AUTO_UID_YYYY":{
+                "accepted":false,
+                "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+                "user": "pseudo user",
+                "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+            }
+        }
+    }
+}
+```
+
+A partir du moment où l'on se trouve dans "drawSaved", on se situe au niveau user et on a la liste des dessins de l'utilisateur avec leur état. Contrairement aux noeuds précédents, nous n'avons pas la liste des instructions mais directement l'image finale en base64. De cette manière, on évite la phase de construction du dessin.
+
+```json drawShow
+{
+    "drawShow":{
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "accepted" : true,
+            "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+            "user": "pseudo user"
+        }
+    }
+}
+```
+
+Même chose dans cette partie de l'arbre, on ne stocke que le nom du user et son dessin, on s'évite ainsi la reconstruction du dessin. De plus sous cette partie de l'arbre, on a supprimé l'id du user car cette information n'est plus pertinante.
 
 
 ### Gestion de l'admin
