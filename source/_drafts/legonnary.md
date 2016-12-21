@@ -14,6 +14,16 @@ toc: false
 ![](/assets/2016-12-legonnary/devfest_photo.jpg)
 
 
+## [TL;DR;] 
+
+Il s'agit d'un article sur un jeux mis en place pour le DevFest 2017. Les grandes parties sont : 
+* [Origin story](#Origin_story) : Pourquoi / Comment / Les enjeux ?
+* [Architecture](#Architecture) : Quelle architecture j'ai choisi ?
+* [Workflow de dev choisi](#Workflow_de_dev_choisi) : Comment j'ai structuré mon code et mon workflow de dev
+* [Progressive Web App](#Progressive_Web_App) : Comment j'ai transformé l'application en Progressive Web App
+* [Sécurisation de l’app](#Sécurisation_de_l’app) : Utilisation détaillée de firebase pour le cas du jeux
+* [Challenges graphiques](#Challenges graphiques) : Problèmes et solutions graphiques rencontrées
+
 ## Tout ça pour un compte à rebours !
 
 Dans le cadre du [DevFest Nantes 2017](https://devfestnantes.gdgnantes.com) j'ai voulu comme chaque année travailler un compte à rebours personnalisé.
@@ -28,7 +38,7 @@ N'ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J'ai
 
 ![](/assets/2016-12-legonnary/theme_lego.jpg)
 
-En 2016, le thème graphique était l'univers Lego, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui permettrait de faire un jeux multijoueur basé sur les legos. 
+En 2016, le thème graphique était l'univers Lego ©, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui permettrait de faire un jeux multijoueur basé sur les Lego ©. 
 
 Ma première idée fue de laisser les participants contruire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants et le résultat final ! L'idée était intéressante mais j'ai du me rendre à l'évidence, je n'ai ni le temps, ni les compétences pour mettre en place un tel système... il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et à la fois réalisable pour mes compétences graphiques : J'allais faire un Pixel art Lego © dont le résultat final se verrait à l'écran ! Legonnary était né !
 
@@ -79,9 +89,9 @@ La partie Progressive Web App a été codé de façon manuelle car je voulais co
 
 ### Fabric JS
 
-Ayant déjà eu l'occasion de travailler plusieurs fois avec des canvas, je sais que la complexité de code peut vite augmenter notamment lié aux histoires de zoom d'écran sur mobile. J'avais aussi identifé un certains nombre de points qui allaient surement me poser des problèmes, notamment le fait que mes pièces Lego devaient avoir un effet aimenté vis à vis d'une grille. 
+Ayant déjà eu l'occasion de travailler plusieurs fois avec des canvas, je sais que la complexité de code peut vite augmenter notamment lié aux histoires de zoom d'écran sur mobile. J'avais aussi identifé un certains nombre de points qui allaient surement me poser des problèmes, notamment le fait que mes pièces Lego © devaient avoir un effet aimenté vis à vis d'une grille. 
 
-Face à tous possibles problèmes, j'ai préféré me reposer sur une libraire plutôt que de tout coder moi même. J'ai donc choisi [FabricJS - todo]() comme librairie car elle proposait une abstraction suffisante et des fonctionnalités qui collaient bien avec mon besoin.
+Face à tous possibles problèmes, j'ai préféré me reposer sur une libraire plutôt que de tout coder moi même. J'ai donc choisi [FabricJS](http://fabricjs.com/) comme librairie car elle proposait une abstraction suffisante et des fonctionnalités qui collaient bien avec mon besoin.
 
 ### Déployement automatique avec CodeShip
 
@@ -767,11 +777,260 @@ Même chose dans cette partie de l'arbre, on ne stocke que le nom du user et son
 
 ### Gestion de l'admin
 
+Une fois cet arbre définit, j'ai voulu appliquer un système de restrictions sur la publication / lecture dans l'arbre. En effet, je ne voulais que n'importe qui puisse écrire ou lire n'importe quelle données. 
+
+Heureusement Firebase propose justement un mécanisme de protection de son arbre en fonction de l'utilisateur connecté. On peut soit protégé de façon fine un noeud ou alors poser des restrictions de façon plus large. Voici le guide complet pour apprendre à protéger ses données dans une base de données firebase : [Security & Rules](https://firebase.google.com/docs/database/security/) 
+
+Voici les restrictions mises en places : 
+
+```json database.rules.json https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json
+{
+  "rules":{
+    "admins": {
+      ".read": false,
+      ".write": false
+    },
+    "draw": {
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null"
+    },
+    "drawValidated":{
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    },
+    "drawShow":{
+      ".read": true,
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    },
+    "drawSaved":{
+      "$userId":{
+        ".read": "auth != null && $userId === auth.uid",
+        ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"  
+      }
+    }
+  }
+}
+```
+
+Revenons sur chacune de ces règles pour les détailler : 
+
+**Partie Admin :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L3
+{
+  "rules":{
+    "admins": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}
+```
+
+Cette partie de l'arbre n'est ni disponible en lecture, ni disponible en écriture car je ne veux pas que quiquonce puisse avoir accès aux emails concernés.
+
+
+**Partie dessins soumis :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L7
+{
+  "rules":{
+    "draw": {
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null"
+    }
+  }
+}
+```
+
+L'écriture sur ce noeud ne peut se faire que pour un utilisateur authentifié `auth != null`.
+
+La lecture n'est disponible que par un admin : 
+* `auth != null` : L'admin est authentifié
+* `root.child('admins').child(auth.token.email.replace('.', '*')).exists()` : l'utilisateur courant a son mail qui fait parti des noeuds disponibles dans la partie "admins". Au passage, on pense bien à remplacer les "*" par des "." lors de la vérification
+* `auth.token.email_verified == true` : l'email est vérifié par le tier de confiance OAuth
+
+**Partie Dessin validés (écran de comptes à rebours) : **
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L11
+{
+  "rules":{
+    "drawValidated":{
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    }
+  }
+}
+```
+
+Dans cette partie, seul l'admin peut lire ou écrire.
+
+**Partie dessins validés :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L15
+{
+  "rules":{
+    "drawShow":{
+      ".read": true,
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    }
+  }
+}
+```
+
+Seul l'admin peut écrire dans cette partie et par contre la lecture est disponible à n'importe qui. De cette manière seul le modérateur peut déplacer un dessin dans cette partie de l'arbre et une fois qu'un dessin est validé (et donc considéré comme "safe") il n'y a aucune restriction qui mérite de ne pas laisser l'accès à ces dessins au monde entier.
+
+**Partie dessins archivés (validés ou refusés) :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L19
+{
+  "rules":{
+    "drawSaved":{
+      "$userId":{
+        ".read": "auth != null && $userId === auth.uid",
+        ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"  
+      }
+    }
+  }
+}
+```
+
+L'écriture ne peut être faite que par un admin. Par contre la lecture n'est disponible que pour le user qui a créé le dessin. 
+
+Le `$userId` permet de cibler les sous parties de l'arbre `drawSaved` pour un utilisateur donné. Et donc la condition `$userId === auth.uid` me permet de m'assurer que seul l'utilsateur courant puisse avoir accès à ses dessins ! 
+
+N'importe qui ne pourra pas consulter les dessins refusés des autres et pour autant l'utilisateur pourra avoir un retour sur ses soumissions de dessins. 
+
 ## Challenges graphiques
 
-### Grille légo
+Pour ce projet, j'ai du faire face à 2 challenge techniques : 
+
+1. Reproduire une grille Lego ©
+2. Afficher les dessins à l'écran principal avec une animation simulant un flash suivit d'une image type polaroid.
+
+### Grille Lego ©
+
+Finalement, faire la grille Lego © a été quelque chose de plutôt simple, Grâce à la libraire [FrabricJS](http://fabricjs.com/) j'ai pu reproduire un pion vu de haut. Une brique est donc l'adition d'un carré avec une ombre sur lequel, j'ai posé 2 cercles avec un jeux de couleur et d'ombres. Enfin, je rajoute le mot "GDG" à la Place de Lego et le tour est joué.
+
+**Etape 1 : le carré avec l'ombre**
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_1.png">
+</div> 
+
+```javascript
+this.rectBasic = new fabric.Rect({
+    width: cellSize * size.col,
+    height: cellSize * size.row,
+    fill: color,
+    originX: 'center',
+    originY: 'center',
+    centeredRotation: true,
+    hasControls: false,
+    shadow : "5px 5px 10px rgba(0,0,0,0.2)"                        
+});
+```
+
+**Etape 2 : le premier cercle (cercle extérieur)**
+
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_2.png">
+</div> 
+
+```javascript
+new fabric.Circle({
+    radius: (cellSize / 2) - 4,
+    fill: ColorLuminance(color, 0.1),
+    originX: 'center',
+    originY: 'center'
+});
+```
+
+**Etape 3 : le second cercle avec une ombre**
+
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_3.png">
+</div> 
+
+```javascript
+new fabric.Circle({
+    radius: (cellSize / 2) - 5,
+    fill: ColorLuminance(color, -0.1),
+    originX: 'center',
+    originY: 'center',
+    shadow : "0px 2px 10px rgba(0,0,0,0.2)"
+});
+```
+
+**Etape 4 : L'ajout du texte GDG**
+
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_4.png">
+</div> 
+
+```javascript
+new fabric.Text('GDG', {
+    fontSize: cellSize / 5,
+    fill: ColorLuminance(color, -0.15),
+    originX: 'center',
+    originY: 'center',
+    stroke: ColorLuminance(color, -0.20),
+    strokeWidth: 1
+});
+```
+
+Même si cela n'est pas parfait, à une plus petite échelle, ça permet d'avoir un effet plustôt bon ! 
+
+Le code correspondant est au niveau des fichiers [peg.js](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/lego_shape/peg.js) et [circle.js](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/lego_shape/circle.js)
 
 ### Animations CSS
+
+L'animation css est décomposée en plusieurs animations : 
+
+1. Un flash
+2. L'affichage de mon image sous forme de négatif
+3. Le déplacement de mon image dans un coin de mon écran
+
+**Le Flash**
+
+<div id="parent-flash">  
+  <div id="flash-effect" class="flash"></div>
+</div>
+
+Pour réussir cette partie, c'est très simple, il suffit de jouer avec une div blanche avec un dégradé vers de la transparance et il suffit d'afficher cette div pour la faire disparaitre très rapidement.
+
+```css
+#flash-effect{
+    position:absolute;    
+    width:500px;
+    height:500px;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 80%);
+    opacity:0;
+}
+
+#flash-effect.flash{
+    animation: flash;
+    animation-duration: 1s;    
+}
+
+@keyframes flash {
+    from {opacity:1;}
+    to {opacity: 0}
+}
+```
+
+Ainsi le fait d'appliquer la classe `flash` créera automatiquement cet effet de flash photo.
+
+**L'effet négatif**
+
+<div id="parent-negatif">
+  <div class="img-ori-parent big">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" data-author="jefBinomed">
+  </div>
+</div>
 
 ## Tout ce dont je n'ai pas parlé
 
@@ -783,3 +1042,8 @@ Le résultat final :
  * App Modérateur
  * App Comptes à rebours
  * App Restit
+
+
+
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2016-12-legonnary/legonnary.js"></script>
