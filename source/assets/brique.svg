@@ -338,6 +338,70 @@
          result="composite2"
          id="feComposite3959-0" />
     </filter>
+    <filter
+       style="color-interpolation-filters:sRGB;"
+       inkscape:label="Drop Shadow"
+       id="filter4239">
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(150,150,150)"
+         result="flood"
+         id="feFlood4241" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite4243" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="20.9"
+         result="blur"
+         id="feGaussianBlur4245" />
+      <feOffset
+         dx="5"
+         dy="5"
+         result="offset"
+         id="feOffset4247" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite4249" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       inkscape:label="Drop Shadow"
+       id="filter4239-2">
+      <feFlood
+         flood-opacity="1"
+         flood-color="rgb(150,150,150)"
+         result="flood"
+         id="feFlood4241-1" />
+      <feComposite
+         in="flood"
+         in2="SourceGraphic"
+         operator="in"
+         result="composite1"
+         id="feComposite4243-7" />
+      <feGaussianBlur
+         in="composite1"
+         stdDeviation="20.9"
+         result="blur"
+         id="feGaussianBlur4245-9" />
+      <feOffset
+         dx="5"
+         dy="5"
+         result="offset"
+         id="feOffset4247-5" />
+      <feComposite
+         in="SourceGraphic"
+         in2="offset"
+         operator="over"
+         result="composite2"
+         id="feComposite4249-6" />
+    </filter>
   </defs>
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -353,7 +417,7 @@
      id="namedview6"
      showgrid="false"
      inkscape:zoom="0.63429568"
-     inkscape:cx="130.54129"
+     inkscape:cx="887.28616"
      inkscape:cy="650.28825"
      inkscape:window-x="1920"
      inkscape:window-y="24"
@@ -414,23 +478,8 @@
      x="638.50348"
      y="-145.8172"
      inkscape:export-xdpi="90"
-     inkscape:export-ydpi="90" />
-  <circle
-     style="opacity:1;fill:#d6d5ce;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3949)"
-     id="path3911-2"
-     cx="860.7973"
-     cy="76.476646"
-     r="162.38484"
-     inkscape:export-xdpi="90"
-     inkscape:export-ydpi="90" />
-  <circle
-     style="opacity:1;fill:#e9e8e1;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-     id="path3911-2-2"
-     cx="860.7973"
-     cy="76.476631"
-     r="153.435"
-     inkscape:export-xdpi="90"
-     inkscape:export-ydpi="90" />
+     inkscape:export-ydpi="90"
+     inkscape:export-filename="/media/Donnees/projets/binomed.github.com/source/assets/2016-12-legonnary/brique_3.png" />
   <rect
      style="fill:#e5e4de;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3833-6-2-1)"
      id="rect3142-1-9-9-6"
@@ -439,23 +488,44 @@
      x="1280.16"
      y="-141.08755"
      inkscape:export-xdpi="90"
-     inkscape:export-ydpi="90" />
+     inkscape:export-ydpi="90"
+     inkscape:export-filename="/media/Donnees/projets/binomed.github.com/source/assets/2016-12-legonnary/brique_4.png" />
   <circle
-     style="opacity:1;fill:#d6d5ce;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter3949-5)"
-     id="path3911-2-3"
-     cx="1502.4539"
-     cy="81.206322"
+     style="opacity:1;fill:#d6d5ce;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path3911-7"
+     cx="860.7973"
+     cy="76.476631"
      r="162.38484"
      inkscape:export-xdpi="90"
-     inkscape:export-ydpi="90" />
+     inkscape:export-ydpi="90"
+     inkscape:export-filename="/media/Donnees/projets/binomed.github.com/source/assets/2016-12-legonnary/brique_3.png" />
   <circle
-     style="opacity:1;fill:#e9e8e1;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     style="opacity:1;fill:#e9e8e1;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4239)"
      id="path3911-2-2-2"
-     cx="1502.4539"
-     cy="81.206291"
+     cx="860.7973"
+     cy="76.476631"
      r="153.435"
      inkscape:export-xdpi="90"
-     inkscape:export-ydpi="90" />
+     inkscape:export-ydpi="90"
+     inkscape:export-filename="/media/Donnees/projets/binomed.github.com/source/assets/2016-12-legonnary/brique_3.png" />
+  <circle
+     style="opacity:1;fill:#d6d5ce;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path3911-7-8"
+     cx="1502.4539"
+     cy="81.206276"
+     r="162.38484"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90"
+     inkscape:export-filename="/media/Donnees/projets/binomed.github.com/source/assets/2016-12-legonnary/brique_4.png" />
+  <circle
+     style="opacity:1;fill:#e9e8e1;fill-opacity:1;stroke:none;stroke-width:2.70000005;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter4239-2)"
+     id="path3911-2-2-2-9"
+     cx="1502.4539"
+     cy="81.206268"
+     r="153.435"
+     inkscape:export-xdpi="90"
+     inkscape:export-ydpi="90"
+     inkscape:export-filename="/media/Donnees/projets/binomed.github.com/source/assets/2016-12-legonnary/brique_4.png" />
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:90px;line-height:125%;font-family:'Ubuntu Mono';-inkscape-font-specification:'Ubuntu Mono';letter-spacing:0px;word-spacing:0px;fill:#c4c3bc;fill-opacity:1;stroke:#96958e;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -464,7 +534,8 @@
      id="text4069"
      sodipodi:linespacing="125%"
      inkscape:export-xdpi="90"
-     inkscape:export-ydpi="90"><tspan
+     inkscape:export-ydpi="90"
+     inkscape:export-filename="/media/Donnees/projets/binomed.github.com/source/assets/2016-12-legonnary/brique_4.png"><tspan
        sodipodi:role="line"
        id="tspan4071"
        x="1418.0226"
