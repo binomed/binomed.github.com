@@ -1027,8 +1027,8 @@ Ainsi le fait d'appliquer la classe `flash` créera automatiquement cet effet de
 **L'effet négatif**
 
 <div id="parent-negatif">
-  <div class="img-ori-parent big">
-    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" data-author="jefBinomed">
+  <div class="img-ori-parent big" data-author="jefBinomed">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
   </div>
 </div>
 

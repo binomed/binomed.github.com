@@ -1,11 +1,10 @@
 
 
-$size-photo: 200px;
-$size-photo-big: $canvas-size;
-
 .img-ori-parent.big{
-    width:calc(500px + 90px);
-    height: calc(500px + 200px);
+    /*width:calc(500px + 90px);
+    height: calc(500px + 200px);*/
+    width:calc(200px + 40px);
+    height: calc(200px + 100px);
     background:white;
     box-shadow       : 0px 0px 5px 0px rgba(50, 50, 50, 0.75);    
 
@@ -19,8 +18,10 @@ $size-photo-big: $canvas-size;
 .img-ori-parent.big::after{
     bottom: 15pt;
     left: 0;
-    font-size:50pt;
-    line-height:50pt;
+    /*font-size:50pt;
+    line-height:50pt;*/
+    font-size:20pt;
+    line-height:20pt;
     transition-property: all;
     transition-duration: 2s;
     transition-timing-fonction: ease;
@@ -29,6 +30,9 @@ $size-photo-big: $canvas-size;
 
 .img-ori-parent{
     position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
     width:calc(200px + 40px);
     height: calc(200px + 100px);
     background:white;
@@ -39,12 +43,12 @@ $size-photo-big: $canvas-size;
     transition-timing-fonction: ease;
 }
 
-.img-ori{
+article .article-content img.img-ori{
     
     position:absolute;
     top:20px;
     left:20px;
-
+    padding-top: 0;
     width:200px;
     height:200px;
     //padding          : 15px 15px 25px 15px;
@@ -72,6 +76,7 @@ $size-photo-big: $canvas-size;
 }
 
 #parent-flash, #parent-negatif{
+    position: relative;
     width: 500px;
     height: 500px;
     background: grey;
@@ -79,9 +84,9 @@ $size-photo-big: $canvas-size;
 
 #flash-effect{
     position:absolute;    
-    /*top: 50%;
+    top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);*/
+    transform: translateY(-50%) translateX(-50%);
     width:500px;
     height:500px;
     background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 80%);
