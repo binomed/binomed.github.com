@@ -5,19 +5,9 @@
     height: calc(500px + 200px);*/
     width:calc(200px + 40px);
     height: calc(200px + 100px);
-    background:white;
-    box-shadow       : 0px 0px 5px 0px rgba(50, 50, 50, 0.75);    
-
-    .img-ori{    
-        top:45px;
-        left:45px;
-        width:500px;
-        height:500px;    
-    }
 }
+
 .img-ori-parent.big::after{
-    bottom: 15pt;
-    left: 0;
     /*font-size:50pt;
     line-height:50pt;*/
     font-size:20pt;
@@ -27,6 +17,27 @@
     transition-timing-fonction: ease;
 }
 
+
+.img-ori-parent.big.anim{
+    animation: retrici-parent;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+}
+
+article .article-content .img-ori-parent.big.anim img: .img ori{
+    animation: retrici-img;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+}
+
+.img-ori-parent.big.anim::after{
+    animation: retrici-after;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+}
 
 .img-ori-parent{
     position:absolute;
@@ -51,7 +62,6 @@ article .article-content img.img-ori{
     padding-top: 0;
     width:200px;
     height:200px;
-    //padding          : 15px 15px 25px 15px;
     background-size: contain;
     background-repeat: no-repeat;
     box-shadow       : 0px 0px 5px 0px rgba(0, 0, 0, 1.5) inset;
@@ -75,8 +85,46 @@ article .article-content img.img-ori{
     transition-timing-fonction: linear;
 }
 
+@keyframes retrici-parent{
+    from{
+        width:calc(200px + 40px);
+        height: calc(200px + 100px);
+    }
+    to{
+        width:calc(100px + 20px);
+        height: calc(100px + 500px);
+    }
+}
+
+@keyframes retrici-img{
+    from{
+        top:20px;
+        left:20px;
+        width:200px;
+        height:200px;
+    }
+    to{
+        top:10px;
+        left:10px;
+        width:100px;
+        height:100px;
+    }
+}
+
+@keyframes retreci-after{
+    from{
+        font-size:20pt;
+        line-height:20pt;
+    }
+    to{
+        font-size:10pt;
+        line-height:10pt;
+    }
+}
+
 #parent-flash, #parent-negatif{
     position: relative;
+    margin:auto;
     width: 500px;
     height: 500px;
     background: grey;
@@ -99,6 +147,8 @@ article .article-content img.img-ori{
     animation-delay: 3s;
     animation-iteration-count: infinite;
 }
+
+
 
 @keyframes flash {
     0% {opacity:1;}

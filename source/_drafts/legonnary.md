@@ -1024,13 +1024,72 @@ Pour réussir cette partie, c'est très simple, il suffit de jouer avec une div 
 
 Ainsi le fait d'appliquer la classe `flash` créera automatiquement cet effet de flash photo.
 
-**L'effet négatif**
+**L'effet Polaroïd**
 
 <div id="parent-negatif">
   <div class="img-ori-parent big" data-author="jefBinomed">
     <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
   </div>
 </div>
+
+Pour faire cet effet avec un nombre minimum d'éléments, j'ai simplement joué avec les before / after et sur les attributs html exploitables en css.
+
+Ainsi voici le code html : 
+
+```html 
+<div class="img-ori-parent" data-author="jefBinomed">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
+</div>
+```
+
+et voici le code css correspondant : 
+
+```css
+.img-ori-parent{
+    position:absolute;
+    width:calc(200px + 40px);
+    height: calc(200px + 100px);
+    background:white;
+    z-index: 10;
+    box-shadow       : 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+.img-ori{
+    
+    position:absolute;
+    top:20px;
+    left:20px;
+    width:200px;
+    height:200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow       : 0px 0px 5px 0px rgba(0, 0, 0, 1.5) inset;
+}
+
+.img-ori-parent::after{
+    content:attr(data-author);
+    position: absolute;
+    width:100%;
+    text-align:center;
+    bottom: 15pt;
+    left: 0;
+    font-size:20pt;
+    line-height:20pt;
+    font-family:"Roboto","Helvetica","Arial",sans-serif;
+}
+```
+
+De cette manière, on peut voir qu'avec simplement un jeux d'ombres, de after, before, on peut donner un effet Polaroïd à une image ! 
+
+**L'animation de retricicement**
+
+<div id="parent-negatif">
+  <div class="img-ori-parent big anim" data-author="jefBinomed">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
+  </div>
+</div>
+
+**Le résultat final**
 
 ## Tout ce dont je n'ai pas parlé
 
