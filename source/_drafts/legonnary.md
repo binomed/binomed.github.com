@@ -1081,7 +1081,7 @@ et voici le code css correspondant :
 
 De cette manière, on peut voir qu'avec simplement un jeux d'ombres, de after, before, on peut donner un effet Polaroïd à une image ! 
 
-**L'animation de retricicement**
+**L'animation de retrécicement**
 
 <div id="parent-negatif">
   <div class="img-ori-parent big anim" data-author="jefBinomed">
@@ -1089,7 +1089,161 @@ De cette manière, on peut voir qu'avec simplement un jeux d'ombres, de after, b
   </div>
 </div>
 
+Cette animation est assurée par la propriété transition. On écoute ainsi toutes les évolutions de tailles, positions, ... et on déclache une transition de façon à rendre ça plus fluide.
+
+La raison pour laquelle je ne passe pas par la propriété animation de css est que la position d'arrivée sera complètement aléatoire !  En effet, une fois l'image apparue, on va la positionner dans l'écran de façon aléatoire. Une fois à gauche et une fois à droite. Sa position horizontale et verticale sera certes bronée, mais le résultat sera issu d'un `Math.random()`. Donc en utilisant la propriété transition plutôt que animation, je peux m'assurer une animation fluide et prenant en comptes tous les cas. 
+
+Dans mon animation, j'ai géré 2 états : 
+
+1. Le parent a la classe `.big` : Dans cet état, l'image est grande et positionnée au centre de l'écran
+2. Le parent n'a plus la classe `.big` : Dans cet état, l'image va prendre une taille plus réduite. Les top & left seront fixés directement par le javascript
+
+Voici le code css à faire pour gérer simplement l'animation
+
+```scss screen.scss https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/sass/screen.scss#L53
+$size-photo: 200px;
+$size-photo-big: 500px;
+
+.img-ori-parent.big{
+    width:$size-photo-big+90px;
+    height: $size-photo-big+200px;
+    background:white;
+    box-shadow       : 0px 0px 5px 0px rgba(50, 50, 50, 0.75);    
+
+    .img-ori{    
+        top:45px;
+        left:45px;
+        width:$size-photo-big;
+        height:$size-photo-big;    
+    }
+}
+.img-ori-parent.big::after{
+    bottom: 15pt;
+    left: 0;
+    font-size:50pt;
+    line-height:50pt;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-fonction: ease;
+}
+
+
+.img-ori-parent{
+    position:absolute;
+    width:$size-photo+40px;
+    height: $size-photo+100px;
+    background:white;
+    z-index: 10;
+    box-shadow       : 0px 0px 5px 0px rgba(50, 50, 50, 0.75);
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-fonction: ease;
+}
+
+.img-ori{
+    
+    position:absolute;
+    top:20px;
+    left:20px;
+
+    width:$size-photo;
+    height:$size-photo;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow       : 0px 0px 5px 0px rgba(0, 0, 0, 1.5) inset;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-fonction: ease;
+}
+
+.img-ori-parent::after{
+    content:attr(data-author);
+    position: absolute;
+    width:100%;
+    text-align:center;
+    bottom: 15pt;
+    left: 0;
+    font-size:20pt;
+    line-height:20pt;
+    font-family:"Roboto","Helvetica","Arial",sans-serif;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-fonction: linear;
+}
+```
+
+
+Voici ensuite comment avec le javascript j'anime le tout : 
+
+1. Je déclanche le "flash"
+2. Après un léger timeout (le temps du flash), je créé une nouvelle div avec la classe `.big`
+3. Après un deuxième timeout (le temps de laisser le dessin à l'écran pour les participants), je supprime la classe `.big` et je donne des valeurs aléatoires au `top` & `left` de la div parente
+
+```javascript app_screen.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_screen.js#L35
+function generateSnapshot(user, dataUrl) {
+    // We start our flash effect
+    let rectCanvas = document.querySelector('.canvas-container').getBoundingClientRect();
+    let flashDiv = document.getElementById('flash-effect')
+    flashDiv.style.top = (rectCanvas.top - 250) + "px";
+    flashDiv.style.left = (rectCanvas.left - 250) + "px";
+    flashDiv.classList.add('flash');
+    //When the animation is done (1s of opacity .7 -> 0 => ~500ms to wait)
+    setTimeout(() => {
+        // We create the final image
+        // We create a div that we will be animate
+        flashDiv.classList.remove('flash');
+        let imgParent = document.createElement('div');
+        let img = document.createElement('img');
+        img.src = dataUrl;
+        img.classList.add('img-ori');
+        imgParent.classList.add('img-ori-parent');
+        imgParent.setAttribute('data-author', user);
+        imgParent.appendChild(img);
+        imgParent.classList.add('big');
+        // Initial Position
+        imgParent.style.top = (rectCanvas.top - 45) + "px";
+        imgParent.style.left = (rectCanvas.left - 45) + "px";
+
+        document.body.appendChild(imgParent);
+
+        // we wait a litle to set new position to the new div. The css animation will do the rest of the job
+        setTimeout(function () {
+
+            let horizontalDist = Math.floor(Math.random() * 300) + 1;
+            let heightScreen = document.body.getBoundingClientRect().height;
+            let verticalDist = Math.floor(Math.random() * (heightScreen - 100 - 300)) + 1;
+            let angleChoice = Math.floor(Math.random() * 3) + 1;
+
+            imgParent.classList.remove('big');
+            imgParent.style.top = `calc(100px + ${verticalDist}px)`;
+            imgParent.style.left = `${horizontalDist}px`;
+            if (!lastLeft) { // True if the last photo was placed at the left of the countDown
+                imgParent.style.left = `calc(100vw - ${horizontalDist}px - 300px)`;           // The timeout date          
+            }
+            lastLeft = !lastLeft; // True if the last photo was placed at the left of the countDown
+            let angle = angleChoice === 1 ? -9 : angleChoice === 2 ? 14 : 0; // The timeout date
+            imgParent.style.transform = `rotate(${angle}deg)`;
+            getNextDraw();
+        }, 100);
+
+        // When the element is create, we clean the board
+        legoCanvas.resetBoard();
+        document.getElementById('proposition-text').innerHTML = "En attente de proposition";
+
+    }, 500);
+}
+
+```
+
 **Le résultat final**
+
+<div id="parent-final">
+  <img class="img-ori empty" src="/assets/2016-12-legonnary/empty_legonnary.png">
+  <div class="img-ori-parent big final-anim" data-author="jefBinomed">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
+  </div>
+  <div class="flash-final flash"></div>
+</div>
 
 ## Tout ce dont je n'ai pas parlé
 
