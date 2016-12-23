@@ -16,19 +16,19 @@ toc: false
 
 ## [TL;DR;] 
 
-Il s'agit d'un article sur un jeux mis en place pour le DevFest 2017. Les grandes parties sont : 
-* [Origin story](#Origin_story) : Pourquoi / Comment / Les enjeux ?
-* [Architecture](#Architecture) : Quelle architecture j'ai choisi ?
+Il s'agit d'un article sur un jeu mis en place pour le DevFest 2017. Les grandes parties sont : 
+* [Origin Story](#Origin_story) : pourquoi / comment / les enjeux ?
+* [Architecture](#Architecture) : Quelle architecture j'ai choisi.
 * [Workflow de dev choisi](#Workflow_de_dev_choisi) : Comment j'ai structuré mon code et mon workflow de dev
 * [Progressive Web App](#Progressive_Web_App) : Comment j'ai transformé l'application en Progressive Web App
-* [Sécurisation de l’app](#Sécurisation_de_l’app) : Utilisation détaillée de firebase pour le cas du jeux
+* [Sécurisation de l’app](#Sécurisation_de_l’app) : Utilisation détaillée de firebase pour le cas du jeu
 * [Challenges graphiques](#Challenges graphiques) : Problèmes et solutions graphiques rencontrées
 
 ## Tout ça pour un compte à rebours !
 
 Dans le cadre du [DevFest Nantes 2017](https://devfestnantes.gdgnantes.com) j'ai voulu comme chaque année travailler un compte à rebours personnalisé.
 
-### Origin story
+### Origin Story
 
 Ayant eu la chance d'aller au [Google I/O](https://events.google.com/io), j'ai beaucoup apprécié les animations qu'il y a eu et qui permettait aux participants de joueur avec une application codée spécialement pour l'occasion : [Paper Planes](https://paperplanes.world/).
 
@@ -38,9 +38,9 @@ N'ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J'ai
 
 ![](/assets/2016-12-legonnary/theme_lego.jpg)
 
-En 2016, le thème graphique était l'univers Lego ©, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui permettrait de faire un jeux multijoueur basé sur les Lego ©. 
+En 2016, le thème graphique était l'univers Lego ©, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui permettrait de faire un jeu multijoueur basé sur les Lego ©. 
 
-Ma première idée fue de laisser les participants contruire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants et le résultat final ! L'idée était intéressante mais j'ai du me rendre à l'évidence, je n'ai ni le temps, ni les compétences pour mettre en place un tel système... il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et à la fois réalisable pour mes compétences graphiques : J'allais faire un Pixel art Lego © dont le résultat final se verrait à l'écran ! Legonnary était né !
+Ma première idée fut de laisser les participants construire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants et le résultat final ! L'idée était intéressante mais j'ai dû me rendre à l'évidence, je n'ai ni le temps, ni les compétences pour mettre en place un tel système... il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et à la fois réalisable pour mes compétences graphiques : J'allais faire un Pixel art Lego © dont le résultat final se verrait à l'écran ! Legonnary était né !
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-12-legonnary/gdg_logo_legonnary.png">
@@ -50,9 +50,9 @@ Ma première idée fue de laisser les participants contruire en 3D des Lego © e
 ### Le concept
 
 Le concept est du coup relativement simple : 
-1. Un participant va se logguer pour soumettre des dessins type Pixel art fait à partir de briques Lego ©. 
+1. Un participant va se loguer pour soumettre des dessins type Pixel art fait à partir de briques Lego ©. 
 2. Un modérateur reçoit le dessin du participant (car oui il vaut mieux modérer dans ces cas ;) ). Il va donc décider de valider ou refuser un dessin
-3. Si le dessin est accepté, alors il apparaitra sur l'écran de comptes à rebours et sera affiché une seule fois !
+3. Si le dessin est accepté, alors il apparaîtra sur l'écran de comptes à rebours et sera affiché une seule fois !
 4. Si non, seul l'utilisateur à l'origine du dessin pourra revoir son dessin ainsi que l'état du dessin : accepté / refusé. 
 5. Tous les dessins validés doivent être accessible sur un écran de restitution indépendant pour accéder simplement aux dessins créés ET validés.
 
@@ -62,10 +62,10 @@ Avant de rentrer dans le détail de l'implémentation choisie, j'ai voulu me fix
 
 - Je voulais faire une Progressive Web App [PWA](https://developers.google.com/web/progressive-web-apps/) afin d'être : mobile first / offline / installable.
 - Je voulais un jeu temps réel mais en même temps sans serveur.
-- Je voulais une application sécurisée, à la fois au niveau des données mais aussi au niveau de son accès. Globalement, je voudrais que mes utilisateurs soient loggués.
-- Afin d'éviter aux participants de saisir une url, je voulais que l'application soit détectable en physical web
+- Je voulais une application sécurisée, à la fois au niveau des données mais aussi au niveau de son accès. Globalement, je voudrais que mes utilisateurs soient logués.
+- Afin d'éviter aux participants de saisir une URL, je voulais que l'application soit détectable en physical web
 - Nous sommes en 2016, je ne me voyais pas partir sur une application qui n'était pas codée en ES6.
-- Il a fallu prévoir plusieurs applications pour coller avec chacun des rôles : Joueur / Modérateur / Ecran de comptes à rebours /  Ecran de restitution
+- Il a fallu prévoir plusieurs applications pour coller avec chacun des rôles : Joueur / Modérateur / Écran de comptes à rebours /  Écran de restitution
 
 ## Architecture
 
@@ -80,22 +80,22 @@ Pour faire marcher tout ça ensemble, j'ai choisi l'architecture suivante :
 Firebase me permet en effet de répondre à beaucoup de besoins : 
 * En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à [Firebase Authentication](https://firebase.google.com/docs/auth/) je peux faire de l'authentification sécurisée sans me soucier de mettre en place des mécanismes d'OAuth !
 * Je vais pouvoir "hoster" mon application
-* Mes données vont être synchronisées en temps réel et chacune des applications va pouvoir communiquer de façon instanée sans que j'ai quoi que ce soit à coder au niveau serveur.
-* Enfin pour finir, le jeux fonctionnera aussi offline grace à Firebase car je sais qu'il est du ressort de la librairie de gérer les push d'événements.
+* Mes données vont être synchronisées en temps réel et chacune des applications va pouvoir communiquer de façon instantanée sans que j'aie quoi que ce soit à coder au niveau serveur.
+* Enfin pour finir, le jeu fonctionnera aussi offline grace à Firebase car je sais qu'il est du ressort de la librairie de gérer les push d’évènements.
 
 ### PWA 
 
-La partie Progressive Web App a été codé de façon manuelle car je voulais comprendre, mettre les mains dans le cambouie 
+La partie Progressive Web App a été codé de façon manuelle car je voulais comprendre, mettre les mains dans le cambouis 
 
 ### Fabric JS
 
-Ayant déjà eu l'occasion de travailler plusieurs fois avec des canvas, je sais que la complexité de code peut vite augmenter notamment lié aux histoires de zoom d'écran sur mobile. J'avais aussi identifé un certains nombre de points qui allaient surement me poser des problèmes, notamment le fait que mes pièces Lego © devaient avoir un effet aimenté vis à vis d'une grille. 
+Ayant déjà eu l'occasion de travailler plusieurs fois avec des canvas, je sais que la complexité de code peut vite augmenter notamment lié aux histoires de zoom d'écran sur mobile. J'avais aussi identifié un certain nombre de points qui allaient surement me poser des problèmes, notamment le fait que mes pièces Lego © devaient avoir un effet aimanté vis-à-vis d'une grille. 
 
-Face à tous possibles problèmes, j'ai préféré me reposer sur une libraire plutôt que de tout coder moi même. J'ai donc choisi [FabricJS](http://fabricjs.com/) comme librairie car elle proposait une abstraction suffisante et des fonctionnalités qui collaient bien avec mon besoin.
+Face à tous possibles problèmes, j'ai préféré me reposer sur une libraire plutôt que de tout coder moi-même. J'ai donc choisi [FabricJS](http://fabricjs.com/) comme librairie car elle proposait une abstraction suffisante et des fonctionnalités qui collaient bien avec mon besoin.
 
-### Déployement automatique avec CodeShip
+### Déploiement automatique avec CodeShip
 
-Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](https://codeship.com/) qui propose de se brancher sur les commits faits sur github et donc permettre un redéployement automatique de mon code. 
+Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](https://codeship.com/) qui propose de se brancher sur les commits faits sur github et donc permettre un redéploiement automatique de mon code. 
 
 ### Workflow de validation des dessins
 
@@ -103,13 +103,13 @@ Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](htt
     <img src="/assets/2016-12-legonnary/Legonnary_Validation.png">
 </div>
 
-Afin de faire communiquer correctement chacun des écrans / applications, j'ai défini une notion d'états pour les dessins fait via l'application. Un dessin va pouvoir se retrouer avec plusieurs états en même pour permettre un affichage conditionnel. 
+Afin de faire communiquer correctement chacun des écrans / applications, j'ai défini une notion d'états pour les dessins faits via l'application. Un dessin va pouvoir se retrouver avec plusieurs états en même pour permettre un affichage conditionnel. 
 
 * **Submited** : Un dessin est dans cet état, juste après la validation d'un utilisateur
 * **Accepted** : Un dessin est dans cet état si le modérateur a validé le dessin
 * **Rejected** : Un dessin est dans cet état si le modérateur a rejeté le dessin
 
-Etats additionnels :
+États additionnels :
 * **Validated** : Un dessin est dans cet état s'il a été validé par le modérateur et qu'il attend d'être traité par l'écran de comptes à rebours
 * **Archived** : Un dessin est dans cet état dès que le dessin est validé. Un dessin dans cet état est considéré comme public et peut donc être consulté par n'importe qui.
 
@@ -131,7 +131,7 @@ Etats additionnels :
   /css # build du sass
   /sass # Sources du sass
   /scripts # ensemble des fichiers js à transpiler
-  /index.html # index basique pour les joeurs
+  /index.html # index basique pour les joueurs
   /moderator.html # index spécifique aux modérateurs
   /screen.html # index spécifique à l'écran de compte à rebours
   /summary.html # index spécifique à la restitution
@@ -143,15 +143,15 @@ Etats additionnels :
 
 ### Pourquoi pas Angular ?
 
-Comme je le disais plus haut, j'ai voulu coder mon application en ES6. Alors la première question que l'on m'a posé à chaque fois, c'est pourquoi du vanillaJS plutôt qu'un angular ou autre chose ? La réponse est simple : KISS ! Le jeux mis en place ne nécessitait pas de grand complexité et donc, j'ai jugé un peu overkill de charger une librairie type angular. 
+Comme je le disais plus haut, j'ai voulu coder mon application en ES6. Alors la première question que l'on m'a posé à chaque fois, c'est pourquoi du vanillaJS plutôt qu'un Angular ou autre chose ? La réponse est simple : KISS ! Le jeu mis en place ne nécessitait pas de grande complexité et donc, j'ai jugé un peu overkill de charger une librairie type Angular. 
 
-ES6 m'a permis de structurer tout aussi éfficacement mon code, en créant des classes séparant ainsi fortement mes concepts, et en déléguant aussi bien les responsabilités dans chaque partie de mon code !
+ES6 m'a permis de structurer tout aussi efficacement mon code, en créant des classes séparant ainsi fortement mes concepts, et en déléguant aussi bien les responsabilités dans chaque partie de mon code !
 
 ### Task runner
 
-Côté build, je n'avais pas forcément envie de partir sur webpack car soyons franc, je n'avais pas les compétences ni l'envie d'apprendre un nouvel outils de build. J'avais déjà bien assez à apprendre avec ce jeux. Je ne voulais pas me rajouter un nouveau challenge. A terme, je ne pas par contre que mes prochains projets n'utiliseront pas webpack ou le task runner tendance du moment. Bref ! J'ai choisi Gulp & Browserify. Gulp, par ce que je l'aime bien et Browserify par ce je voulais coder mon application en utilisant les imports de modules javascript.
+Côté build, je n'avais pas forcément envie de partir sur webpack car soyons franc, je n'avais pas les compétences ni l'envie d'apprendre un nouvel outil de build. J'avais déjà bien assez à apprendre avec ce jeu. Je ne voulais pas me rajouter un nouveau chalenge. À terme, je ne pas par contre que mes prochains projets n'utiliseront pas webpack ou le task runner tendance du moment. Bref ! J'ai choisi Gulp & Browserify. Gulp, par ce que je l'aime bien et Browserify par ce je voulais coder mon application en utilisant les imports de modules Javascript.
 
-La seule complexité que j'ai eu avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel & Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin [babelify](https://github.com/babel/babelify). Voici les tasks spécifiques à mon build qui gère cette partie
+La seule complexité que j'ai eue avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel & Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin [babelify](https://github.com/babel/babelify). Voici les tasks spécifiques à mon build qui gère cette partie
 
 ```javascript gulpfile.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js
 "use strict";
@@ -187,11 +187,11 @@ La déclaration des extensions es6 est obligatoire pour indiquer au plugin ce qu
 }
 ```
 
-Pour le reste, j'ai utilisé sass /  browsersync afin de me garentir un workflow de dev complet. Voici le lien vers mon [Gulp File](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js)
+Pour le reste, j'ai utilisé sass /  browsersync afin de me garantir un workflow de dev complet. Voici le lien vers mon [Gulp File](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js)
 
 ### Spécifiques du build
 
-J'ai du prévoir un certains de choses assez spécifiques car  : 
+J'ai dû prévoir un certain nombre de choses assez spécifiques car  : 
 
 * J'ai plusieurs applications. J'ai donc plusieurs taches qui font des builds spécifiques pour chacune de mes applications.
 * Toutes les applications n'ont pas de service worker.
@@ -200,7 +200,7 @@ J'ai du prévoir un certains de choses assez spécifiques car  :
 
 ## Progressive Web App
 
-Les Progressives Web App (PWA) sont un des grands concepts regroupant un ensemble de bonnes pratiques sur les applications web. Voici en vrac les choses que l'ont peut retrouver sur un PWA : 
+Les Progressives Web App (PWA) sont un des grands concepts regroupant un ensemble de bonnes pratiques sur les applications web. Voici en vrac les choses que l'on peut retrouver sur un PWA : 
 
 * OffLine
 * Responsive
@@ -219,9 +219,9 @@ Pour l'application legonnary, j'ai choisi d'aborder les choses suivantes :
 
 Je n'ai donc pas touché à la partie push, ni background sync.
 
-### Application Installable
+### Application installable
 
-Une des choses les plus simple à mettre en oeuvre c'est le manifest. Il s'agit d'un fichier json qui va donner un ensemnble de meta-données sur votre application permettant par la suite d'installer votre application sur la home de votre téléphone (compatible android & un peu IOS).
+Une des choses les plus simples à mettre en œuvre c'est le manifest. Il s'agit d'un fichier JSON qui va donner un ensemble de meta-données sur votre application permettant par la suite d'installer votre application sur la "home" de votre téléphone (compatible Android & un peu IOS).
 
 Prenons en exemple le manifest de l'application joueur.
 
@@ -253,15 +253,15 @@ Prenons en exemple le manifest de l'application joueur.
 
 Revenons sur les différents champs : 
 * `name`: Il s'agit du nom de l'application à son lancement
-* `short_name` : Il s'agit du nom qui sera présent sous l'icône dans la home de votre téléphone
+* `short_name` : Il s'agit du nom qui sera présent sous l'icône dans la "home" de votre téléphone
 * `icons` : ensemble de combinaisons possibles de résolutions de votre icône. Cela va dépendre du téléphone
-* `start_url` : url de démarage du site une fois qu'on a cliqué sur l'icône. On peut donc spécifier une url spécifique dans le cas d'une PWA ! 
+* `start_url` : URL de démarrage du site une fois qu'on a cliqué sur l'icône. On peut donc spécifier une URL spécifique dans le cas d'une PWA ! 
 * `display` : il s'agit d'un flag permettant de définir le mode de lancement de l'application. Voici les valeurs possibles : 
     - `standalone` : n'affiche pas la barre de navigation du navigateur
     - `browser` : affiche la barre de navigation 
 * `orientation` : définit l'orientation de l'application
 * `background_color` : définit la couleur de fond que vous aller avoir pour le spash screen
-* `theme_color` : définit une couleur de thème qui pourra être utilisée par le navigateur pour colorer la barre d'url
+* `theme_color` : définit une couleur de thème qui pourra être utilisée par le navigateur pour colorer la barre d’URL
 
 Pour ajouter ce manifest à votre page il suffit simplement d'ajouter la balise suivante dans la partie header : 
 
@@ -282,7 +282,7 @@ Concernant IOS & Windows, il faut ajouter quelques balises supplémentaires (tou
 <meta name="msapplication-TileColor" content="#ffeb3b">
 ```
 
-**/!\ Le fait de préciser le manifest dans l'index.html ne suffit pas à transformer votre application en application "installable" ! En effet, une application installée sur votre home doit être capable de démarer même sans internet !  Donc une PWA avec un manifest ne sera réellement installable que si vous avez un service worker installé. **
+**/!\ Le fait de préciser le manifest dans l'index.html ne suffit pas à transformer votre application en application "installable" ! En effet, une application installée sur votre home doit être capable de démarrer même sans internet !  Donc une PWA avec un manifest ne sera réellement installable que si vous avez un service worker installé. **
 
 Pour plus d'infos, vous pouvez consulter cette doc : [Web App Manifest](https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/)
 
@@ -292,9 +292,9 @@ Passons maintenant à la mise en place du service worker.
 
 Pour ceux qui ne savent pas ce qu'est un service worker, je vous invite à consulter ce site : [Is ServiceWorker Ready ?](https://jakearchibald.github.io/isserviceworkerready/). En plus de vous donner l'état d'avancement de l'implémentation de la spec sur les différents navigateurs, il vous donnera accès à plein de ressources, documentation nécessaire à la compréhension du service worker.
 
-Comme je le disais au début, j'ai préféré coder moi même mon service worker car je souhaitais monter en compétences et comprendre précisement ce que je codais. Je n'ai donc pas utilisé d'outils pour m'aider à réaliser ce dernier et si vous êtes intéressés par de la génération de services workers, je vous invite à regarder ceci : [sw-precache](https://github.com/GoogleChrome/sw-precache).
+Comme je le disais au début, j'ai préféré coder moi-même mon service worker car je souhaitais monter en compétences et comprendre précisément ce que je codais. Je n'ai donc pas utilisé d'outils pour m'aider à réaliser ce dernier et si vous êtes intéressés par de la génération de services workers, je vous invite à regarder ceci : [sw-precache](https://github.com/GoogleChrome/sw-precache).
 
-Concernant mon application, j'avais envie d'éviter de surcharger mon serveur en bande passante et donc je me suis appuyé sur des CDN pour délivrer mes librairies javascript. Une des premières choses que j'ai donc mis en place c'est la spération entre mon cache de CDN et le cache des mes ressources que je considérais comme dynamiques (css / js / ...) 
+Concernant mon application, j'avais envie d'éviter de surcharger mon serveur en bande passante et donc je me suis appuyé sur des CDN pour délivrer mes librairies Javascript. Une des premières choses que j'ai donc mises en place c'est la séparation entre mon cache de CDN et le cache de mes ressources que je considérais comme dynamiques (css / js / ...) 
 
 ```javascript service-worker-phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js
 'use strict';
@@ -329,7 +329,7 @@ let cdnToCache = [
 ];
 ```
 
-Ce fichier est issue des tutoriels de Google, donc on va y retrouver les éléments classiques : 
+Ce fichier est issu des tutoriels de Google, donc on va y retrouver les éléments classiques : 
 
 **1. Installation avec mise en cache**
 
@@ -364,7 +364,7 @@ self.addEventListener('activate', function(e) {
 });
 ```
 
-La particularité de mon service worker réside au niveau de la mise en cache du CDN. J'attends en effet de voir si la ressource demandée fait partie de ma liste de ressources à mettre à cache et si c'est le cas, je délivre soit le fichier 'caché', soit je le récupère sur le réseau et ensuite je le met en cache.
+La particularité de mon service worker réside au niveau de la mise en cache du CDN. J'attends en effet de voir si la ressource demandée fait partie de ma liste de ressources à mettre à cache et si c'est le cas, je délivre soit le fichier 'caché', soit je le récupère sur le réseau et ensuite je le mets en cache.
 
 Si la ressource ne fait pas partie des fichiers à mettre en cache, alors, je vais chercher la ressource sur le web.
 
@@ -412,11 +412,11 @@ enfin, n'oublions pas d'inclure l'installation du service worker dans l'applicat
 
 #### Gestion du build 
 
-Comme je n'ai pas utilisé d'outils de build pour gérer pour moi le service worker, j'ai du mettre en place quelques *"astuces"* pour garder un workflow de dev facile. En effet, en développement mon service worker n'est pas actif et la mise à jour du numéro de cache est gérée automatiquement par mon build 
+Comme je n'ai pas utilisé d'outils de build pour gérer pour moi le service worker, j'ai dû mettre en place quelques *"astuces"* pour garder un workflow de dev facile. En effet, en développement mon service worker n'est pas actif et la mise à jour du numéro de cache est gérée automatiquement par mon build 
 
 **1. Service désactivé pendant le dev**
 
-J'aurais très bien pu utiliser l'option des devtools qui me permet de mettre à jour mon cache à chaque refresh mais cela nécessite que les devtools soient toujours ouverts, ce qui n'était pas toujours mon cas. Pour palier à ça, j'ai simplement commenté l'activation de mon service dans mon code et mon build va simplement supprimer ces commentaires.
+J'aurais très bien pu utiliser l'option des devtools qui me permet de mettre à jour mon cache à chaque refresh mais cela nécessite que les devtools soient toujours ouverts, ce qui n'était pas toujours mon cas. Pour pallier à ça, j'ai simplement commenté l'activation de mon service dans mon code et mon build va simplement supprimer ces commentaires.
 
 ```javascript app_phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_phone.js#L185
 /* SERVICE_WORKER_REPLACE
@@ -428,7 +428,7 @@ if ('serviceWorker' in navigator) {
 SERVICE_WORKER_REPLACE */
 ```
 
-Mon build s'occupe ensuite de décommenter le code : 
+Mon build s'occupe ensuite de dé-commenter le code : 
 
 ```javascript gulpfile.js (task replace) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js#L98
 gulp.task("replace", function(){
@@ -455,7 +455,7 @@ De cette manière le code final ressemble à ça :
 
 **2. Incrémentation automatique**
 
-Etant donné que les ressources qui vont évoluées sont à mon cache `let cacheFileName = "legonnaryCache-v{timestamp}";` 
+Étant donné que les ressources qui vont évoluées sont à mon cache `let cacheFileName = "legonnaryCache-v{timestamp}";` 
 
 le timestamp est remplacé à la génération de la façon suivante :
 
@@ -471,13 +471,13 @@ De cette manière, le numéro de mon cache sera toujours en lien avec la derniè
 
 **3. Pour aller plus loin**
 
-Si je devais revoir mon service worker, je tacherais d'utiliser des outils tels que sw-precache et je séparerais encore plus mes caches pour dissocier la partie js / css / html de mes ressources graphiques / font. 
+Si je devais revoir mon service worker, je tacherais d'utiliser des outils tels que sw-precache et je séparerais encore plus mes caches pour dissocier la partie js / css / HTML de mes ressources graphiques / font. 
 
 ### Responsive
 
 La partie responsive a été géré très simplement grâce à la librairie [GetMdl.io](https://getmdl.io/) (Get Material Design Lite) qui me permet sans trop de complexité d'avoir une application avec un look Material Design.
 
-Un des avantages que propose cette librairie est d'utiliser une variante graphique jouant sur les couleurs primaire du material design : [Customize Getmdl](https://getmdl.io/customize/index.html). De cette manière, j'ai pu proposé sans sourcouhe un style graphique différent pour chacune des applications créé. De cette manière, j'avais un style graphique reconnaissable pour l'application joueur ou pour l'application modérateur.
+Un des avantages que propose cette librairie est d'utiliser une variante graphique jouant sur les couleurs primaires du material design : [Customize Getmdl](https://getmdl.io/customize/index.html). De cette manière, j'ai pu proposer sans surcouche un style graphique différent pour chacune des applications créés. De cette manière, j'avais un style graphique reconnaissable pour l'application "joueur" ou pour l'application "modérateur".
 
 N'oublions quand même pas l'inclusion dans le header de la balise meta permettant de gérer le zoom navigateur pour les mobiles 
 
@@ -489,15 +489,15 @@ N'oublions quand même pas l'inclusion dans le header de la balise meta permetta
 
 Aux jours d'aujourd'hui, nous ne pouvons passer à côté d'applications sécurisées. Je voulais donc mettre en place les choses suivantes : 
 
-* Les joueurs doivent être indentifiés pour jouer et je voulais proposer un social login afin d'éviter d'avoir à saisir un nouveau login / mdp
+* Les joueurs doivent être identifiés pour jouer et je voulais proposer un social login afin d'éviter d'avoir à saisir un nouveau login / mdp
 * Le site est servi en https
-* L'accès aux données et dessins produits n'est pas accessible par tout le monde
+* L'accès aux données et dessins produits ne sont pas accessibles par tout le monde
 
-Grâce aux dernières apis sorties côté firebase, j'ai pu résoudre tous ces problèmes le plus simplement du monde ! 
+Grâce aux dernières APIs sorties côté firebase, j'ai pu résoudre tous ces problèmes le plus simplement du monde ! 
 
 ### Authentification
 
-Dans mes précédents projets j'utilisais [Hello.js](https://adodson.com/hello.js/) cette librairie est très facile à installer et très pratique. Je vous conseil d'y jetter un coup d'oeil !  Mais pour ce projet, j'ai voulu essayer quelque chose de différent pour comparer et voir les avantages inconvénients de chaque solution. Je suis donc parti sur [Firebase Authentication](https://firebase.google.com/docs/auth/). 
+Dans mes précédents projets j'utilisais [Hello.js](https://adodson.com/hello.js/) cette librairie est très facile à installer et très pratique. Je vous conseille d'y jeter un coup d’œil !  Mais pour ce projet, j'ai voulu essayer quelque chose de différent pour comparer et voir les avantages inconvénients de chaque solution. Je suis donc parti sur [Firebase Authentication](https://firebase.google.com/docs/auth/). 
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-12-legonnary/firebase-authentication-logo1.png">
@@ -528,7 +528,7 @@ let uiConfig = {
         firebase.auth.GithubAuthProvider.PROVIDER_ID,
         firebase.auth.EmailAuthProvider.PROVIDER_ID
     ],
-    // Terms of service url.
+    // Terms of service URL.
     'tosUrl': 'https://gdgnantes.com'
 };
 this.ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -541,7 +541,7 @@ A travers ce code, je suis capable gérer une popup de login, je suis capable d'
     <img src="/assets/2016-12-legonnary/legonnary_auth.png">
 </div>
 
-Un des avantages de la solution Firebase est que l'auto login est géré et qu'une api est proposée pour récupérer les informations sur le user
+Un des avantages de la solution Firebase est que l'auto login est géré et qu'une API est proposée pour récupérer les informations sur le user
 
 **Comparatif**
 
@@ -574,16 +574,16 @@ Un des avantages de la solution Firebase est que l'auto login est géré et qu'u
     <img src="/assets/2016-12-legonnary/firebase_hosting.png">
 </div>
 
-Firebase propose depuis quelques temps déjà la possibilité de hoster son application sur leurs serveurs. [Firebase Hosting](https://firebase.google.com/docs/hosting/)
+Firebase propose depuis quelque temps déjà la possibilité de hoster son application sur leurs serveurs. [Firebase Hosting](https://firebase.google.com/docs/hosting/)
 
-Par défaut, le site est hébergé sur une url type `https://[MON_APPLICATION].firebaseapp.com`. Cependant si on le souhaite, on peut utiliser son propre nom de domaine. Dans mon cas l'application est disponible à l'adresse suivante : https://legonnary.firebaseapp.com 
+Par défaut, le site est hébergé sur une URL type `https://[MON_APPLICATION].firebaseapp.com`. Cependant si on le souhaite, on peut utiliser son propre nom de domaine. Dans mon cas l'application est disponible à l'adresse suivante : https://legonnary.firebaseapp.com 
 
 Pour déployer son site, rien de plus simple : 
 
 1. Installez les [firebase-tools](https://firebase.google.com/docs/cli/) : `npm install -g firebase-tools`
 2. Logguez vous : `firebase login`
-3. Initialisez votre projet pour préparer le déployement firebase : `firebase init`
-4. Lancer la procédure de déployement avec `firebase deploy`
+3. Initialisez votre projet pour préparer le déploiement firebase : `firebase init`
+4. Lancer la procédure de déploiement avec `firebase deploy`
 
 Si vous voulez utiliser `firebase deploy` derrière une plateforme de CI, rien de plus simple : 
 
@@ -592,7 +592,7 @@ Si vous voulez utiliser `firebase deploy` derrière une plateforme de CI, rien d
 
 ### Structure de l'arbre firebase
 
-J'ai fait reposer mon application sur la partie [Realtime Database](https://firebase.google.com/docs/database/) de Firebase car ça me permettait une réactivité et une interaction instantanée entre les différents acteurs. Pour ceux qui ne savent pas ce qu'est le Realtime Database, il s'agit d'un arbre json disponible sur firebase sur lequel on peut s'abonner. On peut écouter un ajout / modification / suppression de noeud ou d'attributs de l'arbre json.
+J'ai fait reposer mon application sur la partie [Realtime Database](https://firebase.google.com/docs/database/) de Firebase car ça me permettait une réactivité et une interaction instantanée entre les différents acteurs. Pour ceux qui ne savent pas ce qu'est le Realtime Database, il s'agit d'un arbre JSON disponible sur firebase sur lequel on peut s'abonner. On peut écouter un ajout / modification / suppression de nœud ou d'attributs de l'arbre json.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-12-legonnary/firebase-database-logo.png">
@@ -667,11 +667,11 @@ Voici comment mon arbre est structuré :
 }
 ```
 
-Si l'on regarde de plus prêt cet arbre, on peut voir 5 noeuds principaux : 
+Si l'on regarde de plus près cet arbre, on peut voir 5 nœuds principaux : 
 
 * **admins** :  Liste des emails des administrateurs
 * **draw** : Liste des dessins soumis qui doivent être validés ou non par le modérateur
-* **drawValidated** : Liste des dessins validés par le modérateur qui sont en attente d'affichage sur l'écran du comptes à rebours
+* **drawValidated** : Liste des dessins validés par le modérateur qui sont en attente d'affichage sur l'écran du compte à rebours
 * **drawSaved** : Liste des dessins qui ont été soit validés, soit refusés par utilisateur
 * **drawShow** : Liste des dessins qui ont été validés et qui sont disponibles pour l'affichage de restitution
 
@@ -683,7 +683,7 @@ Si l'on regarde de plus prêt cet arbre, on peut voir 5 noeuds principaux :
 }
 ```
 
-Pour chaque admin, on indique son email. On est obligé par contre de remplacer les "." par des "*" car sinon firebase n'acceptes pas le json et le considère comme invalide
+Pour chaque admin, on indique son email. On est obligé par contre de remplacer les "." par des "*" car sinon firebase n'accepte pas le JSON et le considère comme invalide
 
 
 ```json draw
@@ -712,9 +712,9 @@ Pour chaque admin, on indique son email. On est obligé par contre de remplacer 
 }
 ```
 
-Pour chaque dessin, un uuid généré automatiquement par firebase est ajouté. S'en suit ensuite un descriptif du dessin avec l'utilisateur à l'origine du dessin et les instructions à appliquer pour reproduire le dessin. 
+Pour chaque dessin, un uuid généré automatiquement par firebase est ajouté. S'ensuit ensuite un descriptif du dessin avec l'utilisateur à l'origine du dessin et les instructions à appliquer pour reproduire le dessin. 
 
-A une instruction correspond 1 brique. Sa position dans le dessin est disponible ainsi que sa couleur et son angle. Pour un dessin, nous aurons autant d'instructions qu'il y a de briques.
+À une instruction correspond 1 brique. Sa position dans le dessin est disponible ainsi que sa couleur et son angle. Pour un dessin, nous aurons autant d'instructions qu'il y a de briques.
 
 ```json drawValidated
 {
@@ -741,7 +741,7 @@ A une instruction correspond 1 brique. Sa position dans le dessin est disponible
 }
 ```
 
-Dans cet arbre, on va retrouver toutes les informations nécéssaire à l'affichage d'un dessin à savoir : qui a fait le dessin et quelles sont les instructions pour dessiner. De cette manière, l'écran de compte à rebours est capable d'afficher les bonnes informations et de reproduire le dessin.
+Dans cet arbre, on va retrouver toutes les informations nécessaires à l'affichage d'un dessin à savoir : qui a fait le dessin et quelles sont les instructions pour dessiner. De cette manière, l'écran de compte à rebours est capable d'afficher les bonnes informations et de reproduire le dessin.
 
 ```json drawSaved
 {
@@ -758,7 +758,7 @@ Dans cet arbre, on va retrouver toutes les informations nécéssaire à l'affich
 }
 ```
 
-A partir du moment où l'on se trouve dans "drawSaved", on se situe au niveau user et on a la liste des dessins de l'utilisateur avec leur état. Contrairement aux noeuds précédents, nous n'avons pas la liste des instructions mais directement l'image finale en base64. De cette manière, on évite la phase de construction du dessin.
+À partir du moment où l'on se trouve dans "drawSaved", on se situe au niveau user et on a la liste des dessins de l'utilisateur avec leur état. Contrairement aux nœuds précédents, nous n'avons pas la liste des instructions mais directement l'image finale en base64. De cette manière, on évite la phase de construction du dessin.
 
 ```json drawShow
 {
@@ -772,16 +772,16 @@ A partir du moment où l'on se trouve dans "drawSaved", on se situe au niveau us
 }
 ```
 
-Même chose dans cette partie de l'arbre, on ne stocke que le nom du user et son dessin, on s'évite ainsi la reconstruction du dessin. De plus sous cette partie de l'arbre, on a supprimé l'id du user car cette information n'est plus pertinante.
+Même chose dans cette partie de l'arbre, on ne stocke que le nom du user et son dessin, on s'évite ainsi la reconstruction du dessin. De plus sous cette partie de l'arbre, on a supprimé l'id du user car cette information n'est plus pertinente.
 
 
 ### Gestion de l'admin
 
-Une fois cet arbre définit, j'ai voulu appliquer un système de restrictions sur la publication / lecture dans l'arbre. En effet, je ne voulais que n'importe qui puisse écrire ou lire n'importe quelle données. 
+Une fois cet arbre définit, j'ai voulu appliquer un système de restrictions sur la publication / lecture dans l'arbre. En effet, je ne voulais que n'importe qui puisse écrire ou lire n'importe quelles données. 
 
-Heureusement Firebase propose justement un mécanisme de protection de son arbre en fonction de l'utilisateur connecté. On peut soit protégé de façon fine un noeud ou alors poser des restrictions de façon plus large. Voici le guide complet pour apprendre à protéger ses données dans une base de données firebase : [Security & Rules](https://firebase.google.com/docs/database/security/) 
+Heureusement Firebase propose justement un mécanisme de protection de son arbre en fonction de l'utilisateur connecté. On peut soit protégé de façon fine un nœud ou alors poser des restrictions de façon plus large. Voici le guide complet pour apprendre à protéger ses données dans une base de données firebase : [Security & Rules](https://firebase.google.com/docs/database/security/) 
 
-Voici les restrictions mises en places : 
+Voici les restrictions mises en place : 
 
 ```json database.rules.json https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json
 {
@@ -827,7 +827,7 @@ Revenons sur chacune de ces règles pour les détailler :
 }
 ```
 
-Cette partie de l'arbre n'est ni disponible en lecture, ni disponible en écriture car je ne veux pas que quiquonce puisse avoir accès aux emails concernés.
+Cette partie de l'arbre n'est ni disponible en lecture, ni disponible en écriture car je ne veux pas que quiconque puisse avoir accès aux emails concernés.
 
 
 **Partie dessins soumis :**
@@ -843,14 +843,14 @@ Cette partie de l'arbre n'est ni disponible en lecture, ni disponible en écritu
 }
 ```
 
-L'écriture sur ce noeud ne peut se faire que pour un utilisateur authentifié `auth != null`.
+L'écriture sur ce nœud ne peut se faire que pour un utilisateur authentifié `auth != null`.
 
 La lecture n'est disponible que par un admin : 
 * `auth != null` : L'admin est authentifié
-* `root.child('admins').child(auth.token.email.replace('.', '*')).exists()` : l'utilisateur courant a son mail qui fait parti des noeuds disponibles dans la partie "admins". Au passage, on pense bien à remplacer les "*" par des "." lors de la vérification
-* `auth.token.email_verified == true` : l'email est vérifié par le tier de confiance OAuth
+* `root.child('admins').child(auth.token.email.replace('.', '*')).exists()` : l'utilisateur courant a son mail qui fait partie des nœuds disponibles dans la partie "admins". Au passage, on pense bien à remplacer les "*" par des "." lors de la vérification
+* `auth.token.email_verified == true` : l'email est vérifié par le tiers de confiance OAuth
 
-**Partie Dessin validés (écran de comptes à rebours) : **
+**Partie Dessin validé (écran de comptes à rebours) : **
 
 ```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L11
 {
@@ -897,22 +897,22 @@ Seul l'admin peut écrire dans cette partie et par contre la lecture est disponi
 
 L'écriture ne peut être faite que par un admin. Par contre la lecture n'est disponible que pour le user qui a créé le dessin. 
 
-Le `$userId` permet de cibler les sous parties de l'arbre `drawSaved` pour un utilisateur donné. Et donc la condition `$userId === auth.uid` me permet de m'assurer que seul l'utilsateur courant puisse avoir accès à ses dessins ! 
+Le `$userId` permet de cibler les sous-parties de l'arbre `drawSaved` pour un utilisateur donné. Et donc la condition `$userId === auth.uid` me permet de m'assurer que seul l’utilisateur courant puisse avoir accès à ses dessins ! 
 
 N'importe qui ne pourra pas consulter les dessins refusés des autres et pour autant l'utilisateur pourra avoir un retour sur ses soumissions de dessins. 
 
-## Challenges graphiques
+## Chalenges graphiques
 
-Pour ce projet, j'ai du faire face à 2 challenge techniques : 
+Pour ce projet, j'ai dû faire face à 2 chalenges techniques : 
 
 1. Reproduire une grille Lego ©
 2. Afficher les dessins à l'écran principal avec une animation simulant un flash suivit d'une image type polaroid.
 
 ### Grille Lego ©
 
-Finalement, faire la grille Lego © a été quelque chose de plutôt simple, Grâce à la libraire [FrabricJS](http://fabricjs.com/) j'ai pu reproduire un pion vu de haut. Une brique est donc l'adition d'un carré avec une ombre sur lequel, j'ai posé 2 cercles avec un jeux de couleur et d'ombres. Enfin, je rajoute le mot "GDG" à la Place de Lego et le tour est joué.
+Finalement, faire la grille Lego © a été quelque chose de plutôt simple, Grâce à la libraire [FrabricJS](http://fabricjs.com/) j'ai pu reproduire un pion vu de haut. Une brique est donc l’addition d'un carré avec une ombre sur lequel, j'ai posé 2 cercles avec un jeu de couleurs et d'ombres. Enfin, je rajoute le mot "GDG" à la Place de Lego et le tour est joué.
 
-**Etape 1 : le carré avec l'ombre**
+**Étape 1 : le carré avec l'ombre**
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-12-legonnary/brique_1.png">
@@ -931,7 +931,7 @@ this.rectBasic = new fabric.Rect({
 });
 ```
 
-**Etape 2 : le premier cercle (cercle extérieur)**
+**Étape 2 : le premier cercle (cercle extérieur)**
 
 
 <div style="text-align:center; width:100%;">
@@ -947,7 +947,7 @@ new fabric.Circle({
 });
 ```
 
-**Etape 3 : le second cercle avec une ombre**
+**Étape 3 : le second cercle avec une ombre**
 
 
 <div style="text-align:center; width:100%;">
@@ -964,7 +964,7 @@ new fabric.Circle({
 });
 ```
 
-**Etape 4 : L'ajout du texte GDG**
+**Étape 4 : L'ajout du texte GDG**
 
 
 <div style="text-align:center; width:100%;">
@@ -982,7 +982,7 @@ new fabric.Text('GDG', {
 });
 ```
 
-Même si cela n'est pas parfait, à une plus petite échelle, ça permet d'avoir un effet plustôt bon ! 
+Même si cela n'est pas parfait, à une plus petite échelle, ça permet d'avoir un effet plutôt bon ! 
 
 Le code correspondant est au niveau des fichiers [peg.js](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/lego_shape/peg.js) et [circle.js](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/lego_shape/circle.js)
 
@@ -1000,7 +1000,7 @@ L'animation css est décomposée en plusieurs animations :
   <div id="flash-effect" class="flash"></div>
 </div>
 
-Pour réussir cette partie, c'est très simple, il suffit de jouer avec une div blanche avec un dégradé vers de la transparance et il suffit d'afficher cette div pour la faire disparaitre très rapidement.
+Pour réussir cette partie, c'est très simple, il suffit de jouer avec une div blanche avec un dégradé vers de la transparence et il suffit d'afficher cette div pour la faire disparaitre très rapidement.
 
 ```css
 #flash-effect{
@@ -1024,7 +1024,7 @@ Pour réussir cette partie, c'est très simple, il suffit de jouer avec une div 
 
 Ainsi le fait d'appliquer la classe `flash` créera automatiquement cet effet de flash photo.
 
-**L'effet Polaroïd**
+**L'effet Polaroid**
 
 <div id="parent-negatif">
   <div class="img-ori-parent big" data-author="jefBinomed">
@@ -1032,9 +1032,9 @@ Ainsi le fait d'appliquer la classe `flash` créera automatiquement cet effet de
   </div>
 </div>
 
-Pour faire cet effet avec un nombre minimum d'éléments, j'ai simplement joué avec les before / after et sur les attributs html exploitables en css.
+Pour faire cet effet avec un nombre minimum d'éléments, j'ai simplement joué avec les before / after et sur les attributs HTML exploitables en css.
 
-Ainsi voici le code html : 
+Ainsi voici le code HTML : 
 
 ```html 
 <div class="img-ori-parent" data-author="jefBinomed">
@@ -1079,9 +1079,9 @@ et voici le code css correspondant :
 }
 ```
 
-De cette manière, on peut voir qu'avec simplement un jeux d'ombres, de after, before, on peut donner un effet Polaroïd à une image ! 
+De cette manière, on peut voir qu'avec simplement un jeu d'ombres, de after, before, on peut donner un effet Polaroid à une image ! 
 
-**L'animation de retrécicement**
+**L'animation de rétrécissement**
 
 <div id="parent-negatif">
   <div class="img-ori-parent big anim" data-author="jefBinomed">
@@ -1089,14 +1089,14 @@ De cette manière, on peut voir qu'avec simplement un jeux d'ombres, de after, b
   </div>
 </div>
 
-Cette animation est assurée par la propriété transition. On écoute ainsi toutes les évolutions de tailles, positions, ... et on déclache une transition de façon à rendre ça plus fluide.
+Cette animation est assurée par la propriété transition. On écoute ainsi toutes les évolutions de tailles, positions, ... et on déclenche une transition de façon à rendre ça plus fluide.
 
-La raison pour laquelle je ne passe pas par la propriété animation de css est que la position d'arrivée sera complètement aléatoire !  En effet, une fois l'image apparue, on va la positionner dans l'écran de façon aléatoire. Une fois à gauche et une fois à droite. Sa position horizontale et verticale sera certes bronée, mais le résultat sera issu d'un `Math.random()`. Donc en utilisant la propriété transition plutôt que animation, je peux m'assurer une animation fluide et prenant en comptes tous les cas. 
+La raison pour laquelle je ne passe pas par la propriété animation de css est que la position d'arrivée sera complètement aléatoire !  En effet, une fois l'image apparue, on va la positionner dans l'écran de façon aléatoire. Une fois à gauche et une fois à droite. Sa position horizontale et verticale sera certes bornée, mais le résultat sera issu d'un `Math.random()`. Donc en utilisant la propriété `transition` plutôt que `animation`, je peux m'assurer une animation fluide et prenant en compte tous les cas. 
 
 Dans mon animation, j'ai géré 2 états : 
 
 1. Le parent a la classe `.big` : Dans cet état, l'image est grande et positionnée au centre de l'écran
-2. Le parent n'a plus la classe `.big` : Dans cet état, l'image va prendre une taille plus réduite. Les top & left seront fixés directement par le javascript
+2. Le parent n'a plus la classe `.big` : Dans cet état, l'image va prendre une taille plus réduite. Les top & left seront fixés directement par le Javascript
 
 Voici le code css à faire pour gérer simplement l'animation
 
@@ -1173,10 +1173,10 @@ $size-photo-big: 500px;
 ```
 
 
-Voici ensuite comment avec le javascript j'anime le tout : 
+Voici ensuite comment avec le Javascript j'anime le tout : 
 
-1. Je déclanche le "flash"
-2. Après un léger timeout (le temps du flash), je créé une nouvelle div avec la classe `.big`
+1. Je déclenche le "flash"
+2. Après un léger timeout (le temps du flash), je créé une nouvelle DIV avec la classe `.big`
 3. Après un deuxième timeout (le temps de laisser le dessin à l'écran pour les participants), je supprime la classe `.big` et je donne des valeurs aléatoires au `top` & `left` de la div parente
 
 ```javascript app_screen.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_screen.js#L35
@@ -1239,6 +1239,7 @@ function generateSnapshot(user, dataUrl) {
 
 <div id="parent-final">
   <img class="img-ori empty" src="/assets/2016-12-legonnary/empty_legonnary.png">
+  <img class="img-ori temp" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
   <div class="img-ori-parent big final-anim" data-author="jefBinomed">
     <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
   </div>
@@ -1247,14 +1248,23 @@ function generateSnapshot(user, dataUrl) {
 
 ## Tout ce dont je n'ai pas parlé
 
-* le comptes à rebours
-* Code github
+Il reste encore beaucoup de points non abordés : 
+
+* La gestion du compte à rebours
+* La gestion de l'audio & vidéo
+
+En conclusion, j'ai encore appris pas mal de choses avec ce projet et si je devais revoir certaines parties, je pense que je ferais les choix suivants : 
+
+*  J'essayerais d'utiliser une autre librairie JS de canvas, D3 ? Car même si FabricJS est facile d'accès et fait bien le job. J'ai constaté quelques soucis avec le touch et quelques problèmes de performances liés à la librairie sur certains téléphones.
+*  Je tâcherais d'alléger un peu plus mon arbre firebase, notamment sur le stockage des images. Aujourd'hui mes images sont stockées directement dans l'arbre sous forme de base 64 ce qui ralentit énormément l'affichage de l'écran de restitution. J'essayerais de stocker ça avec le storage de firebase plutôt qu'en tant que nœud firebase...
+
+Si vous êtes curieux, je vous invite à consulter le code source :  [Legonnary-Github](https://github.com/GDG-Nantes/CountDownDevFest2016)
 
 Le résultat final : 
- * App de base
- * App Modérateur
- * App Comptes à rebours
- * App Restit
+ * [App de base](https://legonnary.firebaseapp.com/)
+ * [App Modérateur](https://legonnary.firebaseapp.com/moderator.html) : Nécessite d'être admin
+ * [App Comptes à rebours](https://legonnary.firebaseapp.com/screen.html) : Nécessite d'être admin
+ * [App Restit](https://legonnary.firebaseapp.com/summary.html)
 
 
 

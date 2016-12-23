@@ -1,4 +1,8 @@
 
+table{
+    margin:auto;
+}
+
 #parent-flash, #parent-negatif, #parent-final{
     position: relative;
     margin:auto;
@@ -28,7 +32,7 @@
 }
 
 #flash-effect.flash{
-    animation: flash;
+    animation-name: flash;
     animation-duration: 3s;
     animation-delay: 3s;
     animation-iteration-count: infinite;
@@ -101,7 +105,7 @@ article .article-content img.img-ori{
 
 
 .img-ori-parent.big.anim{
-    animation: retreci-parent;
+    animation-name: retreci-parent;
     animation-duration: 3s;
     animation-delay: 2s;
     animation-iteration-count: infinite;
@@ -109,7 +113,7 @@ article .article-content img.img-ori{
 }
 
 article .article-content .img-ori-parent.big.anim img.img-ori{
-    animation: retreci-img;
+    animation-name: retreci-img;
     animation-duration: 3s;
     animation-delay: 2s;
     animation-iteration-count: infinite;
@@ -117,7 +121,7 @@ article .article-content .img-ori-parent.big.anim img.img-ori{
 }
 
 .img-ori-parent.big.anim::after{
-    animation: retreci-after;
+    animation-name: retreci-after;
     animation-duration: 3s;
     animation-delay: 2s;
     animation-iteration-count: infinite;
@@ -170,47 +174,155 @@ article .article-content .img-ori-parent.big.anim img.img-ori{
 * Partie Finale
 */
 
-article .article-content img.img-ori.empty{
+article .article-content img.img-ori.empty,
+article .article-content img.img-ori.temp{
     top:50%;
     left:50%;
     transform: translateY(-50%) translateX(-50%);
 }
 
+article .article-content img.img-ori.temp{
+    opacity: 0;
+    animation-name: show-img-temp;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
 
 .flash-final.flash{
-    animation: flash-final;
-    animation-duration: 3s;
-    animation-delay: 3s;
+    animation-name: flash-final;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
 }
 
 .img-ori-parent.big.final-anim{
     opacity: 0;
-    animation-name: retreci-parent;
-    animation-duration: 3s;
-    animation-delay: 3s;
-    animation-iteration-count: infinite;
+    animation-name: retreci-parent-final, move-parent;
+    animation-duration: 10s, 10s;
+    animation-iteration-count: infinite, infinite;
 }
 
 article .article-content .img-ori-parent.big.final-anim img.img-ori{
-    animation: retreci-img;
-    opacity: 0;
-    animation-name: retreci-parent;
-    animation-duration: 3s;
-    animation-delay: 3s;
+    animation-name: retreci-img-final;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
 }
 
 .img-ori-parent.big.final-anim::after{
-    animation: retreci-after;
-    animation-duration: 3s;
-    animation-delay: 2s;
+    animation-name: retreci-after-final;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 @keyframes flash-final {
-    0% {opacity:1;}
-    33% {opacity: 0}
-    100% {opacity:0;}
+    0% {opacity:0;}
+    39% {opacity: 0;}
+    40%{opacity: 1;}
+    50%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes move-parent {
+    0%{
+        top:50%;
+        left:50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    46%{
+        top:50%;
+        left:50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    70%{
+        top: 10%;
+        left:10%;
+        transform: rotate(-15deg);
+    }
+    100%{
+        top: 10%;
+        left:10%;
+        transform: rotate(-15deg);
+    }
+    
+}
+
+@keyframes show-img-temp{
+    0%{ opacity: 0;}
+    9%{ opacity: 0;}
+    10%{ opacity: 1;}
+    39%{ opacity: 1;}
+    40%{ opacity: 0;}
+    100%{ opacity: 0;}
+    
+}
+
+@keyframes retreci-parent-final{
+    0%{
+        opacity: 0;
+    }
+    45%{
+        opacity: 0;
+    }
+    46%{
+        opacity: 1;
+        width:calc(200px + 40px);
+        height: calc(200px + 100px);
+    }
+    70%{
+        opacity: 1;
+        width:calc(100px + 20px);
+        height: calc(100px + 50px);
+    }
+    100%{
+        opacity: 1;
+        width:calc(100px + 20px);
+        height: calc(100px + 50px);
+    }
+    
+}
+
+@keyframes retreci-img-final{
+    0%{
+        top:20px;
+        left:20px;
+        width:200px;
+        height:200px;
+    }
+    46%{
+        top:20px;
+        left:20px;
+        width:200px;
+        height:200px;
+    }
+    70%{
+        top:10px;
+        left:10px;
+        width:100px;
+        height:100px;
+    }
+    100%{
+        top:10px;
+        left:10px;
+        width:100px;
+        height:100px;
+    }
+}
+
+@keyframes retreci-after-final{
+    0%{
+        font-size:20pt;
+        line-height:20pt;
+    }
+    46%{
+        font-size:20pt;
+        line-height:20pt;
+    }
+    70%{
+        font-size:10pt;
+        line-height:10pt;
+    }
+    100%{
+        font-size:10pt;
+        line-height:10pt;
+    }
 }
