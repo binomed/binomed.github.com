@@ -1,6 +1,7 @@
 
-table{
-    margin:auto;
+article .article-content table{
+    margin-left:auto;
+    margin-right:auto;
 }
 
 #parent-flash, #parent-negatif, #parent-final{

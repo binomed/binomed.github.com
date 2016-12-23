@@ -1,4 +1,6 @@
-title: "J'ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA)"
+title: >-
+  J'ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 -
+  PWA)
 tags:
   - Progressive Web App
   - HTML5
@@ -9,28 +11,30 @@ tags:
 category:
   - Tech
 toc: false
+date: 2016-12-23 17:04:43
 ---
+
 
 ![](/assets/2016-12-legonnary/devfest_photo.jpg)
 
 
 ## [TL;DR;] 
 
-Il s'agit d'un article sur un jeu mis en place pour le DevFest 2017. Les grandes parties sont : 
+Il s'agit d'une série de 3 articles sur un jeu mis en place pour le DevFest 2017. Les grandes parties sont : 
 * [Origin Story](#Origin_story) : pourquoi / comment / les enjeux ?
 * [Architecture](#Architecture) : Quelle architecture j'ai choisi.
 * [Workflow de dev choisi](#Workflow_de_dev_choisi) : Comment j'ai structuré mon code et mon workflow de dev
 * [Progressive Web App](#Progressive_Web_App) : Comment j'ai transformé l'application en Progressive Web App
-* [Sécurisation de l’app](#Sécurisation_de_l’app) : Utilisation détaillée de firebase pour le cas du jeu
-* [Challenges graphiques](#Challenges graphiques) : Problèmes et solutions graphiques rencontrées
+* [Sécurisation de l’app](/2016/12/23/2016-12-23-legonnary-2/) : Utilisation détaillée de firebase pour le cas du jeu
+* [Challenges graphiques](/2016/12/23/2016-12-23-legonnary-3/) : Problèmes et solutions graphiques rencontrées
 
 ## Tout ça pour un compte à rebours !
 
-Dans le cadre du [DevFest Nantes 2017](https://devfestnantes.gdgnantes.com) j'ai voulu comme chaque année travailler un compte à rebours personnalisé.
+Dans le cadre du [DevFest Nantes 2016](https://devfestnantes.gdgnantes.com) j'ai voulu comme chaque année travailler un compte à rebours personnalisé.
 
 ### Origin Story
 
-Ayant eu la chance d'aller au [Google I/O](https://events.google.com/io), j'ai beaucoup apprécié les animations qu'il y a eu et qui permettait aux participants de joueur avec une application codée spécialement pour l'occasion : [Paper Planes](https://paperplanes.world/).
+Ayant eu la chance d'aller au [Google I/O](https://events.google.com/io), j'ai beaucoup apprécié les animations qu'il y a eu et qui permettaient aux participants de jouer avec une application codée spécialement pour l'occasion : [Paper Planes](https://paperplanes.world/).
 
 N'ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J'ai donc cherché un autre concept ! 
 
@@ -38,9 +42,9 @@ N'ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J'ai
 
 ![](/assets/2016-12-legonnary/theme_lego.jpg)
 
-En 2016, le thème graphique était l'univers Lego ©, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui permettrait de faire un jeu multijoueur basé sur les Lego ©. 
+En 2016, le thème graphique était l'univers Lego ©, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui me permettrait de faire un jeu multijoueur basé sur les Lego ©. 
 
-Ma première idée fut de laisser les participants construire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants et le résultat final ! L'idée était intéressante mais j'ai dû me rendre à l'évidence, je n'ai ni le temps, ni les compétences pour mettre en place un tel système... il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et à la fois réalisable pour mes compétences graphiques : J'allais faire un Pixel art Lego © dont le résultat final se verrait à l'écran ! Legonnary était né !
+Ma première idée fut de laisser les participants construire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants et le résultat final ! L'idée était intéressante mais j'ai dû me rendre à l'évidence, je n'ai ni le temps, ni les compétences pour mettre en place un tel système... Il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et réalisable pour mes compétences graphiques : J'allais faire un Pixel art Lego © dont le résultat final se verrait à l'écran ! Legonnary était né !
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-12-legonnary/gdg_logo_legonnary.png">
@@ -51,8 +55,8 @@ Ma première idée fut de laisser les participants construire en 3D des Lego © 
 
 Le concept est du coup relativement simple : 
 1. Un participant va se loguer pour soumettre des dessins type Pixel art fait à partir de briques Lego ©. 
-2. Un modérateur reçoit le dessin du participant (car oui il vaut mieux modérer dans ces cas ;) ). Il va donc décider de valider ou refuser un dessin
-3. Si le dessin est accepté, alors il apparaîtra sur l'écran de comptes à rebours et sera affiché une seule fois !
+2. Un modérateur reçoit le dessin du participant (car oui il vaut mieux modérer ;) ). Il va décider de valider ou de refuser un dessin.
+3. Si le dessin est accepté, alors il apparaîtra sur l'écran de compte à rebours !
 4. Si non, seul l'utilisateur à l'origine du dessin pourra revoir son dessin ainsi que l'état du dessin : accepté / refusé. 
 5. Tous les dessins validés doivent être accessible sur un écran de restitution indépendant pour accéder simplement aux dessins créés ET validés.
 
@@ -62,10 +66,10 @@ Avant de rentrer dans le détail de l'implémentation choisie, j'ai voulu me fix
 
 - Je voulais faire une Progressive Web App [PWA](https://developers.google.com/web/progressive-web-apps/) afin d'être : mobile first / offline / installable.
 - Je voulais un jeu temps réel mais en même temps sans serveur.
-- Je voulais une application sécurisée, à la fois au niveau des données mais aussi au niveau de son accès. Globalement, je voudrais que mes utilisateurs soient logués.
-- Afin d'éviter aux participants de saisir une URL, je voulais que l'application soit détectable en physical web
+- Je voulais une application sécurisée, que ce soit pour les données mais aussi par son accès. Globalement, je voulais que mes utilisateurs soient logués.
+- Afin d'éviter aux participants de saisir une URL, je voulais que l'application soit détectable en physical web (https).
 - Nous sommes en 2016, je ne me voyais pas partir sur une application qui n'était pas codée en ES6.
-- Il a fallu prévoir plusieurs applications pour coller avec chacun des rôles : Joueur / Modérateur / Écran de comptes à rebours /  Écran de restitution
+- Il fallait prévoir plusieurs applications pour coller avec chacun des rôles : Joueur / Modérateur / Écran de compte à rebours /  Écran de restitution.
 
 ## Architecture
 
@@ -78,14 +82,14 @@ Pour faire marcher tout ça ensemble, j'ai choisi l'architecture suivante :
 ### Firebase
 
 Firebase me permet en effet de répondre à beaucoup de besoins : 
-* En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à [Firebase Authentication](https://firebase.google.com/docs/auth/) je peux faire de l'authentification sécurisée sans me soucier de mettre en place des mécanismes d'OAuth !
-* Je vais pouvoir "hoster" mon application
+* En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à [Firebase Authentication](https://firebase.google.com/docs/auth/) je peux faire de l'authentification sécurisée sans me soucier de l'installation / configuration des mécanismes d'OAuth !
+* Je vais pouvoir "hoster" mon application en https.
 * Mes données vont être synchronisées en temps réel et chacune des applications va pouvoir communiquer de façon instantanée sans que j'aie quoi que ce soit à coder au niveau serveur.
 * Enfin pour finir, le jeu fonctionnera aussi offline grace à Firebase car je sais qu'il est du ressort de la librairie de gérer les push d’évènements.
 
 ### PWA 
 
-La partie Progressive Web App a été codé de façon manuelle car je voulais comprendre, mettre les mains dans le cambouis 
+La partie Progressive Web App a été codé de façon manuelle car je voulais comprendre et ainsi mettre les mains dans le cambouis. 
 
 ### Fabric JS
 
@@ -103,14 +107,14 @@ Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](htt
     <img src="/assets/2016-12-legonnary/Legonnary_Validation.png">
 </div>
 
-Afin de faire communiquer correctement chacun des écrans / applications, j'ai défini une notion d'états pour les dessins faits via l'application. Un dessin va pouvoir se retrouver avec plusieurs états en même pour permettre un affichage conditionnel. 
+Afin de faire communiquer correctement chacun des écrans / applications, j'ai défini une notion d'états pour les dessins faits via l'application. Un dessin va pouvoir se retrouver avec plusieurs états en même temps pour permettre un affichage conditionnel. 
 
-* **Submited** : Un dessin est dans cet état, juste après la validation d'un utilisateur
-* **Accepted** : Un dessin est dans cet état si le modérateur a validé le dessin
-* **Rejected** : Un dessin est dans cet état si le modérateur a rejeté le dessin
+* **Submited** : Un dessin est dans cet état juste après la validation d'un utilisateur.
+* **Accepted** : Un dessin est dans cet état si le modérateur a validé le dessin.
+* **Rejected** : Un dessin est dans cet état si le modérateur a rejeté le dessin.
 
 États additionnels :
-* **Validated** : Un dessin est dans cet état s'il a été validé par le modérateur et qu'il attend d'être traité par l'écran de comptes à rebours
+* **Validated** : Un dessin est dans cet état s'il a été validé par le modérateur et qu'il attend d'être traité par l'écran de compte à rebours
 * **Archived** : Un dessin est dans cet état dès que le dessin est validé. Un dessin dans cet état est considéré comme public et peut donc être consulté par n'importe qui.
 
 
@@ -143,15 +147,15 @@ Afin de faire communiquer correctement chacun des écrans / applications, j'ai d
 
 ### Pourquoi pas Angular ?
 
-Comme je le disais plus haut, j'ai voulu coder mon application en ES6. Alors la première question que l'on m'a posé à chaque fois, c'est pourquoi du vanillaJS plutôt qu'un Angular ou autre chose ? La réponse est simple : KISS ! Le jeu mis en place ne nécessitait pas de grande complexité et donc, j'ai jugé un peu overkill de charger une librairie type Angular. 
+Comme je le disais plus haut, j'ai voulu coder mon application en ES6. Alors, la première question que l'on m'a posé, c'est pourquoi du vanillaJS plutôt qu'un Angular ou autre chose ? La réponse est simple : KISS ! Le jeu mis en place ne nécessitait pas de grande complexité de code et donc, j'ai jugé un peu "overkill" de charger une librairie type Angular. 
 
-ES6 m'a permis de structurer tout aussi efficacement mon code, en créant des classes séparant ainsi fortement mes concepts, et en déléguant aussi bien les responsabilités dans chaque partie de mon code !
+ES6 m'a permis de structurer tout aussi efficacement mon code, en créant des classes, séparant ainsi fortement mes concepts, et déléguant aussi bien les responsabilités dans chaque partie de mon code !
 
 ### Task runner
 
-Côté build, je n'avais pas forcément envie de partir sur webpack car soyons franc, je n'avais pas les compétences ni l'envie d'apprendre un nouvel outil de build. J'avais déjà bien assez à apprendre avec ce jeu. Je ne voulais pas me rajouter un nouveau chalenge. À terme, je ne pas par contre que mes prochains projets n'utiliseront pas webpack ou le task runner tendance du moment. Bref ! J'ai choisi Gulp & Browserify. Gulp, par ce que je l'aime bien et Browserify par ce je voulais coder mon application en utilisant les imports de modules Javascript.
+Côté build, je n'avais pas forcément envie de partir sur webpack car soyons franc, je n'avais pas l'envie d'apprendre un nouvel outil de build. J'avais déjà bien assez à apprendre avec ce jeu. Je ne voulais pas me rajouter un nouveau chalenge. Bref ! J'ai choisi Gulp & Browserify. Gulp, par ce que je l'aime bien et Browserify par ce je voulais coder mon application en utilisant les imports de modules Javascript.
 
-La seule complexité que j'ai eue avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel & Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin [babelify](https://github.com/babel/babelify). Voici les tasks spécifiques à mon build qui gère cette partie
+La seule complexité que j'ai eue avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel & Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin [babelify](https://github.com/babel/babelify). Voici les tasks spécifiques à mon build qui gère cette partie.
 
 ```javascript gulpfile.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js
 "use strict";
@@ -179,7 +183,7 @@ gulp.task('browserify_phone',function(){
 
 La déclaration des extensions es6 est obligatoire pour indiquer au plugin ce qu'il doit convertir / transpiller.
 
-**/!\\** Il est très important aussi d'ajouter à la racine de son projet un ficher `.babelrc` qui permet de spécifier quelle est la cible de compilation
+**/!\\** Il est très important aussi d'ajouter à la racine de son projet un ficher `.babelrc` qui permet de spécifier quelle est la cible de compilation.
 
 ```javascript .babelrc https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/.babelrc
 {
@@ -191,16 +195,16 @@ Pour le reste, j'ai utilisé sass /  browsersync afin de me garantir un workflow
 
 ### Spécifiques du build
 
-J'ai dû prévoir un certain nombre de choses assez spécifiques car  : 
+J'ai dû prévoir un certain nombre de choses assez spécifiques car : 
 
 * J'ai plusieurs applications. J'ai donc plusieurs taches qui font des builds spécifiques pour chacune de mes applications.
 * Toutes les applications n'ont pas de service worker.
-* Je veux une invalidation brute de mon service worker à chaque nouvelle publication (j'en parlerais dans la partie PWA)
+* Je veux une invalidation brute de mon service worker à chaque nouvelle publication (j'en parlerais dans la partie PWA).
 
 
 ## Progressive Web App
 
-Les Progressives Web App (PWA) sont un des grands concepts regroupant un ensemble de bonnes pratiques sur les applications web. Voici en vrac les choses que l'on peut retrouver sur un PWA : 
+Les Progressives Web App (PWA) sont de grands concepts regroupant un ensemble de bonnes pratiques pour les applications web. Voici en vrac les choses que l'on peut retrouver sur une PWA : 
 
 * OffLine
 * Responsive
@@ -252,16 +256,16 @@ Prenons en exemple le manifest de l'application joueur.
 ```
 
 Revenons sur les différents champs : 
-* `name`: Il s'agit du nom de l'application à son lancement
-* `short_name` : Il s'agit du nom qui sera présent sous l'icône dans la "home" de votre téléphone
-* `icons` : ensemble de combinaisons possibles de résolutions de votre icône. Cela va dépendre du téléphone
+* `name`: Il s'agit du nom de l'application à son lancement.
+* `short_name` : Il s'agit du nom qui sera présent sous l'icône dans la "home" de votre téléphone.
+* `icons` : Ensemble de combinaisons possibles de résolutions de votre icône. Cela va dépendre du téléphone.
 * `start_url` : URL de démarrage du site une fois qu'on a cliqué sur l'icône. On peut donc spécifier une URL spécifique dans le cas d'une PWA ! 
-* `display` : il s'agit d'un flag permettant de définir le mode de lancement de l'application. Voici les valeurs possibles : 
-    - `standalone` : n'affiche pas la barre de navigation du navigateur
-    - `browser` : affiche la barre de navigation 
-* `orientation` : définit l'orientation de l'application
-* `background_color` : définit la couleur de fond que vous aller avoir pour le spash screen
-* `theme_color` : définit une couleur de thème qui pourra être utilisée par le navigateur pour colorer la barre d’URL
+* `display` : Il s'agit d'un flag permettant de définir le mode de lancement de l'application. Voici les valeurs possibles : 
+    - `standalone` : N'affiche pas la barre de navigation du navigateur.
+    - `browser` : Affiche la barre de navigation.
+* `orientation` : Définit l'orientation de l'application.
+* `background_color` : Définit la couleur de fond que vous aller avoir pour le spash screen.
+* `theme_color` : Définit une couleur de thème qui pourra être utilisée par le navigateur pour colorer la barre d’URL.
 
 Pour ajouter ce manifest à votre page il suffit simplement d'ajouter la balise suivante dans la partie header : 
 
@@ -294,7 +298,7 @@ Pour ceux qui ne savent pas ce qu'est un service worker, je vous invite à consu
 
 Comme je le disais au début, j'ai préféré coder moi-même mon service worker car je souhaitais monter en compétences et comprendre précisément ce que je codais. Je n'ai donc pas utilisé d'outils pour m'aider à réaliser ce dernier et si vous êtes intéressés par de la génération de services workers, je vous invite à regarder ceci : [sw-precache](https://github.com/GoogleChrome/sw-precache).
 
-Concernant mon application, j'avais envie d'éviter de surcharger mon serveur en bande passante et donc je me suis appuyé sur des CDN pour délivrer mes librairies Javascript. Une des premières choses que j'ai donc mises en place c'est la séparation entre mon cache de CDN et le cache de mes ressources que je considérais comme dynamiques (css / js / ...) 
+Concernant mon application, j'avais envie d'éviter de surcharger mon serveur en bande passante et donc je me suis appuyé sur des CDN pour délivrer mes librairies Javascript. Une des premières choses que j'ai donc mises en place, c'est la séparation entre mon cache de CDN et le cache de mes ressources que je considérais comme dynamiques (css / js / ...) 
 
 ```javascript service-worker-phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js
 'use strict';
@@ -364,7 +368,7 @@ self.addEventListener('activate', function(e) {
 });
 ```
 
-La particularité de mon service worker réside au niveau de la mise en cache du CDN. J'attends en effet de voir si la ressource demandée fait partie de ma liste de ressources à mettre à cache et si c'est le cas, je délivre soit le fichier 'caché', soit je le récupère sur le réseau et ensuite je le mets en cache.
+La particularité de mon service worker réside au niveau de la mise en cache du CDN. J'attends en effet de voir si la ressource demandée fait partie de ma liste de ressources à mettre à cache et si c'est le cas, je délivre soit le fichier "caché", soit je le récupère sur le réseau et ensuite je le mets en cache.
 
 Si la ressource ne fait pas partie des fichiers à mettre en cache, alors, je vais chercher la ressource sur le web.
 
@@ -400,7 +404,7 @@ self.addEventListener('fetch', function(e) {
 
 Fichier complet : [ServiceWorker Legonnary](https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js)
 
-enfin, n'oublions pas d'inclure l'installation du service worker dans l'application.
+Enfin, n'oublions pas d'inclure l'installation du service worker dans l'application.
 
 ```javascript app_phone.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_phone.js#L186
  if ('serviceWorker' in navigator) {        
@@ -412,9 +416,9 @@ enfin, n'oublions pas d'inclure l'installation du service worker dans l'applicat
 
 #### Gestion du build 
 
-Comme je n'ai pas utilisé d'outils de build pour gérer pour moi le service worker, j'ai dû mettre en place quelques *"astuces"* pour garder un workflow de dev facile. En effet, en développement mon service worker n'est pas actif et la mise à jour du numéro de cache est gérée automatiquement par mon build 
+Comme je n'ai pas utilisé d'outils de build pour gérer le service worker, j'ai dû mettre en place quelques *"astuces"* pour garder un workflow de dev facile. En effet, en développement mon service worker n'est pas actif et la mise à jour du numéro de cache est gérée automatiquement par mon build. 
 
-**1. Service désactivé pendant le dev**
+**1. Service worker désactivé pendant le dev**
 
 J'aurais très bien pu utiliser l'option des devtools qui me permet de mettre à jour mon cache à chaque refresh mais cela nécessite que les devtools soient toujours ouverts, ce qui n'était pas toujours mon cas. Pour pallier à ça, j'ai simplement commenté l'activation de mon service dans mon code et mon build va simplement supprimer ces commentaires.
 
