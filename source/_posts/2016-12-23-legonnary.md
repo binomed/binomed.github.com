@@ -20,13 +20,13 @@ date: 2016-12-23 17:04:43
 
 ## [TL;DR;] 
 
-Il s'agit d'une série de 3 articles sur un jeu mis en place pour le DevFest 2017. Les grandes parties sont : 
-* [Origin Story](#Origin_story) : pourquoi / comment / les enjeux ?
+Il s'agit d'une série de 3 articles sur un jeu mis en place pour le DevFest 2016. Les grandes parties sont : 
+* [Origin Story](#Origin_story) : Pourquoi / comment / les enjeux ?
 * [Architecture](#Architecture) : Quelle architecture j'ai choisi.
-* [Workflow de dev choisi](#Workflow_de_dev_choisi) : Comment j'ai structuré mon code et mon workflow de dev
-* [Progressive Web App](#Progressive_Web_App) : Comment j'ai transformé l'application en Progressive Web App
-* [Sécurisation de l’app](/2016/12/23/2016-12-23-legonnary-2/) : Utilisation détaillée de firebase pour le cas du jeu
-* [Challenges graphiques](/2016/12/23/2016-12-23-legonnary-3/) : Problèmes et solutions graphiques rencontrées
+* [Workflow de dev choisi](#Workflow_de_dev_choisi) : Comment j'ai structuré mon code et mon workflow de dev.
+* [Progressive Web App](#Progressive_Web_App) : Comment j'ai transformé l'application en Progressive Web App.
+* [Sécurisation de l’app](/2016/12/23/2016-12-23-legonnary-2/) : Utilisation détaillée de firebase pour le cas du jeu.
+* [Challenges graphiques](/2016/12/23/2016-12-23-legonnary-3/) : Problèmes et solutions graphiques rencontrées.
 
 ## Tout ça pour un compte à rebours !
 
@@ -34,7 +34,7 @@ Dans le cadre du [DevFest Nantes 2016](https://devfestnantes.gdgnantes.com) j'ai
 
 ### Origin Story
 
-Ayant eu la chance d'aller au [Google I/O](https://events.google.com/io), j'ai beaucoup apprécié les animations qu'il y a eu et qui permettaient aux participants de jouer avec une application codée spécialement pour l'occasion : [Paper Planes](https://paperplanes.world/).
+Ayant eu la chance d'aller au [Google I/O](https://events.google.com/io), j'ai beaucoup apprécié les animations qu'il y a eu qui permettaient aux participants de jouer avec une application codée spécialement pour l'occasion : [Paper Planes](https://paperplanes.world/).
 
 N'ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J'ai donc cherché un autre concept ! 
 
@@ -42,9 +42,11 @@ N'ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J'ai
 
 ![](/assets/2016-12-legonnary/theme_lego.jpg)
 
-En 2016, le thème graphique était l'univers Lego ©, je me suis donc lancé dans gros brainstorming avec ma femme pour trouver une idée qui me permettrait de faire un jeu multijoueur basé sur les Lego ©. 
+En 2016, le thème graphique était l'univers Lego ©, je me suis donc lancé dans un gros brainstorming avec ma femme pour trouver une idée qui me permettrait de faire un jeu multijoueur basé sur les Lego ©. 
 
-Ma première idée fut de laisser les participants construire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants et le résultat final ! L'idée était intéressante mais j'ai dû me rendre à l'évidence, je n'ai ni le temps, ni les compétences pour mettre en place un tel système... Il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et réalisable pour mes compétences graphiques : J'allais faire un Pixel art Lego © dont le résultat final se verrait à l'écran ! Legonnary était né !
+Ma première idée fut de laisser les participants construire en 3D des Lego © et d'afficher sur l'écran de restitution les étapes suivies par les participants ! L'idée était intéressante mais j'ai dû me rendre à l'évidence : je n'ai ni le temps, ni les compétences pour mettre en place un tel système... Il a donc fallu que je continue à chercher. Finalement c'est ma femme qui a trouvé l'idée qui était à la fois cool et réalisable : 
+
+J'allais faire une application Pixel art Lego © dont le résultat final se verrait à l'écran de compte à rebours ! Legonnary était né !
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2016-12-legonnary/gdg_logo_legonnary.png">
@@ -53,23 +55,23 @@ Ma première idée fut de laisser les participants construire en 3D des Lego © 
 
 ### Le concept
 
-Le concept est du coup relativement simple : 
-1. Un participant va se loguer pour soumettre des dessins type Pixel art fait à partir de briques Lego ©. 
-2. Un modérateur reçoit le dessin du participant (car oui il vaut mieux modérer ;) ). Il va décider de valider ou de refuser un dessin.
-3. Si le dessin est accepté, alors il apparaîtra sur l'écran de compte à rebours !
-4. Si non, seul l'utilisateur à l'origine du dessin pourra revoir son dessin ainsi que l'état du dessin : accepté / refusé. 
+Le concept est simple : 
+1. Un participant va se loguer pour soumettre des dessins. 
+2. Un modérateur reçoit le dessin du participant (car oui, il vaut mieux modérer ;) ). Il va décider de valider ou de refuser le dessin.
+3. Si le dessin est accepté, il apparaîtra sur l'écran de compte à rebours !
+4. Si non, seul l'utilisateur à l'origine du dessin pourra le revoiravec son état : accepté / refusé. 
 5. Tous les dessins validés doivent être accessible sur un écran de restitution indépendant pour accéder simplement aux dessins créés ET validés.
 
 ## Enjeux 
 
-Avant de rentrer dans le détail de l'implémentation choisie, j'ai voulu me fixer quelques contraintes : 
+Avant de rentrer dans le détail de l'implémentation, je me suis fixé quelques contraintes : 
 
-- Je voulais faire une Progressive Web App [PWA](https://developers.google.com/web/progressive-web-apps/) afin d'être : mobile first / offline / installable.
-- Je voulais un jeu temps réel mais en même temps sans serveur.
-- Je voulais une application sécurisée, que ce soit pour les données mais aussi par son accès. Globalement, je voulais que mes utilisateurs soient logués.
-- Afin d'éviter aux participants de saisir une URL, je voulais que l'application soit détectable en physical web (https).
-- Nous sommes en 2016, je ne me voyais pas partir sur une application qui n'était pas codée en ES6.
-- Il fallait prévoir plusieurs applications pour coller avec chacun des rôles : Joueur / Modérateur / Écran de compte à rebours /  Écran de restitution.
+- Je veux faire une Progressive Web App ([PWA](https://developers.google.com/web/progressive-web-apps/)) afin d'être : mobile first / offline / installable.
+- Je veux un jeu temps réel mais où je n'ai pas à m'occuper de la partie serveur.
+- Je veux une application sécurisée, que ce soit pour les données mais aussi par son accès. Globalement, je veux que mes utilisateurs soient logués.
+- Afin d'éviter aux participants de saisir une URL, je veux que l'application soit détectable en physical web (https).
+- Nous sommes en 2016, l'application doit être codée en ES6.
+- Il faut prévoir plusieurs applications pour coller avec chacun des rôles : Joueur / Modérateur / Écran de compte à rebours /  Écran de restitution.
 
 ## Architecture
 
@@ -82,24 +84,24 @@ Pour faire marcher tout ça ensemble, j'ai choisi l'architecture suivante :
 ### Firebase
 
 Firebase me permet en effet de répondre à beaucoup de besoins : 
-* En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à [Firebase Authentication](https://firebase.google.com/docs/auth/) je peux faire de l'authentification sécurisée sans me soucier de l'installation / configuration des mécanismes d'OAuth !
+* En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à [Firebase Authentication](https://firebase.google.com/docs/auth/) je peux faire de l'authentification sécurisée sans me soucier de l'installation / configuration des mécanismes OAuth !
 * Je vais pouvoir "hoster" mon application en https.
 * Mes données vont être synchronisées en temps réel et chacune des applications va pouvoir communiquer de façon instantanée sans que j'aie quoi que ce soit à coder au niveau serveur.
 * Enfin pour finir, le jeu fonctionnera aussi offline grace à Firebase car je sais qu'il est du ressort de la librairie de gérer les push d’évènements.
 
-### PWA 
+### Progresse Web App
 
-La partie Progressive Web App a été codé de façon manuelle car je voulais comprendre et ainsi mettre les mains dans le cambouis. 
+La partie Progressive Web App a été codé de façon manuelle car je voulais comprendre les concepts et les enjeux d'une PWA. 
 
 ### Fabric JS
 
-Ayant déjà eu l'occasion de travailler plusieurs fois avec des canvas, je sais que la complexité de code peut vite augmenter notamment lié aux histoires de zoom d'écran sur mobile. J'avais aussi identifié un certain nombre de points qui allaient surement me poser des problèmes, notamment le fait que mes pièces Lego © devaient avoir un effet aimanté vis-à-vis d'une grille. 
+Ayant déjà eu l'occasion de travailler plusieurs fois avec des canvas, je sais que la complexité de code peut vite augmenter. J'ai aussi identifié un certain nombre de points qui vont surement me poser problème. Par exemple, le fait que mes pièces Lego © doivent avoir un effet aimanté vis-à-vis d'une grille. 
 
-Face à tous possibles problèmes, j'ai préféré me reposer sur une libraire plutôt que de tout coder moi-même. J'ai donc choisi [FabricJS](http://fabricjs.com/) comme librairie car elle proposait une abstraction suffisante et des fonctionnalités qui collaient bien avec mon besoin.
+Face à tous possibles problèmes, j'ai préféré me reposer sur une libraire plutôt que de tout coder moi-même. J'ai donc choisi [FabricJS](http://fabricjs.com/) comme librairie car elle propose une abstraction suffisante et des fonctionnalités qui collent avec mon besoin.
 
 ### Déploiement automatique avec CodeShip
 
-Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](https://codeship.com/) qui propose de se brancher sur les commits faits sur github et donc permettre un redéploiement automatique de mon code. 
+Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](https://codeship.com/). 
 
 ### Workflow de validation des dessins
 
@@ -107,7 +109,7 @@ Enfin pour pousser mon code en production, je me suis reposé sur [Codeship](htt
     <img src="/assets/2016-12-legonnary/Legonnary_Validation.png">
 </div>
 
-Afin de faire communiquer correctement chacun des écrans / applications, j'ai défini une notion d'états pour les dessins faits via l'application. Un dessin va pouvoir se retrouver avec plusieurs états en même temps pour permettre un affichage conditionnel. 
+Afin de faire communiquer correctement chacun des écrans / applications, j'ai défini une notion d'états pour les dessins. Un dessin va pouvoir se retrouver avec plusieurs états en même temps pour permettre un affichage conditionnel. 
 
 * **Submited** : Un dessin est dans cet état juste après la validation d'un utilisateur.
 * **Accepted** : Un dessin est dans cet état si le modérateur a validé le dessin.
@@ -149,7 +151,7 @@ Afin de faire communiquer correctement chacun des écrans / applications, j'ai d
 
 Comme je le disais plus haut, j'ai voulu coder mon application en ES6. Alors, la première question que l'on m'a posé, c'est pourquoi du vanillaJS plutôt qu'un Angular ou autre chose ? La réponse est simple : KISS ! Le jeu mis en place ne nécessitait pas de grande complexité de code et donc, j'ai jugé un peu "overkill" de charger une librairie type Angular. 
 
-ES6 m'a permis de structurer tout aussi efficacement mon code, en créant des classes, séparant ainsi fortement mes concepts, et déléguant aussi bien les responsabilités dans chaque partie de mon code !
+ES6 m'a permis de structurer tout aussi efficacement mon code, en créant des classes, séparant fortement mes concepts, et déléguant aussi bien les responsabilités dans chaque partie de mon code !
 
 ### Task runner
 
@@ -204,7 +206,7 @@ J'ai dû prévoir un certain nombre de choses assez spécifiques car :
 
 ## Progressive Web App
 
-Les Progressives Web App (PWA) sont de grands concepts regroupant un ensemble de bonnes pratiques pour les applications web. Voici en vrac les choses que l'on peut retrouver sur une PWA : 
+Les Progressives Web App (PWA) est un terme pour regrouper un ensemble de bonnes pratiques pour les applications web. Voici en vrac les choses que l'on peut retrouver sur une PWA : 
 
 * OffLine
 * Responsive
@@ -225,7 +227,7 @@ Je n'ai donc pas touché à la partie push, ni background sync.
 
 ### Application installable
 
-Une des choses les plus simples à mettre en œuvre c'est le manifest. Il s'agit d'un fichier JSON qui va donner un ensemble de meta-données sur votre application permettant par la suite d'installer votre application sur la "home" de votre téléphone (compatible Android & un peu IOS).
+Une des choses les plus simples à mettre en œuvre, c'est le manifest. Il s'agit d'un fichier JSON qui va donner un ensemble de meta-données sur votre application permettant par la suite d'installer votre application sur la "home" de votre téléphone (compatible Android & un peu IOS).
 
 Prenons en exemple le manifest de l'application joueur.
 
@@ -264,7 +266,7 @@ Revenons sur les différents champs :
     - `standalone` : N'affiche pas la barre de navigation du navigateur.
     - `browser` : Affiche la barre de navigation.
 * `orientation` : Définit l'orientation de l'application.
-* `background_color` : Définit la couleur de fond que vous aller avoir pour le spash screen.
+* `background_color` : Définit la couleur de fond que vous allez avoir pour le spash screen.
 * `theme_color` : Définit une couleur de thème qui pourra être utilisée par le navigateur pour colorer la barre d’URL.
 
 Pour ajouter ce manifest à votre page il suffit simplement d'ajouter la balise suivante dans la partie header : 
