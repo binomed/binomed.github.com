@@ -18,23 +18,27 @@ Mais là n'est pas le sujet de cet article. Aujourd'hui, je souhaiterais m'attar
 
 ## Le concept : RTT
 
-J'ai lancé les RTT pour **RabbiT Talk** 
+J'ai lancé les RTT : **R**abbi**T** **T**alk 
 
 Tous les vendredis à 11h45, une personne va faire une conférence de 15 minutes sur le sujet de son choix devant ses collègues. Une fois la conférence terminera, il(elle) désignera son successeur qui devra donner le prochain RTT.
+
+### Pourquoi RTT pour RabbiT Talk ? 
+
+A l'origine, c'était les Rabbit Tech Talk mais l'aspect Tech pouvais être trop réducteur et Rabbit car c'est sessions très rapides ! Et puis RTT pour une société dont l'un des softs principaux s'occupe de congés, c'est quand même logique ;) !
 
 ## Les enjeux
 
 Les enjeux sont multiples : 
 
-* Partager plus régulièrement la connaissance sans pour autant assomer les gens avec un format long.
-* Identifier des sujets pouvant être partagé à plus grande échelle.
+* Partager régulièrement la connaissance sans pour autant assomer les gens avec un format long.
+* Identifier des sujets pouvant être partagés à plus grande échelle.
 * Permettre à des gens de s'initier à l'art de parler en public.
 
-Le fait de désigné le successeur est basé sur l'idée d'inciter les gens à prendre la parole. Fonctionner avec un mécanisme de bénévolat montrera trop vite ses limites et ce seront toujours les mêmes qui prendront la parole. Désigner va forcer un peu les gens à sortir de leur zones de confort tout en restant dans un environement connu et bienveillant.
+Le fait de désigner le successeur à pour objectif d'inciter les gens à prendre la parole. Fonctionner avec un mécanisme de bénévolat montrera trop vite ses limites et ce seront toujours les mêmes qui prendront la parole. Désigner va forcer un peu les gens à sortir de leur zones de confort tout en restant dans un environement connu et bienveillant.
 
 ## Les contraintes
 
-Afin de faire tourner tout ça, nous avons contraint un certains nombre de choses pour s'assurer du bon fonctionnement des RTTs : 
+Afin de faire tourner tout ça, nous avons contraints un certains nombre de choses pour s'assurer du bon fonctionnement des RTTs : 
 
 ### 15 minutes sans interruptions
 
@@ -79,3 +83,9 @@ Comme il n'y a aucune obligation, il n'est pas interdit de demander à l'audienc
 ### Il faut un totem
 
 Nous avons utilisé un "totem" pour indiquer qui doit effectuer le prochain RTT. En plus d'être un indicateur visuel, il concrétise en quelque sorte un rituel de passation :)
+
+## Premiers retours
+
+Même si cela ne fait pas très longtemps que le concept est lancé, le format plait beaucoup et les spectateurs comme les conférenciers(ières) sont tous très content d'avoir pu s'essayer à ça et sont content d'avoir pu partagé un sujet qui les intéressait !
+
+Je vous enccourage donc à reproduire l'epérience chez vous ;)
