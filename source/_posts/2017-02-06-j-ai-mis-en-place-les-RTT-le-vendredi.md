@@ -13,8 +13,8 @@ date: 2017-02-06 21:45:04
 Ceux qui me connaissent savent que j'aime partager en donnant des conférences. Mais j'aime aussi emmener des gens avec moi dans cette aventure. Il y a de ça 1 an et demi, j'ai créé un cursus pour aider des gens à franchir le pas et ainsi devenir speakers(euses). Si le sujet vous intéresse, je vous invite à lire mes 3 articles qui traitent du sujet : 
 
 1. [Comment trouver son sujet](http://jef.binomed.fr/2016/03/11/2016-03-11-comment-devenir-speaker-part-1/)
-2. [Où aller et comment se comporter sur scène](http://jef.binomed.fr/2016/03/11/2016-03-11-comment-devenir-speaker-part-2/)
-3. [Comment gérer sa carrière de speaker(euse) ?](http://jef.binomed.fr/2016/03/11/2016-03-11-comment-devenir-speaker-part-3/)
+2. [Où aller et comment se comporter sur scène](https://jef.binomed.fr/2016/04/06/2016-04-06-comment-devenir-speaker-part-2/)
+3. [Comment gérer sa carrière de speaker(euse) ?](https://jef.binomed.fr/2016/05/02/2016-05-02-comment-devenir-speaker-part-3/)
 
 Mais ce n'est pas le sujet de cet article. Je souhaite m'attarder sur une nouvelle initiative que j'ai lancée au sein de ma société : [Lucca](https://www.lucca.fr) afin d'aider les gens dans l'animation de conférences. 
 
