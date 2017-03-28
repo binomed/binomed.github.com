@@ -1,0 +1,21 @@
+div[chrome]{
+	--size: 35px;
+	background-image: url(/assets/2017-devtools/chrome.png);
+    background-repeat: no-repeat;
+    background-size: var(--size);
+    width: var(--size);
+    height: var(--size);
+    display: inline-flex;
+    position: relative;
+}
+
+div[chrome]::after{
+	content: attr(chrome);
+    position: absolute;
+    top: 0;
+    line-height: var(--size);
+    color: #616161;
+    font-size: calc(var(--size) / 2);
+    left: calc(var(--size) * (3 / 4));
+
+}
