@@ -63,7 +63,10 @@ Ce qui vous donnera ça :
 
 Cette fonctionnalité permet de révolutionner le fonctionnement des **"workspaces"** qui pour rappel, lie un répertoire de votre ordinateur avec les fichiers de votre site (si un sourcemap est mis en place). Cette version 2.0 permet donc de glisser déposer un répertoire système vers les devtools et le mapping se fait **"automatiquement" !** 
 
-///////VIDEO de démo
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/workspace.gif">
+</div>
+
 
 Pour vérifier que le mapping a été effectué correctement, il suffit de de regarder s'il y a un petit point vert 
 
@@ -73,7 +76,10 @@ Pour vérifier que le mapping a été effectué correctement, il suffit de de re
 
 Vous pourrez ensuite éditer vos fichiers directement dans les devtools
 
-//////VIDEO de démo
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/workspace_2.gif">
+</div>
 
 # Smart Console <div chrome="stable"></div>
 
@@ -85,7 +91,11 @@ On pourra donc se retrouver à écrire des des fonctions dans la console comme s
     <img src="/assets/2017-devtools/smart_console.png">
 </div>
 
-/// VIDEO de démo !
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/smart_console.gif">
+</div>
+
 
 # Quick Source <div chrome="stable"></div>
 
@@ -109,8 +119,10 @@ Si l'on clique sur une propriété css de l'élément inspecté, alors la fenêt
     <img src="/assets/2017-devtools/quick_source_in_action.png">
 </div>
 
-// VIDEO de démo !
 
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/quicksource.gif">
+</div>
 ## Pour conclure sur cet article
 
 Je sais que j'ai oublié un grand nombre de fonctionnalités mais mon idée est de sortir plus régulièrement ce type d'articles pour compléter au fil de l'eau des fonctionnalités présentent dans les devtools.
