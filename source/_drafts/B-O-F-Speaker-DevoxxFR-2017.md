@@ -8,8 +8,9 @@ category:
 
 Voici un retour de la session B.O.F. (Brid Of Feather, sorte de table ronde) Speaker intitulée "Les speakers anonymes" à [DevoxxFR](https://devoxx.fr) que j'ai co-animée avec [Audrey Neveu](https://twitter.com/Audrey_Neveu), [Hubert Sablonnière](https://twitter.com/hsablonniere), [Philippe Antoine](https://twitter.com/PhilippeAntoine) et [Sebastien Blanc](https://twitter.com/sebi2706).
 
-// Image de tout le monde
-![]()
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-04-BofSpeaker/team_bof.jpg">
+</div>
 
 Pour cette session, nous voulions échanger avec d'autres speakers sur des *"Tips & Tricks'* que l'on a chacun et que l'on veut partager. Afin d'être sur de traiter les sujets souhaités par l'assistance, nous avons décider de structurer notre session comme un barcamp. Chaque participant a donc eu la possibilité de proposer 3 sujets ou de voter pour 3 sujets ! Voici donc les sujets retenus :
 
@@ -22,7 +23,51 @@ Les idées principales ont été notées sur des post-its, cet article sera donc
 
 ## Gestion des émotions
 
+### Syndrome de l'imposteur
+
+Tout le monde dans la salle disait souffrir du syndrome de l'imposteur. Nous étions d'accord pour dire que ce syndrome était sain pour nous tous car il nous permettait de nous remettre en questions régulièrement et il nous permettait de nous dépasser.
+
+### Jouer un role vs être soi même
+
+Deux courants se sont oposés :
+* Ceux qui "joue un role" : l'idée est de prendre de la distance face à notre présence sur scène et au fait que le stress n'est plus porté par nous mais par ce rôle !
+* Ceux qui "restent eux même" : l'idée est au contraire de se détendre et de se présenter à l'assistance tel que nous sommes au naturel et de se reposer sur cette image. On cherche donc pas à jouer un role, on est simplement présent, et on reste tel quel.
+
+### Pair speaking
+
+Afin de répartir le stress, le "pair speaking" est une bonne chose. D'un côté, il garanti pour l'audience un certain dynamisme, de l'autre il offre la possibilité aux 2 speakers de se compléter de partager le savoir. Il n'y a plus le stress d'oublier un point important !
+
+### A lire ou à faire
+
+Un ensemble de méthodes, livres ont été évoqués pour faciliter la gestion de ses émotions :
+
+* [Comment dominer le stress - par Dale Carnegie]()
+* [Toastmasters](https://toastmasters.org) : il s'agit d'un ensemble de groupes pour faciliter / échanger sur les pratiques de speakers
+* Faire du théatre d'impro : cela permet d'apprendre à métriser son stress et les cas non prévus (erreur de démo, ...)
+* Pratiquer, pratiquer, pratiquer. D'une manière générale, rien ne remplace la pratique et il est conseillé de pratiquer régulièrement et de continuer à faire évoluer ses process, ses thèmes, ...
+
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-04-BofSpeaker/emotions.jpg">
+</div>
+
+
 ## Comment mettre du Fun dans ses présentations
+
+Afin d'amener du fun, plusieurs éléments ont été envisagés :
+* Ramener un tshirt "fun" avec un lien avec la présentation
+* Faire Jouer l'audience
+* Ramener des cadeaux pour les participants
+* Faire un peu de mise en scène à travers des "personnages"
+
+### Gifs or not Gifs ?
+
+Le débat sur l'utilisation des Gifs a été lancé mais au final tout le monde était d'accord pour dire que les gifs ne doivent pas être utilisés si un contenu important est affiché à l'écran. Les Gifs peuvent être affichés avec du contenu uniquement si les propos suivent l'animation. Et dans tous les cas, il ne faut pas laisser l'animation tourner en boucle car cela captera l'attention de vos participants.
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-04-BofSpeaker/fun.jpg">
+</div>
+
 
 ## Préparation et outils
 
@@ -38,6 +83,9 @@ Plusieurs techniques sont remontées concernant la préparation du plan :
 
 De la même façon, plusieurs techniques sont ressorties concernants les répétitions :
 * Tester ses démos en offline : L'idée étant que l'on ne peut jamais faire confiane dans le réseau et il convient donc vérifier que tout peut être montré quand
+* Répéter devant des personnes de confiances afin d'avoir des feedbacks pertinents. L'important est d'avoir des personnes qui peuvent nous donner un retour objectif et des axes d'amélioration.
+* Répéter à blanc et/ou s'enregistrer. Celà permet de vérifier que le temps de présentation correspond au temps prévu et aussi de tester l'enchainement des slides.
+* Dans la même veine, certains apprennent par coeur leur introduction afin de se lancer facilement dans le flow de leur conférence.
 
 
 <div style="text-align:center; width:100%;">
