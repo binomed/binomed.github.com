@@ -4,7 +4,9 @@ tags:
   - speaker
 category:
   - Tips
+date: 2017-04-28 13:33:28
 ---
+
 
 Voici un retour du B.O.F. (Brid Of Feather) Speaker intitulé "Les speakers anonymes" à [DevoxxFR](https://devoxx.fr) que j'ai co-animée avec [Audrey Neveu](https://twitter.com/Audrey_Neveu), [Hubert Sablonnière](https://twitter.com/hsablonniere), [Philippe Antoine](https://twitter.com/PhilippeAntoine) et [Sebastien Blanc](https://twitter.com/sebi2706).
 
