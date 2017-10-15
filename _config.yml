@@ -4,12 +4,12 @@
 
 # Site
 title: Binomed Blog
-subtitle: Encore un blog de G33k 
+subtitle: Encore un blog de G33k
 description:  Un blog technique pour le développpement sur des technos variées
 author: jefBinomed
 email: jean.francois.garreau+blog@gmail.com
 authorName: Jean-François Garreau
-jobTitle: Développeur Sénior en innovation & Animateur de communautés 
+jobTitle: Développeur Sénior en innovation & Animateur de communautés
 language: fr-FR
 
 # URL
@@ -102,4 +102,4 @@ livereload:
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/binomed/binomed.github.com.git
+  repo: git@github.com:binomed/binomed.github.com.git
