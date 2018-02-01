@@ -1,9 +1,10 @@
 title: Résolutions pour 2018
-tags:
 category:
   - News
 toc: false
+date: 2018-02-01 08:17:23
 ---
+
 
 Janvier est arrivé et comme tout le monde, j'ai pris un certain nombre de résolutions pour cette nouvelle année. Je me suis poser la question de vers où je voulais aller techniquement et vers quoi je voudrais évoluer dans mon rôle de [GDE WebTechnology](https://developers.google.com/experts/) et conférencier. Je profite donc de ce post pour partager avec vous ces réflexions.
 
