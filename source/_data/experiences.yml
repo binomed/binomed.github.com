@@ -1,41 +1,76 @@
+Sfeir:
+  id: Sfeir
+  title: Sfeir
+  start-year: 2018
+  role: Directeur Ingineering
+  main-mission: Direction technologique de l'agence de Nantes. Mon rôle est à la fois de piloter techniquement Sfeir Nantes mais aussi de veiller à développer l'agence.
 Lucca:
   id: Lucca
   title: Lucca
   start-year: 2016
+  end-year: 2018
   role: Ingénieur R&D
-  role2: Développeur Senior en innovation 
-  main-mission: Développer & améliorer les solutions Lucca. 
+  role2: Développeur Senior en innovation
+  main-mission: Développer & améliorer les solutions Lucca.
   missions:
+      luccafront:
+        id: luccafront
+        title: BU UX
+        start-year: 2018
+        end-year: 2018
+        job: Développeur webcomponents
+        main-mission: J'ai contribué à la mise en place d'une librairie de composants réutilisables entre tous les logiciels Lucca
+        lists:
+          technos:
+            - Angular
+            - Webcomponents
+          taks:
+            - Mise en place de briques composants réutilisables et extensibles
+      cpalucca:
+        id: cpalucca
+        title: BU GrowthHacking
+        start-year: 2017
+        end-year: 2018
+        job: Ingénieur R&D
+        main-mission: J'ai aidé à la mise en place de la connexion de la solution Pagga avec l'offre CPA du gouvernement
+        lists:
+          technos:
+            - .netCore
+            - VanillaJS
+            - OAuth2
+          taks:
+            - Développement d'un portail dédié et d'un serveur visant à interfacer la solution Lucca avec le site du gouvernement
       internelucca:
         id: internelucca
         title: BU GrowthHacking
         start-year: 2016
+        end-year: 2017
         job: Ingénieur R&D
         main-mission: J'anime et je développe les solutions et produits Lucca sur la BU GrowthHacking. J'interviens aussi bien sur la partie Back que Front
-        lists: 
-          technos: 
+        lists:
+          technos:
             - AngularJS
             - Ionic
             - Javascript
             - C#
             - TypeScript
-          taks: 
+          taks:
             - Développement des solutions Poplee, Poplee Mobile, Paga, ...
-community: 
+community:
   id: community
   title: Associations
   start-year: 2003
   role: Animateur de communauté
   main-mission: J'anime et je crée depuis des années des associations dans le domaine de l'informatique ou dans le domaine des loisirs.
-  missions:    
-    gdg: 
+  missions:
+    gdg:
       id: gdg
       title: GDG Nantes
       start-year: 2011
       job: Fondateur / Animateur
       main-mission: Le GDG (Google Developper Group) est une communauté de développeurs dédiée aux technologies Google organisant des événements mensuels. J'en suis l’un des créateurs et animateur actif.
-      lists: 
-        technos: 
+      lists:
+        technos:
           - AngularJS
           - WebComponents avec Polymer
           - Go
@@ -46,7 +81,7 @@ community:
           - WebRTC
           - Myo
           - Node
-          - Gulp 
+          - Gulp
           - Grunt
           - LeapMotion
           - OcculusRift
@@ -58,7 +93,7 @@ community:
           - CodeShip
           - C++
           - Google AppScript
-        tasks: 
+        tasks:
           - Création de l'association.
           - Organisation de conférences mensuelles.
           - Animation de la communauté.
@@ -73,11 +108,11 @@ community:
       start-year: 2013
       job: Animateur de sessions
       main-mission: Les Devoxx4kids & Coding Goûters sont des initiatives à destination des enfants pour leur permettre d'avoir un accès à des outils de programmation adaptés à leur âge.
-      lists: 
-        technos: 
+      lists:
+        technos:
           - Scratch
           - Lego Mindstorm
-        tasks: 
+        tasks:
           - Co-importation du concept sur Nantes.
           - Animation des ateliers.
           - Mise en place du programme à jouer sur Nantes.
@@ -101,7 +136,7 @@ community:
       end-year: 2010
       job: Créateur & animateur
       main-mission: Roule Maboule est une association de cirque basée à Orvault dont le but est de promouvoir les arts du cirque en offrant un lieu & du matériel à ses adhérents.
-      lists: 
+      lists:
         tasks:
           - Création & animation de l'association.
           - Organisation de conventions nationales.
@@ -113,13 +148,13 @@ Binomed:
   start-year: 2009
   main-mission: En tant que développeur passionné, j'ai de nombreux sides projects pour expérimenter les nouvelles technologies. De plus, je donne régulièrement des conférences dans des événements.
   missions:
-    revealsockets: 
+    revealsockets:
       id: revealsocket
       title: RevealSockets
       job: Créateur / Développeur
       start-year: 2014
       main-mission: RevealSockets est un projet de télécommande de présentation HTML5 qui permet de passer ses slides en ayant un retour sur son téléphone.
-      lists: 
+      lists:
         technos:
           - AngularJS
           - Grunt
@@ -148,7 +183,7 @@ Binomed:
       start-year: 2012
       end-year: 2013
       main-mission: NFA est une librairie destinée à simplifier l'écriture du code NFC dans une application Android.
-      lists: 
+      lists:
         technos:
           - Android
           - NFC
@@ -159,8 +194,8 @@ Binomed:
       start-year: 2011
       end-year: 2012
       main-mission: Code guess est un jeux Iphone permettant de jouer au mastermind. L'auteur du jeu m'avait demandé de faire le portage de l'application sur Android
-      lists: 
-        technos: 
+      lists:
+        technos:
           - Android
           - AndEngine
     conf:
@@ -191,14 +226,14 @@ Binomed:
           - 2013 - AndroidBootstrap - Breizhcamp
           - 2013 - WebRTC - DevFest Nantes
           - 2012 - Android pour les débutants - GDG Nantes
-SQLI: 
+SQLI:
   id: sqli
   title: SQLI
   start-year: 2012
   end-year: 2016
-  role: Responsable du pôle IOT &         
-  role2: Développeur Senior en innovation 
-  main-mission: En charge du pole IOT de SQLI Nantes, j'anime également la communauté des conférenciers de l'agence. 
+  role: Responsable du pôle IOT &
+  role2: Développeur Senior en innovation
+  main-mission: En charge du pole IOT de SQLI Nantes, j'anime également la communauté des conférenciers de l'agence.
   missions:
     laposte:
       id: laposte
@@ -207,7 +242,7 @@ SQLI:
       job: Développeur / Expert Android
       main-mission: J'interviens sur divers sujets en lien avec l'innovation et la R&D sur des projets mobile de La Poste. Beaucoup de POC sont réalisés lors de cette mission.
       lists:
-        technos: 
+        technos:
           - Android
           - Cordova
           - Javascript
@@ -273,12 +308,12 @@ SQLI:
           - WebRTC
           - NodeJS
           - OcculusRift
-        tasks: 
+        tasks:
           - Mise en place d'un cursus de formation pour conférenciers.
           - Mise en place d'une animation avec un vélo d'appartement branché sur un arduino et retransmettant dans un casque Occulus le résultat d'une sphère Google StreetView.
           - Mise en place d'une animation avec un rameur connecté. Un jeu a été réaliser en web pour retranscrire le déplacement du joueur sur le rameur à l'écran.
           - Mise en place d'un jeu vidéo HTML5.
-          - Mise en place de quizz interactifs. 
+          - Mise en place de quizz interactifs.
           - Mise en place de retours clients autour de l'IOT / Google IO / Web.
     ibp:
       id: ibp
@@ -287,7 +322,7 @@ SQLI:
       end-year: Déc 2014
       job: Audit API Rest
       main-mission: |
-                    L’objectif de cette mission était d’identifier une solution du marché pour la documentation des APIs REST. 
+                    L’objectif de cette mission était d’identifier une solution du marché pour la documentation des APIs REST.
                     Un POC a été réalisé afin de vérifier l’intégration de cette solution dans les processus internes.
       lists:
         technos:
@@ -354,7 +389,7 @@ SQLI:
           - Mise en place des scénarii Neoload.
           - Exécution / analyse des tests de montées en charge de l’application.
           - Rédaction d’un document de synthèse.
-Ausy: 
+Ausy:
   id: ausy
   title: Ausy
   role: Ingénieur d'études
@@ -362,15 +397,15 @@ Ausy:
   end-year: 2012
   main-mission: J'étais ingénieur d'études java.
   missions:
-    systemeu: 
+    systemeu:
       id: systemeu
       title: Système U
       job:  Référent technique Java
       start-year: 2012
       end-year: 2012
       main-mission: Réalisation d'une application web pour la grande distribution.
-      lists: 
-        technos: 
+      lists:
+        technos:
           - Maven
           - Hudson
           - Java
@@ -408,7 +443,7 @@ Ausy:
           - SAX
           - GWT 2.4
           - Oracle
-        tasks: 
+        tasks:
           - Mise en place d'une librairie de gestion de jar.
           - Mise en place d'une librairie d'archivage de fichiers avec le framework JackRabbit.
           - Mise en place d'une libraire de comparaison de xml de grande taille.
@@ -419,7 +454,7 @@ Ausy:
           - Mise en place d'un module d'historisation de données.
           - Mise en place d'un moteur de recherche SQL basée sur une structure d'arbre.
           - Réflexion sur la mise en place d'OSGI.
-Catamania: 
+Catamania:
   id: catamania
   title: Cat-Amania
   role: Ingénieur R&D Java
@@ -427,15 +462,15 @@ Catamania:
   end-year: 2009
   main-mission: J'étais ingénieur d'études java junior.
   missions:
-    sneda: 
+    sneda:
       id: sneda
       title: Sneda
       job:  Ingénieur R&D Java
       start-year: 206
       end-year: 2009
       main-mission: Réalisation d'une application progicielle de gestion immobilière. J'ai participé de façon active à la mise en place de toutes les briques techniques.
-      lists: 
-        technos: 
+      lists:
+        technos:
           - Java RCP
           - sql
           - CVS
@@ -444,7 +479,7 @@ Catamania:
           - XSLT
           - Progress
           - H2
-        tasks: 
+        tasks:
           - Mise en place d'une première architecture applicative et développement de cette dernière.
           - Participation active à la conception de l'architecture applicative définitive.
           - Mise en place de nombreux framework
