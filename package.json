@@ -2,8 +2,13 @@
   "name": "hexo-site",
   "version": "2.8.3",
   "private": true,
+  "scripts": {
+    "start": "hexo server",
+    "generate": "hexo generate",
+    "hexo": "hexo"
+  },
   "hexo": {
-    "version": "3.2.2"
+    "version": "3.8.0"
   },
   "dependencies": {
     "hexo": "^3.1.1",
