@@ -1,0 +1,57 @@
+Arguments: 
+  /Users/jean-francoisgarreau/.nvm/versions/node/v6.11.5/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /Users/jean-francoisgarreau/.nvm/versions/node/v6.11.5/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/opt/X11/bin:/Applications/Wireshark.app/Contents/MacOS
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  6.11.5
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/jean-francoisgarreau/Projects/binomed.github.com/package.json: Unexpected token } in JSON at position 143
+      at Object.parse (native)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1130:59
+      at next (native)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:98:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:109:13
+
+npm manifest: 
+  {
+    "name": "hexo-site",
+    "version": "2.8.3",
+    "private": true,
+    "scripts": {
+      "start": "hexo serve",
+      "generate": "hexo generate",
+    },
+    "hexo": {
+      "version": "3.2.2"
+    },
+    "dependencies": {
+      "hexo": "^3.1.1",
+      "hexo-cli": "^0.1.7",
+      "hexo-deployer-git": "0.0.4",
+      "hexo-generator-archive": "^0.1.3",
+      "hexo-generator-category": "^0.1.3",
+      "hexo-generator-feed": "^1.0.2",
+      "hexo-generator-index": "^0.1.3",
+      "hexo-generator-sitemap": "^1.0.1",
+      "hexo-generator-tag": "^0.1.2",
+      "hexo-renderer-ejs": "*",
+      "hexo-renderer-marked": "^0.2.5",
+      "hexo-renderer-stylus": "^0.2.3",
+      "hexo-server": "^0.1.2"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
