@@ -58,6 +58,6 @@ As you can see, there is lots of things to enhance. But it do the job, a uniq co
 
 This year, the DevFest Theme was the retroGaming. So again, the countdown was inspired by the t-shirt. The idea was to simulate a real "Space Invador". As the tshirt show a space invader destroying Google technologies logos. I try to animate the spaceship in order to destroy the last logo at the last second.
 
-For this version, I try to keep as simple as I can, I just introduce a minor toolchain for compiling my Sass files. The main challenge here was to calculate when to destroy or not a logo and how
+For this version, I try to keep it as simple as I can, I just introduce a minor toolchain for compiling my Sass files. The main challenge here was to calculate when to destroy or not a logo and how
 
-I re-use the work of the previous year for the time management except that I start to
+I re-use the work of the previous year for the time management except that I start to use the requestAnimationFrame
