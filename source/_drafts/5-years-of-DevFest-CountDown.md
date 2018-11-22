@@ -7,11 +7,11 @@ category:
 toc: false
 ---
 
-I organise the [DevFest Nantes](https://devfest.gdgnantes.com) as a volonteer of [GDG Nantes](https://gdgnantes.com) for already 7 years.
+I organize the [DevFest Nantes](https://devfest.gdgnantes.com) as a volunteer of [GDG Nantes](https://gdgnantes.com) for already 7 years.
 
 If you don't know what "DevFest" is, it's a worldwide event lead by the GDG community. You could have a look here [DevFest With Google](https://devfest.withgoogle.com).
 
-Each year we work very hard to provide the best experience for our atendees. We try to make DevFest Nantes the most accessible (only 90€ for 2 days with food, goodies, party, conference, ...). And one of the thing I'm responsible of is the Countdown! Indeed, if you already go to Google I/O, you know that when you are waiting for the launch of the keynote, Google prepare you a nice Coutndown animation to let you play with the other attendees! We love so much this experience that we try to create ours to keep that spirit. With this article I will try to share thoses countdown and try to explain you what I've learn with each of them.
+Each year we work very hard to provide the best experience for our attendees. We try to make DevFest Nantes the most accessible (only 90€ for 2 days with food, goodies, party, conference, ...). And one of the things I'm responsible for is the Countdown! Indeed, if you already go to Google I/O, you know that when you are waiting for the launch of the keynote, Google prepares you a nice Countdown animation to let you play with the other attendees! We love so much this experience that we try to create ours to keep that spirit. With this article, I will try to share those countdown and try to explain to you what I've learned with each of them.
 
 
 # Before 2014
@@ -21,7 +21,7 @@ Each year we work very hard to provide the best experience for our atendees. We 
     <img src="/assets/2018-11-countdown/original_io_countdown.jpg">
 </div>
 
-Before I start to write my own Countdown, i first reuse a public countdown create for Google IO 2011 : [HTML5 Countdown Finale](https://experiments.withgoogle.com/google-io-conference-html5-countdown-finale). It works pretty well but it was not link to our graphical Theme. That's why I start in 2015 to create my own countdown
+Before I start to write my own Countdown, I first reuse a public countdown create for Google IO 2011: [HTML5 Countdown Finale](https://experiments.withgoogle.com/google-io-conference-html5-countdown-finale). It works pretty well but it was not linked to our graphical Theme. That's why I start in 2015 to create my own countdown
 
 # 2014
 
@@ -32,7 +32,7 @@ Before I start to write my own Countdown, i first reuse a public countdown creat
 
 ### The idea
 
-Before starting to tink about "Interactivity" I had to take some times to check that everything works well! That's also one our mantra in DevFest Nantes, always build better over something strong ! So for the first Countdown, I start following the KISS approach : No Framework, No modules, just a simple html with a litle bit of css.
+Before starting to think about "Interactivity" I had to take times to check that everything works well! That's also our mantra in DevFest Nantes, always build better over something strong! So for the first Countdown, I start following the KISS approach: No Framework, No modules, just a simple HTML with a little bit of CSS.
 
 The basic idea of this Countdown was to animate the DevFest Nantes Tshirt.
 
@@ -44,17 +44,17 @@ This project let me think about the mandatory steps of Countdown :
 1. Play music until the countdown is over
 2. Launching a video when the countdown is over
 
-Behind this 2 steps is hide a basic complexity. How to check without blocking the ui the current time ? How to play music and video ?
+Behind this 2 steps is hide a basic complexity. How to check without blocking the UI the current time? How to play music and video?
 
 ### Time management
 
-For the first solution, I don't use the best solution : `setInterval` but it's a solution that won't block the ui! Now and you will see it in the other CountDown, I prefer to use `requestAnimationFrame`. Indeed, one of the most important point is avoid to block the eventloop.
+For the first solution, I don't use the best solution: `setInterval` but it's a solution that won't block the UI! Now and you will see it in the other CountDown, I prefer to use `requestAnimationFrame`. Indeed, one of the most important points is to avoid to blocking the event loop.
 
 ```javascript
 var cibleDate = Date.parse('2014-11-07T08:35:00Z')
 var cancelInterval = setInterval(function() {
-    currentTime+=100;            
-    var deltaTime = cibleDate - currentTime;        
+    currentTime+=100;
+    var deltaTime = cibleDate - currentTime;
     var tmpDate = new Date(deltaTime);
     min.innerHTML = tmpDate.getMinutes() < 10 ? "0"+tmpDate.getMinutes() : tmpDate.getMinutes();
     sec.innerHTML = tmpDate.getSeconds() < 10 ? "0"+tmpDate.getSeconds() : tmpDate.getSeconds();
@@ -67,10 +67,10 @@ var cancelInterval = setInterval(function() {
 
 ### Playing Song
 
-For the second solution, even if there is a [Web Audio API](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API) a simple `<audio>` tag hidden in the page do the job very well! In 2014, there wasn't the restriction of [autoplay policy](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes) so I can easily play a sound with this code : 
+For the second solution, even if there is a [Web Audio API](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API) a simple `<audio>` tag hidden in the page do the job very well! In 2014, there wasn't the restriction of [autoplay policy](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes) so I can easily play a sound with this code :
 
 ```javascript
-// Index of curent song in the playlist
+// Index of current song in the playlist
 var indexPlaylist = 0;
 // The playlist of songs to play
 var playListSongs = [
@@ -78,7 +78,7 @@ var playListSongs = [
 ];
 
 // Load the song in parameter and play it
-function playSound(url){            
+function playSound(url){
     audioElt.pause();
     audioElt.src = url;
     audioElt.play();
@@ -89,7 +89,7 @@ function nextSong(){
     try{
         playSound("assets/songs/"+playListSongs[indexPlaylist]);
         indexPlaylist = (indexPlaylist + 1) % playListSongs.length;
-        
+
     }catch(err){
         console.error(err);
     }
@@ -98,7 +98,7 @@ function nextSong(){
 
 ### Graphical challenge
 
-The only challenge I face was with the css to play with the good text transformation. So for this html:
+The only challenge I face was with the CSS to play with the good text transformation. So for this HTML:
 
 ```html
 <div class="conteneur">
@@ -114,7 +114,7 @@ The only challenge I face was with the css to play with the good text transforma
 </div>
 ```
 
-You will have this css:
+You will have this CSS:
 
 ```scss
 // Parent container
@@ -150,7 +150,7 @@ This give you this result
     </div>
 </div>
 
-And the last thing to do was to animate the text at the bottom of tower. I use the `marquee` tag because it's target to animate text in a box! Here the problem comes to the fact that I have 2 faces in my tower and I want to give the impression that the text "slide" arround the tower. To create this effet, I have to use 2 `marquee` and play a timeout that correspond to the time of the move of the text.
+And the last thing to do was to animate the text at the bottom of the tower. I use the `marquee` tag because it's target to animate text in a box! Here the problem comes to the fact that I have 2 faces in my tower and I want to give the impression that the text "slide" arround the tower. To create this effet, I have to use 2 `marquee` and play a timeout that corresponds to the time of the move of the text.
 
 ```html
 <marquee behavior="scroll" direction="right" class="marquee_1">DevFest Nantes</marquee>
@@ -161,7 +161,7 @@ And the last thing to do was to animate the text at the bottom of tower. I use t
 ```javascript
 marquee_1.style.display = 'none';
 marquee_2.style.display = 'none';
-// The text "DevFest Nantes" takes 2500ms to go throught the marquee
+// The text "DevFest Nantes" takes 2500ms to go through the marquee
 setTimeout(function() {
     marquee_1.style.display = '';
     setTimeout(function() {
@@ -170,17 +170,17 @@ setTimeout(function() {
 }, 100);
 ```
 
-Here is the result : 
+Here is the result :
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/countdown-2014-markee.gif" width="600px">
 </div>
 
-As you can see, there is lots of things to enhance. But it do the job, a uniq countdown linked to DevFest Nantes identity!
+As you can see, there are lots of things to enhance. But it does the job, a unique countdown linked to DevFest Nantes identity!
 
 ### Code & demo
 
-You can find the code here : [CountDown DevFest 2014](https://github.com/GDG-Nantes/DevFestCountDown-2014).
+You can find the code here: [CountDown DevFest 2014](https://github.com/GDG-Nantes/DevFestCountDown-2014).
 
 If you want to see it in action, have a look here [CountDown 2014](http://gdg-nantes.github.io/DevFestCountDown-2014/)
 
@@ -198,11 +198,11 @@ In 2015, the DevFest Theme was the retroGaming. So again, the countdown was insp
     <img src="/assets/2018-11-countdown/t-shirt_final_2015.png" width="500px">
 </div>
 
-The idea was to simulate a real "Space Invaders". As the tshirt show a space invader destroying Google technologies logos. I try to animate the spaceship in order to destroy the last logo at the last second.
+The idea was to simulate a real "Space Invaders". As the t-shirt shows a space invader destroying Google technologies logos. I try to animate the spaceship in order to destroy the last logo at the last second.
 
 ### New Challenges
 
-For this version, I try to keep it as simple as I can, I just introduce a minor toolchain for compiling my Sass files. The main challenge here was to calculate when to destroy or not a logo and how. For a smooth animation, I use a **Canvas**. As I start to play with canvas, I have to rethink some aspects : Animation, Ressources loading. I re-use the work of the previous year for the time management except that I start to use the `requestAnimationFrame` instead of `setTimeout`. Indeed, using `requestAnimationFrame`is something mandatory when you want to create something smooth. To understand why it is important, I encourage you to read more articles about the [Javascript EventLoop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop).
+For this version, I try to keep it as simple as I can, I just introduce a minor toolchain for compiling my Sass files. The main challenge here was to calculate when to destroy or not a logo and how. For a smooth animation, I use a **Canvas**. As I start to play with canvas, I have to rethink some aspects: Animation, Ressources loading. I re-use the work of the previous year for the time management except that I start to use the `requestAnimationFrame` instead of `setTimeout`. Indeed, using `requestAnimationFrame`is something mandatory when you want to create something smooth. To understand why it is important, I encourage you to read more articles about the [Javascript EventLoop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop).
 
 Or have a look at this conference from Jake Archibald about event loop:
 
@@ -210,9 +210,9 @@ Or have a look at this conference from Jake Archibald about event loop:
 <iframe width="560" height="315" src="https://www.youtube.com/embed/cCOL7MC4Pl0" frameborder="0" allowfullscreen></iframe>
 </div>
 
-### Ressources management
+### Resources management
 
-When you want to deal with ressources in video games, it's recommand to use 'sprite' image. 'Sprites' let you download all ressources in one time. As HTTP2 is not present everywhere. It's better to download 1 file than severals. The browser cannot open more than 6 (for chrome) separates thread for download, so prefer the one big cookie download.
+When you want to deal with resources in video games, it's recommended to use 'sprite' image. 'Sprites' let you download all resources in one time. As HTTP2 is not present everywhere. It's better to download 1 file than several. The browser cannot open more than 6 (for chrome) separates thread for download, so prefer the one big cookie download.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/logos_2015.svg" width="400px">
@@ -233,14 +233,14 @@ context.drawImage(imgSource //Source image
 , sy //sy clipping of source image
 , sw // swidth clipping of source image
 , sh // sheight clipping of source image
-, dx // x coordinate of drawing in canvas
-, dy // y coordinate of drawing in canvas
-, dw // width size of drawing
-, dh // height size of drawing 
+, dx // x coordinate of drawing on canvas
+, dy // y coordinate of drawing on canvas
+, dw // width size of the drawing
+, dh // height size of the drawing
 );
 ```
 
-In my case, I create a map to have a reference of each logo in the sprite. This map let me animate each logos and keep a reference of it's original position in the sprite : 
+In my case, I create a map to have a reference for each logo in the sprite. This map let me animate each logos and keep a reference of its original position in the sprite :
 
 ```javascript
 positionLogos = {
@@ -275,7 +275,7 @@ Using a key will let me have a reference of each sprite.
 
 ### Animate the matrix
 
-What I will display on screen a grid of 3 rows of 8 logos. Each logo will have a position in the grid and will move between at maximum from 4 steps in X and 1 step in Y.
+What I will display on the screen a grid of 3 rows of 8 logos. Each logo will have a position in the grid and will move between at maximum from 4 steps in X and 1 step in Y.
 
 
 <div style="text-align:center; width:100%;">
@@ -316,11 +316,11 @@ mapLogos = [
         {id:'wallet',pos:{x:8,y:2}, index: {row:2,col:6}, visible:true},
         {id:'devs',pos:{x:9,y:2}, index: {row:2,col:7}, visible:true},
     ]
-], 
+],
 ```
 
 A good practice is to separate the data processing and the data rendering!
-In my case, I just want to render a snapshot of the grid. So when I start to initialize the countdown, I start severals `setInterval`. Each one as it's purpose and will separate the concerns.
+In my case, I just want to render a snapshot of the grid. So when I start to initialize the countdown, I start several `setInterval`. Each one as it's purpose and will separate the concerns.
 
 ```javascript
 // First I load the 'sprites'
@@ -328,7 +328,7 @@ loadSprites([
     {title:'logos', url: 'imgs/logos.svg'},
     {title:'spaceship', url: 'imgs/spaceship.png'}
 ]).then(function(){
-    // When the sprites are load, i start multiples 'intervals'
+    // When the sprites are load, I start multiples 'intervals'
 
     // One for the music
     nextSong();
@@ -345,18 +345,18 @@ As you can see, `runAnimation` is the only method that render something on the s
 
 ### The destruction of a logo
 
-One of the challenge was to be shure that all logos will be destroy at the end of the countdown. I try to make this as automatic as I can so the first thing that is done when the countdown start is to calculate few elements : 
+One of the challenges was to be sure that all logos will be destroyed at the end of the countdown. I try to make this as automatic as I can so the first thing that is done when the countdown start is to calculate few elements :
 
 * What is the interval between each destruction : `(Now - Final time) / Number of logos`
 * How many time will take the spaceship to be under the current logo at maximum
 * Calculate a random order of destruction that will construct a dynamic stack of destructions orders (one row at the time).
 
-All those calculations let me to have a dynamic countdown that will destroy everything at the right time!
+All those calculations let me have a dynamic countdown that will destroy everything at the right time!
 
 
 ### Code & Demo
 
-You can find the code here : [CountDown DevFest 2015](https://github.com/GDG-Nantes/CountDownDevFest2015).
+You can find the code here: [CountDown DevFest 2015](https://github.com/GDG-Nantes/CountDownDevFest2015).
 
 If you want to see it in action, have a look here [CountDown 2015](http://gdg-nantes.github.io/CountDownDevFest2015/)
 
@@ -369,28 +369,28 @@ If you want to see it in action, have a look here [CountDown 2015](http://gdg-na
     <img src="/assets/2018-11-countdown/gdg_logo_legonnary.png" width="400px">
 </div>
 
-This year was the theme of 'Lego' so I have in mind an interactiv game where people draw some "pixel art" with lego bricks and submit them for the main screen. It was a good idea but my code this year wasn't enough robust and the realtime database contained some corrupts datas and everything crashed 30min before the official launch!
+This year was the theme of 'Lego' so I have in mind an interactive game where people draw some "pixel art" with Lego bricks and submit them for the main screen. It was a good idea but my code this year wasn't enough robust and the real-time database contained some corrupts data and everything crashed 30min before the official launch!
 
-We have to hide the game and we just display the basic countdown with music. If you are intrested by the architecture, I write a series of article about it [Legonnary](https://jef.binomed.fr/2016/12/23/2016-12-23-legonnary) ⚠️ thoses articles are in French 🇫🇷 for the moment. I will try to translate them when I have time.
+We have to hide the game and we just display the basic countdown with music. If you are interested in the architecture, I write a series of article about it [Legonnary](https://jef.binomed.fr/2016/12/23/2016-12-23-legonnary) ⚠️ those articles are in French 🇫🇷 for the moment. I will try to translate them when I have time.
 
-Just notice that it was a PWA application that use Firebase (realtime database, hosting, auth).
+Just notice that it was a PWA application that uses Firebase (real-time database, hosting, auth).
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/Legonnary_Archi.png" width="800px">
 </div>
 
-I create 4 webpages : 
+I create 4 web pages:
 * The game that the user use
 * The interface that the moderator use
-* The interface that correspond to the main screen with the countdown
-* The interface that show a summary of all the draw created
+* The interface that corresponds to the main screen with the countdown
+* The interface that shows a summary of all the draw created
 
 
 ### The year of ES6
 
 As ES6 is everywhere, I start to rethink a little bit my code to make it more reusable.
 
-I create a class for the audio player : 
+I create a class for the audio player :
 
 ```javascript
 'use strict'
@@ -401,7 +401,7 @@ import {
 /**
  * Class for playing music
  *
- * We create an insible audio element and we play music on it
+ * We create an invisible audio element and we play music on it
  */
 export class AudioPlayer {
     constructor() {
@@ -500,7 +500,7 @@ export class VideoPlayer {
 
 ### Code
 
-You can find the code here : [CountDown DevFest 2016](https://github.com/GDG-Nantes/CountDownDevFest2016).
+You can find the code here: [CountDown DevFest 2016](https://github.com/GDG-Nantes/CountDownDevFest2016).
 
 
 # 2017
@@ -512,19 +512,19 @@ You can find the code here : [CountDown DevFest 2016](https://github.com/GDG-Nan
 
 ### The revenge!!
 
-As in 2016, I create a whole application with moderation system display on screen. I don't wanted to waste everything to the trash. So I reuse the code and I do some evolutions and wanted to complexify it a litle bit the project. Indeed, I introduce some machine learning in order to try to recognize what the attendees draw. Here is the workflow of the application
+As in 2016, I create a whole application with moderation system display on the screen. I don't want to waste everything to the trash. So I reuse the code and I do some evolutions and wanted to complexify it a little bit the project. Indeed, I introduce some machine learning in order to try to recognize what the attendees draw. Here is the workflow of the application
 
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/DevFestDraw_Validation.png" width="800px">
 </div>
 
-1. A user submit a draw
+1. A user submits a draw
 2. The draw is upload to firebase, catch in a cloud function
-3. The cloud function ask to a machine learning model to analyze the image and try to classify it.
-4. The moderator see the draw to validate (I wanted to be shure that the content will not break the code of conduct 😅)
-5. The draw is move somewhere in the tree of realtime database
-6. All validate draw are show on the main screen with their classifications.
+3. The cloud function asks a machine learning model to analyze the image and try to classify it.
+4. The moderator see the draw to validate (I wanted to be sure that the content will not break the code of conduct 😅)
+5. The draw is moved somewhere in the tree of real-time database
+6. All validate draw are shown on the main screen with their classifications.
 
 
 ### Recap of architecture
@@ -534,38 +534,38 @@ As in 2016, I create a whole application with moderation system display on scree
     <img src="/assets/2018-11-countdown/DevFestDraw_Archi.png" width="800px">
 </div>
 
-I try to use the power of serverless as much as I can. So what I add this year was the additionnals services : 
-* A cloud functions to listen new drawing in the firebase tree based on Firebase Admin SDK
+I try to use the power of serverless as much as I can. So what I add this year was the additionnal services:
+* A cloud functions to listen to new drawing in the firebase tree based on Firebase Admin SDK
 * A Machine learning model to use to recognize the drawing based on Cloud ML
 * Google Cloud Storage to save the drawings
 
 ### Machine learning addon
 
-The biggest addition of 2017 was the machine learning detection. So to use it, I create a cloud function that use the Firebase Admin SDK to listen new additions of drawings : 
+The biggest addition of 2017 was the machine learning detection. So to use it, I create a cloud function that use the Firebase Admin SDK to listen to new additions of drawings :
 
-1. The user create draw.
-2. He submit it and the application upload the drawing to cloud storage
+1. The user creates a draw.
+2. He submits it and the application upload the drawing to cloud storage
 3. The cloud function start
-4. The draw is compress and convert to a greyscale image of 28x28 pixels (it's because the model was trainned to recognize grayscale image of this size and to be as efficient as we can)
+4. The draw is compressed and convert to a greyscale image of 28x28 pixels (it's because the model was trained to recognize a grayscale image of this size and to be as efficient as we can)
 5. The model is interrogated
 6. The drawing is classified
 7. The cloud functions update the firebase tree in order to change the state of the draw to continue the workflow.
 
-As I'm not a specialist of Machine Learning I Ask some help to a Google from New York [Yufeng Guo](https://twitter.com/YufengG). He do all the stuff of training the model. So, he trained a machine learning model based on 'black and white' image of 28x28 pixels. I had to do a conversion between what I receive and what I wend to the ML engine. In that way, this image: 
+As I'm not a specialist of Machine Learning I Ask some help to a Google from New York [Yufeng Guo](https://twitter.com/YufengG). He does all the stuff of training the model. So, he trained a machine learning model based on 'black and white' image of 28x28 pixels. I had to do a conversion between what I receive and what I send to the ML engine. In that way, this image:
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/DevFestDraw_before.png" >
 </div>
 
-Will be send to the engine as this:
+Will be sent to the engine like this:
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/DevFestDraw_after.png" >
 </div>
 
-As you can imagine there will be lot of misunderstanding of the model, It was the game 😃
+As you can imagine there will be a lot of misunderstanding of the model, It was the game 😃
 
-Here is the package.json used: 
+Here is the package.json used:
 
 ```javascript
 {
@@ -592,7 +592,7 @@ Here is the package.json used:
 }
 ```
 
-Let's have a look to the code of my cloud function 
+Let's have a look to the code of my cloud function
 
 ```javascript
 /**
@@ -637,7 +637,7 @@ function updateTree(userId, drawId, result) {
     return new Promise((resolve, reject) => {
         admin.database().ref(`/drawUpload/${drawId}`).once('value', (snapshot) => {
             try {
-                // prepare to update the tree 
+                // prepare to update the tree
                 if (snapshot && snapshot.val()) {
                     let snapshotFb = snapshot.val();
                     // Update the drawing with the classifications
@@ -665,14 +665,14 @@ function updateTree(userId, drawId, result) {
 
 ### My Conclusion
 
-The conclusion of this year were that creating an interactiv game is something finally easy if you have the rights tools! Using Firebase was a good idea because, I don't manage anything about deployement, installations, charge, simple authentication, secure access... 
+The conclusion of this year was that creating an interactive game is something finally easy if you have the rights tools! Using Firebase was a good idea because, I don't manage anything about deployment, installations, charge, simple authentication, secure access...
 
-During a short time (less than 30 min), I got 140 players that create arround 250 drawings. It was for me a hudge success for me.
+During a short time (less than 30 min), I got 140 players that create around 250 drawings. It was for me a huge success for me.
 
 
 ### Code & Demo
 
-You can find the code here : [CountDown DevFest 2017](https://github.com/GDG-Nantes/CountDownDevFest2017).
+You can find the code here: [CountDown DevFest 2017](https://github.com/GDG-Nantes/CountDownDevFest2017).
 
 If you want to see what people draw, have a look here [Summary of CountDown 2017](https://devfest-draw.firebaseapp.com/summary.html)
 
@@ -686,19 +686,19 @@ If you want to see what people draw, have a look here [Summary of CountDown 2017
 
 ### The idea
 
-2018 was the year of the "space" theme. The idea was to throw planets arround the sun to create a constellation of avatars! Each attendee can log through the app and use it's avatar as a planet by throwing it with a very simple interface.
+2018 was the year of the "space" theme. The idea was to throw planets around the sun to create a constellation of avatars! Each attendee can log through the app and use its avatar as a planet by throwing it with a very simple interface.
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/countdown2018_player.png" width="600px">
 </div>
 
-You simply drag your finger from your avatar to the center of the screen and when you release it, your planet will be throw to the main screen!
+You simply drag your finger from your avatar to the center of the screen and when you release it, your planet will be thrown to the main screen!
 
 ### A New year = a new challenge
 
 As I use the countdown as a personal challenge to try lots of things, this year my biggest challenge was to learn a new framework. I wanted to learn [Vue.js](https://vuejs.org/). I use the package `@vue/cli:3.0.0` to serve, build my project and I use the version 2.5.x which was the last version at the moment of this project.
 
-Since the last 6 months, I start to be exausted by what we can call the _**"cli fatigue"**_. Indeed, as the frameworks are evolving every month, their cli often evolve to and when you work with severals projects in different version, having a cli in a specific version could be a problem... I simply install the cli as a `devDependancies` and reference the cli in the script part of my package. Here is for example the package.json of my project
+Since the last 6 months, I start to be exhausted by what we can call the _**"CLI fatigue"**_. Indeed, as the frameworks are evolving every month, their CLI often evolve to and when you work with several projects in a different version, having a CLI in a specific version could be a problem... I simply install the cli as a `devDependancies` and reference the CLI in the script part of my package. Here is, for example, the package.json of my project
 
 ```javascript
 {
@@ -775,7 +775,7 @@ Since the last 6 months, I start to be exausted by what we can call the _**"cli 
 }
 ```
 
-As you can see, I reference the cli I need and I'm shure that the version of vue/cli won't interfere with any other of my cli.  
+As you can see, I reference the cli I need and I'm sure that the version of vue/cli won't interfere with any other of my cli.
 
 ### The new Architecture
 
@@ -786,14 +786,14 @@ As you can see, I reference the cli I need and I'm shure that the version of vue
 
 As you can see, I remove lots of elements to be focused on my code. And I wanted to go back to something in the [KISS principle](https://en.wikipedia.org/wiki/KISS_principle)
 
-As firebase is evoluating each year, in 2016, when I start to use it, the firestore wasn't effective and we cannot listen to change on the tree. I decided to use the realtime database. But in 2018, firestore offer me all I need : 
-* A database with higher quota for the storage: 1 GiB
+As firebase is evolving each year, in 2016, when I start to use it, the firestore wasn't effective and we cannot listen to change on the tree. I decided to use the realtime database. But in 2018, firestore offer me all I need :
+* A database with a higher quota for the storage: 1 GiB
 * A number of simultaneous connection very high 1,000,000
-* The possibility to be notify when a change is done to the tree
+* The possibility to be notified when a change is done to the tree
 
 It's more than I really need, so I use it in replacement of realtime database.
 
-One of the pain point I got to face this year was to be attentive to the performances!! Indeed, I wanted to show on screen a high number of planets. Every planet is following an ellipse and I have to calculate for each planet if it's enter in collision with an other. All this calculations could cost some times so I decided to use a Web Worker to do all the stuff of calculation and to notify the app with a new model as soon as the calculations are done.
+One of the pain point I got to face this year was to be attentive to the performances!! Indeed, I wanted to show on screen a high number of planets. Every planet is following an ellipse and I have to calculate for each planet if it's enter in collision with an other planet. All those calculations could cost times so I decided to use a Web Worker to do all the stuff of calculation and to notify the app with a new model as soon as the calculations are done.
 
 
 <div style="text-align:center; width:100%;">
@@ -803,20 +803,20 @@ One of the pain point I got to face this year was to be attentive to the perform
 To summarize:
 
 1. A player launch a planet
-2. The planet is add / update in the firestore tree
-3. The Countdown screen is notify and ask to the webworker to add the new planet
+2. The planet is added/updated in the firestore tree
+3. The Countdown screen is notified and ask to the webworker to add the new planet
 
 In parallel
 
 1. The webworker calculate the position of the planets, the collisions, update the model
-2. The Countdown screen receive the datas.
+2. The Countdown screen receives the data.
 3. When the `requestAnimationFrame`is call, the Countdown screen read the current model and display it
 
-All the animations, stars, shine effect, are just maths and effect with the Canvas, I won't explain how I do this. If you are intersted by that, check the source code (end of this section).
+All the animations, stars, shine effect, are just maths and effect with the Canvas, I won't explain how I do this. If you are interested in that, check the source code (end of this section).
 
 ### Data Structure and security
 
-To secure my paths and datas, I use firebase authentication and path configuration in vue: 
+To secure my paths and datas, I use firebase authentication and path configuration in vue:
 
 ```javascript
 const secureRoute = (to, from, next) => {
@@ -847,7 +847,7 @@ const routes = [
     component: Final
   },
   {
-    // The page to show when the user is waiting for he's connection
+    // The page to show when the user is waiting for his connection
     path: '/wait',
     component: Wait
   },
@@ -865,7 +865,7 @@ const routes = [
 ]
 ```
 
-So the idea was to check for specifics route (`/countdown`, `/game`) if the user is authenticate. If not, I redirect the user to the route of Authentication. The period while the application is waiting for checking if the user is authenticate, I redirect to a waiting screen. I'm shure if it's the best practice or not but it works pretty well 😇. 
+So the idea was to check for specifics route (`/countdown`, `/game`) if the user is authenticated. If not, I redirect the user to the route of Authentication. The period while the application is waiting for checking if the user is authenticated, I redirect to a waiting screen. I'm sure if it's the best practice or not but it works pretty well 😇.
 
 The `/countdown` route should be shown only by "Admins" so I secured this page this redirection
 
@@ -899,36 +899,36 @@ Indeed, I can consider that an error here is throw when the current user has not
 {
     UID_OfUserLoggued1: {
         angle: 0,
-        collision: false, 
+        collision: false,
         ...
     },
     UID_OfUserLoggued2: {
         angle: 0,
-        collision: false, 
+        collision: false,
         ...
     }
 }
 ```
 
-To secure thos datas, I use this firebase rules: 
+To secure thos datas, I use this firebase rules:
 
 ```javascript
 service cloud.firestore {
   match /databases/{database}/documents {
-    // Generic method that check if the email of the current authenticate user is contain in the admin collection
+    // Generic method that checks if the email of the currently authenticated user is contained in the admin collection
   	function isAdmin() {
       return request.auth != null
       	&& get(/databases/$(database)/documents/admins/adminList).data[request.auth.token.email] == true
       	&& request.auth.token.email_verified == true;
     }
-  
+
     // The admin collection is in read only for the admins
     match /admins/{document=**} {
       allow read: if isAdmin();
       allow write, delete, update: if false;
     }
 
-    // To update a planet, you have to be the user that create it or to be an admin. Everyone loggued can read the datas of a planet (because there is nothing critical in it)
+    // To update a planet, you have to be the user that create it or to be an admin. Everyone logged can read the data of a planet (because there is nothing critical in it)
     match /planets/{planetId} {
       allow update, delete: if request.auth.uid == planetId
         || isAdmin();
@@ -942,11 +942,11 @@ With this few lines, I secure my application and my datas 💪.
 
 ### Few enhancements
 
-Although I reuse each year the codebase for the timer, the audio player, ... This year I want to fix and enhanced a litle bit the class. I focus my enhancement to elements: the Audio Player and the timer.
+Although I reuse each year the codebase for the timer, the audio player, ... This year I want to fix and enhanced a little bit the class. I focus my enhancement to elements: the Audio Player and the timer.
 
 #### The Timer
 
-Since all this year, I never create a class for it, it has to be fix. 
+Since all this year, I never create a class for it, it has to be fixed.
 
 ```javascript
 'use strict';
@@ -998,9 +998,9 @@ This timer is update very often and give the delta to the main screen.
 
 #### The Audio player
 
-One of our problem each year is the timing. We play music and we want that a specific music is played at the end. Let me explain it more easily. If we start the count down 45min before the begining of the Keynote we want that the last song played is for example ACDC - Thunderstock and we want the countdown show **00:00** when Thunderstock is finish...  It was not very easy because we have to calculate the right time to start our playlist, be shure to not stop it, ...
+One of our problem each year is the timing. We play music and we want that a specific music is played at the end. Let me explain it more easily. If we start the countdown 45min before the beginning of the Keynote we want that the last song played is, for example, ACDC - Thunderstock and we want the countdown show **00:00** when Thunderstock is finishing...  It was not very easy because we have to calculate the right time to start our playlist, be sure to not stop it, ...
 
-So I got an idea. What if I can specify what is the last song, it's duration and if the countdown automaticaly switch to this song when it's the right moment ? That's why I do an evolution in my AudioPlayer class
+So I got an idea. What if I can specify what is the last song, it's duration and if the countdown automatically switch to this song when it's the right moment? That's why I do an evolution in my AudioPlayer class
 
 ```javascript
 'use strict'
@@ -1012,7 +1012,7 @@ import {
 /**
  * Class for playing music
  *
- * We create an insible audio element and we play music on it
+ * We create an invisible audio element and we play music on it
  */
 export class AudioPlayer {
     constructor() {
@@ -1105,7 +1105,7 @@ const dropTimeForLastSong = 5 * 1000; // 5 sec
 export default {
 	name: 'countdown',
 	components: { Galaxy, ScoreList, Timer },
-	// ... 
+	// ...
 	methods: {
 		/// ...
 		timeUpdate(event) {
@@ -1140,17 +1140,17 @@ export default {
 
 My first challenge was to try Vue.js and my conclusion is VueJS is good framework / library to prototype application but not the best solution when you have an application with frame rate high 30fps. The main problem comes from the fact that my Datas were refresh very often... More often than the inner mecanism of rendering of Vue. So Vue destroy and recreate to many times the HTML Nodes.
 
-For exemple, to be performant, I had to change this code: 
+For example, to be performant, I had to change this code:
 
 ```javascript
- <Score 
+ <Score
     v-for="planet in planets.slice(0,10)"
     :key="planet.id"
     v-bind:planet="planet"
 ></Score>
 ```
 
-To this: 
+To this:
 
 ```javascript
 <Score
@@ -1175,19 +1175,19 @@ To this:
 ></Score>
 ```
 
-And I also have to give datas to a children component through a method exposed in the child component instead of using the properties. This problem comes to serialisation / deserialisation of object and cause a rerendering of the child component where my basic rendering was made by the canvas.
+And I also have to give data to a children component through a method exposed in the child component instead of using the properties. This problem comes to serialization/deserialization of the object and causes a re-rendering of the child component where my basic rendering was made by the canvas.
 
-For the next year I think that I will continue to work with vanillaJS because the use cas of countdown is each time to specific to match with the mindset of a framework. I don't say that Vue is a bad framework, but I really think that it wasn't the best choice for my project.
+For the next year, I think that I will continue to work with vanillaJS because the use case of the countdown is each time to specific to match with the mindset of a framework. I don't say that Vue is a bad framework, but I really think that it wasn't the best choice for my project.
 
 
 ### Code & Demo
 
-You can find the code here : [CountDown DevFest 2018](https://github.com/GDG-Nantes/CountDownDevFest2018).
+You can find the code here: [CountDown DevFest 2018](https://github.com/GDG-Nantes/CountDownDevFest2018).
 
 If you want to see it in action, have a look here [CountDown 2018](http://gdg-nantes.github.io/CountDownDevFest2018/)
 
 
-# 2019 ?
+# 2019?
 
 I don't yet what I will write for 2019 but it will be maybe a new game based on vanilla. Stay tuned 🤘
 
