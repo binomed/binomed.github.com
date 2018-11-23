@@ -4,13 +4,14 @@
 
 # Site
 title: Binomed Blog
-subtitle: Encore un blog de G33k
-description:  Un blog technique pour le développpement sur des technos variées
+subtitle: Another G33k blog
+description:  A technical blog for development about various technologies
 author: jefBinomed
 email: jean.francois.garreau+blog@gmail.com
 authorName: Jean-François Garreau
-jobTitle: Développeur Sénior en innovation & Animateur de communautés
+jobTitle: Senior innovation developer & Community leader
 language: fr-FR
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'

@@ -11,7 +11,7 @@ menu:
 ## ---
 
 #### Widgets
-widgets: 
+widgets:
 - category
 - tag
 - rss
@@ -20,19 +20,19 @@ widgets:
 ## provide seven widgets:category,tag,rss,archive,tagcloud,links,weibo,douban
 
 
-#### RSS 
+#### RSS
 rss: /atom.xml ## RSS address.
 
 #### Image
 imglogo:
   enable: true             ## display image logo true/false.
   src: img/binomed_alizarin.png        ## `.svg` and `.png` are recommended,please put image into the theme folder `/jacman/source/img`.
-favicon: img/favicon.ico   ## size:32px*32px,`.ico` is recommended,please put image into the theme folder `/jacman/source/img`.     
+favicon: img/favicon.ico   ## size:32px*32px,`.ico` is recommended,please put image into the theme folder `/jacman/source/img`.
 apple_icon: img/binomed_alizarin.png ## size:114px*114px,please put image into the theme folder `/jacman/source/img`.
 author_img: img/author.jpg ## size:220px*220px.display author avatar picture.if don't want to display,please don't set this.
 resume_img: img/jef.jpg
 banner_img: #img/banner.jpg ## size:1920px*200px+. Banner Picture
-### Theme Color 
+### Theme Color
 #theme_color:
 #    theme: '#2ca6cb'    ##the defaut theme color is blue
 
@@ -40,22 +40,22 @@ banner_img: #img/banner.jpg ## size:1920px*200px+. Banner Picture
 # available: default | night | tomorrow
 highlight_theme: tomorrow
 
-#### index post is expanding or not 
+#### index post is expanding or not
 index:
   expand: false           ## default is unexpanding,so you can only see the short description of each post.
-  excerpt_link: Lire plus  
+  excerpt_link: Read more
 
 close_aside: false  #close sidebar in post page if true
 mathjax: false      #enable mathjax if true
 
-### Creative Commons License Support, see http://creativecommons.org/ 
+### Creative Commons License Support, see http://creativecommons.org/
 ### you can choose: by , by-nc , by-nc-nd , by-nc-sa , by-nd , by-sa , zero
 creative_commons: none
 
 #### Author information
 author:
-  intro_line1: "Je suis Jean-François Garreau, geek, papa, développeur" ## eg: "Hello ,I'm Larry Page in Google."
-  intro_line2: "J'anime aussi le GDG Nantes, Nantes WIT et des Devoxx4Kids" ## eg: "This is my blog,believe it or not."
+  intro_line1: "I am Jean-François Garreau, geek, dad, developer" ## eg: "Hello ,I'm Larry Page in Google."
+  intro_line2: "I also host the GDG Nantes, Nantes WIT and Devoxx4Kids" ## eg: "This is my blog,believe it or not."
   weibo:      ## e.g. wuchong1014 or 2176287895 for http://weibo.com/2176287895
   weibo_verifier:  ## e.g. b3593ceb Your weibo-show widget verifier ,if you use weibo-show it is needed.
   tsina:      ## e.g. 2176287895  Your weibo ID,It will be used in share button.
@@ -65,7 +65,7 @@ author:
   twitter: jefBinomed   ## e.g. jarkwu for https://twitter.com/jarkwu
   github: jefBinomed    ## e.g. wuchong for https://github.com/wuchong
   facebook:   ## e.g. imjark for https://facebook.com/imjark
-  linkedin:   ## e.g. wuchong1014 for https://www.linkedin.com/in/wuchong1014
+  linkedin: jean-françois-garreau  ## e.g. wuchong1014 for https://www.linkedin.com/in/wuchong1014
   google_plus: +JeanFrancoisGarreau   ## e.g. "111190881341800841449" for https://plus.google.com/u/0/111190881341800841449, the "" is needed!
   stackoverflow:  ## e.g. 3222790 for http://stackoverflow.com/users/3222790/jark
 ## if you set them, the corresponding  share button will show on the footer
@@ -97,7 +97,7 @@ disqus_shortname: binomedblog    ## e.g. wuchong   your disqus short name.
 #### Share button
 jiathis:
   enable: false ## if you use jiathis as your share tool,the built-in share tool won't be display.
-  id:    ## e.g. 1889330 your jiathis ID. 
+  id:    ## e.g. 1889330 your jiathis ID.
   tsina: ## e.g. 2176287895 Your weibo id,It will be used in share button.
 
 #### Analytics
@@ -121,20 +121,20 @@ totop: true           ## if you want to scroll to top in every post set the valu
 
 
 #### Custom Search
-google_cse: 
+google_cse:
   enable: false
   cx:   ## e.g. 018294693190868310296:abnhpuysycw your Custom Search ID.
-## https://www.google.com/cse/ 
+## https://www.google.com/cse/
 ## To enable the custom search You must create a "search" folder in '/source' and a "index.md" file
 ## set the 'front-matter' as
-## layout: search 
+## layout: search
 ## title: search
 ## ---
 baidu_search:     ## http://zn.baidu.com/
   enable: false
   id:   ## e.g. "783281470518440642"  for your baidu search id
   site: http://zhannei.baidu.com/cse/search  ## your can change to your site instead of the default site
-  
+
 tinysou_search:     ## http://tinysou.com/
   enable: false
   id:  ## e.g. "4ac092ad8d749fdc6293" for your tiny search id
