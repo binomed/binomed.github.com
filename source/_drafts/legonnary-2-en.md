@@ -1,0 +1,441 @@
+title: >-
+  J'ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 -
+  FireBase)
+tags:
+  - HTML5
+  - Firebase
+  - DevFest
+category:
+  - Tech
+toc: false
+date: 2018-11-23 17:05:40
+---
+
+
+![](/assets/2016-12-legonnary/devfest_photo.jpg)
+
+Deuxième partie d'une série de 3 articles :
+* [Article 1 - PWA](/2016/12/23/2016-12-23-legonnary/)
+* [Article 3 - Partie Graphique ](/2016/12/23/2016-12-23-legonnary-3/)
+
+## Sécurisation de l'app
+
+Aux jours d'aujourd'hui, nous ne pouvons pas passer à côté d'applications sécurisées. Je veux donc mettre en place les choses suivantes :
+
+* Les joueurs doivent être identifiés pour jouer et je veux proposer un social login afin d'éviter d'avoir à saisir un nouveau login / mdp.
+* Le site est servi en https.
+* L'accès aux données et dessins produits ne sont pas accessibles par tout le monde.
+
+Grâce aux dernières APIs sorties côté firebase, j'ai pu résoudre tous ces problèmes le plus simplement du monde !
+
+### Authentification
+
+Dans mes précédents projets j'utilisais [Hello.js](https://adodson.com/hello.js/), cette librairie est très facile à installer et très pratique. Je vous conseille d'y jeter un coup d’œil !  Mais pour ce projet, j'ai voulu essayer quelque chose de différent pour comparer et voir les avantages inconvénients de chaque solution. Je suis donc parti sur [Firebase Authentication](https://firebase.google.com/docs/auth/).
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase-authentication-logo1.png">
+</div>
+
+Cette solution permet d'utiliser un mécanisme d'authentification des utilisateurs qui sera reconnu dans l'arbre Firebase. De plus, en se basant sur cette solution, on peut facilement paramétrer des solutions de social login !
+
+Afin de faciliter la vie du développeur. Firebase a mis à disposition une librairie web qui permet d'intégrer ce mécanisme : [FirebaseUI-Web](https://github.com/firebase/FirebaseUI-Web). Il reste quand même à configurer les différentes plateformes pour récupérer les différentes clés d'API OAuth.
+
+```javascript firebaseAuth.js https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/firebase/firebaseAuth.js#L11
+let uiConfig = {
+    'callbacks': {
+        // Called when the user has been successfully signed in.
+        'signInSuccess': function(user, credential, redirectUrl) {
+            // Do not redirect.
+            return false;
+        }
+    },
+    // Opens IDP Providers sign-in flow in a popup.
+    'signInFlow': 'popup',
+    'signInOptions': [
+        {
+        provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        scopes: ['https://www.googleapis.com/auth/plus.login']
+        },
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.TwitterAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    // Terms of service URL.
+    'tosUrl': 'https://gdgnantes.com'
+};
+this.ui = new firebaseui.auth.AuthUI(firebase.auth());
+this.ui.start('#firebaseui-auth-container', uiConfig);
+```
+
+A travers ce code :
+* Je suis capable gérer une popup de login
+* Je suis capable d'avoir un login social avec Google / Facebook / Github / Twitter et ça donne ça :
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/legonnary_auth.png">
+</div>
+
+Un des avantages de la solution Firebase est que l'auto login est géré et qu'une API est proposée pour récupérer les informations sur le "user".
+
+**Comparatif**
+
+|Fonctionnalité|Hello.JS|FireBase|
+|:------------:|:----------:|:--------:|
+| Auto login      | ✗ | ✓ |
+| Facile à intégrer dans firebase      | ✗ | ✓ |
+| Peut être utilisé indépendant de firebase      | ✓ | ✗ |
+| Interface graphique      | ✗ | ✓ |
+| Single Email Login      | ✗ | ✓ |
+| Google Login      | ✓ | ✓ |
+| Facebook Login      | ✓ | ✓ |
+| Twitter Login      | ✓ | ✓ |
+| Github Login      | ✓ | ✓ |
+| LinkedIn Login      | ✓ | ✗ |
+| Live Login      | ✓ | ✗ |
+| DropBox Login      | ✓ | ✗ |
+| Instagram Login      | ✓ | ✗ |
+| Yahoo Login      | ✓ | ✗ |
+| Joinme Login      | ✓ | ✗ |
+| Soundcloud Login      | ✓ | ✗ |
+| Foursquare Login      | ✓ | ✗ |
+| Flickr Login      | ✓ | ✗ |
+| Vk Login      | ✓ | ✗ |
+
+### Https
+
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase_hosting.png">
+</div>
+
+Firebase propose depuis quelque temps déjà la possibilité de hoster son application sur leurs serveurs : [Firebase Hosting](https://firebase.google.com/docs/hosting/)
+
+Par défaut, le site est hébergé sur une URL type `https://[MON_APPLICATION].firebaseapp.com`. Cependant, si on le souhaite, on peut utiliser son propre nom de domaine. Dans mon cas l'application est disponible à l'adresse suivante : https://legonnary.firebaseapp.com
+
+Pour déployer son site, rien de plus simple :
+
+1. Installez les [firebase-tools](https://firebase.google.com/docs/cli/) : `npm install -g firebase-tools`
+2. Logguez vous : `firebase login`
+3. Initialisez votre projet pour préparer le déploiement firebase : `firebase init`
+4. Lancer la procédure de déploiement avec `firebase deploy`
+
+Si vous voulez utiliser `firebase deploy` derrière une plateforme de CI, rien de plus simple :
+
+1. Tapez dans une console : `firebase login:ci`. Vous allez ainsi récupérer un token
+2. Utilisez ce token sur votre plateforme d'intégration pour déployer avec la commande suivante : `firebase deploy --token <token>`
+
+### Structure de l'arbre firebase
+
+J'ai fait reposer mon application sur la partie [Realtime Database](https://firebase.google.com/docs/database/) de Firebase car cela me permettait une réactivité et une interaction instantanée entre les différents acteurs. Pour ceux qui ne savent pas ce qu'est le Realtime Database, il s'agit d'un arbre JSON disponible sur firebase sur lequel on peut s'abonner. On peut écouter un ajout / modification / suppression de nœud ou d'attributs de l'arbre json.
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase-database-logo.png">
+</div>
+
+Voici comment mon arbre est structuré :
+
+```json Realtime Database
+{
+    "admins":{
+        "mon*email@me*com":true
+    },
+    "draw": {
+        "XXXXX_FIREBASE_AUTO_UID_XXXX": {
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            }
+            "user": "pseudo user",
+            "userId": "XXXX_UUID_OAUTH_USER_XXXX"
+        },
+        "YYYY_FIREBASE_AUTO_UID_YYYY":{}
+    },
+    "drawValidated": {
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            },
+            "user": "pseudo user",
+            "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+        }
+    },
+    "drawSaved":{
+        "XXXX_UUID_OAUTH_USER_XXXX":{
+            "YYYY_FIREBASE_AUTO_UID_YYYY":{
+                "accepted":false,
+                "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+                "user": "pseudo user",
+                "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+            }
+        }
+    },
+    "drawShow":{
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "accepted" : true,
+            "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+            "user": "pseudo user"
+        }
+    }
+
+}
+```
+
+Si l'on regarde de plus près cet arbre, on peut voir 5 nœuds principaux :
+
+* **admins** :  Liste des emails des administrateurs.
+* **draw** : Liste des dessins soumis qui doivent être validés ou non par le modérateur.
+* **drawValidated** : Liste des dessins validés par le modérateur qui sont en attente d'affichage sur l'écran du compte à rebours.
+* **drawSaved** : Liste des dessins qui ont été soit validés, soit refusés par utilisateur.
+* **drawShow** : Liste des dessins qui ont été validés et qui sont disponibles pour l'affichage de restitution.
+
+```json admins
+{
+    "admins":{
+        "mon*email@me*com":true
+    }
+}
+```
+
+Pour chaque admin, on indique son email. On est obligé par contre de remplacer les "." par des "*" car sinon firebase n'accepte pas le JSON et le considère comme invalide.
+
+
+```json draw
+{
+    "draw": {
+        "XXXXX_FIREBASE_AUTO_UID_XXXX": {
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            }
+            "user": "pseudo user",
+            "userId": "XXXX_UUID_OAUTH_USER_XXXX"
+        },
+        "YYYY_FIREBASE_AUTO_UID_YYYY":{}
+    }
+}
+```
+
+Pour chaque dessin, un uuid généré automatiquement par firebase est ajouté. S'ensuit ensuite un descriptif du dessin avec l'utilisateur à l'origine du dessin et les instructions à appliquer pour reproduire le dessin.
+
+À une instruction correspond 1 brique. Sa position dans le dessin est disponible ainsi que sa couleur et son angle. Pour un dessin, nous aurons autant d'instructions qu'il y a de briques.
+
+```json drawValidated
+{
+    "drawValidated": {
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "instructions":{
+                "0": {
+                    "angle" : 0
+                    "cellSize" : 23
+                    "color":"#FFFFFF"
+                    "left":"115"
+                    "top":"138"
+                    "size":{
+                        "col":2
+                        "row":2
+                    }
+                },
+                "1": {}
+            },
+            "user": "pseudo user",
+            "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+        }
+    }
+}
+```
+
+Dans cet arbre, on va retrouver toutes les informations nécessaires à l'affichage d'un dessin à savoir : qui a fait le dessin et quelles sont les instructions pour dessiner. De cette manière, l'écran de compte à rebours est capable d'afficher les bonnes informations et de reproduire le dessin.
+
+```json drawSaved
+{
+    "drawSaved":{
+        "XXXX_UUID_OAUTH_USER_XXXX":{
+            "YYYY_FIREBASE_AUTO_UID_YYYY":{
+                "accepted":false,
+                "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+                "user": "pseudo user",
+                "userdId": "XXXX_UUID_OAUTH_USER_XXXX"
+            }
+        }
+    }
+}
+```
+
+À partir du moment où l'on se trouve dans "drawSaved", on se situe au niveau user et on a la liste des dessins de l'utilisateur avec leur état. Contrairement aux nœuds précédents, nous n'avons pas la liste des instructions mais directement l'image finale en base64. De cette manière, on évite la phase de construction du dessin.
+
+```json drawShow
+{
+    "drawShow":{
+        "ZZZZ_FIREBASE_AUTO_UID_ZZZZ":{
+            "accepted" : true,
+            "dataUrl":"data:image/png;base64,XXXXXXXXXX",
+            "user": "pseudo user"
+        }
+    }
+}
+```
+
+Même chose dans cette partie de l'arbre, on ne stocke que le nom du user et son dessin, on s'évite ainsi la reconstruction du dessin. De plus sous cette partie de l'arbre, on a supprimé l'id du user car cette information n'est plus pertinente.
+
+
+### Gestion de l'admin
+
+Une fois cet arbre définit, j'ai voulu appliquer un système de restrictions sur la publication / lecture dans l'arbre. En effet, je ne voulais pas que n'importe qui puisse écrire ou lire n'importe quelles données.
+
+Heureusement Firebase propose justement un mécanisme de protection de son arbre en fonction de l'utilisateur connecté. On peut soit protégé de façon fine un nœud ou alors poser des restrictions de façon plus large. Voici le guide complet pour apprendre à protéger ses données dans une base de données firebase : [Security & Rules](https://firebase.google.com/docs/database/security/)
+
+Voici les restrictions mises en place :
+
+```json database.rules.json https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json
+{
+  "rules":{
+    "admins": {
+      ".read": false,
+      ".write": false
+    },
+    "draw": {
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null"
+    },
+    "drawValidated":{
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    },
+    "drawShow":{
+      ".read": true,
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    },
+    "drawSaved":{
+      "$userId":{
+        ".read": "auth != null && $userId === auth.uid",
+        ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+      }
+    }
+  }
+}
+```
+
+Revenons sur chacune de ces règles pour les détailler :
+
+**Partie Admin :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L3
+{
+  "rules":{
+    "admins": {
+      ".read": false,
+      ".write": false
+    }
+  }
+}
+```
+
+Cette partie de l'arbre n'est ni disponible en lecture, ni disponible en écriture car je ne veux pas que quiconque puisse avoir accès aux emails concernés.
+
+
+**Partie dessins soumis :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L7
+{
+  "rules":{
+    "draw": {
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null"
+    }
+  }
+}
+```
+
+L'écriture sur ce nœud ne peut se faire que pour un utilisateur authentifié `auth != null`.
+
+La lecture n'est disponible que par un admin :
+* `auth != null` : L'admin est authentifié
+* `root.child('admins').child(auth.token.email.replace('.', '*')).exists()` : l'utilisateur courant a son mail qui fait partie des nœuds disponibles dans la partie "admins". Au passage, on pense bien à remplacer les "*" par des "." lors de la vérification
+* `auth.token.email_verified == true` : l'email est vérifié par le tiers de confiance OAuth
+
+**Partie Dessin validé (écran de comptes à rebours) : **
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L11
+{
+  "rules":{
+    "drawValidated":{
+      ".read": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true",
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    }
+  }
+}
+```
+
+Dans cette partie, seul l'admin peut lire ou écrire.
+
+**Partie dessins validés :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L15
+{
+  "rules":{
+    "drawShow":{
+      ".read": true,
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+    }
+  }
+}
+```
+
+Seul l'admin peut écrire dans cette partie et par contre la lecture est disponible à n'importe qui. De cette manière seul le modérateur peut déplacer un dessin dans cette partie de l'arbre et une fois qu'un dessin est validé (et donc considéré comme "safe") il n'y a aucune restriction d'appliquée.
+
+**Partie dessins archivés (validés ou refusés) :**
+
+```json database.rules.json (admin) https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L19
+{
+  "rules":{
+    "drawSaved":{
+      "$userId":{
+        ".read": "auth != null && $userId === auth.uid",
+        ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', '*')).exists() && auth.token.email_verified == true"
+      }
+    }
+  }
+}
+```
+
+L'écriture ne peut être faite que par un admin. Par contre la lecture n'est disponible que pour le user qui a créé le dessin.
+
+Le `$userId` permet de cibler les sous-parties de l'arbre `drawSaved` pour un utilisateur donné. Et donc la condition `$userId === auth.uid` me permet de m'assurer que seul l’utilisateur courant puisse avoir accès à ses dessins !
+
+N'importe qui ne pourra pas consulter les dessins refusés des autres et pour autant l'utilisateur pourra avoir un retour sur ses soumissions de dessins.
+
+
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2016-12-legonnary/legonnary.js"></script>
