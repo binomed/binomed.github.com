@@ -11,7 +11,7 @@ I organize the [DevFest Nantes](https://devfest.gdgnantes.com) as a volunteer of
 
 If you don't know what "DevFest" is, it's a worldwide event lead by the GDG community. You could have a look here [DevFest With Google](https://devfest.withgoogle.com).
 
-Each year we work very hard to provide the best experience for our attendees. We try to make DevFest Nantes the most accessible (only 90€ for 2 days with food, goodies, party, conference, ...). And one of the things I'm responsible for is the Countdown! Indeed, if you already go to Google I/O, you know that when you are waiting for the launch of the keynote, Google prepares you a nice Countdown animation to let you play with the other attendees! We love so much this experience that we try to create ours to keep that spirit. With this article, I will try to share those countdown and try to explain to you what I've learned with each of them.
+Each year we work very hard to provide the best experience for our attendees. We try to make DevFest Nantes the most accessible (only 90€ for 2 days with food, goodies, party, conference, ...). And one of the things I'm responsible for is the Countdown! Indeed, if you already go to Google I/O, you know that when you are waiting for the launch of the keynote, Google prepares a nice Countdown animation to let you play with the other attendees! We love so much this experience that we try to create ours to keep that spirit. With this article, I will try to share those countdown and try to explain to you what I've learned with each of them.
 
 
 # Before 2014
@@ -21,7 +21,7 @@ Each year we work very hard to provide the best experience for our attendees. We
     <img src="/assets/2018-11-countdown/original_io_countdown.jpg">
 </div>
 
-Before I start to write my own Countdown, I first reuse a public countdown create for Google IO 2011: [HTML5 Countdown Finale](https://experiments.withgoogle.com/google-io-conference-html5-countdown-finale). It works pretty well but it was not linked to our graphical Theme. That's why I start in 2015 to create my own countdown
+Before I start to write my own Countdown, I first reuse a public countdown create for Google IO 2011: [HTML5 Countdown Finale](https://experiments.withgoogle.com/google-io-conference-html5-countdown-finale). It works pretty well but it was not linked to our graphical Theme. That's why I start in 2014 to create my own countdown
 
 # 2014
 
@@ -48,7 +48,7 @@ Behind this 2 steps is hide a basic complexity. How to check without blocking th
 
 ### Time management
 
-For the first solution, I don't use the best solution: `setInterval` but it's a solution that won't block the UI! Now and you will see it in the other CountDown, I prefer to use `requestAnimationFrame`. Indeed, one of the most important points is to avoid to blocking the event loop.
+For the first year, I don't use the best solution: `setInterval` but it's something that won't block the UI! Today, I prefer to use `requestAnimationFrame`. Indeed, one of the most important points is to avoid to blocking the event loop.
 
 ```javascript
 var cibleDate = Date.parse('2014-11-07T08:35:00Z')
@@ -67,10 +67,10 @@ var cancelInterval = setInterval(function() {
 
 ### Playing Song
 
-For the second solution, even if there is a [Web Audio API](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API) a simple `<audio>` tag hidden in the page do the job very well! In 2014, there wasn't the restriction of [autoplay policy](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes) so I can easily play a sound with this code :
+For the second problem, even if there is a [Web Audio API](https://developer.mozilla.org/fr/docs/Web/API/Web_Audio_API) a simple `<audio>` tag hidden in the page do the job very well! In 2014, there wasn't the restriction of [autoplay policy](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes) so I can easily play a sound with this code :
 
 ```javascript
-// Index of current song in the playlist
+// Index of the current song in the playlist
 var indexPlaylist = 0;
 // The playlist of songs to play
 var playListSongs = [
@@ -98,7 +98,7 @@ function nextSong(){
 
 ### Graphical challenge
 
-The only challenge I face was with the CSS to play with the good text transformation. So for this HTML:
+The only challenge I face was with the CSS. To play with the good text transformation. So for this HTML:
 
 ```html
 <div class="conteneur">
@@ -150,7 +150,7 @@ This give you this result
     </div>
 </div>
 
-And the last thing to do was to animate the text at the bottom of the tower. I use the `marquee` tag because it's target to animate text in a box! Here the problem comes to the fact that I have 2 faces in my tower and I want to give the impression that the text "slide" arround the tower. To create this effet, I have to use 2 `marquee` and play a timeout that corresponds to the time of the move of the text.
+And the last thing to do was to animate the text at the bottom of the tower. I use the `marquee` tag because it's target to animate text in a box! Here, the problem comes to the fact that I have 2 faces in my tower and I want to give the impression that the text "slide" around the tower. To create this effect, I have to use 2 `marquee` and play a timeout that corresponds to the time of the move of the text.
 
 ```html
 <marquee behavior="scroll" direction="right" class="marquee_1">DevFest Nantes</marquee>
@@ -202,7 +202,7 @@ The idea was to simulate a real "Space Invaders". As the t-shirt shows a space i
 
 ### New Challenges
 
-For this version, I try to keep it as simple as I can, I just introduce a minor toolchain for compiling my Sass files. The main challenge here was to calculate when to destroy or not a logo and how. For a smooth animation, I use a **Canvas**. As I start to play with canvas, I have to rethink some aspects: Animation, Ressources loading. I re-use the work of the previous year for the time management except that I start to use the `requestAnimationFrame` instead of `setTimeout`. Indeed, using `requestAnimationFrame`is something mandatory when you want to create something smooth. To understand why it is important, I encourage you to read more articles about the [Javascript EventLoop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop).
+For this version, I try to keep it as simple as I can, I just introduce a minor toolchain for compiling my Sass files. The main challenge here was to calculate when to destroy or not a logo and how. For a smooth animation, I use a **Canvas**. As I start to play with canvas, I have to rethink some aspects: Animation, Ressources loading. I re-use the work of the previous year for the time management except that I start to use the `requestAnimationFrame` instead of `setTimeout`. Indeed, using `requestAnimationFrame` is something mandatory when you want to create something smooth. To understand why it is important, I encourage you to read more articles about the [Javascript EventLoop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop).
 
 Or have a look at this conference from Jake Archibald about event loop:
 
@@ -345,7 +345,7 @@ As you can see, `runAnimation` is the only method that render something on the s
 
 ### The destruction of a logo
 
-One of the challenges was to be sure that all logos will be destroyed at the end of the countdown. I try to make this as automatic as I can so the first thing that is done when the countdown start is to calculate few elements :
+One of the challenges was to be sure that all logos will be destroyed at the end of the countdown. I try to make this as automatic as I can. The first thing that is done when the countdown start is to calculate few elements :
 
 * What is the interval between each destruction : `(Now - Final time) / Number of logos`
 * How many time will take the spaceship to be under the current logo at maximum
@@ -512,7 +512,7 @@ You can find the code here: [CountDown DevFest 2016](https://github.com/GDG-Nant
 
 ### The revenge!!
 
-As in 2016, I create a whole application with moderation system display on the screen. I don't want to waste everything to the trash. So I reuse the code and I do some evolutions and wanted to complexify it a little bit the project. Indeed, I introduce some machine learning in order to try to recognize what the attendees draw. Here is the workflow of the application
+As in 2016, I create a whole application with moderation, a display on the screen... I don't want to waste everything to the trash. So I reuse the code, do some evolutions and wanted to complexify it a little bit the project. Indeed, I introduce some machine learning in order to try to recognize what the attendees draw. Here is the workflow of the application
 
 
 <div style="text-align:center; width:100%;">
@@ -551,7 +551,7 @@ The biggest addition of 2017 was the machine learning detection. So to use it, I
 6. The drawing is classified
 7. The cloud functions update the firebase tree in order to change the state of the draw to continue the workflow.
 
-As I'm not a specialist of Machine Learning I Ask some help to a Google from New York [Yufeng Guo](https://twitter.com/YufengG). He does all the stuff of training the model. So, he trained a machine learning model based on 'black and white' image of 28x28 pixels. I had to do a conversion between what I receive and what I send to the ML engine. In that way, this image:
+As I'm not a specialist of Machine Learning, I Ask some help to a Googler from New York [Yufeng Guo](https://twitter.com/YufengG). He does all the stuff of training the model. He trained a machine learning model based on 'black and white' image of 28x28 pixels. I had to do a conversion between what I receive and what I send to the ML engine. In that way, this image:
 
 <div style="text-align:center; width:100%;">
     <img src="/assets/2018-11-countdown/DevFestDraw_before.png" >
@@ -665,7 +665,7 @@ function updateTree(userId, drawId, result) {
 
 ### My Conclusion
 
-The conclusion of this year was that creating an interactive game is something finally easy if you have the rights tools! Using Firebase was a good idea because, I don't manage anything about deployment, installations, charge, simple authentication, secure access...
+The conclusion of this year was that creating an interactive game is something finally easy if you have the rights tools! Using Firebase was a good idea because, I don't manage those aspects:  deployment, installations, charge, simple authentication, secure access...
 
 During a short time (less than 30 min), I got 140 players that create around 250 drawings. It was for me a huge success for me.
 
@@ -784,9 +784,9 @@ As you can see, I reference the cli I need and I'm sure that the version of vue/
     <img src="/assets/2018-11-countdown/Galaxy_Archi.png" width="800px">
 </div>
 
-As you can see, I remove lots of elements to be focused on my code. And I wanted to go back to something in the [KISS principle](https://en.wikipedia.org/wiki/KISS_principle)
+As you can see, I remove lots of elements to be focused on my code. And I wanted to go back to something compatible with the [KISS principle](https://en.wikipedia.org/wiki/KISS_principle)
 
-As firebase is evolving each year, in 2016, when I start to use it, the firestore wasn't effective and we cannot listen to change on the tree. I decided to use the realtime database. But in 2018, firestore offer me all I need :
+As firebase is evolving each year, in 2016, when I start to use it. Firestore wasn't effective and we cannot listen to change on the tree. I decided to use the realtime database. But in 2018, firestore offer me all I need :
 * A database with a higher quota for the storage: 1 GiB
 * A number of simultaneous connection very high 1,000,000
 * The possibility to be notified when a change is done to the tree
@@ -865,9 +865,9 @@ const routes = [
 ]
 ```
 
-So the idea was to check for specifics route (`/countdown`, `/game`) if the user is authenticated. If not, I redirect the user to the route of Authentication. The period while the application is waiting for checking if the user is authenticated, I redirect to a waiting screen. I'm sure if it's the best practice or not but it works pretty well 😇.
+So the idea was to check for specifics route (`/countdown`, `/game`) if the user is authenticated. If not, I redirect the user to the route of Authentication. The period while the application is waiting for checking if the user is authenticated, I redirect to a waiting screen. I'm not sure if it's the best practice or not but it works pretty well 😇.
 
-The `/countdown` route should be shown only by "Admins" so I secured this page this redirection
+The `/countdown` route should be shown only by "Admins" so I secured this page with this redirection
 
 ```javascript
 // Mount method of my CountDown component
