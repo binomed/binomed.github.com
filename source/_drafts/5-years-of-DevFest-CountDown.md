@@ -942,7 +942,7 @@ With this few lines, I secure my application and my datas 💪.
 
 ### Few enhancements
 
-Although I reuse each year the codebase for the timer, the audio player, ... This year I want to fix and enhanced a little bit the class. I focus my enhancement to elements: the Audio Player and the timer.
+Although I reuse each year the codebase for the timer, the audio player, ... This year I want to fix and enhanced a little bit the class. I focus my enhancement to the Audio Player and the timer.
 
 #### The Timer
 
@@ -1138,7 +1138,7 @@ export default {
 
 ### My Conclusion
 
-My first challenge was to try Vue.js and my conclusion is VueJS is good framework / library to prototype application but not the best solution when you have an application with frame rate high 30fps. The main problem comes from the fact that my Datas were refresh very often... More often than the inner mecanism of rendering of Vue. So Vue destroy and recreate to many times the HTML Nodes.
+My first challenge was to try Vue.js and my conclusion is VueJS is good framework / library to prototype application but not the best solution when you have an application with frame rate high like 30fps. The main problem comes from the fact that my Datas were refresh very often... More often than the inner mecanism of rendering of Vue. So Vue destroy and recreate to many times the HTML Nodes.
 
 For example, to be performant, I had to change this code:
 
