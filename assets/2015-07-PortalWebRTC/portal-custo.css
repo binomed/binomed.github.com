@@ -1,0 +1,25 @@
+
+img.left{
+	float:left;
+}
+
+img.homer{
+	widows: 200px;
+}
+
+img.jf{
+	width : 45%;	
+}
+
+img.jf.first{
+	float : left;
+	margin-right: 10px;
+}
+
+img.logo{
+	width:50px;
+}
+
+img.meme{
+	width: 200px;
+}
