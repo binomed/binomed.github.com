@@ -4,40 +4,33 @@
   <url>
     <loc>http://jef.binomed.fr/2018/11/30/2018-11-30-5-years-of-DevFest-CountDown-part3/</loc>
     
-    <lastmod>2018-11-30T16:08:06.657Z</lastmod>
+    <lastmod>2018-11-30T16:08:06.658Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://jef.binomed.fr/2018/11/30/2018-11-30-5-years-of-DevFest-CountDown-part2/</loc>
     
-    <lastmod>2018-11-30T15:48:08.459Z</lastmod>
+    <lastmod>2018-11-30T15:48:08.460Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://jef.binomed.fr/2018/11/30/2018-11-30-5-years-of-DevFest-CountDown-part1/</loc>
     
-    <lastmod>2018-11-30T15:46:40.029Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2016/12/23/legonnary-en/</loc>
-    
-    <lastmod>2018-11-26T08:57:41.584Z</lastmod>
+    <lastmod>2018-11-30T15:46:40.030Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://jef.binomed.fr/resume/index.html</loc>
     
-    <lastmod>2018-10-23T15:10:35.946Z</lastmod>
+    <lastmod>2018-10-23T15:10:35.947Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2018/02/01/2018-02-01-last-french-article/</loc>
+    <loc>http://jef.binomed.fr/2017/04/28/2017-04-28-B-O-F-Speaker-DevoxxFR-2017/</loc>
     
     <lastmod>2018-10-23T15:10:35.226Z</lastmod>
     
@@ -51,21 +44,35 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2017/05/26/2017-05-26-Retour-Google-IO-2017/</loc>
+    <loc>http://jef.binomed.fr/2018/02/01/2018-02-01-last-french-article/</loc>
     
-    <lastmod>2018-10-23T15:10:35.225Z</lastmod>
+    <lastmod>2018-10-23T15:10:35.226Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://jef.binomed.fr/2017/06/21/2017-06-21-devtools-en-2017/</loc>
     
+    <lastmod>2018-10-23T15:10:35.226Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2017/05/26/2017-05-26-Retour-Google-IO-2017/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.226Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2017/02/06/2017-02-06-j-ai-mis-en-place-les-RTT-le-vendredi/</loc>
+    
     <lastmod>2018-10-23T15:10:35.225Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2017/04/28/2017-04-28-B-O-F-Speaker-DevoxxFR-2017/</loc>
+    <loc>http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-2/</loc>
     
     <lastmod>2018-10-23T15:10:35.225Z</lastmod>
     
@@ -79,6 +86,13 @@
   </url>
   
   <url>
+    <loc>http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-3/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.225Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary/</loc>
     
     <lastmod>2018-10-23T15:10:35.225Z</lastmod>
@@ -86,35 +100,7 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2016/05/27/2016-05-27-retour-google-io-2016/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-3/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2016/07/22/2016-07-22-controle-d-un-robot-par-une-page-web/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2017/02/06/2017-02-06-j-ai-mis-en-place-les-RTT-le-vendredi/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2016/04/06/2016-04-06-comment-devenir-speaker-part-2/</loc>
+    <loc>http://jef.binomed.fr/2015/07/07/2015-07-07--Realisez-votre-PortalGun-avec-WebRTC/</loc>
     
     <lastmod>2018-10-23T15:10:35.224Z</lastmod>
     
@@ -128,7 +114,21 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-2/</loc>
+    <loc>http://jef.binomed.fr/2016/04/06/2016-04-06-comment-devenir-speaker-part-2/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2016/07/22/2016-07-22-controle-d-un-robot-par-une-page-web/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2016/05/27/2016-05-27-retour-google-io-2016/</loc>
     
     <lastmod>2018-10-23T15:10:35.224Z</lastmod>
     
@@ -136,6 +136,20 @@
   
   <url>
     <loc>http://jef.binomed.fr/2016/03/11/2016-03-11-comment-devenir-speaker-part-1/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.223Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2015/02/04/2015-02-04--DevFest-Paris-2015/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.223Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/</loc>
     
     <lastmod>2018-10-23T15:10:35.223Z</lastmod>
     
@@ -156,21 +170,7 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2015/07/07/2015-07-07--Realisez-votre-PortalGun-avec-WebRTC/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.223Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2015/02/04/2015-02-04--DevFest-Paris-2015/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.222Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/</loc>
+    <loc>http://jef.binomed.fr/2015/02/02/2015-02-02--GDG-Nantes-Intel-XDK/</loc>
     
     <lastmod>2018-10-23T15:10:35.222Z</lastmod>
     
@@ -184,7 +184,7 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2015/02/02/2015-02-02--GDG-Nantes-Intel-XDK/</loc>
+    <loc>http://jef.binomed.fr/2014/11/29/2014-11-29--un-nouveau-blog/</loc>
     
     <lastmod>2018-10-23T15:10:35.222Z</lastmod>
     
@@ -193,14 +193,7 @@
   <url>
     <loc>http://jef.binomed.fr/2014/12/10/2014-12-10--DevFest-Nantes-2014-Demos-Part-0-Teasing/</loc>
     
-    <lastmod>2018-10-23T15:10:35.221Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2014/11/29/2014-11-29--un-nouveau-blog/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.221Z</lastmod>
+    <lastmod>2018-10-23T15:10:35.222Z</lastmod>
     
   </url>
   
