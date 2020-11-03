@@ -1,11 +1,13 @@
-title: I organized a Project Fugu hackathon 
+title: I organized a Project Fugu hackathon
 tags:
   - web
   - fugu
 category:
   - Event
 toc: false
+date: 2020-11-03 14:21:01
 ---
+
 
 A month ago, I organized (with a colleague of mine, [Gérôme Grignon](https://twitter.com/geromegrignon)) a Hackathon based on the Project Fugu "Shape Detection API".
 
