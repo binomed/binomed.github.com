@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jef.binomed.fr/2020/11/03/2020-11-03-I-organize-a-fugu-hackathon/</loc>
+    
+    <lastmod>2020-11-03T13:21:21.829Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2016/12/23/legonnary-en/</loc>
+    
+    <lastmod>2020-02-27T18:51:07.253Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://jef.binomed.fr/2018/11/30/2018-11-30-5-years-of-DevFest-CountDown-part3/</loc>
     
     <lastmod>2018-11-30T16:08:06.658Z</lastmod>
@@ -37,14 +51,7 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2017/09/20/2017-09-20-devtools-en-2017/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.226Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2018/02/01/2018-02-01-last-french-article/</loc>
+    <loc>http://jef.binomed.fr/2017/05/26/2017-05-26-Retour-Google-IO-2017/</loc>
     
     <lastmod>2018-10-23T15:10:35.226Z</lastmod>
     
@@ -58,14 +65,21 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2017/05/26/2017-05-26-Retour-Google-IO-2017/</loc>
+    <loc>http://jef.binomed.fr/2018/02/01/2018-02-01-last-french-article/</loc>
     
     <lastmod>2018-10-23T15:10:35.226Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2017/02/06/2017-02-06-j-ai-mis-en-place-les-RTT-le-vendredi/</loc>
+    <loc>http://jef.binomed.fr/2017/09/20/2017-09-20-devtools-en-2017/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.226Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-3/</loc>
     
     <lastmod>2018-10-23T15:10:35.225Z</lastmod>
     
@@ -79,14 +93,14 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2017/03/31/2017-03-31-devtools-en-2017/</loc>
+    <loc>http://jef.binomed.fr/2017/02/06/2017-02-06-j-ai-mis-en-place-les-RTT-le-vendredi/</loc>
     
     <lastmod>2018-10-23T15:10:35.225Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-3/</loc>
+    <loc>http://jef.binomed.fr/2017/03/31/2017-03-31-devtools-en-2017/</loc>
     
     <lastmod>2018-10-23T15:10:35.225Z</lastmod>
     
@@ -107,13 +121,6 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2016/05/02/2016-05-02-comment-devenir-speaker-part-3/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://jef.binomed.fr/2016/04/06/2016-04-06-comment-devenir-speaker-part-2/</loc>
     
     <lastmod>2018-10-23T15:10:35.224Z</lastmod>
@@ -121,7 +128,7 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2016/07/22/2016-07-22-controle-d-un-robot-par-une-page-web/</loc>
+    <loc>http://jef.binomed.fr/2016/05/02/2016-05-02-comment-devenir-speaker-part-3/</loc>
     
     <lastmod>2018-10-23T15:10:35.224Z</lastmod>
     
@@ -135,7 +142,14 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2016/03/11/2016-03-11-comment-devenir-speaker-part-1/</loc>
+    <loc>http://jef.binomed.fr/2016/07/22/2016-07-22-controle-d-un-robot-par-une-page-web/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.224Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/</loc>
     
     <lastmod>2018-10-23T15:10:35.223Z</lastmod>
     
@@ -149,7 +163,7 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/</loc>
+    <loc>http://jef.binomed.fr/2015/12/11/2015-12-11--myo-sous-linux/</loc>
     
     <lastmod>2018-10-23T15:10:35.223Z</lastmod>
     
@@ -163,14 +177,21 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2015/12/11/2015-12-11--myo-sous-linux/</loc>
+    <loc>http://jef.binomed.fr/2016/03/11/2016-03-11-comment-devenir-speaker-part-1/</loc>
     
     <lastmod>2018-10-23T15:10:35.223Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2015/02/02/2015-02-02--GDG-Nantes-Intel-XDK/</loc>
+    <loc>http://jef.binomed.fr/2014/11/29/2014-11-29--un-nouveau-blog/</loc>
+    
+    <lastmod>2018-10-23T15:10:35.222Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://jef.binomed.fr/2014/12/10/2014-12-10--DevFest-Nantes-2014-Demos-Part-0-Teasing/</loc>
     
     <lastmod>2018-10-23T15:10:35.222Z</lastmod>
     
@@ -184,14 +205,7 @@
   </url>
   
   <url>
-    <loc>http://jef.binomed.fr/2014/11/29/2014-11-29--un-nouveau-blog/</loc>
-    
-    <lastmod>2018-10-23T15:10:35.222Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://jef.binomed.fr/2014/12/10/2014-12-10--DevFest-Nantes-2014-Demos-Part-0-Teasing/</loc>
+    <loc>http://jef.binomed.fr/2015/02/02/2015-02-02--GDG-Nantes-Intel-XDK/</loc>
     
     <lastmod>2018-10-23T15:10:35.222Z</lastmod>
     
