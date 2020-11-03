@@ -333,8 +333,8 @@ This feature isn't yet implemented in the tested devices so no-one could test it
 
 # Credits
 
-Thank you to François Beaufort who helps me to debug and explore some of thoses APIs after the Hackathon and who made a review of this article.
-Thank you also to Gérôme Grignon who helps me to lead this workshop.
+Thank you to François Beaufort who helped me debug and explore some of those APIs after the Hackathon and who reviewed this article.
+Thank you also to Gérôme Grignon who helped me to lead this workshop.
 
 <script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
 <script type="text/javascript" src="/assets/2020-10-push-the-limit/push-the-limit.js"></script>
