@@ -1,4 +1,4 @@
-title: I Organize a hackathon on Project Fugu
+title: I organized a Project Fugu hackathon 
 tags:
   - web
   - fugu
@@ -7,19 +7,19 @@ category:
 toc: false
 ---
 
-A month ago, I organize (with a colleague of mine, [Gérôme Grignon](https://twitter.com/geromegrignon)) a Hackathon based on Project Fugu "Shape Detection API".
+A month ago, I organized (with a colleague of mine, [Gérôme Grignon](https://twitter.com/geromegrignon)) a Hackathon based on the Project Fugu "Shape Detection API".
 
 ![morty](/assets/2020-10-push-the-limit/push-the-limit.png)
 
-As you can imagine, We want to create a fun Hackathon, a hackthon where the fun and the creativity where more important than the social impact of the result 😅.
+As you can imagine, we wanted to create a fun Hackathon, a hackthon where the fun and the creativity were more important than the social impact of the result 😅.
 
 The main idea of this hackathon was to play with the [Shape Detection API](https://web.dev/shape-detection/). 
 
->TLDR; This API lets you find your shapes in images. The shape is restricted by the web platform, you could recognize a face, a BarCode or a text (not implemented yet)
+>TLDR; This API lets you find your shapes in images. The shape is restricted by the web platform, you could recognize a face, a barcode or some text (not implemented yet)
 
 # Under the hood
 
-This API is interesting because with very few lines of codes you have something that gives you the position of shape detected in an ImageBitmapSource. An image is nice, but a canvas is better 😉. Indeed, a canvas can generate data that the detector could interpret.
+This API is interesting because with very few lines of codes you have something that gives you the position of shapes detected in an ImageBitmapSource. An image is nice, but a canvas is better 😉. Indeed, a canvas can generate data that the detector could interpret.
 
 Here is for example how you can detect a face: 
 
@@ -109,11 +109,11 @@ Here is the result of barcode detection:
 ]
 ```
 
-For the moment the TextDectector is not yet Implemented 😅.
+For the moment, the TextDetector is not yet universally available 😅.
 
 # Some Helpers for particpants
 
-Even if the API is really easy to use, combine it to video, canvas, a performant mechanism is a synonym of lots boilerplate. Indeed, when you want to play with the camera, you need to follow those steps to be sure to not block your thread.
+Even if the API is really easy to use, combine it to video, canvas, a performant mechanism is a synonym of lots of boilerplate. Indeed, when you want to play with the camera, you need to follow those steps to be sure to not block the UI thread.
 
 1. Start the camera with the correct parameters
 1. Inject the stream to an HTML `video` element (and keep a copy somewhere)
@@ -126,7 +126,7 @@ Each of those steps has specific code and it could be lots of code for just dete
 
 ## Detector.js
 
-This file will wrap and expose methods to use to detect things on the image
+This file wraps and exposes methods to detect things on the image
 
 ```javascript
 class Detector {
@@ -239,13 +239,13 @@ The source code is available here [Gist usermedia](https://gist.github.com/jefBi
 
 As you can see, the UserMedia helper uses a detector.
 
-The Helper provides also a method to stop in the right way your camera 😎.
+The Helper provides also a method to stop your camera in the right way 😎.
 
 ## CodeSandBox
 
-To continue to help the attendees, we create a codesandbox sample to clone to be sure that attendees could start directly. Here is the result of the codesandbox.
+To continue helping attendees, we created a codesandbox sample to clone so that attendees could start directly. Here is the result of the codesandbox.
 
-To be sure that it will works with your configuration, check if you have activated the flags.
+To be sure that it works with your configuration, check if you have enabled the flags.
 
 * Demo: [Pickle Rick Me](https://bg3o4.csb.app/)
 * CodeSandBox to clone: [CodeSandBox Push The Limit](https://codesandbox.io/s/young-tree-bg3o4?)
@@ -254,14 +254,14 @@ To be sure that it will works with your configuration, check if you have activat
 
 Here is the list of demos people write :)
 * Face Face Revolution (a dance dance revolution but with your face): https://codesandbox.io/s/z3opl
-* Draw a pickle rick if find a BarCode (android only): https://codesandbox.io/s/891md
+* Draw a pickle rick if a barcode is found (android only): https://codesandbox.io/s/891md
 * Like Pickel Rick but with a random character of smash ultimate game: https://codesandbox.io/s/festive-wiles-f9hbs?file=/src/index.js
 * Draw a "joker" smile and if you open your mouth show a grumpycat (only specifics version, see bugs and restrictions after): https://codesandbox.io/s/elegant-mayer-up20v
 * A Game where a Pickle Rick have to eat pickle coming from the top of the screen: https://codesandbox.io/s/young-flower-s0162
 
 ### Special Trick for image
 
-During the preparation of this hackathon, we face a problem with the pickle image and the drawing of the pickle on the canvas. Indeed, I didn't know it before but Canvas is also sensible to CORS origin security when you draw an image! 
+During the preparation of this hackathon, we faced a problem with the pickle image and the drawing of the pickle on the canvas. Indeed, I didn't know it before but Canvas is also sensible to CORS origin security when you draw an image! 
 
 To understand that, you have to understand that codesandbox doesn't host the image in the same origin of your page. The resource is redirected under the hood to a bucket S3. To bypass this problem, we simply write a script that downloads the image from the amazon server, extracts the data, converts them to base64 and injects this base64 data as the source to the original `img`. In that way, you can continue to draw images on canvas without facing any CORS problem 🥳
 
@@ -284,13 +284,13 @@ export function prepareImage(img) {
 
 # What we learn
 
-During this session, we have a different kinds of developers and environment so here is the conclusion in **'Oct 2020'**.
+During this session, we have different kinds of developers and environment so here is the conclusion as of **'Oct 2020'**.
 
 Please have in mind that Shape Detection API is still an experimental API, so the conclusion what I will write now could be not the same as what you see when you will read this post.
 
 ## FaceDetector 
 
-The face detection is working well but not everywhere. Indeed, we couldn't make it work on those platform: 
+Face detection works well but not everywhere. Indeed, we couldn't make it work on those platform: 
 * Chrome Android (it's a bug [bc1107675](https://bugs.chromium.org/p/chromium/issues/detail?id=1107675)) When this article is written, a fix has been deployed and should be shipped with chrome 88
 * Chrome Linux (it has never worked [Overview api](https://github.com/WICG/shape-detection-api#overview))
 * Chrome Mac -> The landmarks aren't well positioned (it's a bug too [bc914348](https://bugs.chromium.org/p/chromium/issues/detail?id=914348))
@@ -301,11 +301,11 @@ If you wear glasses but big glasses, the recognition could be very lacky.
 
 ![Gérôme](/assets/2020-10-push-the-limit/gerome.jpeg)
 
-Indeed Gérôme as you can see wear big glasses. When he wears them, the face recognition wasn't very smooth, my Pickle Rick move with visible steps. But when he removes its glasses, the Pickle Rick follow its face.
+Indeed Gérôme as you can see wear big glasses. When he wears them, face recognition wasn't very smooth, my Pickle Rick move with visible steps. But when he removes its glasses, the Pickle Rick follow its face.
 
 <video src="/assets/2020-10-push-the-limit/big-glasses.mp4"  type="video/mp4" controls></video>
 
-The bug of Landmarks could be for the moment bypass by using `fast` mode. This bug is dependant on your platform. Here are the results according to the platform I could test: 
+The bug of Landmarks could be for the moment bypass by using `fast` mode. This bug is platform dependent. Here are the results according to the platform I could test: 
 
 ![Chrome Canary 88.0.4306.0 - MacOS 10.14.6](/assets/2020-10-push-the-limit/canary_88.0.4306.0.png)
 
@@ -319,7 +319,7 @@ You could test this at this url : https://mona-lisa.glitch.me/ or https://mona-l
 
 ## BarCodeDetector
 
-The BarCodeDetector which was working previously on Android and Desktop is just working on Android for devices with the PlayServices. It's a limitation for the moment but we could hope that tomorrow, something based on non "native" solution will arrive: 
+The BarCodeDetector which was working previously on Android and Desktop is just working on Android for devices with the Google Play Services. It's a limitation for the moment but we could hope that tomorrow, something based on non "native" solution will arrive: 
 
 >This API is part of the new capabilities project. Barcode detection has launched in Chrome 83 on certified devices with Google Play Services installed. Face and text detection are available behind a flag. This post will be updated as the Shape Detection API evolves
 
