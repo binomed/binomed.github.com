@@ -11,13 +11,13 @@
     
 
     
-    <meta name="description" content="A month ago, I organized (with a colleague of mine, Gérôme Grignon) a Hackathon based on the Project Fugu “Shape Detection API”.  As you can imagine, we wanted to create a fun Hackathon, a hackthon wh">
+    <meta name="description" content="A month ago, I organized (with a colleague of mine, Gérôme Grignon) a Hackathon based on the Project Fugu “Shape Detection API”.  TLDR;The shape detection api is very easy web API to use but it has lo">
 <meta name="keywords" content="web,fugu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="I organized a Project Fugu hackathon">
 <meta property="og:url" content="http://jef.binomed.fr/2020/11/03/2020-11-03-I-organize-a-fugu-hackathon/index.html">
 <meta property="og:site_name" content="Binomed Blog">
-<meta property="og:description" content="A month ago, I organized (with a colleague of mine, Gérôme Grignon) a Hackathon based on the Project Fugu “Shape Detection API”.  As you can imagine, we wanted to create a fun Hackathon, a hackthon wh">
+<meta property="og:description" content="A month ago, I organized (with a colleague of mine, Gérôme Grignon) a Hackathon based on the Project Fugu “Shape Detection API”.  TLDR;The shape detection api is very easy web API to use but it has lo">
 <meta property="og:locale" content="fr-FR">
 <meta property="og:image" content="http://jef.binomed.fr/assets/2020-10-push-the-limit/push-the-limit.png">
 <meta property="og:image" content="http://jef.binomed.fr/assets/2020-10-push-the-limit/gerome.jpeg">
@@ -25,10 +25,10 @@
 <meta property="og:image" content="http://jef.binomed.fr/assets/2020-10-push-the-limit/stable_86.0.4240.111.png">
 <meta property="og:image" content="http://jef.binomed.fr/assets/2020-10-push-the-limit/canary_88.0.4306.0-MacOS_10.15.7.png">
 <meta property="og:image" content="http://jef.binomed.fr/assets/2020-10-push-the-limit/stable_86.0.4240.111-fast.png">
-<meta property="og:updated_time" content="2020-11-03T13:21:21.829Z">
+<meta property="og:updated_time" content="2020-11-04T19:05:28.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="I organized a Project Fugu hackathon">
-<meta name="twitter:description" content="A month ago, I organized (with a colleague of mine, Gérôme Grignon) a Hackathon based on the Project Fugu “Shape Detection API”.  As you can imagine, we wanted to create a fun Hackathon, a hackthon wh">
+<meta name="twitter:description" content="A month ago, I organized (with a colleague of mine, Gérôme Grignon) a Hackathon based on the Project Fugu “Shape Detection API”.  TLDR;The shape detection api is very easy web API to use but it has lo">
 <meta name="twitter:image" content="http://jef.binomed.fr/assets/2020-10-push-the-limit/push-the-limit.png">
 <meta name="twitter:creator" content="@jefBinomed">
 <link rel="publisher" href="+JeanFrancoisGarreau">
@@ -104,9 +104,17 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contenu</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TLDR"><span class="toc-number">1.</span> <span class="toc-text">TLDR;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Push-the-limit"><span class="toc-number">2.</span> <span class="toc-text">Push the limit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Under-the-hood"><span class="toc-number">3.</span> <span class="toc-text">Under the hood</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Some-Helpers-for-particpants"><span class="toc-number">4.</span> <span class="toc-text">Some Helpers for particpants</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Detector-js"><span class="toc-number">4.1.</span> <span class="toc-text">Detector.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UserMedia-js"><span class="toc-number">4.2.</span> <span class="toc-text">UserMedia.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CodeSandBox"><span class="toc-number">4.3.</span> <span class="toc-text">CodeSandBox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demos-writen"><span class="toc-number">4.3.1.</span> <span class="toc-text">Demos writen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Special-Trick-for-image"><span class="toc-number">4.3.2.</span> <span class="toc-text">Special Trick for image</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#What-we-learn"><span class="toc-number">5.</span> <span class="toc-text">What we learn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FaceDetector"><span class="toc-number">5.1.</span> <span class="toc-text">FaceDetector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BarCodeDetector"><span class="toc-number">5.2.</span> <span class="toc-text">BarCodeDetector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TextDetector"><span class="toc-number">5.3.</span> <span class="toc-text">TextDetector</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Credits"><span class="toc-number">6.</span> <span class="toc-text">Credits</span></a></li></ol>
+		
+		</div>
+		
 		<p>A month ago, I organized (with a colleague of mine, <a href="https://twitter.com/geromegrignon" target="_blank" rel="noopener">Gérôme Grignon</a>) a Hackathon based on the Project Fugu “Shape Detection API”.</p>
 <p><img src="/assets/2020-10-push-the-limit/push-the-limit.png" alt="morty"></p>
-<p>As you can imagine, we wanted to create a fun Hackathon, a hackthon where the fun and the creativity were more important than the social impact of the result 😅.</p>
+<h1 id="TLDR"><a href="#TLDR" class="headerlink" title="TLDR;"></a>TLDR;</h1><p>The shape detection api is very easy web API to use but it has lots of limitations according to the platform you have. If you are curious about what we done, you can read this article 😇.</p>
+<h1 id="Push-the-limit"><a href="#Push-the-limit" class="headerlink" title="Push the limit"></a>Push the limit</h1><p>As you can imagine, we wanted to create a fun Hackathon, a hackthon where the fun and the creativity were more important than the social impact of the result 😅.</p>
 <p>The main idea of this hackathon was to play with the <a href="https://web.dev/shape-detection/" target="_blank" rel="noopener">Shape Detection API</a>. </p>
 <blockquote>
 <p>TLDR; This API lets you find your shapes in images. The shape is restricted by the web platform, you could recognize a face, a barcode or some text (not implemented yet)</p>
@@ -240,6 +248,13 @@
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
 
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contenu</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TLDR"><span class="toc-number">1.</span> <span class="toc-text">TLDR;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Push-the-limit"><span class="toc-number">2.</span> <span class="toc-text">Push the limit</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Under-the-hood"><span class="toc-number">3.</span> <span class="toc-text">Under the hood</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Some-Helpers-for-particpants"><span class="toc-number">4.</span> <span class="toc-text">Some Helpers for particpants</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Detector-js"><span class="toc-number">4.1.</span> <span class="toc-text">Detector.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UserMedia-js"><span class="toc-number">4.2.</span> <span class="toc-text">UserMedia.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CodeSandBox"><span class="toc-number">4.3.</span> <span class="toc-text">CodeSandBox</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Demos-writen"><span class="toc-number">4.3.1.</span> <span class="toc-text">Demos writen</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Special-Trick-for-image"><span class="toc-number">4.3.2.</span> <span class="toc-text">Special Trick for image</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#What-we-learn"><span class="toc-number">5.</span> <span class="toc-text">What we learn</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FaceDetector"><span class="toc-number">5.1.</span> <span class="toc-text">FaceDetector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BarCodeDetector"><span class="toc-number">5.2.</span> <span class="toc-text">BarCodeDetector</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TextDetector"><span class="toc-number">5.3.</span> <span class="toc-text">TextDetector</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Credits"><span class="toc-number">6.</span> <span class="toc-text">Credits</span></a></li></ol>
+ 
+  </div>
+
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
 <aside class="clearfix">
@@ -339,11 +354,11 @@
 			
 		
 			
-				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
 			
 		
 			
@@ -505,6 +520,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
