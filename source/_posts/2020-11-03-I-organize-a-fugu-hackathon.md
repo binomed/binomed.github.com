@@ -4,7 +4,7 @@ tags:
   - fugu
 category:
   - Event
-toc: false
+toc: true
 date: 2020-11-03 14:21:01
 ---
 
@@ -12,6 +12,11 @@ date: 2020-11-03 14:21:01
 A month ago, I organized (with a colleague of mine, [Gérôme Grignon](https://twitter.com/geromegrignon)) a Hackathon based on the Project Fugu "Shape Detection API".
 
 ![morty](/assets/2020-10-push-the-limit/push-the-limit.png)
+
+# TLDR; 
+The shape detection api is very easy web API to use but it has lots of limitations according to the platform you have. If you are curious about what we done, you can read this article 😇.
+
+# Push the limit
 
 As you can imagine, we wanted to create a fun Hackathon, a hackthon where the fun and the creativity were more important than the social impact of the result 😅.
 
