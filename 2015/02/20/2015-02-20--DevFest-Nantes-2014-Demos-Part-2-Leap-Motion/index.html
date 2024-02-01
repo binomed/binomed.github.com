@@ -1,0 +1,714 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>DevFest Nantes 2014 - Demos Part 2 - Leap Motion | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Suite des articles sur les démos que j’ai eu l’occasion de coder pour le DevFest Nantes.  Part 0 - Teasing Part 1 - Myo  Leap MotionLa Leap Motion (j’ai personnellement toujours dit “la”, après beauco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DevFest Nantes 2014 - Demos Part 2 - Leap Motion">
+<meta property="og:url" content="http://jef.binomed.fr/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Suite des articles sur les démos que j’ai eu l’occasion de coder pour le DevFest Nantes.  Part 0 - Teasing Part 1 - Myo  Leap MotionLa Leap Motion (j’ai personnellement toujours dit “la”, après beauco">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/MinorityReport.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/leap_motion.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/Leap_InteractionBox.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/leap_navigation.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/schema_leap.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/details_leap.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/leap_feedback.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/leap_navigation.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/leap_selection.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/leap_selection_2.png">
+<meta property="article:published_time" content="2015-02-20T12:04:19.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.703Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="leap motion">
+<meta property="article:tag" content="devfest">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/MinorityReport.jpg">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/" title="DevFest Nantes 2014 - Demos Part 2 - Leap Motion" itemprop="url">DevFest Nantes 2014 - Demos Part 2 - Leap Motion</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2015-02-20T12:04:19.000Z" itemprop="datePublished"> Publié 20 Feb 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contenu</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Leap-Motion"><span class="toc-number">1.</span> <span class="toc-text">Leap Motion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Theorie"><span class="toc-number">1.1.</span> <span class="toc-text">Théorie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Petit-boitier"><span class="toc-number">1.1.1.</span> <span class="toc-text">Petit boîtier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reconnaissance-dans-l%E2%80%99espace"><span class="toc-number">1.1.2.</span> <span class="toc-text">Reconnaissance dans l’espace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SDK"><span class="toc-number">1.1.3.</span> <span class="toc-text">SDK</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo-realisee"><span class="toc-number">2.</span> <span class="toc-text">Démo réalisée</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Interaction-Naturelle"><span class="toc-number">2.1.</span> <span class="toc-text">Interaction Naturelle ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interaction-claire"><span class="toc-number">2.2.</span> <span class="toc-text">Interaction claire</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interaction-avec-l%E2%80%99ecran"><span class="toc-number">2.3.</span> <span class="toc-text">Interaction avec l’écran</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hack-sur-le-mouse-move"><span class="toc-number">2.3.1.</span> <span class="toc-text">Hack sur le mouse move</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sources"><span class="toc-number">3.</span> <span class="toc-text">Sources</span></a></li></ol>
+		
+		</div>
+		
+		<p>Suite des articles sur les démos que j’ai eu l’occasion de coder pour le <a href="http://devfest.gdgnantes.com/">DevFest Nantes</a>.</p>
+<ul>
+<li><a href="/2014/12/10/2014-12-10--DevFest-Nantes-2014-Demos-Part-0-Teasing">Part 0 - Teasing</a></li>
+<li><a href="/2014/12/16/2014-12-16--DevFest-Nantes-2014-Demos-Part-1-Myo">Part 1 - Myo</a></li>
+</ul>
+<h1 id="Leap-Motion"><a href="#Leap-Motion" class="headerlink" title="Leap Motion"></a>Leap Motion</h1><p>La <a href="https://www.leapmotion.com/">Leap Motion</a> (j’ai personnellement toujours dit “la”, après beaucoup de monde dit “le”) est un capteur infrarouge qui détecte vos mains de façon très précise et qui permet de récupérer leur coordonnées dans un espace en 3D.  </p>
+<p>Pour beaucoup de monde la Leap Motion, c’était la promesse de ça :  </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/MinorityReport.jpg"></p>
+<p>Mais en réalité ce n’est pas tout à fait ça….</p>
+<h2 id="Theorie"><a href="#Theorie" class="headerlink" title="Théorie"></a>Théorie</h2><p>Regardons d’un peu plus près la Leap et comment elle fonctionne.</p>
+<h3 id="Petit-boitier"><a href="#Petit-boitier" class="headerlink" title="Petit boîtier"></a>Petit boîtier</h3><p>La Leap c’est donc ce petit boîtier : </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/leap_motion.png"></p>
+<p>Il fonctionne avec l’infrarouge et renvoie les informations interprétées à l’ordinateur via une web socket. On peut récupérer ce genre d’informations : </p>
+<ul>
+<li>Position d’une (ou plusieurs) mains dans un espace en 3D</li>
+<li>Position d’un doigt &#x2F; phalange &#x2F; paume de main dans un espace en 3D</li>
+<li>Position d’un stylo dans un espace en 3D (pour la partie écriture)</li>
+<li>Reconnaissance de gestes : <ul>
+<li>Swype</li>
+<li>Cercles</li>
+<li>Pinch</li>
+<li>Poing fermé </li>
+<li>…</li>
+</ul>
+</li>
+</ul>
+<p>Pour avoir la liste complète, je vous invite à aller consulter la doc du SDK : <a href="https://developer.leapmotion.com/">https://developer.leapmotion.com/</a> </p>
+<h3 id="Reconnaissance-dans-l’espace"><a href="#Reconnaissance-dans-l’espace" class="headerlink" title="Reconnaissance dans l’espace"></a>Reconnaissance dans l’espace</h3><p>Ne vous attendez pas à placer votre Leap Motion proche de la télé, et à contrôler cette dernière depuis votre canapé, la distance de détection de la Leap est relativement courte (&lt;1m). Elle reconnaît ce qui est placé dans son cône de détection.</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/Leap_InteractionBox.png"></p>
+<p>Ce qui est représenté ici, ce sont 2 choses : </p>
+<ul>
+<li>Le cône de détection qui représente la zone globale de détection de la Leap</li>
+<li>L’Interaction Box qui représente une boite servant de référence pour le placement des mains &#x2F; objets.</li>
+</ul>
+<h3 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h3><p>Le SDK est assez facile d’accès et permet de développer des programmes en JavaScript &#x2F; Unity, C# &#x2F; C++ &#x2F; Java &#x2F; Python &#x2F; Objective-C. Ils ont aussi rajouté récemment une API pour interagir plus facilement avec des casques de réalité virtuelle type Occulus Rift (<a href="https://developer.leapmotion.com/vr">Leap Motion VR</a>)! </p>
+<p>Concrètement, quand on veut simplement utiliser les résultats de notre Leap, il suffit de créer un objet Leap Motion issu du SDK, puis d’écouter les événements correspondants à notre demande. Par exemple, si l’on veut récupérer les mains, il suffit d’écrire ça : </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//js.leapmotion.com/leap-0.6.4.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Leap</span>.<span class="title function_">loop</span>(<span class="keyword">function</span>(<span class="params">frame</span>) &#123;</span><br><span class="line"></span><br><span class="line">  frame.<span class="property">hands</span>.<span class="title function_">forEach</span>(<span class="keyword">function</span>(<span class="params">hand, index</span>) &#123;</span><br><span class="line">     <span class="comment">// Faire quelque chose avec la main</span></span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">&#125;).<span class="title function_">use</span>(<span class="string">&#x27;screenPosition&#x27;</span>, &#123;<span class="attr">scale</span>: <span class="number">0.25</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>L’utilisation du “screenPosition” nous permet de récupérer des positions en lien avec notre fenêtre. Ce qui implique la capacité à traiter les coordonnées plus facilement pour la représentation graphique.</p>
+<h1 id="Demo-realisee"><a href="#Demo-realisee" class="headerlink" title="Démo réalisée"></a>Démo réalisée</h1><p>N’étant pas un as du graphisme ni de la 3D, j’ai voulu réfléchir à l’utilisation de la Leap Motion sur une interface 2D. Quelles pourraient être les interactions possibles ? Etc. Le projet choisi permettait de naviguer dans le programme du DevFest. On pouvait ainsi consulter les sessions et aussi regarder les fiches speakers.</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/leap_navigation.png"></p>
+<p>L’architecture de cette démo était plus simple : </p>
+<p>Mon ordinateur est directement relié à la Leap Motion et l’application est une page web utilisant le SDK de la Leap.</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/schema_leap.png"></p>
+<p>Avant de commencer à coder, j’ai cherché à répondre à 3 questions : </p>
+<ol>
+<li>Qu’est ce qui est naturel ?</li>
+<li>Comment avoir une interaction claire ? En d’autres termes, qu’est ce qui fait que l’utilisateur saura utiliser mon application ?</li>
+<li>Comment interagir avec l’écran ?</li>
+</ol>
+<p>Il est important de retenir les questions posées plutôt que les réponses apportées. En effet, les choix que j’ai fait sont largement discutables, il s’agit bien sur de pistes. En revanche, les questions restent pertinentes et doivent être posées avant d’attaquer le développement avec ce genre de devices.</p>
+<h2 id="Interaction-Naturelle"><a href="#Interaction-Naturelle" class="headerlink" title="Interaction Naturelle ?"></a>Interaction Naturelle ?</h2><p>Le premier point est pour moi un des plus importants à traiter lors de l’utilisation de nouveaux devices non tactiles !  Le tactile jouit d’une forte adoption et les standards d’utilisation sont fortement répandus et connus. </p>
+<p>A titre d’exemple, tout le monde sait que “pincer” l’écran permettra de dezoomer, etc.Mais qu’en est il est interactions non tactiles ?</p>
+<p>Que ce soit avec la Leap, la Kinect ou le bracelet Myo, les possibilités offertes par les technologies ne sont pas les mêmes et pourtant il faut trouver un moyen d’interagir avec. La seule réponse à trouver est : Qu’est ce qui est naturel ? Quels sont les gestes que je ferais si je devais manipuler cette interface dans le monde réel ?</p>
+<p>Cela prend davantage de sens si l’on se retrouve à manipuler des objets en 3D. Dans le cadre de ma démo, le “naturel” est venu de la duplication de standards connus du web : la gestion des menus dans le web. Je suis aussi resté sur des gestes simples. </p>
+<ul>
+<li>Je n’ai pas introduit de gestures car ils peuvent ne pas être compris par l’utilisateur</li>
+<li>Le doigt fait office de souris. De cette manière, la navigation est grandement simplifiée.</li>
+</ul>
+<h2 id="Interaction-claire"><a href="#Interaction-claire" class="headerlink" title="Interaction claire"></a>Interaction claire</h2><p>Quand bien même, on aura trouvé des gestes naturels, il faut expliquer à l’utilisateur comment utiliser l’application.</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/details_leap.png"></p>
+<ol>
+<li>Une pop-up est affichée si personne n’utilise l’application afin d’indiquer quelle est la première action. La police de caractère et la taille de l’image sont importantes car cela doit être la première information que l’utilisateur voit.</li>
+<li>Une zone de légende permet à l’utilisateur d’avoir une information complémentaire. La taille de la police et de l’icône est plus petite pour ne pas interférer avec la première information. L’icône utilisée montre la main dans une certaine configuration et invite l’utilisateur à pointer son doigt dans une direction.</li>
+<li>La barre bleue permet de cacher le menu s’il n’y a aucune interaction. De cette façon l’utilisateur n’est pas pollué d’informations inutiles.</li>
+</ol>
+<p>J’ai beau préciser comment interagir avec l’écran, il faut une chose importante pour l’utilisateur : le FEEDBACK ! </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/leap_feedback.png"></p>
+<p>Le SDK de Leap Motion fournit un modèle 3D Unity de la main détectée. J’ai donc intégré cette dernière à mon interface en guise de feedback. J’ai aussi rajouté un point blanc correspondant à l’équivalent du curseur d’une souris. Étant donné que mon application est en 2D et orientée “consultation de contenu”, il me fallait un élément de sélection.</p>
+<h2 id="Interaction-avec-l’ecran"><a href="#Interaction-avec-l’ecran" class="headerlink" title="Interaction avec l’écran"></a>Interaction avec l’écran</h2><p>Pour interagir, j’ai choisi d’avoir le même fonctionnement qu’un menu dans les sites web. De cette façon l’utilisateur reste dans un mécanisme connu.</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/leap_navigation.png"></p>
+<p>La zone sur laquelle est l’utilisateur porte une couleur différente afin de lui signaler sa sélection. </p>
+<p>Reste à voir maintenant comment valider un choix ?</p>
+<p>J’ai dans un premier temps expérimenté la sélection en mode push. C’est à dire, utiliser la profondeur pour donner à l’utilisateur l’impression qu’il clique sur le bouton. </p>
+<p>En pratique, il s’est avéré que cette interaction était assez peu intuitive et plus difficile à calibrer en premier lieu. Je pense cependant que si j’avais eu plus de temps elle aurait pu être assez intéressante et pertinente. Mais passons, la sélection dans l’application s’est faite de 2 façons.</p>
+<p>La première, par un mécanisme de glisse qui permet à l’utilisateur de remplir une jauge. Une fois la jauge remplie l’action est validée</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/leap_selection.png"></p>
+<p>La seconde, tout droit issue du monde Kinect avec la validation d’une sélection après un certain temps. De la même façon une jauge se remplit afin d’indiquer à l’utilisateur qu’il va valider l’action.</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/leap_selection_2.png"></p>
+<p>J’ai volontairement gardé les 2 sélections pour voir la réaction des utilisateurs. Globalement les 2 validations ont été bien comprises et utilisées.</p>
+<h3 id="Hack-sur-le-mouse-move"><a href="#Hack-sur-le-mouse-move" class="headerlink" title="Hack sur le mouse move"></a>Hack sur le mouse move</h3><p>J’ai quand même dû faire un petit hack pour cette démo. En effet, un des écrans affiche des graphiques dynamiques et la légende des graphiques n’apparaît que sur un calcul fait avec le “mousemove”. La Leap n’émulant pas nativement la souris, j’ai donc récupéré les événements de position de ma main et je les ai transformés en “mousemove”. Le code suivant est une directive AngularJS mais la théorie reste la même.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">components.<span class="title function_">directive</span>(<span class="string">&#x27;leapMouseMove&#x27;</span>, [<span class="string">&#x27;$rootScope&#x27;</span></span><br><span class="line">  ,<span class="keyword">function</span> (<span class="params">$rootScope</span>) &#123;</span><br><span class="line">   <span class="keyword">var</span> directiveDefinitionObject = &#123;</span><br><span class="line">    <span class="attr">restrict</span>: <span class="string">&#x27;A&#x27;</span>,</span><br><span class="line">    <span class="attr">scope</span>: <span class="literal">false</span>, </span><br><span class="line">    <span class="attr">link</span>: <span class="keyword">function</span> <span class="title function_">postLink</span>(<span class="params">$scope, iElement, iAttrs</span>) &#123; </span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> element = iElement[<span class="number">0</span>];</span><br><span class="line">      <span class="keyword">var</span> boundingRect = element.<span class="title function_">getBoundingClientRect</span>();</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Id : &#x27;</span>+element.<span class="property">id</span>);</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(boundingRect);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> unregister = $scope.$watch(<span class="string">&#x27;leapState&#x27;</span>, <span class="keyword">function</span>(<span class="params">leapState, oldleapState</span>)&#123;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">if</span> (leapState.<span class="property">handActive</span>)&#123;</span><br><span class="line">          <span class="keyword">var</span> screenPosition = leapState.<span class="property">fingerPos</span>;</span><br><span class="line">          <span class="title function_">dispatchEvent</span>(element, </span><br><span class="line">            <span class="title function_">mouseEvent</span>(<span class="string">&#x27;mousemove&#x27;</span>, </span><br><span class="line">              screenPosition[<span class="number">0</span>], <span class="comment">// Screen X</span></span><br><span class="line">              screenPosition[<span class="number">1</span>], <span class="comment">// Screen Y</span></span><br><span class="line">              screenPosition[<span class="number">0</span>], <span class="comment">// Client X</span></span><br><span class="line">              screenPosition[<span class="number">1</span>]  <span class="comment">// Client Y</span></span><br><span class="line">              ))</span><br><span class="line">          ;</span><br><span class="line">          </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">      &#125;,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="keyword">function</span> <span class="title function_">mouseEvent</span>(<span class="params">type, sx, sy, cx, cy</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> evt;</span><br><span class="line">        <span class="keyword">var</span> e = &#123;</span><br><span class="line">          <span class="attr">bubbles</span>: <span class="literal">true</span>,</span><br><span class="line">          <span class="attr">cancelable</span>: (type != <span class="string">&quot;mousemove&quot;</span>),</span><br><span class="line">          <span class="attr">view</span>: <span class="variable language_">window</span>,</span><br><span class="line">          <span class="attr">detail</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">screenX</span>: sx, </span><br><span class="line">          <span class="attr">screenY</span>: sy,</span><br><span class="line">          <span class="attr">clientX</span>: cx, </span><br><span class="line">          <span class="attr">clientY</span>: cy,</span><br><span class="line">          <span class="attr">ctrlKey</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="attr">altKey</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="attr">shiftKey</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="attr">metaKey</span>: <span class="literal">false</span>,</span><br><span class="line">          <span class="attr">button</span>: <span class="number">0</span>,</span><br><span class="line">          <span class="attr">relatedTarget</span>: <span class="literal">undefined</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">typeof</span>( <span class="variable language_">document</span>.<span class="property">createEvent</span> ) == <span class="string">&quot;function&quot;</span>) &#123;</span><br><span class="line">          evt = <span class="variable language_">document</span>.<span class="title function_">createEvent</span>(<span class="string">&quot;MouseEvents&quot;</span>);</span><br><span class="line">          evt.<span class="title function_">initMouseEvent</span>(type, </span><br><span class="line">            e.<span class="property">bubbles</span>, e.<span class="property">cancelable</span>, e.<span class="property">view</span>, e.<span class="property">detail</span>,</span><br><span class="line">            e.<span class="property">screenX</span>, e.<span class="property">screenY</span>, e.<span class="property">clientX</span>, e.<span class="property">clientY</span>,</span><br><span class="line">            e.<span class="property">ctrlKey</span>, e.<span class="property">altKey</span>, e.<span class="property">shiftKey</span>, e.<span class="property">metaKey</span>,</span><br><span class="line">            e.<span class="property">button</span>, <span class="variable language_">document</span>.<span class="property">body</span>.<span class="property">parentNode</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">createEventObject</span>) &#123;</span><br><span class="line">          evt = <span class="variable language_">document</span>.<span class="title function_">createEventObject</span>();</span><br><span class="line">          <span class="keyword">for</span> (prop <span class="keyword">in</span> e) &#123;</span><br><span class="line">          evt[prop] = e[prop];</span><br><span class="line">        &#125;</span><br><span class="line">          evt.<span class="property">button</span> = &#123; <span class="number">0</span>:<span class="number">1</span>, <span class="number">1</span>:<span class="number">4</span>, <span class="number">2</span>:<span class="number">2</span> &#125;[evt.<span class="property">button</span>] || evt.<span class="property">button</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> evt;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">function</span> <span class="title function_">dispatchEvent</span> (el, evt) &#123;</span><br><span class="line">        <span class="keyword">if</span> (el.<span class="property">dispatchEvent</span>) &#123;</span><br><span class="line">          el.<span class="title function_">dispatchEvent</span>(evt);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (el.<span class="property">fireEvent</span>) &#123;</span><br><span class="line">          el.<span class="title function_">fireEvent</span>(<span class="string">&#x27;on&#x27;</span> + type, evt);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> evt;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      $rootScope.$on(<span class="string">&#x27;changeRouteEvent&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="title function_">unregister</span>();</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> directiveDefinitionObject;</span><br><span class="line">&#125;]);</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Sources"><a href="#Sources" class="headerlink" title="Sources"></a>Sources</h1><p>Les sources de ce projet sont disponibles ici <a href="https://github.com/GDG-Nantes/leap-devfest2014">Github - LeapDevFest</a></p>
+<p>Merci aussi à <a href="http://twitter.com/brongier">Baptiste Rongier</a> qui est l’ergonome (le cerveau des interactions) qui m’a aidé dans la réalisation de cette démo.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/leap-motion/">leap motion</a><a href="/tags/devfest/">devfest</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Event/">Event</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/" data-title="DevFest Nantes 2014 - Demos Part 2 - Leap Motion | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/07/07/2015-07-07--Realisez-votre-PortalGun-avec-WebRTC/" title="Réalisez votre PortalGun avec WebRTC">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Réalisez votre PortalGun avec WebRTC</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/02/04/2015-02-04--DevFest-Paris-2015/"  title="DevFest Paris 2015">
+ <strong>NEXT:</strong><br/> 
+ <span>DevFest Paris 2015
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contenu</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Leap-Motion"><span class="toc-number">1.</span> <span class="toc-text">Leap Motion</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Theorie"><span class="toc-number">1.1.</span> <span class="toc-text">Théorie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Petit-boitier"><span class="toc-number">1.1.1.</span> <span class="toc-text">Petit boîtier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reconnaissance-dans-l%E2%80%99espace"><span class="toc-number">1.1.2.</span> <span class="toc-text">Reconnaissance dans l’espace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SDK"><span class="toc-number">1.1.3.</span> <span class="toc-text">SDK</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Demo-realisee"><span class="toc-number">2.</span> <span class="toc-text">Démo réalisée</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Interaction-Naturelle"><span class="toc-number">2.1.</span> <span class="toc-text">Interaction Naturelle ?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interaction-claire"><span class="toc-number">2.2.</span> <span class="toc-text">Interaction claire</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interaction-avec-l%E2%80%99ecran"><span class="toc-number">2.3.</span> <span class="toc-text">Interaction avec l’écran</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hack-sur-le-mouse-move"><span class="toc-number">2.3.1.</span> <span class="toc-text">Hack sur le mouse move</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Sources"><span class="toc-number">3.</span> <span class="toc-text">Sources</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

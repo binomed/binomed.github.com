@@ -1,0 +1,329 @@
+
+article .article-content table{
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#parent-flash, #parent-negatif, #parent-final{
+    position: relative;
+    margin:auto;
+    width: 500px;
+    height: 500px;
+    background: #e0e0e0;
+}
+
+#parent-final{
+    width:100%;   
+}
+
+
+/**
+* Partie Flash
+*/
+
+#flash-effect, .flash-final{
+    position:absolute;    
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width:500px;
+    height:500px;
+    background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(0,0,0,0) 80%);
+    opacity:0;
+}
+
+#flash-effect.flash{
+    animation-name: flash;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flash {
+    0% {opacity:1;}
+    33% {opacity: 0}
+    100% {opacity:0;}
+}
+
+
+/**
+* Partie Classique
+*/
+
+.img-ori-parent{
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    width:calc(200px + 40px);
+    height: calc(200px + 100px);
+    background:white;
+    z-index: 10;
+    box-shadow       : 0px 0px 5px 0px rgba(50, 50, 50, 0.75);    
+}
+
+.img-ori-parent.big{
+    width:calc(200px + 40px);
+    height: calc(200px + 100px);
+}
+
+.img-ori-parent.big::after{
+    font-size:20pt;
+    line-height:20pt;    
+}
+
+article .article-content img.img-ori{
+    
+    position:absolute;
+    top:20px;
+    left:20px;
+    padding-top: 0;
+    width:200px;
+    height:200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    box-shadow       : 0px 0px 5px 0px rgba(0, 0, 0, 1.5) inset;
+}
+
+.img-ori-parent::after{
+    content:attr(data-author);
+    position: absolute;
+    width:100%;
+    text-align:center;
+    bottom: 15pt;
+    left: 0;
+    font-size:20pt;
+    line-height:20pt;
+    font-family:"Roboto","Helvetica","Arial",sans-serif;
+    transition-property: all;
+    transition-duration: 2s;
+    transition-timing-fonction: linear;
+}
+
+/**
+* Partie Animation
+*/
+
+
+.img-ori-parent.big.anim{
+    animation-name: retreci-parent;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+article .article-content .img-ori-parent.big.anim img.img-ori{
+    animation-name: retreci-img;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.img-ori-parent.big.anim::after{
+    animation-name: retreci-after;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+
+
+
+@keyframes retreci-parent{
+    from{
+        opacity: 1;
+        width:calc(200px + 40px);
+        height: calc(200px + 100px);
+    }
+    to{
+        opacity: 1;
+        width:calc(100px + 20px);
+        height: calc(100px + 50px);
+    }
+}
+
+@keyframes retreci-img{
+    from{
+        top:20px;
+        left:20px;
+        width:200px;
+        height:200px;
+    }
+    to{
+        top:10px;
+        left:10px;
+        width:100px;
+        height:100px;
+    }
+}
+
+@keyframes retreci-after{
+    from{
+        font-size:20pt;
+        line-height:20pt;
+    }
+    to{
+        font-size:10pt;
+        line-height:10pt;
+    }
+}
+
+/**
+* Partie Finale
+*/
+
+article .article-content img.img-ori.empty,
+article .article-content img.img-ori.temp{
+    top:50%;
+    left:50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+article .article-content img.img-ori.temp{
+    opacity: 0;
+    animation-name: show-img-temp;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+
+.flash-final.flash{
+    animation-name: flash-final;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.img-ori-parent.big.final-anim{
+    opacity: 0;
+    animation-name: retreci-parent-final, move-parent;
+    animation-duration: 10s, 10s;
+    animation-iteration-count: infinite, infinite;
+}
+
+article .article-content .img-ori-parent.big.final-anim img.img-ori{
+    animation-name: retreci-img-final;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+.img-ori-parent.big.final-anim::after{
+    animation-name: retreci-after-final;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes flash-final {
+    0% {opacity:0;}
+    39% {opacity: 0;}
+    40%{opacity: 1;}
+    50%{opacity: 0;}
+    100%{opacity: 0;}
+}
+
+@keyframes move-parent {
+    0%{
+        top:50%;
+        left:50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    46%{
+        top:50%;
+        left:50%;
+        transform: translateY(-50%) translateX(-50%);
+    }
+    70%{
+        top: 10%;
+        left:10%;
+        transform: rotate(-15deg);
+    }
+    100%{
+        top: 10%;
+        left:10%;
+        transform: rotate(-15deg);
+    }
+    
+}
+
+@keyframes show-img-temp{
+    0%{ opacity: 0;}
+    9%{ opacity: 0;}
+    10%{ opacity: 1;}
+    39%{ opacity: 1;}
+    40%{ opacity: 0;}
+    100%{ opacity: 0;}
+    
+}
+
+@keyframes retreci-parent-final{
+    0%{
+        opacity: 0;
+    }
+    45%{
+        opacity: 0;
+    }
+    46%{
+        opacity: 1;
+        width:calc(200px + 40px);
+        height: calc(200px + 100px);
+    }
+    70%{
+        opacity: 1;
+        width:calc(100px + 20px);
+        height: calc(100px + 50px);
+    }
+    100%{
+        opacity: 1;
+        width:calc(100px + 20px);
+        height: calc(100px + 50px);
+    }
+    
+}
+
+@keyframes retreci-img-final{
+    0%{
+        top:20px;
+        left:20px;
+        width:200px;
+        height:200px;
+    }
+    46%{
+        top:20px;
+        left:20px;
+        width:200px;
+        height:200px;
+    }
+    70%{
+        top:10px;
+        left:10px;
+        width:100px;
+        height:100px;
+    }
+    100%{
+        top:10px;
+        left:10px;
+        width:100px;
+        height:100px;
+    }
+}
+
+@keyframes retreci-after-final{
+    0%{
+        font-size:20pt;
+        line-height:20pt;
+    }
+    46%{
+        font-size:20pt;
+        line-height:20pt;
+    }
+    70%{
+        font-size:10pt;
+        line-height:10pt;
+    }
+    100%{
+        font-size:10pt;
+        line-height:10pt;
+    }
+}

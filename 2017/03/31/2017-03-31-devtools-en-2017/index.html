@@ -1,0 +1,723 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Chrome Devtools - 5 fonctionnalités à suivre (Mars 2017) | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Avant propos Je lance une nouvelle série d’articles que je vais compléter régulièrement dont l’objectif principal est de présenter des fonctionnalités des Chrome Devtools. L’idée n’est donc pas de sor">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome Devtools - 5 fonctionnalités à suivre (Mars 2017)">
+<meta property="og:url" content="http://jef.binomed.fr/2017/03/31/2017-03-31-devtools-en-2017/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Avant propos Je lance une nouvelle série d’articles que je vais compléter régulièrement dont l’objectif principal est de présenter des fonctionnalités des Chrome Devtools. L’idée n’est donc pas de sor">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/activate_experiment.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/shortcut.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/ultime_shortcut.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/theme_menu.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/theme_shortcut.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/theme_dark.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/persistance_activate.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/workspace.gif">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/persistance_2.0.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/workspace_2.gif">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/smart_console.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/smart_console.gif">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/quick_source_activate.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/panel_quick_source.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/quick_source_in_action.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-devtools/quicksource.gif">
+<meta property="article:published_time" content="2017-03-31T07:37:04.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.705Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="devtools">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2017-devtools/activate_experiment.png">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/03/31/2017-03-31-devtools-en-2017/" title="Chrome Devtools - 5 fonctionnalités à suivre (Mars 2017)" itemprop="url">Chrome Devtools - 5 fonctionnalités à suivre (Mars 2017)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2017-03-31T07:37:04.000Z" itemprop="datePublished"> Publié 31 Mar 2017</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contenu</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Raccourcis-claviers"><span class="toc-number">1.</span> <span class="toc-text">Raccourcis claviers </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Changer-de-theme"><span class="toc-number">2.</span> <span class="toc-text">Changer de thème </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Workspace-avec-persistance-2-0"><span class="toc-number">3.</span> <span class="toc-text">Workspace avec persistance 2.0   </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Smart-Console"><span class="toc-number">4.</span> <span class="toc-text">Smart Console </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Quick-Source"><span class="toc-number">5.</span> <span class="toc-text">Quick Source </span></a></li></ol>
+		
+		</div>
+		
+		<p><strong>Avant propos</strong></p>
+<p>Je lance une nouvelle série d’articles que je vais compléter régulièrement dont l’objectif principal est de présenter des fonctionnalités des Chrome Devtools. L’idée n’est donc pas de sortir un “Top 5” car il y a trop de fonctionnalités et la notion de “Top” est beaucoup trop subjective… Je vais donc me contenter de présenter des fonctionnalités.</p>
+<p>Beaucoup des fonctionnalités que je vais présenter ne sont disponibles qu’à travers les “experiments” des devtools. Je tacherais de le préciser si c’est le cas.</p>
+<p>Pour activer les devtools expérimentaux, il suffit de se rendre sur le lien suivant : <a href="chrome://flags/#enable-devtools-experiments">#enable-devtools-experiments</a> et d’activer la fonctionnalité souhaitée dans le menu suivant (accessible dans les settings)</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/activate_experiment.png">
+</div>
+
+<h1 id="Raccourcis-claviers"><a href="#Raccourcis-claviers" class="headerlink" title="Raccourcis claviers "></a>Raccourcis claviers <div chrome='stable'></div></h1><p>Les devtools proposent tout un ensemble de raccourcis claviers qui vont vous permettre de contrôler l’intégralité des actions disponibles dans les devtools</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/shortcut.png">
+</div>
+
+<p>Cette liste est non exhaustive et vous pouvez retrouver la liste complète des raccourcis à cette url : <a href="https://developers.google.com/web/tools/chrome-devtools/iterate/inspect-styles/shortcuts">Devtools Shortcut List</a></p>
+<p>Même si cette liste vous parraît grande, il y a un raccourci à retenir plus que tous les autres : <code>CTRL + SHIFT + P</code> ou <code>CMD + SHIFT + P</code> ce dernier vous donner accès à l’ensemble des fonctionnalités des devtools ! </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/ultime_shortcut.png">
+</div>
+
+
+<h1 id="Changer-de-theme"><a href="#Changer-de-theme" class="headerlink" title="Changer de thème "></a>Changer de thème <div chrome='stable'></div></h1><p>Aujourd’hui, de plus en plus d’IDE proposent des thèmes “dark” et bien les devtools ne dérogent pas à la règle et vous proposent un thème sombre. Pour l’activer, soit vous passez par le raccourci “ultime”, soit vous passez par le menu de paramètres.</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/theme_menu.png">
+</div>
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/theme_shortcut.png">
+</div>
+
+<p>Ce qui vous donnera ça : </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/theme_dark.png">
+</div>
+
+
+<h1 id="Workspace-avec-persistance-2-0"><a href="#Workspace-avec-persistance-2-0" class="headerlink" title="Workspace avec persistance 2.0   "></a>Workspace avec persistance 2.0 <i class="fa fa-flask"></i>  <div chrome='stable'></div></h1><div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/persistance_activate.png">
+</div>
+
+<p>Cette fonctionnalité permet de révolutionner le fonctionnement des <strong>“workspaces”</strong> qui pour rappel, lie un répertoire de votre ordinateur avec les fichiers de votre site (si un sourcemap est mis en place). Cette version 2.0 permet donc de glisser déposer un répertoire système vers les devtools et le mapping se fait <strong>“automatiquement” !</strong> </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/workspace.gif">
+</div>
+
+
+<p>Pour vérifier que le mapping a été effectué correctement, il suffit de regarder s’il y a un petit point vert </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/persistance_2.0.png">
+</div>
+
+<p>Vous pourrez ensuite éditer vos fichiers directement dans les devtools</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/workspace_2.gif">
+</div>
+
+<h1 id="Smart-Console"><a href="#Smart-Console" class="headerlink" title="Smart Console "></a>Smart Console <div chrome="stable"></div></h1><p>La smart console est une fonctionnalité intéressante qui vous permet de saisir du code dans votre console sans avoir à se préoccuper d’écrire une fonction <strong>“inline”</strong></p>
+<p>On pourra donc se retrouver à écrire des fonctions dans la console comme suit : </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/smart_console.png">
+</div>
+
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/smart_console.gif">
+</div>
+
+
+<h1 id="Quick-Source"><a href="#Quick-Source" class="headerlink" title="Quick Source "></a>Quick Source <div chrome="stable"></div></h1><p>La fenêtre “Quick Source” est très pratique car elle permet de pointer dans le panel d’inspection l’emplacement dans le fichier source correspondant ! En pratique ça veut dire quoi ? Que quand je suis en train de finaliser &#x2F; tester des styles, je sais exactement où éditer mon fichier et je peux le faire directement depuis les devtools, ce qui m’évite d’avoir à switcher entre mes fenêtres.</p>
+<p>Pour accéder à la fenêtre quick source, il faut aller dans le bas des devtools</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/quick_source_activate.png">
+</div>
+
+<p>Un nouvel onglet apparaît ensuite dans le bas de la page : </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/panel_quick_source.png">
+</div>
+
+<p>Si l’on clique sur une propriété CSS de l’élément inspecté, alors la fenêtre quick source se synchronise directement.</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/quick_source_in_action.png">
+</div>
+
+
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-devtools/quicksource.gif">
+</div>
+## Pour conclure sur cet article
+
+<p>Je sais que j’ai oublié un grand nombre de fonctionnalités mais, mon idée est de sortir plus régulièrement ce type d’articles pour compléter au fil de l’eau des fonctionnalités disponibles dans les devtools.</p>
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2017-devtools/devtools.js"></script>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/devtools/">devtools</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/tips/">tips</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2017/03/31/2017-03-31-devtools-en-2017/" data-title="Chrome Devtools - 5 fonctionnalités à suivre (Mars 2017) | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/04/28/2017-04-28-B-O-F-Speaker-DevoxxFR-2017/" title="B.O.F. Speaker DevoxxFR 2017">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  B.O.F. Speaker DevoxxFR 2017</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/02/06/2017-02-06-j-ai-mis-en-place-les-RTT-le-vendredi/"  title="J&#39;ai mis en place les RTTs le vendredi ;)">
+ <strong>NEXT:</strong><br/> 
+ <span>J&#39;ai mis en place les RTTs le vendredi ;)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contenu</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Raccourcis-claviers"><span class="toc-number">1.</span> <span class="toc-text">Raccourcis claviers </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Changer-de-theme"><span class="toc-number">2.</span> <span class="toc-text">Changer de thème </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Workspace-avec-persistance-2-0"><span class="toc-number">3.</span> <span class="toc-text">Workspace avec persistance 2.0   </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Smart-Console"><span class="toc-number">4.</span> <span class="toc-text">Smart Console </span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Quick-Source"><span class="toc-number">5.</span> <span class="toc-text">Quick Source </span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,739 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 3 - Partie graphique) | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Troisième partie d’une série de 3 articles :   Article 1 - PWA Article 2 - Firebase  Chalenges graphiquesPour ce projet, j’ai dû faire face à 2 chalenges techniques :   Reproduire une grille Lego ©.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 3 - Partie graphique)">
+<meta property="og:url" content="http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-3/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Troisième partie d’une série de 3 articles :   Article 1 - PWA Article 2 - Firebase  Chalenges graphiquesPour ce projet, j’ai dû faire face à 2 chalenges techniques :   Reproduire une grille Lego ©.">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/devfest_photo.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/brique_1.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/brique_2.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/brique_3.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/brique_4.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/gdg_logo_legonnary.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/gdg_logo_legonnary.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/empty_legonnary.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/gdg_logo_legonnary.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/gdg_logo_legonnary.png">
+<meta property="article:published_time" content="2016-12-23T16:05:46.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.705Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="HTML5">
+<meta property="article:tag" content="DevFest">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/devfest_photo.jpg">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/23/2016-12-23-legonnary-3/" title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 3 - Partie graphique)" itemprop="url">J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 3 - Partie graphique)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-23T16:05:46.000Z" itemprop="datePublished"> Publié 23 Dec 2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p><img src="/assets/2016-12-legonnary/devfest_photo.jpg"></p>
+<p>Troisième partie d’une série de 3 articles : </p>
+<ul>
+<li><a href="/2016/12/23/2016-12-23-legonnary/">Article 1 - PWA</a></li>
+<li><a href="/2016/12/23/2016-12-23-legonnary-2/">Article 2 - Firebase</a></li>
+</ul>
+<h2 id="Chalenges-graphiques"><a href="#Chalenges-graphiques" class="headerlink" title="Chalenges graphiques"></a>Chalenges graphiques</h2><p>Pour ce projet, j’ai dû faire face à 2 chalenges techniques : </p>
+<ol>
+<li>Reproduire une grille Lego ©.</li>
+<li>Afficher les dessins à l’écran principal avec une animation simulant un flash suivit d’une image type polaroid.</li>
+</ol>
+<h3 id="Grille-Lego-©"><a href="#Grille-Lego-©" class="headerlink" title="Grille Lego ©"></a>Grille Lego ©</h3><p>Finalement, faire la grille Lego © a été quelque chose de plutôt simple. Grâce à la libraire <a href="http://fabricjs.com/">FrabricJS</a>, j’ai pu reproduire un pion vu de haut. Une brique est donc l’addition d’un carré avec une ombre sur lequel, j’ai posé 2 cercles avec un jeu de couleurs et d’ombres. Enfin, je rajoute le mot “GDG” à la Place de Lego © et le tour est joué !</p>
+<p><strong>Étape 1 : le carré avec l’ombre</strong></p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_1.png">
+</div> 
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">rectBasic</span> = <span class="keyword">new</span> fabric.<span class="title class_">Rect</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: cellSize * size.<span class="property">col</span>,</span><br><span class="line">    <span class="attr">height</span>: cellSize * size.<span class="property">row</span>,</span><br><span class="line">    <span class="attr">fill</span>: color,</span><br><span class="line">    <span class="attr">originX</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">originY</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">centeredRotation</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">hasControls</span>: <span class="literal">false</span>,</span><br><span class="line">    shadow : <span class="string">&quot;5px 5px 10px rgba(0,0,0,0.2)&quot;</span>                        </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Étape 2 : le premier cercle (cercle extérieur)</strong></p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_2.png">
+</div> 
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> fabric.<span class="title class_">Circle</span>(&#123;</span><br><span class="line">    <span class="attr">radius</span>: (cellSize / <span class="number">2</span>) - <span class="number">4</span>,</span><br><span class="line">    <span class="attr">fill</span>: <span class="title class_">ColorLuminance</span>(color, <span class="number">0.1</span>),</span><br><span class="line">    <span class="attr">originX</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">originY</span>: <span class="string">&#x27;center&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Étape 3 : le second cercle avec une ombre</strong></p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_3.png">
+</div> 
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> fabric.<span class="title class_">Circle</span>(&#123;</span><br><span class="line">    <span class="attr">radius</span>: (cellSize / <span class="number">2</span>) - <span class="number">5</span>,</span><br><span class="line">    <span class="attr">fill</span>: <span class="title class_">ColorLuminance</span>(color, -<span class="number">0.1</span>),</span><br><span class="line">    <span class="attr">originX</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">originY</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    shadow : <span class="string">&quot;0px 2px 10px rgba(0,0,0,0.2)&quot;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Étape 4 : L’ajout du texte GDG</strong></p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/brique_4.png">
+</div> 
+
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> fabric.<span class="title class_">Text</span>(<span class="string">&#x27;GDG&#x27;</span>, &#123;</span><br><span class="line">    <span class="attr">fontSize</span>: cellSize / <span class="number">5</span>,</span><br><span class="line">    <span class="attr">fill</span>: <span class="title class_">ColorLuminance</span>(color, -<span class="number">0.15</span>),</span><br><span class="line">    <span class="attr">originX</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">originY</span>: <span class="string">&#x27;center&#x27;</span>,</span><br><span class="line">    <span class="attr">stroke</span>: <span class="title class_">ColorLuminance</span>(color, -<span class="number">0.20</span>),</span><br><span class="line">    <span class="attr">strokeWidth</span>: <span class="number">1</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Même si cela n’est pas parfait, à une plus petite échelle, cela permet d’avoir un effet plutôt bon ! </p>
+<p>Le code correspondant est au niveau des fichiers <a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/lego_shape/peg.js">peg.js</a> et <a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/lego_shape/circle.js">circle.js</a></p>
+<h3 id="Animations-CSS"><a href="#Animations-CSS" class="headerlink" title="Animations CSS"></a>Animations CSS</h3><p>L’animation CSS est décomposée en plusieurs animations : </p>
+<ol>
+<li>Un flash.</li>
+<li>L’affichage de mon image sous forme de photo polaroid.</li>
+<li>Le déplacement de mon image dans un coin de mon écran.</li>
+</ol>
+<p><strong>Le Flash</strong></p>
+<div id="parent-flash">  
+  <div id="flash-effect" class="flash"></div>
+</div>
+
+<p>Pour réussir cette partie, c’est très simple, il suffit de jouer avec une div blanche avec un dégradé vers de la transparence et il suffit d’afficher cette div pour la faire disparaitre très rapidement.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#flash-effect</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:absolute;    </span><br><span class="line">    <span class="attribute">width</span>:<span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">background</span>:<span class="built_in">radial-gradient</span>(ellipse at center, <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">1</span>) <span class="number">0%</span>, <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>) <span class="number">80%</span>);</span><br><span class="line">    <span class="attribute">opacity</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#flash-effect</span><span class="selector-class">.flash</span>&#123;</span><br><span class="line">    <span class="attribute">animation</span>: flash;</span><br><span class="line">    <span class="attribute">animation-duration</span>: <span class="number">1s</span>;    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@keyframes</span> flash &#123;</span><br><span class="line">    <span class="selector-tag">from</span> &#123;<span class="attribute">opacity</span>:<span class="number">1</span>;&#125;</span><br><span class="line">    <span class="selector-tag">to</span> &#123;<span class="attribute">opacity</span>: <span class="number">0</span>&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Ainsi le fait d’appliquer la classe <code>flash</code> créera automatiquement cet effet de flash photo.</p>
+<p><strong>L’effet Polaroid</strong></p>
+<div id="parent-negatif">
+  <div class="img-ori-parent big" data-author="jefBinomed">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
+  </div>
+</div>
+
+<p>Pour faire cet effet avec un nombre minimum d’éléments, j’ai simplement joué avec les before &#x2F; after et sur les attributs HTML exploitables en CSS.</p>
+<p>Ainsi voici le code HTML : </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img-ori-parent&quot;</span> <span class="attr">data-author</span>=<span class="string">&quot;jefBinomed&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">class</span>=<span class="string">&quot;img-ori&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/assets/2016-12-legonnary/gdg_logo_legonnary.png&quot;</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>et voici le code CSS correspondant : </p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.img-ori-parent</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">width</span>:<span class="built_in">calc</span>(<span class="number">200px</span> + <span class="number">40px</span>);</span><br><span class="line">    <span class="attribute">height</span>: <span class="built_in">calc</span>(<span class="number">200px</span> + <span class="number">100px</span>);</span><br><span class="line">    <span class="attribute">background</span>:white;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>       : <span class="number">0px</span> <span class="number">0px</span> <span class="number">5px</span> <span class="number">0px</span> <span class="built_in">rgba</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">0.75</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img-ori</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: contain;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">box-shadow</span>       : <span class="number">0px</span> <span class="number">0px</span> <span class="number">5px</span> <span class="number">0px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1.5</span>) inset;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img-ori-parent</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="built_in">attr</span>(data-author);</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">15pt</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">20pt</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">20pt</span>;</span><br><span class="line">    <span class="attribute">font-family</span>:<span class="string">&quot;Roboto&quot;</span>,<span class="string">&quot;Helvetica&quot;</span>,<span class="string">&quot;Arial&quot;</span>,sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>De cette manière, on peut voir qu’avec simplement un jeu d’ombres, de after, before, on peut donner un effet Polaroid à une image ! </p>
+<p><strong>L’animation de rétrécissement</strong></p>
+<div id="parent-negatif">
+  <div class="img-ori-parent big anim" data-author="jefBinomed">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
+  </div>
+</div>
+
+<p>Cette animation est assurée par la propriété transition. On écoute ainsi toutes les évolutions de tailles, positions, … et on déclenche une transition de façon à rendre ça plus fluide.</p>
+<p>La raison pour laquelle je ne passe pas par la propriété <code>animation</code> de CSS, est que la position d’arrivée sera complètement aléatoire !  En effet, une fois l’image apparue, on va la positionner dans l’écran de façon aléatoire. Une fois à gauche et une fois à droite. Sa position horizontale et verticale sera certes bornée, mais le résultat sera issu d’un <code>Math.random()</code>. Donc en utilisant la propriété <code>transition</code> plutôt que <code>animation</code>, je peux m’assurer qu’il y aura une animation fluide et prenant en compte tous les cas. </p>
+<p>Dans mon animation, j’ai géré 2 états : </p>
+<ol>
+<li>Le parent a la classe <code>.big</code> : Dans cet état, l’image est grande et positionnée au centre de l’écran</li>
+<li>Le parent n’a plus la classe <code>.big</code> : Dans cet état, l’image va prendre une taille plus réduite. Les top &amp; left seront fixés directement par le Javascript</li>
+</ol>
+<p>Voici le code CSS à produire pour gérer simplement l’animation :</p>
+<figure class="highlight scss"><figcaption><span>screen.scss</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/sass/screen.scss#L53">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable">$size-photo</span>: <span class="number">200px</span>;</span><br><span class="line"><span class="variable">$size-photo-big</span>: <span class="number">500px</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img-ori-parent</span><span class="selector-class">.big</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">$size-photo-big</span>+<span class="number">90px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="variable">$size-photo-big</span>+<span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background</span>:white;</span><br><span class="line">    <span class="attribute">box-shadow</span>       : <span class="number">0px</span> <span class="number">0px</span> <span class="number">5px</span> <span class="number">0px</span> <span class="built_in">rgba</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">0.75</span>);    </span><br><span class="line"></span><br><span class="line">    <span class="selector-class">.img-ori</span>&#123;    </span><br><span class="line">        <span class="attribute">top</span>:<span class="number">45px</span>;</span><br><span class="line">        <span class="attribute">left</span>:<span class="number">45px</span>;</span><br><span class="line">        <span class="attribute">width</span>:<span class="variable">$size-photo-big</span>;</span><br><span class="line">        <span class="attribute">height</span>:<span class="variable">$size-photo-big</span>;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.img-ori-parent</span><span class="selector-class">.big</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">15pt</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">50pt</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">50pt</span>;</span><br><span class="line">    <span class="attribute">transition-property</span>: all;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>-timing-fonction: ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img-ori-parent</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">$size-photo</span>+<span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="variable">$size-photo</span>+<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>:white;</span><br><span class="line">    <span class="attribute">z-index</span>: <span class="number">10</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>       : <span class="number">0px</span> <span class="number">0px</span> <span class="number">5px</span> <span class="number">0px</span> <span class="built_in">rgba</span>(<span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">0.75</span>);</span><br><span class="line">    <span class="attribute">transition-property</span>: all;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>-timing-fonction: ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img-ori</span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">position</span>:absolute;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">20px</span>;</span><br><span class="line"></span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">$size-photo</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="variable">$size-photo</span>;</span><br><span class="line">    <span class="attribute">background-size</span>: contain;</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">box-shadow</span>       : <span class="number">0px</span> <span class="number">0px</span> <span class="number">5px</span> <span class="number">0px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1.5</span>) inset;</span><br><span class="line">    <span class="attribute">transition-property</span>: all;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>-timing-fonction: ease;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.img-ori-parent</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="built_in">attr</span>(data-author);</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">text-align</span>:center;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">15pt</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">20pt</span>;</span><br><span class="line">    <span class="attribute">line-height</span>:<span class="number">20pt</span>;</span><br><span class="line">    <span class="attribute">font-family</span>:<span class="string">&quot;Roboto&quot;</span>,<span class="string">&quot;Helvetica&quot;</span>,<span class="string">&quot;Arial&quot;</span>,sans-serif;</span><br><span class="line">    <span class="attribute">transition-property</span>: all;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>-timing-fonction: linear;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>Voici ensuite comment avec le Javascript j’anime le tout : </p>
+<ol>
+<li>Je déclenche le “flash”.</li>
+<li>Après un léger timeout (le temps du flash), je créé une nouvelle DIV avec la classe <code>.big</code>.</li>
+<li>Après un deuxième timeout (le temps de laisser le dessin à l’écran pour les participants), je supprime la classe <code>.big</code> et je donne des valeurs aléatoires au <code>top</code> &amp; <code>left</code> de la DIV parente.</li>
+</ol>
+<figure class="highlight javascript"><figcaption><span>app_screen.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_screen.js#L35">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">generateSnapshot</span>(<span class="params">user, dataUrl</span>) &#123;</span><br><span class="line">    <span class="comment">// We start our flash effect</span></span><br><span class="line">    <span class="keyword">let</span> rectCanvas = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;.canvas-container&#x27;</span>).<span class="title function_">getBoundingClientRect</span>();</span><br><span class="line">    <span class="keyword">let</span> flashDiv = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;flash-effect&#x27;</span>)</span><br><span class="line">    flashDiv.<span class="property">style</span>.<span class="property">top</span> = (rectCanvas.<span class="property">top</span> - <span class="number">250</span>) + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">    flashDiv.<span class="property">style</span>.<span class="property">left</span> = (rectCanvas.<span class="property">left</span> - <span class="number">250</span>) + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">    flashDiv.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;flash&#x27;</span>);</span><br><span class="line">    <span class="comment">//When the animation is done (1s of opacity .7 -&gt; 0 =&gt; ~500ms to wait)</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// We create the final image</span></span><br><span class="line">        <span class="comment">// We create a div that we will be animate</span></span><br><span class="line">        flashDiv.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&#x27;flash&#x27;</span>);</span><br><span class="line">        <span class="keyword">let</span> imgParent = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;div&#x27;</span>);</span><br><span class="line">        <span class="keyword">let</span> img = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&#x27;img&#x27;</span>);</span><br><span class="line">        img.<span class="property">src</span> = dataUrl;</span><br><span class="line">        img.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;img-ori&#x27;</span>);</span><br><span class="line">        imgParent.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;img-ori-parent&#x27;</span>);</span><br><span class="line">        imgParent.<span class="title function_">setAttribute</span>(<span class="string">&#x27;data-author&#x27;</span>, user);</span><br><span class="line">        imgParent.<span class="title function_">appendChild</span>(img);</span><br><span class="line">        imgParent.<span class="property">classList</span>.<span class="title function_">add</span>(<span class="string">&#x27;big&#x27;</span>);</span><br><span class="line">        <span class="comment">// Initial Position</span></span><br><span class="line">        imgParent.<span class="property">style</span>.<span class="property">top</span> = (rectCanvas.<span class="property">top</span> - <span class="number">45</span>) + <span class="string">&quot;px&quot;</span>;</span><br><span class="line">        imgParent.<span class="property">style</span>.<span class="property">left</span> = (rectCanvas.<span class="property">left</span> - <span class="number">45</span>) + <span class="string">&quot;px&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(imgParent);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// we wait a litle to set new position to the new div. The css animation will do the rest of the job</span></span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> horizontalDist = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">300</span>) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">let</span> heightScreen = <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">getBoundingClientRect</span>().<span class="property">height</span>;</span><br><span class="line">            <span class="keyword">let</span> verticalDist = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * (heightScreen - <span class="number">100</span> - <span class="number">300</span>)) + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">let</span> angleChoice = <span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="title class_">Math</span>.<span class="title function_">random</span>() * <span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">            imgParent.<span class="property">classList</span>.<span class="title function_">remove</span>(<span class="string">&#x27;big&#x27;</span>);</span><br><span class="line">            imgParent.<span class="property">style</span>.<span class="property">top</span> = <span class="string">`calc(100px + <span class="subst">$&#123;verticalDist&#125;</span>px)`</span>;</span><br><span class="line">            imgParent.<span class="property">style</span>.<span class="property">left</span> = <span class="string">`<span class="subst">$&#123;horizontalDist&#125;</span>px`</span>;</span><br><span class="line">            <span class="keyword">if</span> (!lastLeft) &#123; <span class="comment">// True if the last photo was placed at the left of the countDown</span></span><br><span class="line">                imgParent.<span class="property">style</span>.<span class="property">left</span> = <span class="string">`calc(100vw - <span class="subst">$&#123;horizontalDist&#125;</span>px - 300px)`</span>;           <span class="comment">// The timeout date          </span></span><br><span class="line">            &#125;</span><br><span class="line">            lastLeft = !lastLeft; <span class="comment">// True if the last photo was placed at the left of the countDown</span></span><br><span class="line">            <span class="keyword">let</span> angle = angleChoice === <span class="number">1</span> ? -<span class="number">9</span> : angleChoice === <span class="number">2</span> ? <span class="number">14</span> : <span class="number">0</span>; <span class="comment">// The timeout date</span></span><br><span class="line">            imgParent.<span class="property">style</span>.<span class="property">transform</span> = <span class="string">`rotate(<span class="subst">$&#123;angle&#125;</span>deg)`</span>;</span><br><span class="line">            <span class="title function_">getNextDraw</span>();</span><br><span class="line">        &#125;, <span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// When the element is create, we clean the board</span></span><br><span class="line">        legoCanvas.<span class="title function_">resetBoard</span>();</span><br><span class="line">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;proposition-text&#x27;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;En attente de proposition&quot;</span>;</span><br><span class="line"></span><br><span class="line">    &#125;, <span class="number">500</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>Le résultat final</strong></p>
+<div id="parent-final">
+  <img class="img-ori empty" src="/assets/2016-12-legonnary/empty_legonnary.png">
+  <img class="img-ori temp" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
+  <div class="img-ori-parent big final-anim" data-author="jefBinomed">
+    <img class="img-ori" src="/assets/2016-12-legonnary/gdg_logo_legonnary.png" >
+  </div>
+  <div class="flash-final flash"></div>
+</div>
+
+<h2 id="Tout-ce-dont-je-n’ai-pas-parle"><a href="#Tout-ce-dont-je-n’ai-pas-parle" class="headerlink" title="Tout ce dont je n’ai pas parlé"></a>Tout ce dont je n’ai pas parlé</h2><p>Il reste encore beaucoup de points non abordés et je veux bien répondre aux questions si vous en avez : </p>
+<ul>
+<li>La gestion du compte à rebours.</li>
+<li>La gestion de l’audio &amp; vidéo.</li>
+</ul>
+<p>En conclusion, j’ai encore appris pas mal de choses avec ce projet et si je devais revoir certaines parties, je pense que je ferais les choix suivants : </p>
+<ul>
+<li>J’essayerais d’utiliser une autre librairie JS de canvas, D3 ? Car même, si FabricJS est facile d’accès et fait bien le job, j’ai constaté quelques soucis avec le touch et quelques problèmes de performances liés à la librairie sur certains téléphones.</li>
+<li>Je tâcherais d’alléger un peu plus mon arbre firebase, notamment sur le stockage des images. Aujourd’hui mes images sont stockées directement dans l’arbre en base64, ce qui ralentit énormément l’affichage de l’écran de restitution. J’essayerais de stocker ça avec le storage de firebase plutôt qu’en tant que nœud firebase…</li>
+</ul>
+<p>Si vous êtes curieux, je vous invite à consulter le code source :  <a href="https://github.com/GDG-Nantes/CountDownDevFest2016">Legonnary-Github</a></p>
+<p>Le résultat final : </p>
+<ul>
+<li><a href="https://legonnary.firebaseapp.com/">App de base</a></li>
+<li><a href="https://legonnary.firebaseapp.com/moderator.html">App Modérateur</a> : Nécessite d’être admin</li>
+<li><a href="https://legonnary.firebaseapp.com/screen.html">App Comptes à rebours</a> : Nécessite d’être admin</li>
+<li><a href="https://legonnary.firebaseapp.com/summary.html">App Restit</a></li>
+</ul>
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2016-12-legonnary/legonnary.js"></script>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/HTML5/">HTML5</a><a href="/tags/DevFest/">DevFest</a><a href="/tags/CSS/">CSS</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-3/" data-title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 3 - Partie graphique) | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/02/06/2017-02-06-j-ai-mis-en-place-les-RTT-le-vendredi/" title="J&#39;ai mis en place les RTTs le vendredi ;)">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  J&#39;ai mis en place les RTTs le vendredi ;)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/12/23/2016-12-23-legonnary-2/"  title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase)">
+ <strong>NEXT:</strong><br/> 
+ <span>J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

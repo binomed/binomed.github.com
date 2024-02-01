@@ -1,0 +1,12 @@
+.imgskiff{
+	width: 100px;
+	float:left;
+}
+
+img.center{
+	width:300px;
+}
+
+div.center{
+	text-align: center;
+}

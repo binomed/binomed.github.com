@@ -1,0 +1,777 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Contrôle d&#39;un robot par une page web | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="J’ai acheté pour ma fille il y a quelque temps ce robot : MBot. C’est un robot basé sur un shield Arduino et pouvant être programmé via Scratch. Le modèle que j’ai choisi est celui avec la version Blu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Contrôle d&#39;un robot par une page web">
+<meta property="og:url" content="http://jef.binomed.fr/2016/07/22/2016-07-22-controle-d-un-robot-par-une-page-web/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="J’ai acheté pour ma fille il y a quelque temps ce robot : MBot. C’est un robot basé sur un shield Arduino et pouvant être programmé via Scratch. Le modèle que j’ai choisi est celui avec la version Blu">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/mbot-blue-pink-.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/Principe_PhysicalWeb.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/physical_web_android_res.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/ble_hierarchy.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/nrf_devices.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/nrf_service_1.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/nrf_service_2.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/wireshark.png">
+<meta property="article:published_time" content="2016-07-22T08:31:34.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.705Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="chrome">
+<meta property="article:tag" content="html5">
+<meta property="article:tag" content="web Bluetooth">
+<meta property="article:tag" content="bluetooth 4.1">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2016-07-Mbot/mbot-blue-pink-.jpg">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/07/22/2016-07-22-controle-d-un-robot-par-une-page-web/" title="Contrôle d&#39;un robot par une page web" itemprop="url">Contrôle d&#39;un robot par une page web</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2016-07-22T08:31:34.000Z" itemprop="datePublished"> Publié 22 Jul 2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p>J’ai acheté pour ma fille il y a quelque temps ce robot : <a href="http://makeblock.com/mbot-stem-educational-robot-kit-for-kids/">MBot</a>. C’est un robot basé sur un shield Arduino et pouvant être programmé via <a href="https://scratch.mit.edu/">Scratch</a>. Le modèle que j’ai choisi est celui avec la version Bluetooth, car je savais que cela allait me laisser plus de possibilités pour le hacker plus tard.</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/mbot-blue-pink-.jpg">
+</div>
+
+
+<p>Il y a environ un an, j’ai aussi appris l’existence de deux APIs : </p>
+<ul>
+<li>L’<a href="https://github.com/WebBluetoothCG/web-bluetooth#web-bluetooth">API Web Bluetooth</a>. Cette API permet de contrôler un appareil Bluetooth Low Energy (BLE) depuis une page web ! </li>
+<li>Le <a href="https://google.github.io/physical-web/">Physical Web</a>.</li>
+</ul>
+<p>Je me suis donc posé la question suivante : et si je pouvais enrichir mon Mbot pour qu’il me propose d’interagir avec lui mais sans que j’ai d’application à installer. C’est ce que nous allons voir dans cet article !</p>
+<h1 id="Physical-Web"><a href="#Physical-Web" class="headerlink" title="Physical Web"></a>Physical Web</h1><p>Prenez un périphérique BLE. Faites lui émettre une URL avec la norme <a href="https://github.com/google/eddystone">EddyStone</a>. Vous obtiendrez un appareil Physical Web !</p>
+<p>Le principe du Physical Web est très simple. Il s’agit juste d’un appareil BLE qui émet une URL. Vous pouvez le comparer grossièrement à un QR Code sauf que ce dernier est Bluetooth.</p>
+<h2 id="Comment-ca-marche"><a href="#Comment-ca-marche" class="headerlink" title="Comment ça marche ?"></a>Comment ça marche ?</h2><div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/Principe_PhysicalWeb.jpg">
+</div>
+
+
+<ol>
+<li>L’appareil doit émettre une trame <a href="https://github.com/google/eddystone/tree/master/eddystone-url">EddyStone URL</a> de façon à ce que votre téléphone puisse la capter. </li>
+<li>Le navigateur du téléphone (ou une application compatible Physical Web) va interroger son <a href="https://github.com/google/physical-web/tree/master/web-service#physical-web-service">service</a> pour vérifier si l’URL exposée est une URL HTTPS et non blacklistée.</li>
+<li>Le service interroge la page.</li>
+<li>Les métas données sont renvoyés au service.</li>
+<li>Le service va pouvoir répondre au téléphone pour que ce dernier affiche une notification native sur le téléphone.</li>
+</ol>
+<p>Voici à quoi ressemble une notification Physical Web : </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/physical_web_android_res.png">
+</div>
+
+
+<h2 id="Quel-interet-par-rapport-a-un-QR-Code"><a href="#Quel-interet-par-rapport-a-un-QR-Code" class="headerlink" title="Quel intérêt par rapport à un QR Code ?"></a>Quel intérêt par rapport à un QR Code ?</h2><p>En fait les intérêts sont nombreux : </p>
+<ul>
+<li>C’est aussi simple d’utilisation qu’un QR Code et ça permet plus !</li>
+<li>Contrairement à un QR Code, aucune application n’a besoin  d’être installée pour capter la balise si ce n’est votre navigateur.</li>
+<li>Les sites malveillants ne seront pas exposés au public car ils auront été filtrés par le service.</li>
+<li>L’appareil qui émet l’URL pourra interagir avec le téléphone une fois que l’on y sera connecté.</li>
+<li>On pourra mettre à jour l’URL de l’appareil si on le souhaite contrairement à un QR Code.</li>
+<li>Les notifications sont silencieuses !  En effet, ce n’est pas parce que l’on est proche d’un appareil Physical Web que notre téléphone va passer son temps à sonner. L’utilisateur ne verra la notification que si ce dernier regarde les notifications de son téléphone !</li>
+</ul>
+<h1 id="Rappel-sur-le-fonctionnement-d’un-appareil-Bluetooth-Low-Energy"><a href="#Rappel-sur-le-fonctionnement-d’un-appareil-Bluetooth-Low-Energy" class="headerlink" title="Rappel sur le fonctionnement d’un appareil Bluetooth Low Energy"></a>Rappel sur le fonctionnement d’un appareil Bluetooth Low Energy</h1><div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/ble_hierarchy.jpg">
+</div>
+
+<p>Un appareil via un <strong>serveur</strong> GATT Bluetooth va exposer un ensemble de <strong>services</strong> GATT. Chaque service va lui-même exposer des <strong>caractéristiques</strong> sur lesquelles on pourra lire &#x2F; écrire &#x2F; s’abonner. L’appareil, les services et les caractéristiques sont identifiées par un <strong>UUID</strong> qui est unique.</p>
+<p>Maintenant que la partie théorie est passée, nous allons nous intéresser à notre cas d’utilisation : le Mbot.</p>
+<h1 id="Hack-du-protocole-du-Mbot"><a href="#Hack-du-protocole-du-Mbot" class="headerlink" title="Hack du protocole du Mbot"></a>Hack du protocole du Mbot</h1><p>Afin de savoir quels services je dois appeler et quel type de données je dois transférer, je me suis lancé dans une opération de “reverse engineering” du Mbot pour comprendre comment l’utiliser. Je me suis appuyé sur cet article : <a href="https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb/">Reverse Engineering a Bluetooth Low Energy Ligth Bulb</a> qui m’a beaucoup aidé. Je vous conseille de le lire car il rentre un peu plus en détail que moi sur les étapes à suivre pour Hacker un appareil BLE.</p>
+<p>Je me contenterai ici simplement de lister les étapes principales que j’ai suivies et les résultats que j’ai obtenus.</p>
+<h2 id="0-Avoir-un-telephone-Android-4-4"><a href="#0-Avoir-un-telephone-Android-4-4" class="headerlink" title="0. Avoir un téléphone Android 4.4+"></a>0. Avoir un téléphone Android 4.4+</h2><p>Le téléphone Android est obligatoire car nous allons analyser les trames Bluetooth émises par l’application officielle <a href="https://play.google.com/store/apps/details?id=cc.makeblock.mbot">Mbot</a>. La fonctionnalité qui permet de “sniffer” les trames Bluetooth n’est disponible que depuis Android 4.4. </p>
+<h2 id="1-Preparation-du-telephone"><a href="#1-Preparation-du-telephone" class="headerlink" title="1. Préparation du téléphone"></a>1. Préparation du téléphone</h2><p>Il faut installer l’application Mbot et aussi l’application <a href="https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en">nRF Connect for Mobile</a>. Cette dernière va nous permettre de connaître les services disponibles et donc de trouver les bons UUIDs.</p>
+<h2 id="2-Detection-des-services"><a href="#2-Detection-des-services" class="headerlink" title="2. Détection des services"></a>2. Détection des services</h2><p>À l’aide nRF, je me suis connecté à mon Mbot : </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/nrf_devices.png">
+</div>
+
+<p>J’ai ensuite analysé les services Bluetooth qui étaient disponibles : </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/nrf_service_1.png">
+</div>
+
+<p>On peut voir que les UUID des services sont disponibles. À ce moment-là, je ne sais pas lequel choisir. Il faut donc cliquer sur les deux services pour analyser leurs caractéristiques.</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/nrf_service_2.png">
+</div>
+
+<p>En regardant les flèches sur la droite. On comprend facilement que le premier service expose une caractéristique en mode “notification” et une caractéristique en mode “écriture”. J’ai donc supposé que les UUID qui m’intéressaient étaient : </p>
+<ul>
+<li>Le Service avec l’UUID : <strong>0000ffe1-0000-1000-8000-00805f9b34fb</strong></li>
+<li>La caractéristique avec l’UUID : <strong>0000ffe3-0000-1000-8000-00805f9b34fb</strong></li>
+</ul>
+<p>J’ai aussi noté que le nom de mon appareil était “<strong>Makeblock_LE</strong>“</p>
+<h2 id="3-Ecoute-des-trames"><a href="#3-Ecoute-des-trames" class="headerlink" title="3. Écoute des trames"></a>3. Écoute des trames</h2><p>Il faut maintenant configurer son téléphone pour écouter les trames Bluetooth : <strong>Paramètres-&gt;Options de développement-&gt;Journal snoop HCI Bluetooth</strong></p>
+<p>Le fait d’activer cette option fait que le téléphone va écrire dans un fichier de log les trames Bluetooth. Sur mon Nexus le fichier est disponible sous <code>/sdcard/btsnoop_hci.log</code> mais sous mon Galaxy, le fichier est disponible sous <code>/sdcard/Android/data/btsnoop_hci.log</code></p>
+<h2 id="4-Generer-les-fichiers-de-logs"><a href="#4-Generer-les-fichiers-de-logs" class="headerlink" title="4. Générer les fichiers de logs"></a>4. Générer les fichiers de logs</h2><p>Afin de comprendre et analyser au mieux les trames, j’ai procédé par étapes. J’ai ainsi généré plusieurs fichiers de logs afin d’isoler les instructions envoyées. </p>
+<p>Voici par exemple, des fichiers de logs générés : </p>
+<ul>
+<li>Logs des moteurs : <a href="/assets/2016-07-Mbot/btsnoop_hci_motor.log">btsnoop_hci_motor.log</a></li>
+<li>Logs des leds RGB : <a href="/assets/2016-07-Mbot/btsnoop_hci_rgb.log">btsnoop_hci_rbg.log</a></li>
+</ul>
+<h2 id="5-Analyse-des-trames"><a href="#5-Analyse-des-trames" class="headerlink" title="5. Analyse des trames"></a>5. Analyse des trames</h2><p>Afin d’analyser les trames, je me suis servi de <a href="https://www.wireshark.org/">WireShark</a>.</p>
+<p>J’ai ensuite injecté mes fichiers dans WireShark pour faire ressortir les trames qui m’intéressaient. Contrairement à l’exemple fourni sur l’article de “reverse engineering”. Les instructions envoyées ne sont pas des instructions BLE mais Bluetooth classiques. Heureusement pour moi, les instructions binaires restent les mêmes.</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-07-Mbot/wireshark.png">
+</div>
+
+<p>J’ai aussi eu la chance que le Mbot soit un projet open source. Ça m’a permis d’être sûr des instructions à regarder et comment les interpréter. J’ai pris pour exemple l’application Android : <a href="https://github.com/Makeblock-official/Makeblock-App-For-Android/blob/master/src/cc/makeblock/modules/MeModule.java">MeModule.java</a></p>
+<h2 id="6-Catalogue-des-instructions"><a href="#6-Catalogue-des-instructions" class="headerlink" title="6. Catalogue des instructions"></a>6. Catalogue des instructions</h2><p>Voici ce que j’ai pu comprendre. Une instruction Bluetooth du Mbot doit respecter le format suivant : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> <span class="comment">/*</span></span><br><span class="line"><span class="comment">ff 55 len idx action device port  slot  data a</span></span><br><span class="line"><span class="comment">0  1  2   3   4      5      6     7     8</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>Chaque message fait 13 bytes à répartir comme suit : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> byte0 = <span class="number">0xff</span>, <span class="comment">// Static header</span></span><br><span class="line">    byte1 = <span class="number">0x55</span>, <span class="comment">// Static header</span></span><br><span class="line">    byte2 = <span class="number">0x09</span>, <span class="comment">// len</span></span><br><span class="line">    byte3 = <span class="number">0x00</span>, <span class="comment">// idx</span></span><br><span class="line">    byte4 = <span class="number">0x02</span>, <span class="comment">// action</span></span><br><span class="line">    byte5 = type, <span class="comment">// device</span></span><br><span class="line">    byte6 = port, <span class="comment">// port</span></span><br><span class="line">    byte7 = slot; <span class="comment">// slot</span></span><br><span class="line"><span class="comment">//dynamics values</span></span><br><span class="line"><span class="keyword">var</span> byte8 = <span class="number">0x00</span>, <span class="comment">// data</span></span><br><span class="line">    byte9 = <span class="number">0x00</span>, <span class="comment">// data</span></span><br><span class="line">    byte10 = <span class="number">0x00</span>, <span class="comment">// data</span></span><br><span class="line">    byte11 = <span class="number">0x00</span>; <span class="comment">// data</span></span><br><span class="line"><span class="comment">//End of message</span></span><br><span class="line"><span class="keyword">var</span> byte12 = <span class="number">0x0a</span>,</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Fonctionnement-de-l’API"><a href="#Fonctionnement-de-l’API" class="headerlink" title="Fonctionnement de l’API"></a>Fonctionnement de l’API</h1><p>Maintenant que nous savons comment contrôler notre robot, il nous faut nous intéresser à l’API Web Bluetooth.</p>
+<p>Avant toute chose, cette API est encore expérimentale et il faut encore l’activer dans Chrome : <a href="chrome://flags/#enable-web-bluetooth">chrome:&#x2F;&#x2F;flags&#x2F;#enable-web-bluetooth</a>. Au moment où j’écris ces lignes, elle fonctionne sous Linux &#x2F; Chrome OS &#x2F; macOS &#x2F; Android 5+ (Chromium) &#x2F; Android 6+ (Chrome &amp; Opera). Veuillez vous référer à cette page pour savoir ce qui est compatible : <a href="https://github.com/WebBluetoothCG/web-bluetooth/blob/gh-pages/implementation-status.md">Tableau de compatibilité</a></p>
+<p>Pour accéder à un appareil Bluetooth, il faut passer par plusieurs étapes : </p>
+<ol>
+<li>Rechercher l’appareil</li>
+<li>Se connecter </li>
+<li>Récupérer le service</li>
+<li>Récupérer la caractéristique</li>
+<li>Écrire &#x2F; Lire</li>
+</ol>
+<p>Toute l’API Web Bluetooth fonctionne sur des promesses JavaScript. Chaque appel à l’API renverra une promesse.</p>
+<h2 id="Rechercher-l’appareil"><a href="#Rechercher-l’appareil" class="headerlink" title="Rechercher l’appareil"></a>Rechercher l’appareil</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> options = &#123;</span><br><span class="line">    <span class="string">&quot;filters&quot;</span>: [&#123;</span><br><span class="line">        <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Makeblock_LE&quot;</span></span><br><span class="line">    &#125;],</span><br><span class="line">    <span class="string">&quot;optionalServices&quot;</span>: [<span class="string">&quot;0000ffe1-0000-1000-8000-00805f9b34fb&quot;</span>]</span><br><span class="line">&#125;;</span><br><span class="line">navigator.<span class="property">bluetooth</span>.<span class="title function_">requestDevice</span>(options)</span><br><span class="line">    .<span class="title function_">then</span>(<span class="function"><span class="params">device</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> device;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>En précisant le nom du service dans le champ <code>optionalServices</code>, je pourrais me connecter au service. En effet, si on ne précise pas le nom du service, on ne pourra pas s’y connecter par la suite.</p>
+<h2 id="Connexion-a-l’appareil"><a href="#Connexion-a-l’appareil" class="headerlink" title="Connexion à l’appareil"></a>Connexion à l’appareil</h2><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">device.<span class="property">gatt</span>.<span class="title function_">connect</span>()</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">server</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> server;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>Une fois connecté, nous récupérerons un serveur qui nous permettra de récupérer le service.</p>
+<h2 id="Recuperation-du-service"><a href="#Recuperation-du-service" class="headerlink" title="Récupération du service"></a>Récupération du service</h2><p>Deux possibilités s’offrent à nous pour nous connecter à notre service :  Depuis l’objet <code>device</code> ou à partir du serveur récupéré lors de la connexion.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A partir du serveur</span></span><br><span class="line">device.<span class="property">gatt</span>.<span class="title function_">connect</span>()</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">server</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> server.<span class="title function_">getPrimaryService</span>(<span class="string">&#x27;UUID_Service&#x27;</span>);</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">service</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> service</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// A partir du device (on doit s&#x27;être connecté préalablement)</span></span><br><span class="line">device.<span class="property">gatt</span>.<span class="title function_">getPrimaryService</span>(<span class="string">&#x27;UUID_Service&#x27;</span>)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">service</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> service</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p><strong>&#x2F;!\ Le UUID Service doit respecter le format suivant : <code>0000ffe1-0000-1000-8000-00805f9b34fb</code>. En effet, <code>0000ffe100001000800000805f9b34fb</code> ne sera pas reconnu. Il est donc important lors des connexions de faire attention à ça !</strong></p>
+<h2 id="Caracteristiques"><a href="#Caracteristiques" class="headerlink" title="Caractéristiques"></a>Caractéristiques</h2><p>La caractéristique doit se récupérer sur l’objet service</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// A partir du gatt (on doit s&#x27;être connecté préalablement)</span></span><br><span class="line">service.<span class="title function_">getCharacteristic</span>(<span class="string">&#x27;UUID_Char&#x27;</span>)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">characteristic</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> characteristic</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Lecture-Ecriture-Abonnement"><a href="#Lecture-Ecriture-Abonnement" class="headerlink" title="Lecture &#x2F; Ecriture &#x2F; Abonnement"></a>Lecture &#x2F; Ecriture &#x2F; Abonnement</h2><p>On va pouvoir interagir de 3 façons avec une caractéristique : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Lecture</span></span><br><span class="line">characteristic.<span class="title function_">readValue</span>()</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> value</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ecriture</span></span><br><span class="line">characteristic.<span class="title function_">writeValue</span>(bufferValue)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">_</span> =&gt;</span> &#123;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Notification start</span></span><br><span class="line">characteristic.<span class="title function_">startNotifications</span>().<span class="title function_">then</span>(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    characteristic.<span class="title function_">addEventListener</span>(<span class="string">&#x27;characteristicvaluechanged&#x27;</span>, callback);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// Notification stop</span></span><br><span class="line">characteristic.<span class="title function_">stopNotifications</span>().<span class="title function_">then</span>(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">    characteristic.<span class="title function_">removeEventListener</span>(<span class="string">&#x27;characteristicvaluechanged&#x27;</span>, callback);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Helper"><a href="#Helper" class="headerlink" title="Helper"></a>Helper</h2><p>Tout ce code peut être généré grâce à <a href="https://plus.google.com/+FrancoisBeaufort">François Beaufort</a> qui a mis à disposition un <a href="http://beaufortfrancois.github.io/sandbox/web-bluetooth/generator/">générateur de code Web Bluetooth</a></p>
+<h2 id="Attention-aux-donnees"><a href="#Attention-aux-donnees" class="headerlink" title="Attention aux données"></a>Attention aux données</h2><p>Les données manipulées sont des données binaires. Il convient donc de faire les transformations nécessaires pour lire &#x2F; écrire correctement. Pour les données textuelles il faut utiliser les objets <code>TextEncoder</code> et <code>TextDecoder</code> pour encoder et décoder correctement vos données !</p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Démo"></a>Démo</h2><p>Voici un exemple de lecture des caractéristiques de n’importe quel appareil : </p>
+<p><button>Get Bluetooth Device Information Characteristics</button></p>
+<h3>Live Output</h3>
+<div id="output" class="output">
+  <div id="content"></div>
+  <div id="status"></div>
+  <div id="log"></div>
+</div>
+
+<p><i> Ce code est extrait du <a href="https://googlechrome.github.io/samples/web-bluetooth/device-information-characteristics.html">Device Information Characteristics Sample</a></i></p>
+<h1 id="Controle-du-Mbot"><a href="#Controle-du-Mbot" class="headerlink" title="Contrôle du Mbot"></a>Contrôle du Mbot</h1><p>Maintenant que l’on a vu comment manipuler l’API, nous allons essayer de passer les instructions à notre robot pour l’animer.</p>
+<h2 id="Rappel-sur-le-protocole-du-Mbot"><a href="#Rappel-sur-le-protocole-du-Mbot" class="headerlink" title="Rappel sur le protocole du Mbot"></a>Rappel sur le protocole du Mbot</h2><p>Pour rappel, le Mbot répond aux contraintes suivantes : </p>
+<ul>
+<li>Nom : <strong>Makeblock_LE</strong></li>
+<li>Service : <strong>0000ffe1-0000-1000-8000-00805f9b34fb</strong></li>
+<li>Caractéristique : <strong>0000ffe3-0000-1000-8000-00805f9b34fb</strong></li>
+<li>Format d’échange :</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">ff 55 len idx action device port  slot  data a</span></span><br><span class="line"><span class="comment">0  1  2   3   4      5      6     7     8</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Comment-donner-a-manger-des-donnees-qui-sont-deja-binaires"><a href="#Comment-donner-a-manger-des-donnees-qui-sont-deja-binaires" class="headerlink" title="Comment donner à manger des données qui sont déjà binaires ?"></a>Comment donner à manger des données qui sont déjà binaires ?</h2><p>Quand on regarde le format des instructions Bluetooth, on se rend compte qu’on ne manipule pas ici des chiffres ou des chaines de caractères mais bel et bien une instruction binaire. Comment faire pour que cette donnée soit transférée correctement au Mbot ?</p>
+<p>C’est très simple, la fonction <code>writeValue</code> d’une caractéristique attend un buffer et on va lui donner des données binaires. </p>
+<p>Prenons en exemple l’instruction suivante : <code>ff:55:09:00:02:0a:09:64:00:00:00:00:0a</code> Il s’agit d’une instruction moteur qui fait 13 bytes. Le buffer étant <strong>une puissance de 2</strong>, il va falloir compléter le buffer avec des 0 et ainsi préparer un buffer de <strong>16 bytes</strong>.</p>
+<p>Une des subtilités de l’utilisation d’un buffer est qu’il faut inverser par paire les bytes à envoyer, sinon la donnée n’est pas reçue dans l’ordre ! Ainsi pour envoyer <code>ff:55:09:00:02:0a:09:64:00:00:00:00:0a</code> , je me retrouve à envoyer quelque chose comme ça : <code>0x55ff;0x0009;0x0a02;0x0964;0x0000;0x0000;0x000a;0x0000;</code></p>
+<p>Voici donc le code associé à l’écriture de l’instruction précédente : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// UUIDs</span></span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">SERVICE_UUID</span> = <span class="string">&quot;0000ffe1-0000-1000-8000-00805f9b34fb&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> <span class="variable constant_">CHAR_UUID</span> = <span class="string">&quot;0000ffe3-0000-1000-8000-00805f9b34fb&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Static values</span></span><br><span class="line"><span class="keyword">var</span> buf = <span class="keyword">new</span> <span class="title class_">ArrayBuffer</span>(<span class="number">16</span>);</span><br><span class="line"><span class="keyword">var</span> bufView = <span class="keyword">new</span> <span class="title class_">Uint16Array</span>(buf);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> byte0 = <span class="number">0xff</span>, <span class="comment">// Static header</span></span><br><span class="line">    byte1 = <span class="number">0x55</span>, <span class="comment">// Static header</span></span><br><span class="line">    byte2 = <span class="number">0x09</span>, <span class="comment">// len</span></span><br><span class="line">    byte3 = <span class="number">0x00</span>, <span class="comment">// idx</span></span><br><span class="line">    byte4 = <span class="number">0x02</span>, <span class="comment">// action</span></span><br><span class="line">    byte5 = <span class="number">0x0a</span>, <span class="comment">// device</span></span><br><span class="line">    byte6 = <span class="number">0x09</span>, <span class="comment">// port</span></span><br><span class="line">    byte7 = <span class="number">0x64</span>; <span class="comment">// slot</span></span><br><span class="line"><span class="comment">//dynamics values</span></span><br><span class="line"><span class="keyword">var</span> byte8 = <span class="number">0x00</span>, <span class="comment">// data</span></span><br><span class="line">    byte9 = <span class="number">0x00</span>, <span class="comment">// data</span></span><br><span class="line">    byte10 = <span class="number">0x00</span>, <span class="comment">// data</span></span><br><span class="line">    byte11 = <span class="number">0x00</span>; <span class="comment">// data</span></span><br><span class="line"><span class="comment">//End of message</span></span><br><span class="line"><span class="keyword">var</span> byte12 = <span class="number">0x0a</span>,</span><br><span class="line">    byte13 = <span class="number">0x00</span>,</span><br><span class="line">    byte14 = <span class="number">0x00</span>,</span><br><span class="line">    byte15 = <span class="number">0x00</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Gestion de l&#x27;inversion par paire des bytes</span></span><br><span class="line">bufView[<span class="number">0</span>] = byte1 &lt;&lt; <span class="number">8</span> | byte0;</span><br><span class="line">bufView[<span class="number">1</span>] = byte3 &lt;&lt; <span class="number">8</span> | byte2;</span><br><span class="line">bufView[<span class="number">2</span>] = byte5 &lt;&lt; <span class="number">8</span> | byte4;</span><br><span class="line">bufView[<span class="number">3</span>] = byte7 &lt;&lt; <span class="number">8</span> | byte6;</span><br><span class="line">bufView[<span class="number">4</span>] = byte9 &lt;&lt; <span class="number">8</span> | byte8;</span><br><span class="line">bufView[<span class="number">5</span>] = byte11 &lt;&lt; <span class="number">8</span> | byte10;</span><br><span class="line">bufView[<span class="number">6</span>] = byte13 &lt;&lt; <span class="number">8</span> | byte12;</span><br><span class="line">bufView[<span class="number">7</span>] = byte15 &lt;&lt; <span class="number">8</span> | byte14;   </span><br><span class="line"></span><br><span class="line"><span class="comment">// Envoie des données</span></span><br><span class="line">device.<span class="property">gatt</span>.<span class="title function_">getPrimaryService</span>(<span class="variable constant_">SERVICE_UUID</span>)</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">service</span> =&gt;</span> service.<span class="title function_">getCharacteristic</span>(<span class="variable constant_">CHAR_UUID</span>))</span><br><span class="line">.<span class="title function_">then</span>(<span class="function"><span class="params">characteristic</span> =&gt;</span> characteristic.<span class="title function_">writeValue</span>(buf));</span><br></pre></td></tr></table></figure>
+
+<h1 id="Resultat"><a href="#Resultat" class="headerlink" title="Résultat"></a>Résultat</h1><p>Voici le résultat en vidéo</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/j7VDRXxgqRE" frameborder="0" allowfullscreen></iframe>
+
+<p>Vous pouvez accéder à l’application à l’adresse suivante : <a href="https://jef.binomed.fr/mbot-webbluetooth">App Mbot-WebBluetooth</a> (&#x2F;!\ à bien avoir configuré son navigateur pour autoriser le Web Bluetooth)</p>
+<h1 id="Credits"><a href="#Credits" class="headerlink" title="Crédits"></a>Crédits</h1><p>Le code source du projet est disponible ici : <a href="https://github.com/binomed/mbot-webbluetooth/blob/master/index.html">Mbot-webbluetooth</a></p>
+<p>Pour aller plus loin : </p>
+<ul>
+<li><a href="https://plus.google.com/u/0/communities/108953318610326025178">Communauté Google +</a> : La communauté officielle </li>
+<li><a href="https://googlechrome.github.io/samples/web-bluetooth/">Web Bluetooth Samples</a> : Des exemples de code</li>
+<li><a href="https://www.w3.org/community/web-bluetooth/">Communauté W3C</a> : La communauté W3C dédié au Web Bluetooth</li>
+<li><a href="https://webbluetoothcg.github.io/web-bluetooth/">Spec</a> : La spécification &#x2F; documentation officielle.</li>
+<li><a href="https://developers.google.com/web/updates/2015/07/interact-with-ble-devices-on-the-web">Interact With BLE Device On The Web</a> : Article d’introduction de Google pour apprendre à utiliser l’API.</li>
+</ul>
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2016-07-Mbot/mbot.js"></script>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/chrome/">chrome</a><a href="/tags/html5/">html5</a><a href="/tags/web-Bluetooth/">web Bluetooth</a><a href="/tags/bluetooth-4-1/">bluetooth 4.1</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2016/07/22/2016-07-22-controle-d-un-robot-par-une-page-web/" data-title="Contrôle d&#39;un robot par une page web | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/23/legonnary-en/" title="I did a real-time server-less and offline multiplayer games (Part 1 - PWA)">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  I did a real-time server-less and offline multiplayer games (Part 1 - PWA)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/05/27/2016-05-27-retour-google-io-2016/"  title="Retour sur le Google I/O 2016">
+ <strong>NEXT:</strong><br/> 
+ <span>Retour sur le Google I/O 2016
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

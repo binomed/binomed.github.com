@@ -1,0 +1,771 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Connectez votre rameur d&#39;appartement avec Chrome | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Connectez votre rameur d’appartement avec ChromeWiiFit, AppleHealt, Google Fit, tout ça c’est du passé ! Place à SkiffSimulator !!         Nous allons voir à travers cet article comment réaliser un ra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Connectez votre rameur d&#39;appartement avec Chrome">
+<meta property="og:url" content="http://jef.binomed.fr/2015/10/30/2015-10-30--Connectez-votre-rameur-d-appartement-avec-Chrome/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Connectez votre rameur d’appartement avec ChromeWiiFit, AppleHealt, Google Fit, tout ça c’est du passé ! Place à SkiffSimulator !!         Nous allons voir à travers cet article comment réaliser un ra">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/rameur_Accueil.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/schema_skiff.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/schema_bb.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/drawImage.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/A1_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/A2_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/A3_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/A4_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/A5_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/R1_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/R2_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/R3_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/R4_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/R5_portrait.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/rameur_Accueil.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/rameur_GameOver.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/lego.jpg">
+<meta property="article:published_time" content="2015-10-30T15:36:24.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.704Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="arduino">
+<meta property="article:tag" content="canvas">
+<meta property="article:tag" content="chrome">
+<meta property="article:tag" content="html5">
+<meta property="article:tag" content="jeux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2015-10-Skiff/rameur_Accueil.png">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/30/2015-10-30--Connectez-votre-rameur-d-appartement-avec-Chrome/" title="Connectez votre rameur d&#39;appartement avec Chrome" itemprop="url">Connectez votre rameur d&#39;appartement avec Chrome</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-30T15:36:24.000Z" itemprop="datePublished"> Publié 30 Oct 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="Connectez-votre-rameur-d’appartement-avec-Chrome"><a href="#Connectez-votre-rameur-d’appartement-avec-Chrome" class="headerlink" title="Connectez votre rameur d’appartement avec Chrome"></a>Connectez votre rameur d’appartement avec Chrome</h2><p>WiiFit, AppleHealt, Google Fit, tout ça c’est du passé ! Place à SkiffSimulator !!</p>
+<div class="center">
+    <img src="/assets/2015-10-Skiff/rameur_Accueil.png" class="center">
+</div>
+
+<p>Nous allons voir à travers cet article comment réaliser un rameur connecté et ainsi vous permettre de vous amuser en faisant du sport ! </p>
+<p>La version présentée dans cet article est une V1 dépendant d’un ordinateur. Il pourrait être très facile de faire évoluer l’application pour qu’elle soit autonome sur un équipement de type Raspberry par la suite.</p>
+<h2 id="Principe"><a href="#Principe" class="headerlink" title="Principe"></a>Principe</h2><p>Grâce à l’<a href="https://developer.chrome.com/apps/serial">API serial</a> de Google Chrome, nous allons relier directement notre rameur à notre navigateur pour créer un jeu qui nous permettra de jouer à un jeu 8bit. Voici globalement un schéma symbolisant le montage à effectuer : </p>
+<p><img src="/assets/2015-10-Skiff/schema_skiff.png"></p>
+<p>Nous allons faire communiquer 2 programmes entre eux : </p>
+<ol>
+<li>un sketch Arduino qui va mesurer la distance du joueur sur le rameur</li>
+<li>une Application Chrome avec d’un côté :<br>  a. la partie Chrome App qui va lire le port série<br>  b. la partie Jeu qui va lire les informations provenant de la Chrome App</li>
+</ol>
+<p>Comme tout ceci n’est pas bien compliqué, j’ai décidé de tout coder from scratch afin de me faire la main sur les possibilités offertes par cet écosystème. Côté application web, nous avons un simple canvas afin de tirer parti de l’accélération matérielle. Côté matériel, j’ai opté un simple arduino avec un capteur ultrason.</p>
+<h2 id="Shopping-List"><a href="#Shopping-List" class="headerlink" title="Shopping List"></a>Shopping List</h2><p>Voici les pré requis en terme d’achat pour réaliser cette démonstration : </p>
+<ol>
+<li>un rameur (~20€ sur le bon coin)</li>
+<li>un Arduinio nano (~trouvé à 6€ sur tinyDeal)</li>
+<li>une breadboard (~2€ sur tinyDeal)</li>
+<li>un capteur ultrason HC-SR04(~1,5€ sur tinyDeal)</li>
+<li>un fil MiniUSB -&gt; USB (fourni avec l’arduino)</li>
+<li>des fils pour notre montage</li>
+<li>un ordinateur avec Chrome</li>
+</ol>
+<h2 id="Un-jeu-en-HTML"><a href="#Un-jeu-en-HTML" class="headerlink" title="Un jeu en HTML ?"></a>Un jeu en HTML ?</h2><p>Avant de commencer, il m’a fallu me renseigner sur le fonctionnement d’un jeu et voir comment j’allais procéder pour respecter au mieux les bonnes pratiques en vigueur. </p>
+<p>Globalement, un jeu possède plusieurs briques qui fonctionnent en parallèle afin de minimiser le blocage de l’UI. Pour rappel, un jeu est considéré comme fluide s’il est à 60fps ce qui veut dire que chaque affichage ne doit pas dépasser les 13ms. Afin de respecter au mieux cette contrainte, j’ai découpé mon programme : </p>
+<ul>
+<li>la brique qui s’occupe de l’affichage va lire dans un modèle partagé</li>
+<li>la brique qui s’occupe de lire les données de l’arduino va alimenter ce modèle partagé et faire les calculs nécessaires</li>
+</ul>
+<p>De cette façon, j’ai une séparation propre de mes interactions et des actions provenant de l’extérieur pouvant parfois bloquer mon interface. Il est à noter qu’avec ce fonctionnement, je tolère une désyncrhonisation entre l’état de mon modèle et mon affichage. Je pars du principe que celle-ci sera de maximum 13ms, ce qui est acceptable.</p>
+<h2 id="Sketch-Arduino"><a href="#Sketch-Arduino" class="headerlink" title="Sketch Arduino"></a>Sketch Arduino</h2><p><img src="/assets/2015-10-Skiff/schema_bb.png"></p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Pour le cpateur à ultrasons</span></span><br><span class="line"><span class="type">int</span> TriggerPin = <span class="number">8</span>; </span><br><span class="line"><span class="comment">//Trig pin</span></span><br><span class="line"><span class="type">int</span> EchoPin = <span class="number">5</span>; </span><br><span class="line"><span class="comment">//Echo pin</span></span><br><span class="line"><span class="type">long</span> distance; </span><br><span class="line"><span class="type">void</span> <span class="title function_">setup</span><span class="params">()</span> &#123;</span><br><span class="line">   Serial.begin(<span class="number">9600</span>); </span><br><span class="line">   <span class="comment">//Mise en entrées de Pins</span></span><br><span class="line">   <span class="comment">//On initialise le capteur à ultrasons</span></span><br><span class="line">   pinMode(TriggerPin, OUTPUT); </span><br><span class="line">   digitalWrite(TriggerPin, LOW); </span><br><span class="line">   pinMode(EchoPin, INPUT); </span><br><span class="line">   delay(<span class="number">100</span>); </span><br><span class="line">   Serial.println(<span class="string">&quot;Fin SETUP capteurs&quot;</span>); </span><br><span class="line">   &#125;</span><br><span class="line"><span class="type">void</span> <span class="title function_">loop</span><span class="params">()</span> &#123;</span><br><span class="line">   distance = lire_distance(); </span><br><span class="line">   Serial.print(<span class="string">&quot;D&quot;</span>); </span><br><span class="line">   Serial.println(distance); </span><br><span class="line">   <span class="comment">//Envoi des données en BT : </span></span><br><span class="line">   delay(<span class="number">50</span>); </span><br><span class="line">   &#125;</span><br><span class="line"><span class="type">long</span> <span class="title function_">lire_distance</span><span class="params">()</span> &#123;</span><br><span class="line">   <span class="type">long</span> lecture_echo; </span><br><span class="line">   digitalWrite(TriggerPin, HIGH); </span><br><span class="line">   delayMicroseconds(<span class="number">10</span>); </span><br><span class="line">   digitalWrite(TriggerPin, LOW); </span><br><span class="line">   lecture_echo = pulseIn(EchoPin, HIGH); </span><br><span class="line">   <span class="type">long</span> cm = lecture_echo / <span class="number">58</span>; </span><br><span class="line">   <span class="keyword">return</span>(cm); </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Le fonctionnement est très simple : il suffit de lire la mesure de distance dès que l’on en obtient une, puis on la retranscrit directement sur le port série.</p>
+<h2 id="ChromeApp"><a href="#ChromeApp" class="headerlink" title="ChromeApp ?"></a>ChromeApp ?</h2><p>Comme il s’agit d’une application chrome, nous devons créer un fichier <a href="https://developer.chrome.com/extensions/manifest">manifest.json</a> :  <a href="https://github.com/sqli-nantes/skiff-simulator/blob/master/chromeApp%2Fmanifest.json">Manifest de SkiffSumulator</a> qui correspond au fichier de configuration de l’application chrome. </p>
+<h3 id="Structure-de-l’application"><a href="#Structure-de-l’application" class="headerlink" title="Structure de l’application"></a>Structure de l’application</h3><p>L’application possède donc plusieurs scripts qui vont tourner en parallèle afin de faire fonctionner le jeu. Voici la structure de mon projet côté application web : </p>
+<ul>
+<li>assets : répertoire possèdant tous les fichiers de ressources du jeu (Fonts, images, sons)</li>
+<li>javascript : ensemble des srcipts javascript constituant l’application</li>
+<li>scss : fichier sass qui vont servir à générer le css</li>
+</ul>
+<p>Nous allons nous attarder uniquement sur les scripts car c’est dans cette partie que se situe toute l’intelligence du jeu. En effet, le fichier html est très sommaire car il ne contient qu’un canvas : </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">title</span>&gt;</span>Skiff Almost Simulator<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/png&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./assets/images/icon48.png&quot;</span> /&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span><span class="attr">href</span>=<span class="string">&quot;./css/app.css&quot;</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;skiff&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;user&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">placeholder</span>=<span class="string">&#x27;Enter your name&#x27;</span>/&gt;</span>  </span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/resources.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/audio.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/const.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/chrome_storage.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/chrome_serial.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/screen_accueil.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/screen_action.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/screen_end.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;./javascript/app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Scripts-et-roles"><a href="#Scripts-et-roles" class="headerlink" title="Scripts et rôles"></a>Scripts et rôles</h3><p>Voici les différents fichiers et leur rôles : </p>
+<ul>
+<li>app.js : coeur de l’application, il s’agit du point d’entrée de l’application et il agit comme un chef d’orchestre. C’est dans un sens le contrôleur de notre application</li>
+<li>audio.js : fichier servant à gérer la lecture des fichiers audio</li>
+<li>chrome_serial.js : fichier contenant le code spécifique à Chrome qui va nous permettre de lire directement depuis le port série de l’ordinateur</li>
+<li>chrome_storage.js : fichier utilitaire qui expose de façon uniforme une API de localstorage au cas où l’application devrait tourner en dehors de Chrome (plus de détails plus loin dans l’article)</li>
+<li>const.js : fichier regroupant toutes les constantes du jeu. Il peut s’agir de simples constantes ou de variables d’ajustement servant lors de la calibration du jeu</li>
+<li>ressources.js : fichier permettant d’exposer un mécanisme de chargement de ressources graphiques en vue de les exploiter par la suite dans le programme</li>
+<li>screen_acceuil.js : fichier contenant tout le code spécifique à l’affichage de l’écran d’accueil</li>
+<li>screen_action.js : fichier contenant tout le code spécifique à l’affichage pendant le jeu</li>
+<li>screen_end.js : fichier contenant tout le code spécifique à l’affiche de l’écran de fin</li>
+</ul>
+<p>Le <a href="https://carldanley.com/js-revealing-module-pattern/">Reveal Module Pattern</a> a été choisi comme pattern car il permet de fonctionner en module javascript et d’offrir un découpage propre du code tout en maîtrisant les méthodes exposées.</p>
+<h2 id="Deroulement-du-programme"><a href="#Deroulement-du-programme" class="headerlink" title="Déroulement du programme :"></a>Déroulement du programme :</h2><p>Prenons les différents points méritant de l’attention : </p>
+<h3 id="Demarage-App-js"><a href="#Demarage-App-js" class="headerlink" title="Démarage (App.js)"></a>Démarage (App.js)</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//API</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">init</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;load&#x27;</span>, </span><br><span class="line">   pageLoad); </span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">   init : init, ... &#125;</span><br><span class="line">&#125;</span><br><span class="line">(); </span><br><span class="line"><span class="title class_">AppSAS</span>.<span class="title function_">init</span>(); </span><br></pre></td></tr></table></figure>
+
+<p>On démarre l’application dès que la page est prête.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>; </span><br><span class="line"><span class="keyword">var</span> <span class="title class_">AppSAS</span> = <span class="title class_">AppSAS</span> || <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">   … <span class="keyword">function</span> <span class="title function_">pageLoad</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="comment">// On se connecte à l&#x27;arduino</span></span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">         skiffSimulatorChrome.<span class="title function_">initArduino</span>(); </span><br><span class="line">         &#125;</span><br><span class="line">      <span class="keyword">catch</span>(err) &#123;</span><br><span class="line">         <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Error : %s \n %s&quot;</span>, </span><br><span class="line">         err.<span class="property">message</span>, err.<span class="property">stack</span>); </span><br><span class="line">         &#125;</span><br></pre></td></tr></table></figure>
+
+<p>On doit faire appel au module qui va lire les données de l’arduino.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// On initialise le canvas</span></span><br><span class="line">ui.<span class="property">input</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;user&#x27;</span>); </span><br><span class="line">ui.<span class="property">canvas</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;skiff&#x27;</span>); </span><br><span class="line">ui.<span class="property">canvas</span>.<span class="property">width</span> = <span class="variable language_">window</span>.<span class="property">innerWidth</span>; </span><br><span class="line">ui.<span class="property">canvas</span>.<span class="property">height</span> = <span class="variable language_">window</span>.<span class="property">innerHeight</span>; </span><br><span class="line">ui.<span class="property">context</span> = ui.<span class="property">canvas</span>.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>); </span><br><span class="line">ui.<span class="property">canvas</span>.<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, checkClick, <span class="literal">false</span>); </span><br><span class="line"><span class="comment">// On précharge toutes les ressources nécessaires</span></span><br><span class="line">ui.<span class="property">resources</span>.<span class="title function_">loadSprites</span>([ &#123;</span><br><span class="line">   title : <span class="string">&#x27;logo&#x27;</span>, url : <span class="string">&#x27;assets/images/logo.png&#x27;</span>&#125;</span><br><span class="line">, &#123;</span><br><span class="line">   title : <span class="string">&#x27;game_over&#x27;</span>, url : <span class="string">&#x27;assets/images/gameover.png&#x27;</span>&#125;</span><br><span class="line">, &#123;</span><br><span class="line">   title : <span class="string">&#x27;rive_gauche_portrait&#x27;</span>, url : <span class="string">&#x27;assets/images/riviere_gauche_portrait.png&#x27;</span>&#125;</span><br><span class="line">, ... ]) .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">value</span>) &#123;</span><br><span class="line">   <span class="title function_">paintSkiff</span>(); </span><br><span class="line">   &#125;</span><br><span class="line">).<span class="title function_">catch</span>(<span class="keyword">function</span>(<span class="params">err</span>) &#123;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Error : %s \n %s&quot;</span>, err.<span class="property">message</span>, err.<span class="property">stack</span>); &#125;</span><br><span class="line">); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>On initialise notre canvas ainsi que les ressources graphiques du projet. On n’affiche le jeu qu’une fois ces dernières chargées.</p>
+<h3 id="En-fonctionnement-app-js"><a href="#En-fonctionnement-app-js" class="headerlink" title="En fonctionnement (app.js)"></a>En fonctionnement (app.js)</h3><p>Une fois l’application réellement démarrée avec la méthode paintSkiff. Nous allons simplement déléguer l’affichage aux méthodes appropriées : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Gère l&#x27;affichage de l&#x27;écran</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">paintSkiff</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="keyword">try</span> &#123;</span><br><span class="line">      ... <span class="comment">// Affichage des décors</span></span><br><span class="line">      <span class="title function_">paintBackground</span>(); </span><br><span class="line">      <span class="keyword">if</span> (gameModel.<span class="property">stateGame</span> === constState.<span class="property">STATE_ACCUEIL</span>) &#123;</span><br><span class="line">         <span class="title class_">ScreenSasAccueil</span>.<span class="title function_">paintSkiffAccueil</span>(); </span><br><span class="line">         <span class="title class_">StorageSAS</span>.<span class="title function_">manageGhost</span>(); </span><br><span class="line">         &#125;</span><br><span class="line">      <span class="keyword">else</span> <span class="keyword">if</span> (gameModel.<span class="property">stateGame</span> === constState.<span class="property">STATE_RUNNING</span>) &#123;</span><br><span class="line">         <span class="comment">// On doit peindre le fantome du jeu en deuxième car son alpha nous indique où il est</span></span><br><span class="line">         <span class="title class_">ScreenSasAction</span>.<span class="title function_">paintSkiffAction</span>(); </span><br><span class="line">         <span class="title class_">ScreenSasAction</span>.<span class="title function_">paintSkiffGhost</span>(); </span><br><span class="line">         <span class="comment">// On ajoute l&#x27;état à l&#x27;historique</span></span><br><span class="line">         gameModel.<span class="property">currentHistory</span>.<span class="title function_">push</span>( &#123;</span><br><span class="line">            direction : gameModel.<span class="property">direction</span>, </span><br><span class="line">            distanceSkiff : + gameModel.<span class="property">distanceSkiff</span>, </span><br><span class="line">            distanceArduino : + gameModel.<span class="property">distanceArduino</span> &#125;</span><br><span class="line">         ); </span><br><span class="line">         gameModel.<span class="property">step</span>++; </span><br><span class="line">         &#125;</span><br><span class="line">      <span class="keyword">if</span> (gameModel.<span class="property">stateGame</span> === constState.<span class="property">STATE_END</span>) &#123;</span><br><span class="line">         <span class="title class_">ScreenSasEnd</span>.<span class="title function_">paintSkiffEnd</span>(); </span><br><span class="line">         &#125;</span><br><span class="line">      <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(paintSkiff); </span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">error</span>(<span class="string">&quot;Error : %s \n %s&quot;</span>, </span><br><span class="line">      err.<span class="property">message</span>, err.<span class="property">stack</span>); </span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>Il est à noter que l’on utilise la méthode window.requestAnimtionFrame. Cette dernière est très importante car elle permet d’optimiser l’affichage de nos écrans en fonction de la puissance de la machine. En effet, la méthode de callback ne sera appelée une fois le navigateur prêt à effectuer une nouvelle mise à jour graphique. Il faut donc utiliser cette méthode à la place d’un setInterval</p>
+<h3 id="Affichage-des-ecrans"><a href="#Affichage-des-ecrans" class="headerlink" title="Affichage des écrans"></a>Affichage des écrans</h3><p>L’affichage des écrans se fait toujours de la même façon : </p>
+<ol>
+<li>on nettoie le canvas</li>
+<li>on dessine une ou des images sur le canvas</li>
+</ol>
+<p>L’affichage d’un écran se fait toujours de la façon suivante : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">ui.<span class="property">context</span>.<span class="title function_">drawImage</span>(imgSource <span class="comment">//L’image source</span></span><br><span class="line">, sx <span class="comment">//sx clipping de l&#x27;image originale</span></span><br><span class="line">, sy <span class="comment">//sy clipping de l&#x27;image originale</span></span><br><span class="line">, sw <span class="comment">// swidth clipping de l&#x27;image originale</span></span><br><span class="line">, sh <span class="comment">// sheight clipping de l&#x27;image originale</span></span><br><span class="line">, dx <span class="comment">// x Coordonnées dans le dessin du canvas</span></span><br><span class="line">, dy <span class="comment">// y Coordonnées dans le dessing du canvas</span></span><br><span class="line">, dw <span class="comment">// width taille du dessin</span></span><br><span class="line">, dh <span class="comment">// height taille du dessin </span></span><br><span class="line">); </span><br></pre></td></tr></table></figure>
+
+<div class="center">
+    <img src="/assets/2015-10-Skiff/drawImage.png" class="center">
+</div>
+
+<p>Les animations &#x2F; constructions des écrans ne sont en fait qu’une succession de drawImage ou fillText.</p>
+<h3 id="Gestion-des-interactions"><a href="#Gestion-des-interactions" class="headerlink" title="Gestion des interactions"></a>Gestion des interactions</h3><p>Afin de pouvoir démarrer l’application, nous devons gérer les clicks sur le canvas. Le problème est que lorsque nous dessinons des images, nous ne pouvons pas avoir accès à un équivalent de onClick sur une zone graphique précise. Nous devons donc écouter les clicks sur le canvas et calculer si la zone de click correspond à une zone d’interaction de notre ihm.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">    <span class="comment">// Gère les clicks en fonction de l&#x27;état du jeu</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkClick</span>(<span class="params">event</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (gameModel.<span class="property">stateGame</span> != constState.<span class="property">STATE_RUNNING</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> btnStart = ui.<span class="property">resources</span>.<span class="property">images</span>[<span class="string">&#x27;btn_start&#x27;</span>]; </span><br><span class="line">      <span class="keyword">var</span> finalHeight = btnStart.<span class="property">height</span> * ui.<span class="property">ratio</span>, </span><br><span class="line">      finalWidth = btnStart.<span class="property">width</span> * ui.<span class="property">ratio</span>; </span><br><span class="line">      <span class="keyword">var</span> x = (ui.<span class="property">canvas</span>.<span class="property">width</span> / <span class="number">2</span>) - ((btnStart.<span class="property">width</span> * ui.<span class="property">ratio</span>) / <span class="number">2</span>), y = ui.<span class="property">canvas</span>.<span class="property">height</span> - finalHeight - (<span class="title function_">isPortrait</span>() ? <span class="number">100</span> : <span class="number">50</span>);</span><br><span class="line">      <span class="keyword">var</span> xClick = event.<span class="property">pageX</span>, </span><br><span class="line">      yClick = event.<span class="property">pageY</span>; </span><br><span class="line">      <span class="keyword">if</span> (yClick &gt; y &amp;&amp; yClick &lt; (y + finalHeight) &amp;&amp; xClick &gt; x &amp;&amp; xClick &lt; (x + finalWidth)) &#123;</span><br><span class="line">         <span class="comment">// On change l&#x27;état du jeu</span></span><br><span class="line">         gameModel.<span class="property">stateGame</span> = gameModel.<span class="property">stateGame</span> === constState.<span class="property">STATE_ACCUEIL</span> ? constState.<span class="property">STATE_RUNNING</span> : constState.<span class="property">STATE_ACCUEIL</span>; </span><br><span class="line">        ... </span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Gestion-du-moteur"><a href="#Gestion-du-moteur" class="headerlink" title="Gestion du moteur"></a>Gestion du moteur</h3><p>Un des éléments clés du programme est l’alimentation du modèle depuis l’application chrome. L’application chrome va alimenter le modèle et déterminer un certain nombre d’éléments en lien avec le rendu souhaité, puis appeler le moteur de calcul pour terminer les traitements. On vérifie par exemple dans quel sens va le joueur, s’il y a eu un déplacement, etc.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Calcul </span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setDistance</span>(<span class="params">distance</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (gameModel.<span class="property">distanceArduino</span> === distance) &#123;</span><br><span class="line">      gameModel.<span class="property">direction</span> = <span class="number">0</span>; </span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">else</span> <span class="keyword">if</span> (gameModel.<span class="property">distanceArduino</span> &gt; distance) &#123;</span><br><span class="line">      gameModel.<span class="property">direction</span> = <span class="number">1</span>; </span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">      gameModel.<span class="property">direction</span> = - <span class="number">1</span>; </span><br><span class="line">      &#125;</span><br><span class="line">   <span class="comment">// Vitesse en cm / ms</span></span><br><span class="line">   <span class="keyword">var</span> deltaCM = <span class="title class_">Math</span>.<span class="title function_">abs</span>(gameModel.<span class="property">distanceArduino</span> - distance); </span><br><span class="line">   <span class="keyword">if</span> (deltaCM &gt; <span class="title class_">ConstSAS</span>.<span class="property">MIN_DELTA_CM</span>) &#123;</span><br><span class="line">      gameModel.<span class="property">speed</span> = deltaCM / <span class="title class_">ConstSAS</span>.<span class="property">DELAY</span>; </span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">else</span> &#123;</span><br><span class="line">      gameModel.<span class="property">speed</span> = <span class="title class_">Math</span>.<span class="title function_">max</span>(gameModel.<span class="property">speed</span> - <span class="title class_">ConstSAS</span>.<span class="property">FACTOR_SPEED</span>, </span><br><span class="line">      <span class="number">0</span>); </span><br><span class="line">      &#125;</span><br><span class="line">   gameModel.<span class="property">distanceArduino</span> = distance; </span><br><span class="line">   <span class="title function_">engineSkiff</span>(); </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Le coeur du moteur quant à lui, s’occupe uniquement de lire les données issues de l’arduino et de calculer la distance globale parcourue, ainsi que le pourcentage de déplacements dans l’écran.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">engineSkiff</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (gameModel.<span class="property">speed</span> &gt; <span class="number">0</span> &amp;&amp; gameModel.<span class="property">stateGame</span> === constState.<span class="property">STATE_RUNNING</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> distanceSpeed = gameModel.<span class="property">speed</span> * <span class="title class_">ConstSAS</span>.<span class="property">DELAY</span>; </span><br><span class="line">      <span class="comment">// On incrémente la distance</span></span><br><span class="line">      gameModel.<span class="property">distanceSkiff</span> += (distanceSpeed * <span class="title class_">ConstSAS</span>.<span class="property">FACTOR_DISTANCE</span>); </span><br><span class="line">      <span class="comment">// On gère l&#x27;effet de déplacement des bords via un pourcentage</span></span><br><span class="line">      gameModel.<span class="property">percent</span> = (gameModel.<span class="property">distanceSkiff</span> % <span class="number">100</span>) / <span class="number">100</span>;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Specifique-Chrome"><a href="#Specifique-Chrome" class="headerlink" title="Spécifique Chrome"></a>Spécifique Chrome</h2><p>Depuis le début nous parlons d’application chrome et de l’API Serial, il est désormais temps de voir comment nous implémentons cette partie.</p>
+<h3 id="Interaction-avec-l’Arduino"><a href="#Interaction-avec-l’Arduino" class="headerlink" title="Interaction avec l’Arduino"></a>Interaction avec l’Arduino</h3><p>Toute l’interaction avec L’arduino se fait directement via le port série. Mais il faut pour cela passer par des étapes clés : </p>
+<ol>
+<li>récupérer les appareils connectés sur les ports série “chrome.serial.getDevices”</li>
+<li>une fois un appareil trouvé, on s’y connecte “chrome.serial.connect”. Dans notre exemple, on veille à ce qu’il n’y ai qu’un appareil de connecté au moment du lancement de l’application</li>
+<li>lire le port série “chrome.serial.onReceive”</li>
+</ol>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">initArduino</span>(<span class="params"></span>) &#123;</span><br><span class="line">   chrome.<span class="property">serial</span>.<span class="title function_">getDevices</span>(<span class="keyword">function</span>(<span class="params">ports</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (ports &amp;&amp; ports.<span class="property">length</span> == <span class="number">1</span>) &#123;</span><br><span class="line">         chrome.<span class="property">serial</span>.<span class="title function_">connect</span>(ports[<span class="number">0</span>].<span class="property">path</span>, </span><br><span class="line">         onOpenArduino); </span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   ); </span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">onOpenArduino</span>(<span class="params">openInfo</span>) &#123;</span><br><span class="line">   connectionId = openInfo.<span class="property">connectionId</span>; </span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;connectionId: &quot;</span> + connectionId); </span><br><span class="line">   <span class="keyword">if</span> (connectionId == - <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Could not open&#x27;</span>); </span><br><span class="line">      <span class="keyword">return</span>; </span><br><span class="line">      &#125;</span><br><span class="line">   <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Connected&#x27;</span>); </span><br><span class="line">   chrome.<span class="property">serial</span>.<span class="property">onReceive</span>.<span class="title function_">addListener</span>(onReadArduino); </span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">convertArrayBufferToString</span>(<span class="params">buf</span>) &#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="title class_">String</span>.<span class="property">fromCharCode</span>.<span class="title function_">apply</span>(<span class="literal">null</span>, </span><br><span class="line">   <span class="keyword">new</span> <span class="title class_">Uint8Array</span>(buf)); </span><br><span class="line">   &#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">onReadArduino</span>(<span class="params">readInfo</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> (readInfo.<span class="property">connectionId</span> == connectionId &amp;&amp; readInfo.<span class="property">data</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> str = <span class="title function_">convertArrayBufferToString</span>(readInfo.<span class="property">data</span>); </span><br><span class="line">      <span class="keyword">if</span> (str.<span class="title function_">charAt</span>(str.<span class="property">length</span> - <span class="number">1</span>) === <span class="string">&#x27;\n&#x27;</span>) &#123;</span><br><span class="line">         value += str.<span class="title function_">substring</span>(<span class="number">0</span>, </span><br><span class="line">         str.<span class="property">length</span> - <span class="number">1</span>); </span><br><span class="line">         <span class="keyword">if</span> (regExp.<span class="title function_">test</span>(value)) <span class="comment">// Light on and off</span></span><br><span class="line">         &#123;</span><br><span class="line">            <span class="keyword">var</span> distanceTmp = + regExp.<span class="title function_">exec</span>(value)[<span class="number">1</span>]; </span><br><span class="line">            <span class="keyword">if</span> (distanceTmp &lt; <span class="title class_">ConstSAS</span>.<span class="property">DISTANCE_MAX</span> &amp;&amp; <span class="title class_">Math</span>.<span class="title function_">abs</span>(distance - distanceTmp) &lt; (<span class="title class_">ConstSAS</span>.<span class="property">DISTANCE_MAX</span> * <span class="number">1.5</span>) ) &#123;</span><br><span class="line">               <span class="title class_">AppSAS</span>.<span class="title function_">setDistance</span>(distanceTmp); </span><br><span class="line">               &#125;</span><br><span class="line">            distance = distanceTmp; </span><br><span class="line">            &#125;</span><br><span class="line">         value = <span class="string">&quot;&quot;</span>; </span><br><span class="line">         &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">         value += str; </span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Il faut noter une petite particularité lors de la lecture : nous lisons le port série et nous attendons une chaîne de caractères. Aussi, il est important de penser à convertir les données issues du port série en données exploitables sous forme de chaîne de caractères.</p>
+<h2 id="Gestion-des-ecrans-et-cas-particuliers"><a href="#Gestion-des-ecrans-et-cas-particuliers" class="headerlink" title="Gestion des écrans et cas particuliers"></a>Gestion des écrans et cas particuliers</h2><p>Maintenant que nous avons vu la mécanique sous le capot, regardons de plus près quelques cas particuliers qui méritent un peu d’attention.</p>
+<h3 id="Deplacement-du-decor"><a href="#Deplacement-du-decor" class="headerlink" title="Déplacement du décor"></a>Déplacement du décor</h3><p>Afin de donner une sensation de déplacement, il nous faut bouger nos rives. Pour se faire, on va simplement fonctionner avec un indicateur en pourcentage en rapport avec le déplacement global du rameur. Ainsi pour afficher correctement nos 2 rives qui bougent, il nous suffit juste de dessiner 2 fois chaque rive de chaque côté afin de gérer les dépassement d’écran et de les positionner en fonction d’un pourcentage résultant d’un modulo de la distance du rameur : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Affiche le rivage en fonction de la rive souhaitée et de la progression du rameur</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">paintRive</span>(<span class="params">riveDroite</span>) &#123;</span><br><span class="line">   <span class="keyword">var</span> rive = ui.<span class="property">resources</span>.<span class="property">images</span>[(riveDroite ? <span class="string">&#x27;rive_droite&#x27;</span> : <span class="string">&#x27;rive_gauche&#x27;</span>) + <span class="title function_">getSuffix</span>()]; </span><br><span class="line">   <span class="keyword">var</span> finalHeight = rive.<span class="property">height</span> * ui.<span class="property">ratio</span>, </span><br><span class="line">   finalWidth = rive.<span class="property">width</span> * ui.<span class="property">ratio</span>; </span><br><span class="line">   ui.<span class="property">context</span>.<span class="title function_">drawImage</span>(rive , <span class="number">0</span> <span class="comment">//sx clipping de l&#x27;image originale</span></span><br><span class="line">   , <span class="number">0</span> <span class="comment">//sy clipping de l&#x27;image originale</span></span><br><span class="line">   , rive.<span class="property">width</span> <span class="comment">// swidth clipping de l&#x27;image originale</span></span><br><span class="line">   , rive.<span class="property">height</span> <span class="comment">// sheight clipping de l&#x27;image originale</span></span><br><span class="line">   , riveDroite ? ui.<span class="property">canvas</span>.<span class="property">width</span> - finalWidth : <span class="number">0</span> <span class="comment">// x Coordonnées dans le dessing du canvas</span></span><br><span class="line">   , <span class="number">0</span> - (finalHeight * gameModel.<span class="property">percent</span>) <span class="comment">// y Coordonnées dans le dessing du canvas</span></span><br><span class="line">   , finalWidth <span class="comment">// width taille du dessin</span></span><br><span class="line">   , finalHeight <span class="comment">// height taille du dessin </span></span><br><span class="line">   ); </span><br><span class="line">   ui.<span class="property">context</span>.<span class="title function_">drawImage</span>(rive , <span class="number">0</span> <span class="comment">//sx clipping de l&#x27;image originale</span></span><br><span class="line">   , <span class="number">0</span> <span class="comment">//sy clipping de l&#x27;image originale</span></span><br><span class="line">   , rive.<span class="property">width</span> <span class="comment">// swidth clipping de l&#x27;image originale</span></span><br><span class="line">   , rive.<span class="property">height</span> <span class="comment">// sheight clipping de l&#x27;image originale</span></span><br><span class="line">   , riveDroite ? ui.<span class="property">canvas</span>.<span class="property">width</span> - finalWidth : <span class="number">0</span> <span class="comment">// x Coordonnées dans le dessing du ui.canvas</span></span><br><span class="line">   , finalHeight - (finalHeight * gameModel.<span class="property">percent</span>) <span class="comment">// y Coordonnées dans le dessing du canvas</span></span><br><span class="line">   , finalWidth <span class="comment">// width taille du dessin</span></span><br><span class="line">   , finalHeight <span class="comment">// height taille du dessin </span></span><br><span class="line">   ); </span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="L’affichage-du-rameur"><a href="#L’affichage-du-rameur" class="headerlink" title="L’affichage du rameur"></a>L’affichage du rameur</h3><p>L’affichage du rameur comporte 2 parties à prendre en compte : </p>
+<ol>
+<li>l’affichage du rameur en fonction de la position du joueur</li>
+<li>l’avancée du rameur quand le mode ghost est activé</li>
+</ol>
+<h4 id="Position-du-rameur-en-fonction-du-joueur"><a href="#Position-du-rameur-en-fonction-du-joueur" class="headerlink" title="Position du rameur en fonction du joueur"></a>Position du rameur en fonction du joueur</h4><p>Afin de restituer au mieux les gestes effectués par le joueur, il a fallu réfléchir à une façon d’afficher la bonne image de rameur, en fonction de sa position sur le rameur.</p>
+<div>
+<img src="/assets/2015-10-Skiff/A1_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/A2_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/A3_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/A4_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/A5_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/R1_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/R2_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/R3_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/R4_portrait.png" class="imgskiff"><img src="/assets/2015-10-Skiff/R5_portrait.png" class="imgskiff">
+</div>
+
+<div style="clear:both"></div>
+
+<p> La réponse était relativement simple :  il suffit de connaître à chaque instant la position du joueur sur le rameur et sa direction, puis d’appliquer la bonne image.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">indexToUse</span>(<span class="params">direction, distance</span>) &#123;</span><br><span class="line">   <span class="keyword">var</span> arrayToUse = direction &gt;= <span class="number">0</span> ? mappingPositonRameurFront : mappingPositonRameurBack; </span><br><span class="line">   <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arrayToUse.<span class="property">length</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">var</span> minMax = arrayToUse[i]; </span><br><span class="line">      <span class="keyword">if</span> (distance &gt; minMax.<span class="property">min</span> &amp;&amp; distance &lt;= minMax.<span class="property">max</span>) &#123;</span><br><span class="line">         <span class="keyword">return</span> minMax.<span class="property">indexSprite</span> + <span class="title class_">AppSAS</span>.<span class="title function_">getSuffix</span>(); </span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   <span class="keyword">return</span> mappingPositonRameurBack[<span class="number">0</span>].<span class="property">indexSprite</span> + <span class="title class_">AppSAS</span>.<span class="title function_">getSuffix</span>(); </span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">// Affiche le bon sprire du bateau</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">paintBoat</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="comment">//var ratio = 0.05;</span></span><br><span class="line">   <span class="keyword">var</span> image = <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">resources</span>.<span class="property">images</span>[<span class="title class_">AppSAS</span>.<span class="property">gameModel</span>.<span class="property">indexSprite</span>]; </span><br><span class="line">   <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">context</span>.<span class="property">shadowOffsetX</span> = <span class="number">0</span>; </span><br><span class="line">   <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">context</span>.<span class="property">shadowOffsetY</span> = <span class="number">0</span>; </span><br><span class="line">   <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">context</span>.<span class="property">shadowBlur</span> = <span class="number">0</span>; </span><br><span class="line">   <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">context</span>.<span class="title function_">drawImage</span>(image , <span class="number">0</span> <span class="comment">//sx clipping de l&#x27;image originale</span></span><br><span class="line">   , <span class="number">0</span> <span class="comment">//sy clipping de l&#x27;image originale</span></span><br><span class="line">   , image.<span class="property">width</span> <span class="comment">// swidth clipping de l&#x27;image originale</span></span><br><span class="line">   , image.<span class="property">height</span> <span class="comment">// sheight clipping de l&#x27;image originale</span></span><br><span class="line">   , (<span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">canvas</span>.<span class="property">width</span> / <span class="number">2</span>) - ((image.<span class="property">width</span> * <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">ratio</span>) / <span class="number">2</span>) <span class="comment">// x Coordonnées dans le dessin du AppSAS.ui.canvas </span></span><br><span class="line">   , (<span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">canvas</span>.<span class="property">height</span> / <span class="number">2</span>) - ((image.<span class="property">height</span> * <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">ratio</span>) / <span class="number">2</span>) + <span class="number">100</span><span class="comment">// y Coordonnées dans le dessin du AppSAS.ui.canvas </span></span><br><span class="line">   , image.<span class="property">width</span> * <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">ratio</span> <span class="comment">// width taille du dessin </span></span><br><span class="line">   , image.<span class="property">height</span> * <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">ratio</span> <span class="comment">// height taille du dessin  </span></span><br><span class="line">) &#125;</span><br></pre></td></tr></table></figure>
+
+<p>De cette manière nous affichons toujours la bonne image. Puis, afin de faciliter le déplacement du bateau, il a été considéré qu’il était en position fixe sur l’écran et que l’illusion du déplacement se fait uniquement à travers le déplacement du décor.</p>
+<h4 id="Gestion-du-ghost"><a href="#Gestion-du-ghost" class="headerlink" title="Gestion du ghost"></a>Gestion du ghost</h4><p>L’affichage du ghost doit faire face à un problème. Contrairement au bateau, ce dernier se déplace sur l’écran. Le problème est que ce déplacement vient surtout du fait qu’il a fallu gérer le cas d’un ghost allant plus vite que le joueur courant. En effet, si le ghost est meilleur que le joueur, alors, il sera vers le haut de l’écran ce qui veut dire que sa position va s’approcher de l’axe, voire aller dans les négatifs. Or dans un canvas, si un élément est dessiné avec des coordonnées de destination dans le négatif, l’élément n’est tout simplement pas peint !  Il a donc fallu tronquer l’image source pour donner l’illusion que le dessin du ghost parte vers le haut de l’écran.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Affiche le bon sprire du bateau du mode Ghost</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">paintGhost</span>(<span class="params"></span>) &#123;</span><br><span class="line">   <span class="comment">//var ratio = 0.05;</span></span><br><span class="line">   <span class="keyword">var</span> image = <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">resources</span>.<span class="property">images</span>[<span class="title class_">AppSAS</span>.<span class="property">gameModel</span>.<span class="property">indexSpriteGhost</span>]; </span><br><span class="line">   ...</span><br><span class="line">   <span class="comment">// Le fantome doit etre dessiné là où il est au niveau de sa distance globale par rapport au bateau actuel </span></span><br><span class="line">   <span class="comment">// =&gt; On l&#x27;affiche là où est son delta en distance par rapport à bateau actuel</span></span><br><span class="line">   <span class="keyword">var</span> stateGhost = <span class="title class_">AppSAS</span>.<span class="property">gameModel</span>.<span class="property">ghost</span>[<span class="title class_">AppSAS</span>.<span class="property">gameModel</span>.<span class="property">step</span>]; </span><br><span class="line">   <span class="keyword">var</span> deltaGhost = <span class="title class_">AppSAS</span>.<span class="property">gameModel</span>.<span class="property">distanceSkiff</span> - stateGhost.<span class="property">distanceSkiff</span>; </span><br><span class="line">   <span class="comment">// On doit tronquer le ghost s&#x27;il dépasse de l&#x27;écran </span></span><br><span class="line">   <span class="keyword">var</span> yGhost = (<span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">canvas</span>.<span class="property">height</span> / <span class="number">2</span>) - ((image.<span class="property">height</span> * <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">ratio</span>) / <span class="number">2</span>) + <span class="number">100</span> + (deltaGhost * <span class="title class_">ConstSAS</span>.<span class="property">FACTOR_GHOST</span>);</span><br><span class="line">   <span class="keyword">var</span> heightSpriteGhost = image.<span class="property">height</span>; </span><br><span class="line">   <span class="keyword">if</span> (yGhost &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      heightSpriteGhost = image.<span class="property">height</span> + yGhost; </span><br><span class="line">      yGhost = <span class="number">0</span>; </span><br><span class="line">      &#125;</span><br><span class="line">   <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">context</span>.<span class="title function_">drawImage</span>(image , <span class="number">0</span> <span class="comment">//sx clipping de l&#x27;image originale</span></span><br><span class="line">   , image.<span class="property">height</span> - heightSpriteGhost <span class="comment">//sy clipping de l&#x27;image originale</span></span><br><span class="line">   , image.<span class="property">width</span> <span class="comment">// swidth clipping de l&#x27;image originale</span></span><br><span class="line">   , heightSpriteGhost <span class="comment">// sheight clipping de l&#x27;image originale</span></span><br><span class="line">   , (<span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">canvas</span>.<span class="property">width</span> / <span class="number">2</span>) - ((image.<span class="property">width</span> * <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">ratio</span>) / <span class="number">2</span>) <span class="comment">// x Coordonnées dans le dessin du AppSAS.ui.canvas </span></span><br><span class="line">   , yGhost <span class="comment">// y Coordonnées dans le dessin du AppSAS.ui.canvas , image.width * AppSAS.ui.ratio // width taille du dessin </span></span><br><span class="line">   , heightSpriteGhost * <span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">ratio</span> <span class="comment">// height taille du dessin </span></span><br><span class="line">   );</span><br><span class="line">   ...</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Affichage-des-ecrans-de-login-de-scores"><a href="#Affichage-des-ecrans-de-login-de-scores" class="headerlink" title="Affichage des écrans de login &amp; de scores"></a>Affichage des écrans de login &amp; de scores</h3><p>Ces 2 écrans sont différents car on y affiche non pas une animation, mais tu texte.</p>
+<h4 id="Ecran-de-Login"><a href="#Ecran-de-Login" class="headerlink" title="Ecran de Login"></a>Ecran de Login</h4><div class="center">
+    <img src="/assets/2015-10-Skiff/rameur_Accueil.png" class="center">
+</div>
+
+<p>Concernant l’écran de login, il n’existe pas d’équivalent du champ input dans un canvas. Aussi, il a fallu intégrer à notre html une balise input que l’on affiche ou cache en fonction du besoin.</p>
+<h4 id="Ecran-de-scores"><a href="#Ecran-de-scores" class="headerlink" title="Ecran de scores"></a>Ecran de scores</h4><div class="center">
+    <img src="/assets/2015-10-Skiff/rameur_GameOver.png" class="center">
+</div>
+
+<p>L’affichage du score est simple car il ne s’agit que d’afficher du texte : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title class_">AppSAS</span>.<span class="property">ui</span>.<span class="property">context</span>.<span class="title function_">fillText</span>(<span class="title class_">MyText</span>, x, y); </span><br></pre></td></tr></table></figure>
+
+<p>La taille et la couleur du texte sont définis par des propriétés appliquées directement sur le context du canvas.</p>
+<h3 id="Persistance-des-donnees"><a href="#Persistance-des-donnees" class="headerlink" title="Persistance des données"></a>Persistance des données</h3><p>Pour sauvegarder les données d’une partie à l’autre, ou même d’un démarrage d’application à l’autre. J’ai fait le choix le plus simple : le LocalStorage. Le seul hic avec le LocalStorage et les ChromeApps, c’est que l’API telle qu’elle est disponible en html5 n’existe pas sur une ChromeApp. En effet, l’api localStorage étant syncrhone, Google a préféré mettre en place une solution asyncrhone : <a href="https://developer.chrome.com/apps/storage">https://developer.chrome.com/apps/storage</a>. J’ai donc mis en place la solution de Google et j’en ai profité pour prévoir une api uniforme entre localstorage &amp; chrome.storage au cas où vous partiriez sur une solution native html5.</p>
+<h3 id="Placer-l’aduino"><a href="#Placer-l’aduino" class="headerlink" title="Placer l’aduino"></a>Placer l’aduino</h3><p>Afin de mesurer au mieux les données de distance, j’ai placé l’arduino au dos de l’utilisateur et j’ai fabriqué une petite boîte pour packager un peu tout ça :</p>
+<p><img src="/assets/2015-10-Skiff/lego.jpg"></p>
+<h2 id="Annexes"><a href="#Annexes" class="headerlink" title="Annexes"></a>Annexes</h2><p>Le code complet est disponible <a href="https://github.com/sqli-nantes/skiff-simulator">https://github.com/sqli-nantes/skiff-simulator</a></p>
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2015-10-Skiff/skiff-custo.js"></script>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/arduino/">arduino</a><a href="/tags/canvas/">canvas</a><a href="/tags/chrome/">chrome</a><a href="/tags/html5/">html5</a><a href="/tags/jeux/">jeux</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2015/10/30/2015-10-30--Connectez-votre-rameur-d-appartement-avec-Chrome/" data-title="Connectez votre rameur d&#39;appartement avec Chrome | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/12/11/2015-12-11--myo-sous-linux/" title="Myo sous linux">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Myo sous linux</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/07/07/2015-07-07--Realisez-votre-PortalGun-avec-WebRTC/"  title="Réalisez votre PortalGun avec WebRTC">
+ <strong>NEXT:</strong><br/> 
+ <span>Réalisez votre PortalGun avec WebRTC
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

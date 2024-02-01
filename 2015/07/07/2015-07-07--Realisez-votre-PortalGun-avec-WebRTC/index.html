@@ -1,0 +1,860 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Réalisez votre PortalGun avec WebRTC | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Réalisez votre PortalGun avec WebRTC  Vous avez toujours rêvé d’avoir votre “Portal Gun”* afin de pouvoir imiter Homer Simpson et ainsi pouvoir attraper les bières de votre frigo depuis votre canapé.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Réalisez votre PortalGun avec WebRTC">
+<meta property="og:url" content="http://jef.binomed.fr/2015/07/07/2015-07-07--Realisez-votre-PortalGun-avec-WebRTC/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Réalisez votre PortalGun avec WebRTC  Vous avez toujours rêvé d’avoir votre “Portal Gun”* afin de pouvoir imiter Homer Simpson et ainsi pouvoir attraper les bières de votre frigo depuis votre canapé.">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-07-PortalWebRTC/homer.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-07-PortalWebRTC/jf_0.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-07-PortalWebRTC/jf_1.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-07-PortalWebRTC/archi.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-07-PortalWebRTC/logo_webrtc.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-07-PortalWebRTC/meme_webrtc.png">
+<meta property="article:published_time" content="2015-07-07T19:52:42.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.704Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="webRTC">
+<meta property="article:tag" content="canvas">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2015-07-PortalWebRTC/homer.png">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/07/07/2015-07-07--Realisez-votre-PortalGun-avec-WebRTC/" title="Réalisez votre PortalGun avec WebRTC" itemprop="url">Réalisez votre PortalGun avec WebRTC</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2015-07-07T19:52:42.000Z" itemprop="datePublished"> Publié 7 Jul 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<h2 id="Realisez-votre-PortalGun-avec-WebRTC"><a href="#Realisez-votre-PortalGun-avec-WebRTC" class="headerlink" title="Réalisez votre PortalGun avec WebRTC"></a>Réalisez votre PortalGun avec WebRTC</h2><img src="/assets/2015-07-PortalWebRTC/homer.png" class="left homer">
+
+<p>Vous avez toujours rêvé d’avoir votre “Portal Gun”* afin de pouvoir imiter Homer Simpson et ainsi pouvoir attraper les bières de votre frigo depuis votre canapé.</p>
+<p>Et bien c’est dors et déjà possible ! Enfin presque… vous pourrez surveiller votre frigo mais vous ne pourrez pas attraper ces précieuses bières.</p>
+<p>Ce que je vous propose c’est de réaliser des Portails similaires au jeux Portal basés uniquement sur les technologies du Web ! </p>
+<div style="clear:both"></div>
+
+<h2 id="Le-projet-Portal-WebRTC"><a href="#Le-projet-Portal-WebRTC" class="headerlink" title="Le projet Portal WebRTC"></a>Le projet Portal WebRTC</h2><p>Voici le rendu de ce qu’on allons réaliser : Le portail bleu voit ce qui se passe dans le portail orange et inversement :</p>
+<img src="/assets/2015-07-PortalWebRTC/jf_0.png" class="jf first">
+
+<img src="/assets/2015-07-PortalWebRTC/jf_1.png" class="jf">
+
+
+<p>Avant d’attaquer le code, regardons un peu de quoi nous avons besoin : </p>
+<ol>
+<li>Nous devons être capables de voir ce qu’il se passe de l’autre côté du portail</li>
+<li>Un “mur de flammes” entoure notre image</li>
+<li>Nous voulons nous télé-porter de l’autre côté du portail</li>
+</ol>
+<p>Voyons maintenant comment nous pouvons répondre à ces différents  besoins à travers des technologies du Web : </p>
+<ol>
+<li>WebRTC :il s’agit d’une technologie de visio (mais pas que) et donc c’est idéal pour voir ce qu’il se passe à l’autre côté du portail</li>
+<li>Les canvas nous permettront de jouer efficacement pour simuler de façon performante notre “mur de flammes”.</li>
+<li>La teleportationAPI…. euh non rien ne permet de répondre à ce besoin…</li>
+</ol>
+<p>&#x2F;!\ Ce projet ne marchera que sous Chrome ou Firefox</p>
+<h2 id="Architecture-du-projet"><a href="#Architecture-du-projet" class="headerlink" title="Architecture du projet"></a>Architecture du projet</h2><p><img src="/assets/2015-07-PortalWebRTC/archi.png"></p>
+<ul>
+<li>Chaque ordinateur se trouve sur le réseau et se connecte à un serveur Web uniquement pour afficher le contenu de la page. Le serveur est un serveur NodeJS. </li>
+<li>Ce Serveur expose aussi une WebSocket dont le rôle sera expliqué plus tard dans l’article</li>
+<li>L’échange des données vidéos se fait en “direct” entre les 2 ordinateurs via la technologie WebRTC <img src="/assets/2015-07-PortalWebRTC/logo_webrtc.png" class="logo"></li>
+</ul>
+<h2 id="WebRTC-What"><a href="#WebRTC-What" class="headerlink" title="WebRTC What ?"></a>WebRTC What ?</h2><img src="/assets/2015-07-PortalWebRTC/meme_webrtc.png" class="left meme">
+
+<p>WebRTC pour Real Time Communication est une des technologies les plus importantes du projet. Grâce à cette API, on peut  faire plusieurs choses :</p>
+<div style="clear:both"></div>
+
+<ul>
+<li>Obtenir l’audio et la vidéo.</li>
+<li>Etablir une connexion entre 2 hôtes.</li>
+<li>Communiquer de la vidéo et de l’audio.</li>
+<li>Communiquer d’autres types de données.</li>
+</ul>
+<p>Une des forces du webRTC est que les données s’échangent directement entre les 2 ordinateurs et que ces dernières ne passent pas par un serveur ! Pour réussir cet exploit, la technologie WebRTC repose sur 3 APIS web : </p>
+<ol>
+<li><strong>getUserMedia</strong> : cette API permet de récupérer les flux vidéos et audios d’un ordinateur</li>
+<li><strong>RTCPeerConnection</strong> : cette API permet de faire communiquer des données entre 2 hôtes en tenant compte de tout un ensemble de contraintes telles que l’adresse IP d’une machine, ses codecs, sa connectivité, …</li>
+<li><strong>RTCDataChannel</strong> : cette API permet de faire transiter sur une RTCPeerConnection des données textuelles ou binaires.</li>
+</ol>
+<p>Pour notre projet, nous n’allons utiliser que les API getUserMedia et RTCPeerConnection.</p>
+<h3 id="GetUserMedia"><a href="#GetUserMedia" class="headerlink" title="GetUserMedia"></a>GetUserMedia</h3><p>Il s’agit d’une API qui permet de récupérer un ensemble de stream de médias syncrhonisés. Chaque stream peut être vidéo &#x2F; audio.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> constraints = &#123;<span class="attr">video</span>: <span class="literal">true</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">successCallback</span>(<span class="params">stream</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> video = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;video&quot;</span>);</span><br><span class="line">  video.<span class="property">src</span> = <span class="variable language_">window</span>.<span class="property">URL</span>.<span class="title function_">createObjectURL</span>(stream);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">errorCallback</span>(<span class="params">error</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;navigator.getUserMedia error: &quot;</span>, </span><br><span class="line">  error);</span><br><span class="line">&#125;</span><br><span class="line">navigator.<span class="title function_">getUserMedia</span>(constraints, </span><br><span class="line">      successCallback, </span><br><span class="line">      errorCallback);</span><br><span class="line">      </span><br></pre></td></tr></table></figure>
+
+
+<p>Dans l’exemple ci dessus, nous ne récupérons que la vidéo et nous injectons le résultat de l’appel de getUserMedia dans une balise vidéo.</p>
+<h3 id="RTCPeerConnection"><a href="#RTCPeerConnection" class="headerlink" title="RTCPeerConnection"></a>RTCPeerConnection</h3><p>La RTCPeerConnection permet de gérer le transport des données. Pour initialiser une RTCPeerConnection, on répond au principe de l’offre et de la demande. Il y a d’une part, une notion d’offre et de demande pour communiquer mais aussi une notion de chemin à emprunter ! Ces 2 notions s’appellent le “Signaling”. Le Signaling a pour objectif de répondre à ces questions : </p>
+<ul>
+<li>Quel type de média et format je supporte ?</li>
+<li>Que puis-je envoyer ?</li>
+<li>Quel est mon type d’infrastructure réseau ?</li>
+</ul>
+<p>Pour faire cette étape, il suffit juste de trouver un moyen de passer ces informations à l’hôte distant. Une des technologies préconisées pour faire le signaling est “les WebSockets”. C’est donc ici qu’interviendra notre serveur de websockets</p>
+<p>Voici comment se déroule le signaling : </p>
+<h4 id="Gestion-de-l’offre"><a href="#Gestion-de-l’offre" class="headerlink" title="Gestion de l’offre"></a>Gestion de l’offre</h4><ol>
+<li>Alice appelle la méthode <strong>createOffer()</strong></li>
+<li>Dans le callback, Alice appelle <strong>setLocalDesctiption()</strong></li>
+<li>Alice <strong>sérialise l’offre</strong> et l’envoie à Eve</li>
+<li>Eve appelle la méthode <strong>setRemoteDescription()</strong> avec l’offre</li>
+<li>Eve appelle la méthode <strong>createAnswer()</strong></li>
+<li>Eve appelle la méthode <strong>setLocalDescription()</strong> avec la réponse envoyée à Alice</li>
+<li>Alice reçoit la réponse et appelle <strong>setRemoteDescription()</strong></li>
+</ol>
+<h4 id="Gestion-du-chemin-Ice-Candidate-ICE-pour-Interactive-Connectivity-Establishement"><a href="#Gestion-du-chemin-Ice-Candidate-ICE-pour-Interactive-Connectivity-Establishement" class="headerlink" title="Gestion du chemin Ice Candidate (ICE pour Interactive Connectivity Establishement)"></a>Gestion du chemin Ice Candidate (ICE pour Interactive Connectivity Establishement)</h4><ol>
+<li>Alice &amp; Eve ont leur <strong>RTCPeerConnection</strong></li>
+<li>En cas de succès de chaque côté les <strong>IceCanditates</strong> sont envoyées</li>
+<li>Alice <strong>sérialise</strong> ses IceCandidates et les envoie à Eve</li>
+<li>Eve reçoit les IceCandidates d’Alice et appelle <strong>addIceCandidate()</strong></li>
+<li>Eve <strong>sérialise</strong> ses IceCandidates et les envoie à Alice</li>
+<li>Alice reçoit les IceCandidates d’Eve et appelle <strong>addIceCandidate()</strong></li>
+<li>Les 2 savent comment communiquer.</li>
+</ol>
+<h4 id="Plus-d’infos"><a href="#Plus-d’infos" class="headerlink" title="Plus d’infos"></a>Plus d’infos</h4><p>Si vous souhaitez plus d’information sur le WebRTC : </p>
+<ul>
+<li><a href="http://www.html5rocks.com/en/tutorials/webrtc/basics/">http://www.html5rocks.com/en/tutorials/webrtc/basics/</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/webrtc/datachannels/">http://www.html5rocks.com/en/tutorials/webrtc/datachannels/</a></li>
+</ul>
+<h2 id="Retour-au-Projet-Portal"><a href="#Retour-au-Projet-Portal" class="headerlink" title="Retour au Projet Portal"></a>Retour au Projet Portal</h2><p>Après cette rapide introduction sur la technologie WebRTC. Nous allons maintenant nous intéresser à notre projet et nous allons voir comment réaliser notre “Portal”. </p>
+<p>Comme tout bon projet, je me suis inspiré de ce que je trouvais sur le net afin de gagner du temps. Ainsi, plutôt que de vous noyer sous des montagnes de code compréhensible et&#x2F;ou incompréhensible. Je vous donnerais plutôt les deltas que j’ai effectué et pourquoi je les ai fait.</p>
+<h3 id="Etape-1-cloner-les-projets-references"><a href="#Etape-1-cloner-les-projets-references" class="headerlink" title="Etape 1 : cloner les projets références"></a>Etape 1 : cloner les projets références</h3><p>La base du projet WebRTC repose sur le codelab initialisé par Sam Dutton : ingénieur chez Google et travaillant sur l’implémentation de WebRTC dans Chrome : <a href="https://bitbucket.org/webrtc/codelab">https://bitbucket.org/webrtc/codelab</a>. De façon plus précise notre point de départ sera le step7 de ce codelab.</p>
+<p>La base graphique des flammes repose sur le projet de Chris Longo :  <a href="https://github.com/chrislongo/html5-canvas-demo">https://github.com/chrislongo/html5-canvas-demo</a></p>
+<p>Nous allons donc commencer par cloner les 2 projets afin de récupérer une base de code propre et fonctionnelle que nous allons nettoyer petit à petit pour coller avec notre besoin.</p>
+<h3 id="Etape-2-creation-du-squelette-de-l’application"><a href="#Etape-2-creation-du-squelette-de-l’application" class="headerlink" title="Etape 2 : création du squelette de l’application"></a>Etape 2 : création du squelette de l’application</h3><p>L’application est structurée comme suit : </p>
+<ul>
+<li>assets&#x2F; : fichiers externes</li>
+<li>fonts&#x2F; : les fonts spéciales utilisées pour le projet</li>
+<li>images&#x2F; : les ressources graphiques utilisées pour le projet</li>
+<li>css&#x2F; : le style de notre page</li>
+<li>js&#x2F; : les fichiers javascripts utilisés par le projet</li>
+<li>package.json : fichier des dépendances node utilisées pour le serveur node</li>
+<li>server.js : le serveur nodeJS</li>
+<li>index.html : notre application</li>
+</ul>
+<p>Téléchargement des ressources annexes</p>
+<ul>
+<li>Vous trouverez la font ici : <a href="http://fontmeme.com/freefonts/34868/portal.font">http://fontmeme.com/freefonts/34868/portal.font</a></li>
+<li>Les images utilisées dans le projet sont disponible aux urls suivantes : <ul>
+<li>Image du BugDroid Portal : <a href="https://goo.gl/vT6svL">https://goo.gl/vT6svL</a></li>
+<li>Image du footer : <a href="https://goo.gl/J6CknB">https://goo.gl/J6CknB</a></li>
+<li>Image du header : <a href="https://goo.gl/AQnIoo">https://goo.gl/AQnIoo</a></li>
+<li>Image du logo WebRTC : <a href="https://goo.gl/XeimoA">https://goo.gl/XeimoA</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Etape-3-Ecriture-du-Serveur"><a href="#Etape-3-Ecriture-du-Serveur" class="headerlink" title="Etape 3 : Ecriture du Serveur"></a>Etape 3 : Ecriture du Serveur</h3><p>Comme expliqué précédemment, nous allons baser notre travail sur le step7 du codelab. </p>
+<h4 id="package-json"><a href="#package-json" class="headerlink" title=".&#x2F;package.json"></a>.&#x2F;package.json</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;jefBinomed&quot;</span>,</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;protal-devfest-2013&quot;</span>,</span><br><span class="line">  <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;socket.io&quot;</span>: <span class="string">&quot;~0.9.14&quot;</span>,</span><br><span class="line">    <span class="string">&quot;node-static&quot;</span> : <span class="string">&quot;~0.6.9&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="server-js"><a href="#server-js" class="headerlink" title=".&#x2F;server.js"></a>.&#x2F;server.js</h4><p>Nous reprenons le serveur tel qu’il est dans le codelab</p>
+<p>Ce serveur fait donc 2 choses : </p>
+<ol>
+<li>Dans un premier temps, on va définir un serveur http pour servir notre contenu html</li>
+<li>On créé un serveur de webSockets afin d’assurer la partie “Signaling”.  Un message transféré au serveur sera automatiquement partagé à l’autre client.</li>
+</ol>
+<p>Il ne nous reste plus à qu’à récupérer les modules node avec l’instruction : </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>De cette manière, les dépendances nodes seront téléchargées dans notre projet</p>
+<h3 id="Etape-4-Ecriture-du-projet-WebRTC"><a href="#Etape-4-Ecriture-du-projet-WebRTC" class="headerlink" title="Etape 4 : Ecriture du projet WebRTC"></a>Etape 4 : Ecriture du projet WebRTC</h3><p>Nous allons poser le style graphique de notre application : </p>
+<h4 id="assets-fonts-stylesheet-css"><a href="#assets-fonts-stylesheet-css" class="headerlink" title=".&#x2F;assets&#x2F;fonts&#x2F;stylesheet.css"></a>.&#x2F;assets&#x2F;fonts&#x2F;stylesheet.css</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@font-face</span> &#123;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&#x27;portalportal&#x27;</span>;</span><br><span class="line">    <span class="attribute">src</span>: <span class="built_in">url</span>(<span class="string">&#x27;portal.ttf&#x27;</span>) <span class="built_in">format</span>(<span class="string">&#x27;truetype&#x27;</span>);</span><br><span class="line">    <span class="attribute">font-weight</span>: normal;</span><br><span class="line">    <span class="attribute">font-style</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="css-main-css"><a href="#css-main-css" class="headerlink" title=".&#x2F;css&#x2F;main.css"></a>.&#x2F;css&#x2F;main.css</h4><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-color</span>:black;</span><br><span class="line">    <span class="attribute">font-family</span>: <span class="string">&quot;portalportal&quot;</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#636468</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-id">#videos</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: -<span class="number">342px</span>;</span><br><span class="line">    <span class="attribute">top</span>: -<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">../assets/images/navigation_bg.png</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-size</span>:<span class="number">750px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">147px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">750px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.landscape</span> <span class="selector-tag">header</span>&#123;</span><br><span class="line">    <span class="attribute">left</span>:<span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>:-<span class="number">325px</span>;</span><br><span class="line">    <span class="attribute">top</span>:inherit;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-class">.textHeader</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> * <span class="number">2</span>/<span class="number">3</span>);</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">top</span>:<span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="built_in">calc</span>(<span class="number">100%</span> / <span class="number">3</span>);</span><br><span class="line">    <span class="attribute">text-align</span>: right;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-class">.firstLine</span>&#123;</span><br><span class="line">    <span class="attribute">text-transform</span>: uppercase;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-class">.secondLine</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-class">.portalImg</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">right</span>: <span class="built_in">calc</span>(<span class="number">100%</span> / <span class="number">3</span> - <span class="number">60px</span>);</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">40px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="selector-id">#container</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">137px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">99%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="built_in">calc</span>(<span class="number">100%</span> - <span class="number">60px</span> - <span class="number">137px</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">footer</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">../assets/images/showcase_bg.png</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">750px</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">bottom</span>: -<span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">right</span>: -<span class="number">345px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">750px</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.landscape</span> <span class="selector-tag">footer</span>&#123;</span><br><span class="line">    <span class="attribute">right</span>: inherit;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: -<span class="number">325px</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">canvas</span>&#123;    </span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Server presentation<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- Main Css--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;assets/fonts/stylesheet.css&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;css/main.css&quot;</span>&gt;</span></span><br><span class="line">                </span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span> <span class="attr">class</span>=<span class="string">&quot;landscape&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">header</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;textHeader&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;firstLine&quot;</span>&gt;</span>Projet PORTAL 2O15<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;secondLine&quot;</span>&gt;</span>une expérience interactive<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span>  <span class="attr">src</span>=<span class="string">&quot;assets/images/bugdroidportal_2.png&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100px&quot;</span> <span class="attr">class</span>=<span class="string">&quot;portalImg&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">img</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">header</span>&gt;</span></span><br><span class="line">   </span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&#x27;container&#x27;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">&#x27;remoteVideo&#x27;</span> <span class="attr">autoplay</span> <span class="attr">muted</span> <span class="attr">style</span>=<span class="string">&quot;display:none;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvasFireLocalVideo&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">&quot;canvasRemoteVideo&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">footer</span>&gt;</span></span><br><span class="line">        Une création utilisant la technologie <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;www.webrtc.org&quot;</span>&gt;</span>WEBRTC<span class="symbol">&amp;nbsp;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">width</span>=<span class="string">&quot;32px&quot;</span> <span class="attr">src</span>=<span class="string">&quot;assets/images/webrtc.png&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span>. Credits to @Binomed</span><br><span class="line">    <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;/socket.io/socket.io.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;js/lib/adapter.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;js/canvasFire.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&#x27;js/app.js&#x27;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="js-lib-adapter-js"><a href="#js-lib-adapter-js" class="headerlink" title=".&#x2F;js&#x2F;lib&#x2F;adapter.js"></a>.&#x2F;js&#x2F;lib&#x2F;adapter.js</h4><p>Ce fichier doit être copié tel quel depuis le codelab car il s’agit de la classe Polyfill qui permet d’uniformiser l’API WebRTC entre Chrome &amp; Firefox</p>
+<h4 id="js-canvasFire-js"><a href="#js-canvasFire-js" class="headerlink" title=".&#x2F;js&#x2F;canvasFire.js"></a>.&#x2F;js&#x2F;canvasFire.js</h4><p>Initialiser ce fichier à vide afin d’avoir l’import depuis le fichier html qui fonctionne</p>
+<h4 id="js-app-js"><a href="#js-app-js" class="headerlink" title=".&#x2F;js&#x2F;app.js"></a>.&#x2F;js&#x2F;app.js</h4><p>Nous allons partir du fichier issu du step7 : .&#x2F;js&#x2F;main.js. </p>
+<p>Copiez l’intégralité du fichier et nous allons retirer ce qui ne nous intéresse pas.</p>
+<h5 id="LocalVideo"><a href="#LocalVideo" class="headerlink" title="LocalVideo"></a>LocalVideo</h5><p>Dans notre projet, nous ne sommes pas intéressé pour afficher le retour de notre webCam à l’écran, nous allons donc supprimer toutes les références à cet élément.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> localVideo = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#localVideo&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>et </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="title function_">attachMediaStream</span>(localVideo, stream);</span><br></pre></td></tr></table></figure>
+
+<p>dans la fonction handleUserMedia(stream)</p>
+<h5 id="DataChannel"><a href="#DataChannel" class="headerlink" title="DataChannel"></a>DataChannel</h5><p>De la même façon tout ce qui concerne le DataChannel ne nous sert pas</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> sendChannel;</span><br><span class="line"><span class="keyword">var</span> sendButton = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;sendButton&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> sendTextarea = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;dataChannelSend&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> receiveTextarea = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;dataChannelReceive&quot;</span>);</span><br><span class="line"></span><br><span class="line">sendButton.<span class="property">onclick</span> = sendData;</span><br></pre></td></tr></table></figure>
+
+<p>Au début du projet. Ensuite </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> pc_constraints = &#123;</span><br><span class="line">  <span class="string">&#x27;optional&#x27;</span>: [</span><br><span class="line">    &#123;<span class="string">&#x27;DtlsSrtpKeyAgreement&#x27;</span>: <span class="literal">true</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&#x27;RtpDataChannels&#x27;</span>: <span class="literal">true</span>&#125;</span><br><span class="line">  ]&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>est à remplacer par :</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> pc_constraints = &#123;</span><br><span class="line">  <span class="string">&#x27;optional&#x27;</span>: [</span><br><span class="line">    &#123;<span class="string">&#x27;DtlsSrtpKeyAgreement&#x27;</span>: <span class="literal">true</span>&#125;</span><br><span class="line">  ]&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Et aussi il faut supprimer tout ce qui suit qui se situe au niveau de la fonction createPeerConnection</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (isInitiator) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// Reliable Data Channels not yet supported in Chrome</span></span><br><span class="line">      sendChannel = pc.<span class="title function_">createDataChannel</span>(<span class="string">&quot;sendDataChannel&quot;</span>,</span><br><span class="line">        &#123;<span class="attr">reliable</span>: <span class="literal">false</span>&#125;);</span><br><span class="line">      sendChannel.<span class="property">onmessage</span> = handleMessage;</span><br><span class="line">      <span class="title function_">trace</span>(<span class="string">&#x27;Created send data channel&#x27;</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="title function_">alert</span>(<span class="string">&#x27;Failed to create data channel. &#x27;</span> +</span><br><span class="line">            <span class="string">&#x27;You need Chrome M25 or later with RtpDataChannel enabled&#x27;</span>);</span><br><span class="line">      <span class="title function_">trace</span>(<span class="string">&#x27;createDataChannel() failed with exception: &#x27;</span> + e.<span class="property">message</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sendChannel.<span class="property">onopen</span> = handleSendChannelStateChange;</span><br><span class="line">    sendChannel.<span class="property">onclose</span> = handleSendChannelStateChange;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    pc.<span class="property">ondatachannel</span> = gotReceiveChannel;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendData</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> data = sendTextarea.<span class="property">value</span>;</span><br><span class="line">  sendChannel.<span class="title function_">send</span>(data);</span><br><span class="line">  <span class="title function_">trace</span>(<span class="string">&#x27;Sent data: &#x27;</span> + data);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">gotReceiveChannel</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="title function_">trace</span>(<span class="string">&#x27;Receive Channel Callback&#x27;</span>);</span><br><span class="line">  sendChannel = event.<span class="property">channel</span>;</span><br><span class="line">  sendChannel.<span class="property">onmessage</span> = handleMessage;</span><br><span class="line">  sendChannel.<span class="property">onopen</span> = handleReceiveChannelStateChange;</span><br><span class="line">  sendChannel.<span class="property">onclose</span> = handleReceiveChannelStateChange;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleMessage</span>(<span class="params">event</span>) &#123;</span><br><span class="line">  <span class="title function_">trace</span>(<span class="string">&#x27;Received message: &#x27;</span> + event.<span class="property">data</span>);</span><br><span class="line">  receiveTextarea.<span class="property">value</span> = event.<span class="property">data</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleSendChannelStateChange</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> readyState = sendChannel.<span class="property">readyState</span>;</span><br><span class="line">  <span class="title function_">trace</span>(<span class="string">&#x27;Send channel state is: &#x27;</span> + readyState);</span><br><span class="line">  <span class="title function_">enableMessageInterface</span>(readyState == <span class="string">&quot;open&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">handleReceiveChannelStateChange</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> readyState = sendChannel.<span class="property">readyState</span>;</span><br><span class="line">  <span class="title function_">trace</span>(<span class="string">&#x27;Receive channel state is: &#x27;</span> + readyState);</span><br><span class="line">  <span class="title function_">enableMessageInterface</span>(readyState == <span class="string">&quot;open&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">enableMessageInterface</span>(<span class="params">shouldEnable</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (shouldEnable) &#123;</span><br><span class="line">    dataChannelSend.<span class="property">disabled</span> = <span class="literal">false</span>;</span><br><span class="line">    dataChannelSend.<span class="title function_">focus</span>();</span><br><span class="line">    dataChannelSend.<span class="property">placeholder</span> = <span class="string">&quot;&quot;</span>;</span><br><span class="line">    sendButton.<span class="property">disabled</span> = <span class="literal">false</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    dataChannelSend.<span class="property">disabled</span> = <span class="literal">true</span>;</span><br><span class="line">    sendButton.<span class="property">disabled</span> = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>Et enfin pour finir</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> constraints = &#123;<span class="string">&#x27;optional&#x27;</span>: [], <span class="string">&#x27;mandatory&#x27;</span>: &#123;<span class="string">&#x27;MozDontOfferDataChannel&#x27;</span>: <span class="literal">true</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>de la fonction doCall() est à remplacer par : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> constraints = &#123;<span class="string">&#x27;optional&#x27;</span>: [], <span class="string">&#x27;mandatory&#x27;</span>: &#123;&#125;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Tester"><a href="#Tester" class="headerlink" title="Tester"></a>Tester</h4><p>Nous pouvons à présent tester notre application pour vérifier que la vidéo passe bien à travers l’API WebRTC. Pour ce faire, il suffit simplement de lancer notre serveur à l’aide de la commande : </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node server.js</span><br></pre></td></tr></table></figure>
+
+<p>Notre serveur tourne sur le port 2013. Il faut donc entrer dans notre navigateur l’url : <a href="http://localhost:2013/">http://localhost:2013</a>. Il est très important d’accepter le partage de vidéo sinon cela ne pourra pas fonctionner.</p>
+<p>A ce moment là, vous devriez avoir un écran noir. En effet, comme nous ne faisons pas de retour visuel de notre propre caméra, nous devons ouvrir un deuxième onglet sur la même url pour vérifier le bon fonctionnement. Cependant, il y a une deuxième raison pour laquelle nous ne voyons rien, la balise video remoteVideo a un style ‘display:none’. Il faudra supprimer ce display: none le temps du test.<br>Si tout se passe bien, vous devriez avoir une vidéo sur les 2 onglets correspondant au rendu de votre webcam. Pour chaque tests futurs, je vous conseille de fermer les 2 onglets à chaque fois car le serveur Node stocke le nombre de clients connectés et la limite a été fixée à 2 clients maximum !</p>
+<h3 id="Etape-5-Ajout-du-mur-de-flammes"><a href="#Etape-5-Ajout-du-mur-de-flammes" class="headerlink" title="Etape 5 : Ajout du mur de flammes"></a>Etape 5 : Ajout du mur de flammes</h3><p>Maintenant que nous nous sommes occupés de la partie WebRTC, nous allons ajouter un peu de graphisme à tout ça. Pour le moment, notre flux WebRTC arrive directement dans une balise vidéo, mais il se trouve que les canvas et les vidéos marchent très bien ensemble !  En effet, nous allons faire des snapshots de notre balise vidéo que nous allons injecter dans un canvas et ainsi pouvoir commencer à jouer plus sérieusement avec des effets graphiques.</p>
+<p>Nous allons donc avoir </p>
+<ul>
+<li>1 balise vidéo en “display:none”</li>
+<li>1 canvas restituant la vidéo mais avec un masque</li>
+<li>1 canvas affichant le mur de flamme.</li>
+</ul>
+<h4 id="display-none"><a href="#display-none" class="headerlink" title="display:none"></a>display:none</h4><p>Pour ce faire, il suffit simplement de faire en sorte que dans notre html, nous ayons le code suivant : </p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">video</span> <span class="attr">id</span>=<span class="string">&#x27;remoteVideo&#x27;</span> <span class="attr">autoplay</span> <span class="attr">muted</span> <span class="attr">style</span>=<span class="string">&quot;display:none;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">video</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="canvas-avec-la-video"><a href="#canvas-avec-la-video" class="headerlink" title="canvas avec la vidéo"></a>canvas avec la vidéo</h4><p>Nous allons maintenant ajouter à notre application (app.js) l’affichage du canvas qui recevra la vidéo.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> canvasRemoteElement = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#canvasRemoteVideo&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> ctxRemote = canvasRemoteElement.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">snapshot</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> canvasToUse = canvasRemoteElement;</span><br><span class="line">    <span class="keyword">var</span> contextToUse = ctxRemote;</span><br><span class="line">    <span class="keyword">var</span> videoToUse = remoteVideo;</span><br><span class="line"></span><br><span class="line">    canvasRemoteElement.<span class="property">width</span> = remoteVideo.<span class="property">videoWidth</span>;</span><br><span class="line">    canvasRemoteElement.<span class="property">height</span> = remoteVideo.<span class="property">videoHeight</span>;</span><br><span class="line">    <span class="keyword">if</span> (remoteStream)&#123;</span><br><span class="line">        ctxRemote.<span class="title function_">drawImage</span>(remoteVideo, <span class="number">0</span>,<span class="number">0</span>);        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(snapshot);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">snapshot</span>();</span><br></pre></td></tr></table></figure>
+
+<p>Nous utilisons simplement la possibilité de dessiner dans un canvas une image d’une vidéo</p>
+<h4 id="Mur-de-flamme"><a href="#Mur-de-flamme" class="headerlink" title="Mur de flamme"></a>Mur de flamme</h4><p>Vous devez copier le contenu du fichier canvas.js du projet html5-canvas-demo dans notre fichier .&#x2F;js&#x2F;canvasFire.js</p>
+<p>Nous allons maintenant afficher le mur dans un canvas. Nous devons donc éditer notre fichier app.js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> canvasFireElement = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#canvasFireLocalVideo&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> ctxFire = canvasFireElement.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>Nous allons aussi modifier la méthode snapshot afin d’y intégrer toute la partie flammes</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> init = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">snapshot</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> canvasToUse = canvasRemoteElement;</span><br><span class="line">    <span class="keyword">var</span> contextToUse = ctxRemote;</span><br><span class="line">    <span class="keyword">var</span> videoToUse = remoteVideo;</span><br><span class="line"></span><br><span class="line">    canvasRemoteElement.<span class="property">width</span> = remoteVideo.<span class="property">videoWidth</span>;</span><br><span class="line">    canvasRemoteElement.<span class="property">height</span> = remoteVideo.<span class="property">videoHeight</span>;</span><br><span class="line">    <span class="keyword">if</span> (remoteStream)&#123;</span><br><span class="line">        ctxRemote.<span class="title function_">drawImage</span>(remoteVideo, <span class="number">0</span>,<span class="number">0</span>);        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> idealWidth = <span class="title class_">Math</span>.<span class="title function_">min</span>(canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span>, videoToUse.<span class="property">videoWidth</span> + <span class="number">100</span>);</span><br><span class="line">    <span class="keyword">var</span> minVideoWidth = <span class="title class_">Math</span>.<span class="title function_">min</span>(canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span> - <span class="number">50</span>, videoToUse.<span class="property">videoWidth</span>);</span><br><span class="line">    <span class="keyword">var</span> ratio = videoToUse.<span class="property">videoWidth</span> / videoToUse.<span class="property">videoHeight</span>;</span><br><span class="line">    <span class="keyword">var</span> idealHeight = <span class="title class_">Math</span>.<span class="title function_">min</span>(idealWidth / ratio, videoToUse.<span class="property">videoHeight</span>);</span><br><span class="line">    <span class="keyword">var</span> useVideoWidth = idealWidth === videoToUse.<span class="property">videoWidth</span> + <span class="number">100</span>;</span><br><span class="line">    </span><br><span class="line">    canvasToUse.<span class="property">width</span> = idealWidth; <span class="comment">//landscapeMode ? idealHeight : idealWidth;</span></span><br><span class="line">    canvasToUse.<span class="property">height</span> = canvasToUse.<span class="property">width</span>;</span><br><span class="line">    canvasToUse.<span class="property">style</span>.<span class="property">top</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientHeight</span> - canvasToUse.<span class="property">height</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">    canvasToUse.<span class="property">style</span>.<span class="property">left</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span> - canvasToUse.<span class="property">width</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line"></span><br><span class="line">    canvasFireElement.<span class="property">width</span> = idealWidth;<span class="comment">// landscapeMode ? idealHeight : idealWidth;</span></span><br><span class="line">    canvasFireElement.<span class="property">height</span> = canvasFireElement.<span class="property">width</span>;</span><br><span class="line">    canvasFireElement.<span class="property">style</span>.<span class="property">top</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientHeight</span> - canvasFireElement.<span class="property">height</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">    canvasFireElement.<span class="property">style</span>.<span class="property">left</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span> - canvasFireElement.<span class="property">width</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> refValue = idealWidth;</span><br><span class="line">    <span class="keyword">if</span> (localStream)&#123;</span><br><span class="line">      <span class="keyword">if</span> (!init </span><br><span class="line">          &amp;&amp; canvasToUse.<span class="property">width</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue)</span><br><span class="line">          &amp;&amp; canvasToUse.<span class="property">height</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue)</span><br><span class="line">          &amp;&amp; canvasFireElement.<span class="property">width</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue)</span><br><span class="line">          &amp;&amp; canvasFireElement.<span class="property">height</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue))&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (canvasFireElement.<span class="property">width</span> != <span class="number">100</span>)&#123;</span><br><span class="line"></span><br><span class="line">          init = <span class="literal">true</span>;</span><br><span class="line">          canvasDemo.<span class="property">canvas</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvasFireLocalVideo&#x27;</span>);</span><br><span class="line">          canvasDemo.<span class="title function_">init</span>();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (init)&#123;</span><br><span class="line">        canvasDemo.<span class="title function_">refresh</span>();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(snapshot);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Le code ajouté nous permet d’initialiser graphiquement le canvas et de demander de piloter les rafraîchissements du mur de flammes à partir de notre application. Nous allons donc devoir faire une modification dans le fichier canvasFire.js : Nous ajoutons une méthode rafraîchissement et nous supprimons l’appel au requestAnimationFrame : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="variable language_">this</span>.<span class="property">refresh</span> = <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="title function_">update</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main render loop</span></span><br><span class="line"><span class="keyword">var</span> update = <span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="title function_">smooth</span>();</span><br><span class="line">    <span class="title function_">draw</span>();</span><br><span class="line">    frames++;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//requestAnimFrame(function() &#123; update(); &#125;);</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Etape-6-Ajouter-un-cercle-de-feux"><a href="#Etape-6-Ajouter-un-cercle-de-feux" class="headerlink" title="Etape 6 : Ajouter un cercle de feux"></a>Etape 6 : Ajouter un cercle de feux</h3><h4 id="Principe"><a href="#Principe" class="headerlink" title="Principe"></a>Principe</h4><p>Le principe pour le mur de flamme est simple : Le projet html5-canvas-demo nous fournit un seul mur de flammes, hors nous, nous voulons 1 cercle. Nous allons nous y prendre en plusieurs étapes. </p>
+<ol>
+<li>Nous allons créer un mur de flammes sur chacun des axes cardinaux. De cette façon nous aurons des flammes partout autour de notre image</li>
+<li>Nous allons ensuite mettre en place un masque ovale afin de restreindre la zone affichant les flammes</li>
+<li>Nous allons faire tourner ces flammes pour leur donner plus de mouvement et se rapprocher du rendu du jeu Portal.</li>
+<li>Enfin, nous allons autoriser une deuxième couleur car chaque portail possède sa propre couleur (bleu et orange)</li>
+</ol>
+<p>Pour rappel, le projet initial fonctionne de la façon suivante : A chaque fois qu’il peut dessiner (window.requestAnimationFrame), on dessine une image de particules de flammes avec la méthode drawImage du context du canvas.</p>
+<h4 id="Flammes-selon-les-axes-cardinaux"><a href="#Flammes-selon-les-axes-cardinaux" class="headerlink" title="Flammes selon les axes cardinaux"></a>Flammes selon les axes cardinaux</h4><p>Afin d’afficher les flammes selon les axes nous allons créer une fonction qui nous permet d’afficher pour un angle donné une image de flamme dans le fichier canvasFire.js.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> drawAngle = <span class="keyword">function</span>(<span class="params">angleDegree</span>)&#123;</span><br><span class="line">        <span class="keyword">var</span> rad = angleDegree * <span class="title class_">Math</span>.<span class="property">PI</span> / <span class="number">180</span>;</span><br><span class="line">        <span class="keyword">var</span> fullWidth = width * scale;</span><br><span class="line">        <span class="keyword">var</span> fullHeight = height * scale;</span><br><span class="line"></span><br><span class="line">        context.<span class="title function_">translate</span>(fullWidth / <span class="number">2</span>, fullHeight / <span class="number">2</span>);</span><br><span class="line">        context.<span class="title function_">rotate</span>(rad);</span><br><span class="line">        context.<span class="title function_">translate</span>(-fullWidth / <span class="number">2</span>, -fullHeight / <span class="number">2</span>);</span><br><span class="line">        <span class="keyword">var</span> trY = <span class="title class_">Math</span>.<span class="title function_">abs</span>(<span class="title class_">Math</span>.<span class="title function_">cos</span>(rad))*((fullHeight - dims.<span class="property">height</span>) / <span class="number">2</span>);</span><br><span class="line">        context.<span class="title function_">translate</span>(<span class="number">0</span>,-trY);</span><br><span class="line">        context.<span class="title function_">drawImage</span>(buffer, <span class="number">0</span>, <span class="number">0</span>, width * scale, height * scale);</span><br><span class="line">        <span class="comment">// On doit revenir en arriere sur le mouvement pour traiter un nouvel angle</span></span><br><span class="line">        context.<span class="title function_">translate</span>(<span class="number">0</span>,trY);</span><br><span class="line">        context.<span class="title function_">translate</span>(fullWidth / <span class="number">2</span>, fullHeight / <span class="number">2</span>);</span><br><span class="line">        context.<span class="title function_">rotate</span>(-rad);</span><br><span class="line">        context.<span class="title function_">translate</span>(-fullWidth / <span class="number">2</span>, -fullHeight / <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Cette méthode fait donc une rotation du context du canvas avant de dessiner la flamme. Une des choses importante dans cette méthode est le retour à la position initiale !  C’est très important pour pouvoir traiter un nouvel angle ! </p>
+<p>Nous devons maintenant appeler cette méthode là où le drawImage d’origine était effectué à savoir dans la méthode “draw”. Le contenu de cette fonction sera donc maintenant le suivant : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// draw colormap-&gt;palette values to screen</span></span><br><span class="line"><span class="keyword">var</span> draw = <span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// render the image data to the offscreen buffer...</span></span><br><span class="line">    bufferContext.<span class="title function_">putImageData</span>(imageData, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// ...then draw it to scale to the onscreen canvas</span></span><br><span class="line">    <span class="comment">// Image de base en bas !</span></span><br><span class="line"> </span><br><span class="line">    <span class="title function_">drawAngle</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="title function_">drawAngle</span>(<span class="number">90</span>);</span><br><span class="line">    <span class="title function_">drawAngle</span>(<span class="number">180</span>);</span><br><span class="line">    <span class="title function_">drawAngle</span>(<span class="number">270</span>);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Il faut aussi ajouter les dimensions de l’image destination afin de calculer les bons angles.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> dims = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">canvas</span> = <span class="literal">undefined</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">init</span> = <span class="keyword">function</span>(<span class="params">dim</span>)</span><br><span class="line">&#123;</span><br><span class="line">    context = <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    width = <span class="title class_">Math</span>.<span class="title function_">round</span>(<span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">width</span> / scale);</span><br><span class="line">    height = <span class="title class_">Math</span>.<span class="title function_">round</span>(<span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">height</span> / scale);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (dim)&#123;</span><br><span class="line">        dims = dim;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        dims = &#123;<span class="attr">width</span>: width, height : height&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    colorMap = <span class="title class_">Array</span>(width * height);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; colorMap.<span class="property">length</span>; i++)</span><br><span class="line">        colorMap[i] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">initPalette</span>();</span><br><span class="line">    <span class="title function_">initBuffer</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">update</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Il faut enfin modifier la façon d’afficher les pixels afin de forcer un affichage de pixels transparents ! En effet, actuellement seul le dernier canvas est affiché. Il faut donc modifier la fonction drawPixel comme suit : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// set pixels in imageData</span></span><br><span class="line"><span class="keyword">var</span> drawPixel = <span class="keyword">function</span>(<span class="params">x, y, color</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> offset = (x + y * imageData.<span class="property">width</span>) * <span class="number">4</span>;</span><br><span class="line">    imageData.<span class="property">data</span>[offset] = color[<span class="number">0</span>];</span><br><span class="line">    imageData.<span class="property">data</span>[offset + <span class="number">1</span>] = color[<span class="number">1</span>];</span><br><span class="line">    imageData.<span class="property">data</span>[offset + <span class="number">2</span>] = color[<span class="number">2</span>];</span><br><span class="line">    <span class="keyword">if</span> (color[<span class="number">0</span>] &lt;= <span class="number">100</span> &amp;&amp; color[<span class="number">1</span>] === <span class="number">0</span> &amp;&amp; color[<span class="number">2</span>] &lt;= <span class="number">100</span>)&#123;</span><br><span class="line">        imageData.<span class="property">data</span>[offset + <span class="number">3</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        imageData.<span class="property">data</span>[offset + <span class="number">3</span>] = <span class="number">255</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Comme nous avons changé la méthode init de canvasFire.js. Nous devons donc changer l’appel à cette méthode dans app.js. Ainsi dans la méthode snapshot, il faut remplacer : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">canvasDemo.<span class="title function_">init</span>();</span><br></pre></td></tr></table></figure>
+
+<p>par </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">canvasDemo.<span class="title function_">init</span>(&#123;width :minVideoWidth, height : idealHeight + <span class="number">100</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>On constate qu’on va bien afficher 4 murs de flammes autour de notre vidéo</p>
+<h4 id="Mise-en-place-des-masques"><a href="#Mise-en-place-des-masques" class="headerlink" title="Mise en place des masques"></a>Mise en place des masques</h4><p>Dans l’application finale, la vidéo et les flammes sont dans un ovale. Nous allons utiliser pour ce faire une fonction des canvas : clip. Cette dernière nous permettra de définir une zone ovale dans le canvas et nous y dessinerons notre vidéo et nos flammes. Plus précisément, nous allons dessiner un ovale de flammes et par dessus, nous dessinerons un ovale contenant l’image de la vidéo. Voici donc la version presque finale de la méthode snaphot dans le fichier app.js</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">snapshot</span>(<span class="params"></span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> canvasToUse = canvasRemoteElement;</span><br><span class="line">    <span class="keyword">var</span> contextToUse = ctxRemote;</span><br><span class="line">    <span class="keyword">var</span> videoToUse = remoteVideo;</span><br><span class="line"></span><br><span class="line">    canvasRemoteElement.<span class="property">width</span> = remoteVideo.<span class="property">videoWidth</span>;</span><br><span class="line">    canvasRemoteElement.<span class="property">height</span> = remoteVideo.<span class="property">videoHeight</span>;</span><br><span class="line">    <span class="keyword">if</span> (remoteStream)&#123;</span><br><span class="line">        ctxRemote.<span class="title function_">drawImage</span>(remoteVideo, <span class="number">0</span>,<span class="number">0</span>);        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> delta = <span class="number">50</span>;</span><br><span class="line">    <span class="keyword">var</span> idealWidth = <span class="title class_">Math</span>.<span class="title function_">min</span>(canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span>, videoToUse.<span class="property">videoWidth</span> + <span class="number">100</span>);</span><br><span class="line">    <span class="keyword">var</span> minVideoWidth = <span class="title class_">Math</span>.<span class="title function_">min</span>(canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span> - <span class="number">50</span>, videoToUse.<span class="property">videoWidth</span>);</span><br><span class="line">    <span class="keyword">var</span> ratio = videoToUse.<span class="property">videoWidth</span> / videoToUse.<span class="property">videoHeight</span>;</span><br><span class="line">    <span class="keyword">var</span> idealHeight = <span class="title class_">Math</span>.<span class="title function_">min</span>(idealWidth / ratio, videoToUse.<span class="property">videoHeight</span>);</span><br><span class="line">    <span class="keyword">var</span> useVideoWidth = idealWidth === videoToUse.<span class="property">videoWidth</span> + <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line">    canvasToUse.<span class="property">width</span> = idealWidth; </span><br><span class="line">    canvasToUse.<span class="property">height</span> = canvasToUse.<span class="property">width</span>;</span><br><span class="line">    canvasToUse.<span class="property">style</span>.<span class="property">top</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientHeight</span> - canvasToUse.<span class="property">height</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">    canvasToUse.<span class="property">style</span>.<span class="property">left</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span> - canvasToUse.<span class="property">width</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line"></span><br><span class="line">    canvasFireElement.<span class="property">width</span> = idealWidth;</span><br><span class="line">    canvasFireElement.<span class="property">height</span> = canvasFireElement.<span class="property">width</span>;</span><br><span class="line">    canvasFireElement.<span class="property">style</span>.<span class="property">top</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientHeight</span> - canvasFireElement.<span class="property">height</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line">    canvasFireElement.<span class="property">style</span>.<span class="property">left</span> = ((canvasToUse.<span class="property">parentElement</span>.<span class="property">clientWidth</span> - canvasFireElement.<span class="property">width</span>) / <span class="number">2</span>)+<span class="string">&quot;px&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> refValue = idealWidth;</span><br><span class="line">    <span class="keyword">if</span> (localStream)&#123;</span><br><span class="line">      <span class="keyword">if</span> (!init </span><br><span class="line">          &amp;&amp; canvasToUse.<span class="property">width</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue)</span><br><span class="line">          &amp;&amp; canvasToUse.<span class="property">height</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue)</span><br><span class="line">          &amp;&amp; canvasFireElement.<span class="property">width</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue)</span><br><span class="line">          &amp;&amp; canvasFireElement.<span class="property">height</span> == <span class="title class_">Math</span>.<span class="title function_">round</span>(refValue))&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (canvasFireElement.<span class="property">width</span> != <span class="number">100</span>)&#123;</span><br><span class="line"></span><br><span class="line">          init = <span class="literal">true</span>;</span><br><span class="line">          canvasDemo.<span class="property">canvas</span> = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;canvasFireLocalVideo&#x27;</span>);</span><br><span class="line">          canvasDemo.<span class="title function_">init</span>(&#123;width :minVideoWidth, height : idealHeight + <span class="number">100</span>&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">var</span> deltaX = <span class="number">0</span>, deltaY = <span class="number">0</span>;</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      ctxFire.<span class="title function_">save</span>();</span><br><span class="line">      ctxFire.<span class="title function_">beginPath</span>();</span><br><span class="line">      </span><br><span class="line">      deltaX =  (canvasFireElement.<span class="property">width</span> - minVideoWidth) / <span class="number">2</span>;</span><br><span class="line">      deltaY =  (canvasFireElement.<span class="property">height</span>- idealHeight) / <span class="number">2</span>;</span><br><span class="line">      ctxFire.<span class="property">fillStyle</span> = <span class="string">&quot;rgba(0, 0, 0, 0)&quot;</span>;</span><br><span class="line">      <span class="title function_">drawEllipse</span>(ctxFire, deltaX, deltaY, minVideoWidth, idealHeight);</span><br><span class="line">      <span class="comment">// Clip to the current path</span></span><br><span class="line">      ctxFire.<span class="title function_">clip</span>(); </span><br><span class="line">      <span class="comment">// Undo the clipping</span></span><br><span class="line">      <span class="keyword">if</span> (init)&#123;</span><br><span class="line">        canvasDemo.<span class="title function_">refresh</span>();</span><br><span class="line">      &#125;</span><br><span class="line">      ctxFire.<span class="title function_">restore</span>();</span><br><span class="line">     </span><br><span class="line"></span><br><span class="line">      <span class="comment">// Save the state, so we can undo the clipping</span></span><br><span class="line">      contextToUse.<span class="title function_">save</span>();</span><br><span class="line">      contextToUse.<span class="title function_">beginPath</span>();</span><br><span class="line">      deltaX =  (canvasToUse.<span class="property">width</span> - minVideoWidth +delta) / <span class="number">2</span>;</span><br><span class="line">      deltaY =  (canvasToUse.<span class="property">height</span> - idealHeight+delta) / <span class="number">2</span>;</span><br><span class="line">      contextToUse.<span class="property">fillStyle</span> = <span class="string">&quot;rgba(0, 0, 0, 0)&quot;</span>;</span><br><span class="line">      <span class="title function_">drawEllipse</span>(contextToUse, deltaX , deltaY, minVideoWidth-delta , idealHeight-delta);</span><br><span class="line">      <span class="comment">// Clip to the current path</span></span><br><span class="line">      contextToUse.<span class="title function_">clip</span>();</span><br><span class="line">      contextToUse.<span class="title function_">drawImage</span>(videoToUse,<span class="number">0</span>,<span class="number">0</span>, videoToUse.<span class="property">videoWidth</span>, videoToUse.<span class="property">videoHeight</span>, deltaX, deltaY, minVideoWidth, idealHeight);</span><br><span class="line">      <span class="comment">// Undo the clipping</span></span><br><span class="line">      contextToUse.<span class="title function_">restore</span>();</span><br><span class="line">      </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">window</span>.<span class="title function_">requestAnimationFrame</span>(snapshot);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>et il faut donc ajouter la fonction </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">drawEllipse</span>(<span class="params">ctx, x, y, w, h</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> kappa = <span class="number">.5522848</span>,</span><br><span class="line">      ox = (w / <span class="number">2</span>) * kappa, <span class="comment">// control point offset horizontal</span></span><br><span class="line">      oy = (h / <span class="number">2</span>) * kappa, <span class="comment">// control point offset vertical</span></span><br><span class="line">      xe = x + w,           <span class="comment">// x-end</span></span><br><span class="line">      ye = y + h,           <span class="comment">// y-end</span></span><br><span class="line">      xm = x + w / <span class="number">2</span>,       <span class="comment">// x-middle</span></span><br><span class="line">      ym = y + h / <span class="number">2</span>;       <span class="comment">// y-middle</span></span><br><span class="line"></span><br><span class="line">  ctx.<span class="title function_">beginPath</span>();</span><br><span class="line">  ctx.<span class="title function_">moveTo</span>(x, ym);</span><br><span class="line">  ctx.<span class="title function_">bezierCurveTo</span>(x, ym - oy, xm - ox, y, xm, y);</span><br><span class="line">  ctx.<span class="title function_">bezierCurveTo</span>(xm + ox, y, xe, ym - oy, xe, ym);</span><br><span class="line">  ctx.<span class="title function_">bezierCurveTo</span>(xe, ym + oy, xm + ox, ye, xm, ye);</span><br><span class="line">  ctx.<span class="title function_">bezierCurveTo</span>(xm - ox, ye, x, ym + oy, x, ym);</span><br><span class="line">  ctx.<span class="title function_">closePath</span>();</span><br><span class="line">  ctx.<span class="title function_">stroke</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>On peut donc voir que l’on dessine des Ellipses dans lesquelles nous faisons nos affichages de flammes suivit de l’affichage de la vidéo </p>
+<h4 id="Rotation-des-flammes"><a href="#Rotation-des-flammes" class="headerlink" title="Rotation des flammes"></a>Rotation des flammes</h4><p>La gestion de la rotation des flammes se fait dans le fichier canvasFire.js. Tout à l’heure nous avons définit l’affichage du mur de flammes selon 4 axes cardinaux. Nous allons donc simplement faire évoluer ces angles au fil du temps pour mettre en place la rotation.</p>
+<p>Commençons par ajouter de nouvelles variables globales : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> timeOut = <span class="number">7</span>;</span><br><span class="line"><span class="keyword">var</span> angleInc = <span class="number">360</span> / (timeOut * <span class="number">100</span>);</span><br><span class="line"><span class="keyword">var</span> angle = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">var</span> lastTime = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>et nous allons simplement mettre à jour le contenu de la fonction draw pour faire évoluer les angles : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// draw colormap-&gt;palette values to screen</span></span><br><span class="line"><span class="keyword">var</span> draw = <span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// render the image data to the offscreen buffer...</span></span><br><span class="line">    bufferContext.<span class="title function_">putImageData</span>(imageData, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">// ...then draw it to scale to the onscreen canvas</span></span><br><span class="line">    <span class="comment">// Image de base en bas !</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">var</span> timeStamp = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>();</span><br><span class="line">    angle += angleInc * ((lastTime - timeStamp) / <span class="number">100</span>);</span><br><span class="line">    angle = angle % <span class="number">360</span>;</span><br><span class="line">    lastTime = timeStamp;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">drawAngle</span>(angle);</span><br><span class="line">    <span class="title function_">drawAngle</span>(angle+<span class="number">90</span>);</span><br><span class="line">    <span class="title function_">drawAngle</span>(angle+<span class="number">180</span>);</span><br><span class="line">    <span class="title function_">drawAngle</span>(angle+<span class="number">270</span>);</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Maintenant notre cercle de flamme évolue en tournant</p>
+<h4 id="Ajout-d’une-autre-couleur"><a href="#Ajout-d’une-autre-couleur" class="headerlink" title="Ajout d’une autre couleur"></a>Ajout d’une autre couleur</h4><p>Afin de compléter comme il se doit notre portal, nous devons donc ajouter une deuxième couleur ! Dans le fichier canvasFire.js la définition de la couleur utilisée se fait dans la méthode initPalette();</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// init palette from warm to white hot colors</span></span><br><span class="line"><span class="keyword">var</span> initPalette = <span class="keyword">function</span>(<span class="params"></span>)</span><br><span class="line">&#123;</span><br><span class="line">    palette = <span class="title class_">Array</span>(<span class="number">256</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">64</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (color === <span class="string">&#x27;red&#x27;</span>)&#123;</span><br><span class="line">            palette[i] = [(i &lt;&lt; <span class="number">2</span>), <span class="number">0</span>, <span class="number">0</span>];</span><br><span class="line">            palette[i + <span class="number">64</span>] = [<span class="number">255</span>, (i &lt;&lt; <span class="number">2</span>), <span class="number">0</span>];</span><br><span class="line">            palette[i + <span class="number">128</span>] = [<span class="number">255</span>, <span class="number">255</span>, (i &lt;&lt; <span class="number">2</span>)];</span><br><span class="line">            palette[i + <span class="number">192</span>] = [<span class="number">255</span>, <span class="number">255</span>, <span class="number">255</span>];</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span> (color === <span class="string">&#x27;blue&#x27;</span>) &#123;</span><br><span class="line"></span><br><span class="line">            palette[i] = [<span class="number">0</span>, <span class="number">0</span>, (i &lt;&lt; <span class="number">2</span>)];</span><br><span class="line">            palette[i + <span class="number">64</span>] = [<span class="number">0</span>, (i &lt;&lt; <span class="number">2</span>), <span class="number">255</span>];</span><br><span class="line">            palette[i + <span class="number">128</span>] = [<span class="number">0</span>, <span class="number">128</span>, <span class="number">100</span>+(i &lt;&lt; <span class="number">2</span>)];</span><br><span class="line">            palette[i + <span class="number">192</span>] = [<span class="number">0</span>, <span class="number">128</span>, <span class="number">255</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Et nous allons donc modifier son appel dans la méthode init et ajouter la variable globale color.</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> color = <span class="string">&#x27;red&#x27;</span>;    </span><br><span class="line"></span><br><span class="line"><span class="variable language_">this</span>.<span class="property">init</span> = <span class="keyword">function</span>(<span class="params">colorToApply, dim</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> (colorToApply)&#123;</span><br><span class="line">        color = colorToApply;</span><br><span class="line">    &#125;</span><br><span class="line">    context = <span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="title function_">getContext</span>(<span class="string">&#x27;2d&#x27;</span>);</span><br><span class="line"></span><br><span class="line">    width = <span class="title class_">Math</span>.<span class="title function_">round</span>(<span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">width</span> / scale);</span><br><span class="line">    height = <span class="title class_">Math</span>.<span class="title function_">round</span>(<span class="variable language_">this</span>.<span class="property">canvas</span>.<span class="property">height</span> / scale);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (dim)&#123;</span><br><span class="line">        dims = dim;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        dims = &#123;<span class="attr">width</span>: width, height : height&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    colorMap = <span class="title class_">Array</span>(width * height);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; colorMap.<span class="property">length</span>; i++)</span><br><span class="line">        colorMap[i] = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">initPalette</span>();</span><br><span class="line">    <span class="title function_">initBuffer</span>();</span><br><span class="line"></span><br><span class="line">    <span class="title function_">update</span>();</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Comme vous le constatez, nous avons fait évolué la signature de la méthode init. Ceci veut dire que nous allons faire notre ultime modification dans le fichier app.js dans la méthode snapshot(). Nous allons remplacer : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">canvasDemo.<span class="title function_">init</span>(&#123;width :minVideoWidth, height : idealHeight + <span class="number">100</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>par : </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">canvasDemo.<span class="title function_">init</span>(isInitiator ? <span class="string">&#x27;red&#x27;</span> : <span class="string">&#x27;blue&#x27;</span>, &#123;width :minVideoWidth, height : idealHeight + <span class="number">100</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Nous en avons fini avec le code ! </p>
+<h3 id="Etape-7-Fin"><a href="#Etape-7-Fin" class="headerlink" title="Etape 7 : Fin"></a>Etape 7 : Fin</h3><p>Il ne vous reste plus qu’à projeter le résultat de l’application sur 2 murs différents avec une webcam de chaque côté pour filmer le tout ! </p>
+<h2 id="Credits"><a href="#Credits" class="headerlink" title="Crédits :"></a>Crédits :</h2><p>Tout le code source est disponible ici : <a href="https://github.com/GDG-Nantes/portal-devfest-2013">https://github.com/GDG-Nantes/portal-devfest-2013</a></p>
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2015-07-PortalWebRTC/portal-custo.js"></script>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/webRTC/">webRTC</a><a href="/tags/canvas/">canvas</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2015/07/07/2015-07-07--Realisez-votre-PortalGun-avec-WebRTC/" data-title="Réalisez votre PortalGun avec WebRTC | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/10/30/2015-10-30--Connectez-votre-rameur-d-appartement-avec-Chrome/" title="Connectez votre rameur d&#39;appartement avec Chrome">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Connectez votre rameur d&#39;appartement avec Chrome</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/"  title="DevFest Nantes 2014 - Demos Part 2 - Leap Motion">
+ <strong>NEXT:</strong><br/> 
+ <span>DevFest Nantes 2014 - Demos Part 2 - Leap Motion
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

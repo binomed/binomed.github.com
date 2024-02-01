@@ -1,0 +1,741 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>DevFest Nantes 2014 - Demos Part 1 - Myo | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Myo et EV3Voici le résultat final Déplacement        Tir d’élastiques        CommandesPour résumer, j’utilise mon bras pour diriger le robot et si je serre le poing, alors ce dernier tir des élastique">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DevFest Nantes 2014 - Demos Part 1 - Myo">
+<meta property="og:url" content="http://jef.binomed.fr/2014/12/16/2014-12-16--DevFest-Nantes-2014-Demos-Part-1-Myo/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Myo et EV3Voici le résultat final Déplacement        Tir d’élastiques        CommandesPour résumer, j’utilise mon bras pour diriger le robot et si je serre le poing, alors ce dernier tir des élastique">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/schema_myo_ev3.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/myo-overview.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/myo_gestures.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/Mark-blog-Diagrams-01.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/Myo_gestes_metrics.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/ev3_ide.png">
+<meta property="article:published_time" content="2014-12-16T14:24:40.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.703Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="nodeJS">
+<meta property="article:tag" content="myo">
+<meta property="article:tag" content="ev3">
+<meta property="article:tag" content="devfest">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2014-12-DevFestDemos/images/schema_myo_ev3.png">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2014/12/16/2014-12-16--DevFest-Nantes-2014-Demos-Part-1-Myo/" title="DevFest Nantes 2014 - Demos Part 1 - Myo" itemprop="url">DevFest Nantes 2014 - Demos Part 1 - Myo</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2014-12-16T14:24:40.000Z" itemprop="datePublished"> Publié 16 Dec 2014</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contenu</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Myo-et-EV3"><span class="toc-number">1.</span> <span class="toc-text">Myo et EV3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deplacement"><span class="toc-number">1.1.</span> <span class="toc-text">Déplacement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tir-d%E2%80%99elastiques"><span class="toc-number">1.2.</span> <span class="toc-text">Tir d’élastiques</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commandes"><span class="toc-number">1.3.</span> <span class="toc-text">Commandes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Je-ne-suis-pas-un-jedi-mais-juste-un-developpeur"><span class="toc-number">2.</span> <span class="toc-text">Je ne suis pas un jedi mais juste un développeur</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Myo"><span class="toc-number">2.1.</span> <span class="toc-text">Myo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E2%80%99est-quoi"><span class="toc-number">2.1.1.</span> <span class="toc-text">C’est quoi ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Que-dois-je-analyser"><span class="toc-number">2.1.2.</span> <span class="toc-text">Que dois-je analyser ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#On-code-comment-avec"><span class="toc-number">2.1.3.</span> <span class="toc-text">On code comment avec ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Partie-C"><span class="toc-number">2.1.4.</span> <span class="toc-text">Partie C++</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Partie-NodeJS"><span class="toc-number">2.2.</span> <span class="toc-text">Partie NodeJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Le-Serveur-NodeJS"><span class="toc-number">2.2.1.</span> <span class="toc-text">Le Serveur NodeJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L%E2%80%99analyse-des-trames"><span class="toc-number">2.2.2.</span> <span class="toc-text">L’analyse des trames</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L%E2%80%99envoi-des-donnees"><span class="toc-number">2.2.3.</span> <span class="toc-text">L’envoi des données</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Partie-EV3"><span class="toc-number">2.3.</span> <span class="toc-text">Partie EV3</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code-source"><span class="toc-number">4.</span> <span class="toc-text">Code source</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="Myo-et-EV3"><a href="#Myo-et-EV3" class="headerlink" title="Myo et EV3"></a>Myo et EV3</h1><p>Voici le résultat final</p>
+<h2 id="Deplacement"><a href="#Deplacement" class="headerlink" title="Déplacement"></a>Déplacement</h2><video width="80%" controls>
+    <source src="/assets/2014-12-DevFestDemos/videos/video_deplacement.mp4" type="video/mp4">
+</video>
+
+<h2 id="Tir-d’elastiques"><a href="#Tir-d’elastiques" class="headerlink" title="Tir d’élastiques"></a>Tir d’élastiques</h2><video width="80%" controls>
+    <source src="/assets/2014-12-DevFestDemos/videos/video_tir.mp4" type="video/mp4">
+</video>
+
+<h2 id="Commandes"><a href="#Commandes" class="headerlink" title="Commandes"></a>Commandes</h2><p>Pour résumer, j’utilise mon bras pour diriger le robot et si je serre le poing, alors ce dernier tir des élastiques. </p>
+<p>Certains m’ont dit avec humour que ceci était la prochaine étape : </p>
+<iframe width="560" height="315" src="//www.youtube-nocookie.com/embed/Z3aVhpKaHIU" frameborder="0" allowfullscreen></iframe>
+
+<p>mais …</p>
+<h1 id="Je-ne-suis-pas-un-jedi-mais-juste-un-developpeur"><a href="#Je-ne-suis-pas-un-jedi-mais-juste-un-developpeur" class="headerlink" title="Je ne suis pas un jedi mais juste un développeur"></a>Je ne suis pas un jedi mais juste un développeur</h1><p>Voici donc le schéma de communication des différents composants : </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/schema_myo_ev3.png"></p>
+<p>Le fonctionnement est donc très simple. Un programme C++ tourne sur mon ordinateur récupérant tous les messages du Bracelet Myo via le SDK de Myo. Ce dernier envoie toutes les commandes à un serveur NodeJS qui s’occupe de communiquer en Bluetooth avec le Lego Mindstorm. </p>
+<h2 id="Myo"><a href="#Myo" class="headerlink" title="Myo"></a>Myo</h2><h3 id="C’est-quoi"><a href="#C’est-quoi" class="headerlink" title="C’est quoi ?"></a>C’est quoi ?</h3><p>Avant de parler de Myo, revenons un peu sur ce que c’est et comment cela fonctionne. </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/myo-overview.png"></p>
+<p>C’est donc un bracelet connecté qui possède un certain nombre de sensors : </p>
+<ul>
+<li>Sensors Électriques</li>
+<li>Accéléromètre</li>
+<li>Gyroscope</li>
+</ul>
+<p>Ce qui différencie le Myo des autres bracelets connectés, c’est les sensors électriques qui lui permettre de reconnaître des <strong>“gestes”</strong>. De cette façon, en plus d’envoyer des informations de types : orientation &#x2F; vitesse, nous sommes capable de détecter si le porteur du bracelet a fait un geste précis. Les gestes aujourd’hui reconnus sont : </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/myo_gestures.png"></p>
+<p>En fonction de la version du SDK, que vous avez un 5ème geste qui est disponible mais les gestes représentés ci-dessus sont ceux qui fonctionnent le mieux et qui sont les plus simple à déclencher.</p>
+<h3 id="Que-dois-je-analyser"><a href="#Que-dois-je-analyser" class="headerlink" title="Que dois-je analyser ?"></a>Que dois-je analyser ?</h3><p>Avant d’attaquer le code, j’ai du me poser une question cruciale : <strong>Comment vais-je contrôler mon robot ?</strong> </p>
+<p>Je viens de présenter les sensors qui sont à notre disposition : Accéléromètre, Gyroscope, Sensors électriques. Je dois donc choisir le moyen le plus simple pour contrôler le robot. </p>
+<p>Quel va être le mouvement le plus “naturel” pour contrôler un robot ? A défaut d’avoir trouvé le plus naturel, j’en ai trouvé un qui était simple à exploiter et simple à faire comprendre car c’est aussi un des enjeux majeurs de ce genre de devices : Si l’on doit passer un temps considérable à expliquer le fonctionnement, c’est que l’on a raté quelque chose ! </p>
+<p>Voici un schéma qui traduit le vocabulaire utilisé par <a href="https://www.thalmic.com/">Thalmic</a> (la société derrière le bracelet) pour retranscrire les informations du bracelet</p>
+<p><img src="/assets/2014-12-DevFestDemos/images/Mark-blog-Diagrams-01.jpg"></p>
+<p>Pour ma part, j’ai choisi d’exploiter le <strong>“Pitch”</strong> et le <strong>“Yaw”</strong>. Cela reste relativement intuitif et facile à expliquer : </p>
+<ul>
+<li>Baissez votre bras et ça fera avancer le robot. Remontez-le et ça le fera reculer. Le bras à l’horizontal représente le point 0 (robot à l’arrêt).</li>
+<li>Bougez votre bras vers la gauche ou vers la droite pour le faire tourner.</li>
+</ul>
+<p>J’aurais pu utiliser le <strong>“Roll”</strong> mais après quelques essais, je me suis rendu compte que le Roll était facile à faire pour l’utilisateur vers la partie extérieur de son corps mais pas vers l’intérieur… Cela avait le désavantage suivant : On peut facilement tourner dans un sens mais difficilement dans l’autre…. D’où mon choix de tourner avec le <strong>“Yaw”</strong>. </p>
+<p>Faites l’essai : Si vous êtes droitier, vous vous rendrez vite compte que tourner sa main vers la droite est simple, mais la tourner vers la gauche nécessite une certaine contorsion du bras qui rend le mouvement non naturel. De plus la combinaison Roll + Pitch complexifiait beaucoup le code.</p>
+<h3 id="On-code-comment-avec"><a href="#On-code-comment-avec" class="headerlink" title="On code comment avec ?"></a>On code comment avec ?</h3><p>Aujourd’hui Thalmic a développé 3 SDKs permettant d’interagir avec des objets (programmation objets) que l’on peut manipuler :</p>
+<ul>
+<li>Un SDK en C++ exploitable pour les ordinateurs</li>
+<li>Un SDK en Java pour Android</li>
+<li>Un SDK en ObjectiveC pour Iphone</li>
+</ul>
+<p>A partir de là, on peut commencer à jouer. Je ne rentrerais pas trop dans le détail car je compte rédiger plus tard un billet sur le développement avec Myo. Je vais donc m’attarder sur la solution retenue pour la démo.</p>
+<h3 id="Partie-C"><a href="#Partie-C" class="headerlink" title="Partie C++"></a>Partie C++</h3><p>Pour la démo, j’ai donc choisi d’exploiter le SDK C++ car utiliser mon téléphone présentait un soucis en termes de batterie notamment au niveau de la communication bluetooth classique avec le Lego.</p>
+<p>Je suis parti du code fournit avec le SDK pour exploiter les données que je voulais. Le principe du SDK est simple, nous posons un listener et nous récupérons des informations construites : </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Class qui écoute les événements provenant du sdk</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DataCollector</span> : <span class="keyword">public</span> myo::DeviceListener &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	...</span><br><span class="line">	<span class="comment">// Appelé pour donner les données sur l&#x27;orientation,</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">onOrientationData</span><span class="params">(myo::Myo* myo, <span class="type">uint64_t</span> timestamp, <span class="type">const</span> myo::Quaternion&lt;<span class="type">float</span>&gt;&amp; quat)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">using</span> std::atan2;</span><br><span class="line">		<span class="keyword">using</span> std::asin;</span><br><span class="line">		<span class="keyword">using</span> std::sqrt;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Calculate Euler angles (roll, pitch, and yaw) from the unit quaternion.</span></span><br><span class="line">		roll = <span class="built_in">atan2</span>(<span class="number">2.0f</span> * (quat.<span class="built_in">w</span>() * quat.<span class="built_in">x</span>() + quat.<span class="built_in">y</span>() * quat.<span class="built_in">z</span>()),</span><br><span class="line">			<span class="number">1.0f</span> - <span class="number">2.0f</span> * (quat.<span class="built_in">x</span>() * quat.<span class="built_in">x</span>() + quat.<span class="built_in">y</span>() * quat.<span class="built_in">y</span>()));</span><br><span class="line">		pitch = <span class="built_in">asin</span>(<span class="number">2.0f</span> * (quat.<span class="built_in">w</span>() * quat.<span class="built_in">y</span>() - quat.<span class="built_in">z</span>() * quat.<span class="built_in">x</span>()));</span><br><span class="line">		yaw = <span class="built_in">atan2</span>(<span class="number">2.0f</span> * (quat.<span class="built_in">w</span>() * quat.<span class="built_in">z</span>() + quat.<span class="built_in">x</span>() * quat.<span class="built_in">y</span>()),</span><br><span class="line">			<span class="number">1.0f</span> - <span class="number">2.0f</span> * (quat.<span class="built_in">y</span>() * quat.<span class="built_in">y</span>() + quat.<span class="built_in">z</span>() * quat.<span class="built_in">z</span>()));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Convert the floating point angles in radians to a scale from 0 to 20.</span></span><br><span class="line">		roll_w = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;((roll + (<span class="type">float</span>)M_PI) / (M_PI * <span class="number">2.0f</span>) * <span class="number">18</span>);</span><br><span class="line">		pitch_w = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;((pitch + (<span class="type">float</span>)M_PI / <span class="number">2.0f</span>) / M_PI * <span class="number">18</span>);</span><br><span class="line">		yaw_w = <span class="built_in">static_cast</span>&lt;<span class="type">int</span>&gt;((yaw + (<span class="type">float</span>)M_PI) / (M_PI * <span class="number">2.0f</span>) * <span class="number">18</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Appelé à chaque fois qu&#x27;un geste est détecté</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">onPose</span><span class="params">(myo::Myo* myo, <span class="type">uint64_t</span> timestamp, myo::Pose pose)</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		currentPose = pose;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Sur la pose Poing, on fait vibrer le bracelet</span></span><br><span class="line">		<span class="keyword">if</span> (pose == myo::Pose::fist) &#123;</span><br><span class="line">			myo-&gt;<span class="built_in">vibrate</span>(myo::Myo::vibrationMedium);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Méthode appelée dans le main</span></span><br><span class="line">	<span class="function"><span class="type">void</span> <span class="title">print</span><span class="params">()</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="comment">// On appelle notre serveur local avec un json formaté</span></span><br><span class="line">		<span class="function">std::string <span class="title">url</span><span class="params">(<span class="string">&quot;?json=&quot;</span>)</span></span>;</span><br><span class="line">		url += <span class="built_in">toJson</span>();</span><br><span class="line">		<span class="built_in">Request</span>(GET, <span class="string">&quot;localhost&quot;</span>, url.<span class="built_in">c_str</span>(), <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Méthode qui envoie nos données au format JSON</span></span><br><span class="line">	<span class="function">std::string <span class="title">toJson</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="function">std::string <span class="title">result</span><span class="params">(<span class="string">&quot;&#123;&quot;</span>)</span></span>;</span><br><span class="line">		result += <span class="string">&quot;\&quot;roll\&quot;:&quot;</span> + std::<span class="built_in">to_string</span>(roll);</span><br><span class="line">		result += <span class="string">&quot;,\&quot;pitch\&quot;:&quot;</span> + std::<span class="built_in">to_string</span>(pitch);</span><br><span class="line">		result += <span class="string">&quot;,\&quot;yaw\&quot;:&quot;</span> + std::<span class="built_in">to_string</span>(yaw);</span><br><span class="line">		result += <span class="string">&quot;,\&quot;pose\&quot;:\&quot;&quot;</span> + currentPose.<span class="built_in">toString</span>() + <span class="string">&quot;\&quot;&quot;</span>;</span><br><span class="line">		result += <span class="string">&quot;&#125;&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span>** argv)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="comment">// We catch any exceptions that might occur below -- see the catch statement for more details.</span></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// On essaye de récupérer une instance de Myo</span></span><br><span class="line">		myo::Hub hub;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// On patiente 10 secondes pour voir si on peut récupérer une instance de Myo</span></span><br><span class="line">		myo::Myo* myo = hub.<span class="built_in">waitForMyo</span>(<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Si hub.waitForMyo retourne null, alors c&#x27;est qu&#x27;on en a pas trouvé et donc on quitte notre programme</span></span><br><span class="line">		<span class="keyword">if</span> (!myo) &#123;</span><br><span class="line">			<span class="keyword">throw</span> std::<span class="built_in">runtime_error</span>(<span class="string">&quot;Unable to find a Myo!&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// On va construire notre listener </span></span><br><span class="line">		DataCollector collector;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Hub::addListener() Attache notre listener au hub Myo</span></span><br><span class="line">		hub.<span class="built_in">addListener</span>(&amp;collector);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// On rentre dans une boucle infinie afin de lire régulièrement les données</span></span><br><span class="line">		<span class="keyword">while</span> (<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">// On récupère les informations 20 fois par secondes</span></span><br><span class="line">			hub.<span class="built_in">run</span>(<span class="number">1000</span> / <span class="number">20</span>);</span><br><span class="line">			<span class="comment">// On imprime les données collectées</span></span><br><span class="line">			collector.<span class="built_in">print</span>();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">catch</span> (<span class="type">const</span> std::exception&amp; e) &#123;</span><br><span class="line">		std::cerr &lt;&lt; <span class="string">&quot;Error: &quot;</span> &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; std::endl;</span><br><span class="line">		std::cerr &lt;&lt; <span class="string">&quot;Press enter to continue.&quot;</span>;</span><br><span class="line">		std::cin.<span class="built_in">ignore</span>();</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>Une fois ce code exécuté, nous récupérons 20 fois par seconde un JSON nous donnant l’état du bracelet. Et ce JSON est envoyé à un serveur tournant en local sur notre machine.</p>
+<h2 id="Partie-NodeJS"><a href="#Partie-NodeJS" class="headerlink" title="Partie NodeJS"></a>Partie NodeJS</h2><p>La partie NodeJS est un peu plus compliquée car c’est elle qui possède l’intelligence du programme et l’aspect conversion. Le code est donc réparti en 3 composantes principales : </p>
+<ol>
+<li>La partie Serveur : Dans cette partie, le programme reçoit les informations provenant du bracelet</li>
+<li>La partie Analyse : Dans cette partie, le programme décide quoi faire des données. Le robot doit-il avancer ? Reculer ? …</li>
+<li>La partie communication : Dans cette partie, le programme communique en bluetooth avec le Lego. Il y a donc un protocole à respecter et à implémenter.</li>
+</ol>
+<p>Voici mon package.json </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;jefBinomed&quot;</span>,</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;MyoEV3&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;dependencies&quot;</span>: &#123;&#125;,</span><br><span class="line">  <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">  	<span class="string">&quot;bluetooth-serial-port&quot;</span>: <span class="string">&quot;1.1.4&quot;</span>, <span class="comment">// Utilisé pour la communication bluetooth</span></span><br><span class="line">    <span class="string">&quot;express&quot;</span> : <span class="string">&quot;3.x&quot;</span> <span class="comment">// Utilisé pour la partie serveur</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Le-Serveur-NodeJS"><a href="#Le-Serveur-NodeJS" class="headerlink" title="Le Serveur NodeJS"></a>Le Serveur NodeJS</h3><p>Pour la partie serveur, je suis parti sur un simple serveur à base d’express. </p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="title function_">express</span>()</span><br><span class="line">  .<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&#x27;public&#x27;</span>))</span><br><span class="line">  .<span class="title function_">use</span>(<span class="keyword">function</span>(<span class="params">req, res</span>)&#123;</span><br><span class="line">     ...</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">http.<span class="title function_">createServer</span>(app).<span class="title function_">listen</span>(<span class="number">8090</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;-------------------------------&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Start Http server on port : &#x27;</span>+<span class="number">8090</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="L’analyse-des-trames"><a href="#L’analyse-des-trames" class="headerlink" title="L’analyse des trames"></a>L’analyse des trames</h3><p>Plutôt que de rentrer dans le détail du code, je vais vous expliquer la démarche adoptée pour répondre au besoin. </p>
+<p>Le programme est bombardé de messages (20 &#x2F; secondes) et donc nous devons les filtrer en entrée. Il est important de noter que tout geste détecté par le bracelet remplira le champ “pose” de mon json avec une valeur qui est différente de <strong>“rest”</strong>. Nous devons donc traiter 2 cas : </p>
+<ol>
+<li>Mon utilisateur a fait un geste et cela peut potentiellement signifier quelque chose à interpréter : pose !&#x3D; “rest”</li>
+<li>Mon utilisateur bouge son bras : pose &#x3D;&#x3D;&#x3D; “rest”</li>
+</ol>
+<p>Le cas 1 me permet de détecter plusieurs choses : </p>
+<ul>
+<li>L’utilisateur veut effectuer un tir d’élastiques (pose &#x3D;&#x3D;&#x3D; ‘fist’)</li>
+<li>L’utilisateur veut prendre la main sur le robot (enchaînement de gestes). Étant donné que le bracelet émet en continue des informations, il était primordial de définir une cinématique de départ ainsi qu’une cinématique de fin permettant d’indiquer au programme que l’on prend volontairement la main sur le robot. En effet, il serait désagréable de voir le robot se balader alors que l’on n’a pas décidé qu’on voulait le contrôler. De plus, afin d’éviter un déclenchement accidentel suite à un geste, j’ai pris le parti de demander la prise de contrôle suite à l’exécution de 3 gestes en moins de 2 secondes. Si l’utilisateur, exécute les gestes “waveOut” -&gt; “waveIn” -&gt; “FingerSpread”, il prend la main sur le robot.</li>
+</ul>
+<p>Le cas 2 me permet de contrôler le déplacement du robot : </p>
+<p>Pour mettre en place cette partie, j’ai dû faire beaucoup d’essais et analyser précisément les métriques renvoyées par le Myo en fonction du positionnement de mon bras. </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/Myo_gestes_metrics.jpg"></p>
+<ul>
+<li>Le Pitch varie donc de -1.5 sur on lève le bras vers 1.5 si on baisse le bras.</li>
+<li>0.3 &lt; Pitch &lt; 1.5 &#x3D;&gt; On baisse le bras et donc on doit faire avancer le robot</li>
+<li>-0.3 &lt; Pitch &lt; 0.3 &#x3D;&gt; On est à l’horizontale et donc on doit arrêter le robot</li>
+<li>-1.5 &lt; Pitch &lt; -0.3 &#x3D;&gt; On lève le bras et donc on doit faire reculer le robot</li>
+<li>La Yaw quand à lui varie sur 360° entre -3.13 et 3.13 (sachant que -3.13 va devenir 3.13 dans un sens et inversement). Les valeurs du Yaw dépendent de l’axe des points cardinaux. Cependant, ce qui m’intéresse, ce n’est pas tant une valeur entre -3.13 et 3.13 mais un delta par rapport à un point que je considérerais comme mon point 0. </li>
+<li>-0.3 &lt; ΔYaw &#x3D;&gt; On dirige notre bras vers gauche et donc demande à notre robot d’aller à gauche</li>
+<li>-0.3 &lt; ΔYaw &lt; 0.3  &#x3D;&gt; Notre bras est au point 0 et donc demande à notre robot de s’arrêter</li>
+<li>0.3 &lt; ΔYaw &#x3D;&gt; On dirige notre bras vers droite et donc demande à notre robot d’aller à droite</li>
+<li>La cinématique de prise de contrôle me sert donc à initialiser un point “zéro” pour le Yaw et toutes les données provenant après correspondront au delta de ce point de référence avec l’orientation de mon bras.</li>
+</ul>
+<h3 id="L’envoi-des-donnees"><a href="#L’envoi-des-donnees" class="headerlink" title="L’envoi des données"></a>L’envoi des données</h3><p>La communication avec le Mindstorm s’est faite par bluetooth en suivant un système de messages : </p>
+<ul>
+<li>“fire” : Demande au robot de tirer un élastique</li>
+<li>“start” : Demande au robot de joueur un son de démarrage (utilisé quand l’utilisateur prend le contrôle)</li>
+<li>“stop” : Demande au robot de s’arrêter </li>
+<li>“quit” : Demande au robot de jouer un son d’arrêt (utilisé quand l’utilisateur arrête de contrôler le robot)</li>
+<li>“down” : Demande au robot d’avancer</li>
+<li>“up” : Demande au robot de reculer</li>
+<li>“right” : Demande au robot d’aller à droite</li>
+<li>“left” : Demande au robot d’aller à gauche</li>
+</ul>
+<p>L’envoie des données à du respecter un protocole bluetooth fixé par Lego : <a href="http://www.mindstorms.rwth-aachen.de/trac/wiki/EV3">Bluetooth Protocol for EV3</a>.</p>
+<p>Un projet NodeJS existait pour la communication avec un EV3 mais ce dernier ne fonctionnait pas avec la version de Mindstorm que j’avais et son utilisation était trop compliquée. J’ai donc du tout recoder.</p>
+<h2 id="Partie-EV3"><a href="#Partie-EV3" class="headerlink" title="Partie EV3"></a>Partie EV3</h2><p>Cette partie est relativement simple car je me suis contenté de recevoir les messages envoyés par le programme Node et en fonction du message, j’ai simplement  activé les bons moteurs.</p>
+<p>Pour ceux qui n’ont jamais vu à quoi ressemblait du code Mindstorm, mon code ressemble à quelque chose comme ça : </p>
+<p><img src="/assets/2014-12-DevFestDemos/images/ev3_ide.png"></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Mon retour d’expérience sur cette démo est le suivant : Beaucoup de personnes on put essayer le bracelet pendant le devfest mais seulement un petit nombre ont réussi à faire fonctionner correctement la démo. Voici donc les points positifs et négatifs de ce retour : </p>
+<ul>
+<li>(-) Le bracelet ne s’adapte clairement pas à tous les bras. Certaines femmes avaient par exemple un bras trop fin et les gestes ne pouvaient pas être reconnus</li>
+<li>(-) Les gestes que je considérais comme facile à faire ne l’étaient pas pour tous et même certains des gestes basiques n’arrivaient pas à être joué rendant impossible la prise de contrôle du robot. Le WaveOut était par exemple un geste impossible pour certains.</li>
+<li>(-) La prise de contrôle à partir de 3 gestes est trop longue. 3 gestes c’est trop ! J’aurais dû réduire cela à 2 gestes. Un grand nombre de personnes n’arrivaient pas à jouer correctement les 3 gestes et l’on perdait beaucoup de temps à configurer cela ! </li>
+<li>(+) Le fait d’avoir mis un log des gestes effectués dans une ligne de commande était après coup, une très bonne idée car cela m’a permis d’expliquer plus facilement aux personnes ce qu’elles devaient faire et cela me permettait aussi de vérifier avec eux les gestes effectués. </li>
+<li>(+) Le fait d’avoir mis en places des vibrations à des moments clés s’est révélé utile pour l’utilisateur car cela lui donne une impression plus forte de feedback.</li>
+<li>(+) Le fait d’avoir joué des sons sur le mindstorm pour signifier le démarrage du contrôle ou au contraire l’arrêt du contrôle s’est révélé aussi fort utile pour ce même feedback</li>
+<li>Si je devais rejouer cette démo, je réduirais donc la phase de contrôle et je mettrais en place une interface graphique affichant à l’utilisateur la donnée interprétée par le programme pour qu’il ait un feedback plus fort sur ce qu’il fait.</li>
+</ul>
+<p>En conclusion, Myo est un outil	 très utile et relativement facile à intégrer dans des solutions logicielles mais il faut complètement repenser la façon que l’on a de donner du feedback à l’utilisateur ! Dans le cadre de ma démo, une ihm aurait été un bon moyen de donner de l’information à l’utilisateur. L’utilisation de la vibration du bracelet est aussi importante car elle permet à l’utilisateur de comprendre que ce qu’il fait est interprété.</p>
+<h1 id="Code-source"><a href="#Code-source" class="headerlink" title="Code source"></a>Code source</h1><p>Tout le code des 3 projets est disponible ici : <a href="https://github.com/binomed/MyoEV3">MyoEV3</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/nodeJS/">nodeJS</a><a href="/tags/myo/">myo</a><a href="/tags/ev3/">ev3</a><a href="/tags/devfest/">devfest</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Event/">Event</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2014/12/16/2014-12-16--DevFest-Nantes-2014-Demos-Part-1-Myo/" data-title="DevFest Nantes 2014 - Demos Part 1 - Myo | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/02/02/2015-02-02--GDG-Nantes-Intel-XDK/" title="GDG Nantes : Intel XDK">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  GDG Nantes : Intel XDK</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2014/12/10/2014-12-10--DevFest-Nantes-2014-Demos-Part-0-Teasing/"  title="DevFest Nantes 2014 - Demos Part 0 - Teasing">
+ <strong>NEXT:</strong><br/> 
+ <span>DevFest Nantes 2014 - Demos Part 0 - Teasing
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contenu</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Myo-et-EV3"><span class="toc-number">1.</span> <span class="toc-text">Myo et EV3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Deplacement"><span class="toc-number">1.1.</span> <span class="toc-text">Déplacement</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tir-d%E2%80%99elastiques"><span class="toc-number">1.2.</span> <span class="toc-text">Tir d’élastiques</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commandes"><span class="toc-number">1.3.</span> <span class="toc-text">Commandes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Je-ne-suis-pas-un-jedi-mais-juste-un-developpeur"><span class="toc-number">2.</span> <span class="toc-text">Je ne suis pas un jedi mais juste un développeur</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Myo"><span class="toc-number">2.1.</span> <span class="toc-text">Myo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C%E2%80%99est-quoi"><span class="toc-number">2.1.1.</span> <span class="toc-text">C’est quoi ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Que-dois-je-analyser"><span class="toc-number">2.1.2.</span> <span class="toc-text">Que dois-je analyser ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#On-code-comment-avec"><span class="toc-number">2.1.3.</span> <span class="toc-text">On code comment avec ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Partie-C"><span class="toc-number">2.1.4.</span> <span class="toc-text">Partie C++</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Partie-NodeJS"><span class="toc-number">2.2.</span> <span class="toc-text">Partie NodeJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Le-Serveur-NodeJS"><span class="toc-number">2.2.1.</span> <span class="toc-text">Le Serveur NodeJS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L%E2%80%99analyse-des-trames"><span class="toc-number">2.2.2.</span> <span class="toc-text">L’analyse des trames</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#L%E2%80%99envoi-des-donnees"><span class="toc-number">2.2.3.</span> <span class="toc-text">L’envoi des données</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Partie-EV3"><span class="toc-number">2.3.</span> <span class="toc-text">Partie EV3</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">3.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Code-source"><span class="toc-number">4.</span> <span class="toc-text">Code source</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

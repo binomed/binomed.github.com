@@ -1,0 +1,712 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Retour Google I/O 2017 | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Cette année encore, j’ai eu la chance d’aller au Google I&#x2F;O : la grand-messe de Google pendant laquelle sont annoncées toutes les nouveautés sur les produits Google. Plutôt que de reveni">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Retour Google I&#x2F;O 2017">
+<meta property="og:url" content="http://jef.binomed.fr/2017/05/26/2017-05-26-Retour-Google-IO-2017/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Cette année encore, j’ai eu la chance d’aller au Google I&#x2F;O : la grand-messe de Google pendant laquelle sont annoncées toutes les nouveautés sur les produits Google. Plutôt que de reveni">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-05-IO/io_shoreline.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2017-05-IO/webcomponent_support.jpg">
+<meta property="article:published_time" content="2017-05-26T11:59:35.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.706Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="polymer">
+<meta property="article:tag" content="pwa">
+<meta property="article:tag" content="assistant">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2017-05-IO/io_shoreline.jpg">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2017/05/26/2017-05-26-Retour-Google-IO-2017/" title="Retour Google I/O 2017" itemprop="url">Retour Google I/O 2017</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2017-05-26T11:59:35.000Z" itemprop="datePublished"> Publié 26 May 2017</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-05-IO/io_shoreline.jpg">
+</div>
+
+
+<p>Cette année encore, j’ai eu la chance d’aller au <a href="https://events.google.com/io/">Google I&#x2F;O</a> : la grand-messe de Google pendant laquelle sont annoncées toutes les nouveautés sur les produits Google. Plutôt que de revenir sur les annonces publiques qui ont été reprises à de multiples endroits (<a href="https://blog.google/topics/developers/all-io17-announcements/">101 announcements</a>) , je vais m’attarder sur les conférences que je suis allé voir et ce qu’il fallait en retenir.</p>
+<h2 id="L’assistant"><a href="#L’assistant" class="headerlink" title="L’assistant"></a>L’assistant</h2><p>Une des nouveautés cette année, c’était les avancées dans l’application assistant et sur les nouvelles possibilitées qui s’offrent à nous pour développer des actions “Google Assistant”. Non seulement “assistant” va être disponible en dehors de l’application <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.fireball&hl=fr">Google Allo</a> mais en plus, elle arrive sur iOS. Du coup, on va pouvoir coder sur assistant un peu partout !</p>
+<h3 id="Building-Apps-for-the-Google-Assistant"><a href="#Building-Apps-for-the-Google-Assistant" class="headerlink" title="Building Apps for the Google Assistant"></a>Building Apps for the Google Assistant</h3><p>Cette session permet de mieux comprendre le processus de développement pour écrire des applications pour l’assistant. On retiendra entre autres l’apparition d’une “console” de déclaration des “actions” Google. Ils ont aussi présenté comment fonctionnait la nouvelle API de transaction du Google Assistant.</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y26vvxCb3zE" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="Building-Rich-Cross-Platform-Conversational-UX-with-API-AI"><a href="#Building-Rich-Cross-Platform-Conversational-UX-with-API-AI" class="headerlink" title="Building Rich Cross-Platform Conversational UX with API.AI"></a>Building Rich Cross-Platform Conversational UX with API.AI</h3><p>Cette session très intéressante avait pour objectif de revenir sur les possibilités offertes par le site <a href="https://api.ai/">API.ai</a>. Voici en vrac les choses à retenir de cette session :</p>
+<ul>
+<li>API.ai propose pas loin de 18 langages pour offrir une interface de bot.</li>
+<li>De nouvelles fonctionnalités ont fait leur apparition comme :</li>
+<li>L’apprentissage via l’affichage des réponses non reconnues. Ceci peut être très pratique car il permettra au développeur d’ajuster ses phrases de détection et ainsi de les ajouter à la volée dans son modèle pour compléter une action.</li>
+<li>Analytics for action. Ceci permet d’avoir un mécanisme type Google Analytics basé sur ses actions. On pourra donc voir quelles sont les actions les plus populaires et quel chemin l’utilisateur suit à travers notre bot.</li>
+</ul>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K4v_QnngRdg" frameborder="0" allowfullscreen></iframe>
+
+
+<h2 id="Le-web-continue-de-progresser"><a href="#Le-web-continue-de-progresser" class="headerlink" title="Le web continue de progresser"></a>Le web continue de progresser</h2><h3 id="Future-faster-Unlock-the-power-of-Web-Components-with-Polymer"><a href="#Future-faster-Unlock-the-power-of-Web-Components-with-Polymer" class="headerlink" title="Future, faster: Unlock the power of Web Components with Polymer"></a>Future, faster: Unlock the power of Web Components with Polymer</h3><p>Cette session permettait de faire un état des lieux des avancés faites dans le monde des webcomponents et avec Polymer depuis l’année dernière. Première chose à retenir :  Le support de plus en plus large des navigateurs vis-à-vis des spécifications enfin figées !</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2017-05-IO/webcomponent_support.jpg">
+</div>
+
+<p>La taille du polyfill a aussi énormément baissé et sa réécriture a permis d’avoir une cohabitation dans les frameworks Javascript améliorée. En effet, il n’est plus nécessaire de faire des hacks pour faire marcher les webcomponents dans vos frameworks !</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/cuoZenpQveQ" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="The-Mobile-Web-State-of-the-Union"><a href="#The-Mobile-Web-State-of-the-Union" class="headerlink" title="The Mobile Web: State of the Union"></a>The Mobile Web: State of the Union</h3><p>Cette session est toujours très intéressante car elle permet de mettre en avant des retours d’expériences de grandes sociétés qui ont appliqué les concepts et bonnes pratiques du moment en matière de web. Par exemple, cette année, c’est Twitter qui nous faisait un retour sur leur application PWA <strong>“Twitter Lite”</strong>.</p>
+<p>Ce que j’ai pu retenir de cette session c’était entre autres l’annonce de l’arrivée de “lightHouse” (l’outil de benchmark d’une PWA) directement dans les devtools de chrome et l’apparition d’un nouveau “cli” pour faciliter l’écriture d’application web moderne : <a href="https://developers.google.com/web/tools/workbox/">Workbox</a>.</p>
+<p>L’autre aspect qui m’a plu et surtout conforté dans mon discours c’est le retour de <strong>“OLA”</strong>, une société indienne qui propose un service de partage de trajets en voiture. Ils ont écrit la version PWA de leur application et grace à ça, ils ont pu réengager des utilisateurs qu’ils avaient perdus avec l’application native ! Ceci va exactement dans le même sens que ce que je dis en conférences à savoir : les applications natives ne sont pas mortes et l’objectif des PWA n’est pas de les détruire ! Les PWA vont juste offrir une alternative pour un public spécifique et donc permettre aux sociétés de toucher un plus grand nombre d’utilisateurs !</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_ssDaecATCM" frameborder="0" allowfullscreen></iframe>
+
+
+<h3 id="Compiling-for-the-Web-with-WebAssembly"><a href="#Compiling-for-the-Web-with-WebAssembly" class="headerlink" title="Compiling for the Web with WebAssembly"></a>Compiling for the Web with WebAssembly</h3><p>Je suis allé avant tout dans cette session pour mieux comprendre ce qu’il se cache derrière cette spécification. Après un rapide retour sur l’historique de WebAssembly (NativeClient, Asm.js, …), le speaker est revenu sur le moment où le code WebAssembly est exécuté par rapport au code Javascript du reste de la page. Ceci nous a permis de comprendre le bénéfice de cette spécification reposant uniquement sur quelques instructions. Nous avons eu droit ensuite une démo de webassembly qui tournait sur tous les navigateurs modernes !</p>
+<p>Ce que j’ai retenu de son utilisation et de son intérêt, c’est que WebAssembly est très très proche du fonctionnement du JNI d’Android. Je n’ai pas encore de uses cases pour lesquels j’aurais besoin d’utiliser webAssembly mais c’est bien de savoir que ça existe et que ça fonctionne !</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6v4E6oksar0" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="Great-Progressive-Web-App-Experiences-with-Angular"><a href="#Great-Progressive-Web-App-Experiences-with-Angular" class="headerlink" title="Great Progressive Web App Experiences with Angular"></a>Great Progressive Web App Experiences with Angular</h3><p>Cette session faisait un tour d’horizon des outils présents dans le “cli” d’Angular pour aider les développeurs à écrire des PWA avec Angular.</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/C8KcW1Nj3Mw" frameborder="0" allowfullscreen></iframe>
+
+
+<h3 id="Web-Performance-Leveraging-the-Metrics-that-Most-Affect-User-Experience"><a href="#Web-Performance-Leveraging-the-Metrics-that-Most-Affect-User-Experience" class="headerlink" title="Web Performance: Leveraging the Metrics that Most Affect User Experience"></a>Web Performance: Leveraging the Metrics that Most Affect User Experience</h3><p>Cette session fait partie des plus intéressantes que j’ai pu voir cette année. L’idée de ce talk était de s’intéresser ce que veut dire “mon site s’affiche lentement”. Annoncer un “load time” de 1.3s ne veut rien dire en fait !  Qu’est-ce qui est pris en compte avec ce chiffre ? Le premier pixel affiché ? Le moment où l’utilisateur peut interagir avec la page ? De la même façon avec une population ne disposant pas des mêmes conditions réseaux, d’un utilisateur à l’autre le temps de réponse va évoluer !</p>
+<p>Bref, les conférenciers proposaient 2 choses :</p>
+<ol>
+<li>S’attarder à étudier des graphes de temps de réponse plutôt qu’un temps absolu. Ils disaient qu’il était aussi pertinent de séparer les résultats obtenus sur mobile et sur ordinateurs !</li>
+<li>Savoir ce que l’on mesure. Ils ont proposé plusieurs unités de temps que l’on peut mesurer en fonction du besoin :</li>
+</ol>
+<ul>
+<li>First Paint : affichage des premiers pixels.</li>
+<li>First Contentful Paint : affichage du premier contenu de mise en forme.</li>
+<li>First Meaningful Paint : affiche du premier contenu pertinent.</li>
+<li>Time to Interactive : temps à partir duquel l’utilisateur peut interagir avec la page.</li>
+</ul>
+<p>Afin d’aider les développeurs à mesurer celà, ils ont présenté un ensemble de nouvelles api qui arrivent dans le web et qui permettront de mesurer efficacement les temps de réponse associés.</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6Ljq-Jn-EgU" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="Developer-Tooling-for-Web-Components"><a href="#Developer-Tooling-for-Web-Components" class="headerlink" title="Developer Tooling for Web Components"></a>Developer Tooling for Web Components</h3><p>Cette session présentait les dernières nouveautés de la ligne de commande “Polymer cli” qui est enfin sortie en version 1.0. Ils ont aussi annoncé la sortie d’un plugin vscode pour écrire plus facilement des composants polymer avec entre autres du linting intégré.</p>
+<p>Pour finir, ils ont annoncé la sortie du projet <a href="https://github.com/Polymer/prpl-server-node">PRPL-Server-Node</a> qui permet de fournir un serveur PRPL ready avec tout ce qui faut pour fournir correctement des ressources en http2 etc.</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/tKvNeNGmOtU" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="Building-for-Your-Next-Billion-Users"><a href="#Building-for-Your-Next-Billion-Users" class="headerlink" title="Building for Your Next Billion Users"></a>Building for Your Next Billion Users</h3><p>Cette session permettait de revenir sur les enjeux à prendre en compte quand on conçoit des applications qui doivent fonctionner partout et notamment pour les marchés émergents ! En Inde, il y a actuellement 100 millions de nouveaux utilisateurs tous les ans et Google estime qu’en 2020, il y aura 1 milliard d’utilisateurs indiens ! Ce marché n’est donc pas à sous-estimer et voici en gros les normes à prendre en compte en Inde :</p>
+<ul>
+<li>Offline est l’état par défaut, sinon il faut compter sur de la 2G. Les utilisateurs ont donc tendance à “charger” leur contenu le matin avec leur wifi et ils consultent le contenu offline le reste du temps.</li>
+<li>Ils payent le moindre Méga téléchargé, ils hésitent donc énormément à consulter du contenu s’ils ne sont pas derrière un Wifi.</li>
+<li>Il y a beaucoup de langues différentes en Inde et il est important de leur servire leur contenu dans le dialecte attendu.</li>
+</ul>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wD3rpdiLMyY" frameborder="0" allowfullscreen></iframe>
+
+<h3 id="Production-Progressive-Web-Apps-With-JavaScript-Frameworks"><a href="#Production-Progressive-Web-Apps-With-JavaScript-Frameworks" class="headerlink" title="Production Progressive Web Apps With JavaScript Frameworks"></a>Production Progressive Web Apps With JavaScript Frameworks</h3><p>Cette session était avant tout une revue des différentes possibilités pour faire des PWA avec les frameworks Javascript modernes. Et la chose la plus importante à retenir était que <strong>TOUS</strong> les frameworks proposent maintenant dans leurs outils de ligne de commande, de quoi générer des PWA ! Il a donc été annoncé la sortie pour React &#x2F; Preact &#x2F; Vue.js de ligne de commandes spécifiques pour créer des PWA.</p>
+<p>La norme des prochains projets web est donc bien la PWA :)</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aCMbSyngXB4" frameborder="0" allowfullscreen></iframe>
+
+
+<h3 id="Using-Web-Components-with-Angular"><a href="#Using-Web-Components-with-Angular" class="headerlink" title="Using Web Components with Angular"></a>Using Web Components with Angular</h3><p>Cette session revenait sur les outils et les bonnes pratiques à mettre en place pour faire cohabiter des webComponents dans une application Angular2. Ce que j’ai retenu c’est qu’utiliser un composant en tant que noeud feuille dans son arbre dom marche très bien. Par contre si l’on veut commencer à l’utiliser au milieu de son arbre ou que l’on veut pouvoir manipuler des objets complexes avec son composant le tout en utilisant des mécanismes type ngModel, alors il faudra prévoir des wrappers angular pour faire fonctionner le tout.</p>
+<br>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ucq9F-7Xp8I" frameborder="0" allowfullscreen></iframe>
+
+
+<h2 id="Et-pour-aller-encore-plus-loin"><a href="#Et-pour-aller-encore-plus-loin" class="headerlink" title="Et pour aller encore plus loin"></a>Et pour aller encore plus loin</h2><p>Voici la liste des sessions que je n’ai pas eu le temps d’aller voir mais je vais regarder à coup sur :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=assSM3rlvZ8">Polymer: Billions Served; Lessons Learned</a></li>
+<li><a href="https://www.youtube.com/watch?v=m-sCdS0sQO8">Progressive Web Apps: Great Experiences Everywhere</a></li>
+<li><a href="https://www.youtube.com/watch?v=hU89pPBmhds">The Future of Web Payments</a></li>
+<li><a href="https://www.youtube.com/watch?v=fw27RFHP2tc">Defining Multimodal Interactions: One Size Does Not Fit All</a></li>
+<li><a href="https://www.youtube.com/watch?v=0PmWruLLUoE">Finding the Right Voice Interactions for Your App</a></li>
+<li><a href="https://www.youtube.com/watch?v=PjjlwAvV8Jg">DevTools: State of the Union 2017</a></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/polymer/">polymer</a><a href="/tags/pwa/">pwa</a><a href="/tags/assistant/">assistant</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Event/">Event</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2017/05/26/2017-05-26-Retour-Google-IO-2017/" data-title="Retour Google I/O 2017 | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2017/06/21/2017-06-21-devtools-en-2017/" title="Chrome Devtools - 5 fonctionnalités à suivre (Juin 2017)">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  Chrome Devtools - 5 fonctionnalités à suivre (Juin 2017)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2017/04/28/2017-04-28-B-O-F-Speaker-DevoxxFR-2017/"  title="B.O.F. Speaker DevoxxFR 2017">
+ <strong>NEXT:</strong><br/> 
+ <span>B.O.F. Speaker DevoxxFR 2017
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,123 @@
+/***
+***
+*** COUNT DOWN 2014
+***
+*/
+
+
+@font-face {
+    font-family: "Press Start 2P";
+    src: url('./PressStart2P.eot');
+    src: url('./PressStart2P.eot?#iefix') format('embedded-opentype'),
+        url('./PressStart2P.svg#Press Start 2P') format('svg'),
+        url('./PressStart2P.woff') format('woff'),
+        url('./PressStart2P.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+#countdown-2014 {
+    background: #444;
+    background: linear-gradient(to bottom, #444 0%, #4F4F4F 100%);
+    font-family: "Press Start 2P";
+    direction: ltr;
+    overflow: hidden;
+    height: 800px;
+    width:800px;
+    margin:auto;
+}
+
+#countdown-2014 .conteneur {
+    position: relative;
+    width: 500px;
+    height: 800px;
+
+    left: 50%;
+    top: 50%;
+    margin-left: -250px;
+    margin-top: -400px;
+    text-align: center;
+    perspective: 500px;
+}
+
+
+#countdown-2014 #main {
+    height: 100%;
+    position: relative;
+    margin: initial;
+    width: inherit;
+    float: inherit;
+    line-height: inherit;
+    padding-top: inherit;
+}
+
+#countdown-2014 .chiffre,
+#countdown-2014 .unit {
+    position: absolute;
+}
+
+
+
+#countdown-2014 .min.chiffre {
+    top: 280px;
+    left: 132px;
+    transform: rotateY(73deg);
+}
+
+#countdown-2014 .min.unit {
+    top: 286px;
+    left: 241px;
+    transform: rotateY(-47deg) rotateZ(-11deg) rotateX(11deg);
+}
+
+#countdown-2014 .sec.chiffre {
+    top: 415px;
+    left: 133px;
+    transform: rotateY(73deg) rotateZ(14deg) rotateX(4deg);
+}
+
+#countdown-2014 .sec.unit {
+    top: 421px;
+    left: 241px;
+    transform: rotateY(47deg) rotateZ(-12deg) rotateX(-7deg);
+}
+
+#countdown-2014 .chiffre {
+    font-size: 50px;
+}
+
+#countdown-2014 .unit {
+    font-size: 43px;
+}
+
+#countdown-2014 .jaune_clair {
+    color: #fff468;
+}
+
+#countdown-2014 .jaune_fonce {
+    color: #fff200;
+}
+
+#countdown-2014 .marquee_1 {
+    color: #707070;
+    width: 181px;
+    bottom: 38px;
+    position: absolute;
+    left: 56px;
+    height: 54px;
+    line-height: 54px;
+    transform: rotateY(-33deg);
+}
+
+#countdown-2014 .marquee_2 {
+    color: #707070;
+    width: 181px;
+    bottom: 38px;
+    position: absolute;
+    left: 207px;
+    height: 54px;
+    line-height: 54px;
+    transform: rotateY(35deg);
+
+}

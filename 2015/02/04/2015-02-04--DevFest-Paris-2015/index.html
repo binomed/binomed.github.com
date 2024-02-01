@@ -1,0 +1,747 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>DevFest Paris 2015 | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Devfest Paris : 30 &#x2F; 01 &#x2F; 2015J’ai eu la chance d’être retenu comme speaker au DevFest Paris sur un sujet autour du WebRTC.  La journée s’est déroulée de façon assez classique et voici le pr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DevFest Paris 2015">
+<meta property="og:url" content="http://jef.binomed.fr/2015/02/04/2015-02-04--DevFest-Paris-2015/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Devfest Paris : 30 &#x2F; 01 &#x2F; 2015J’ai eu la chance d’être retenu comme speaker au DevFest Paris sur un sujet autour du WebRTC.  La journée s’est déroulée de façon assez classique et voici le pr">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-01-DevFest/logos.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-01-DevFest/devfest_paris.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2015-01-DevFest/polymer_archi.png">
+<meta property="article:published_time" content="2015-02-04T07:57:04.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.703Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="angular2">
+<meta property="article:tag" content="css">
+<meta property="article:tag" content="polymer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2015-01-DevFest/logos.png">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/02/04/2015-02-04--DevFest-Paris-2015/" title="DevFest Paris 2015" itemprop="url">DevFest Paris 2015</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2015-02-04T07:57:04.000Z" itemprop="datePublished"> Publié 4 Feb 2015</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contenu</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Devfest-Paris-30-01-2015"><span class="toc-number">1.</span> <span class="toc-text">Devfest Paris : 30 &#x2F; 01 &#x2F; 2015</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Keynote"><span class="toc-number">1.1.</span> <span class="toc-text">Keynote</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Les-WebComponents-Polymer-une-revolution"><span class="toc-number">1.2.</span> <span class="toc-text">Les WebComponents &amp; Polymer : une révolution ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#L%E2%80%99enjeu"><span class="toc-number">1.2.1.</span> <span class="toc-text">L’enjeu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compatibilite-navigateurs"><span class="toc-number">1.2.2.</span> <span class="toc-text">Compatibilité navigateurs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polymer"><span class="toc-number">1.2.3.</span> <span class="toc-text">Polymer !</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Architecture"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Architecture</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paper-Material-design"><span class="toc-number">1.2.4.</span> <span class="toc-text">Paper &amp; Material design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Composants"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">Composants :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nos-propres-composants"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">Nos propres composants</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebRTC-Revolutionnons-le-partage-d%E2%80%99informations-dans-le-browser"><span class="toc-number">1.3.</span> <span class="toc-text">WebRTC : Révolutionnons le partage d’informations dans le browser</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-2-0%E2%80%A6-et-avant"><span class="toc-number">1.4.</span> <span class="toc-text">AngularJS 2.0… et avant ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Application-perdurant-dans-le-temps"><span class="toc-number">1.4.1.</span> <span class="toc-text">Application perdurant dans le temps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maintenance-de-la-version-1-x"><span class="toc-number">1.4.2.</span> <span class="toc-text">Maintenance de la version 1.x</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Suppression-du-scope-et-du-controleur-je-fais-comment-maintenant"><span class="toc-number">1.4.3.</span> <span class="toc-text">Suppression du scope et du contrôleur, je fais comment maintenant ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slides"><span class="toc-number">1.4.4.</span> <span class="toc-text">Slides</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FlexBox-Revolution"><span class="toc-number">1.5.</span> <span class="toc-text">FlexBox Révolution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spec-compatibilite"><span class="toc-number">1.5.1.</span> <span class="toc-text">Spec &amp; compatibilité</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fonctionnalites"><span class="toc-number">1.5.2.</span> <span class="toc-text">Fonctionnalités</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#La-Distribution"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">La Distribution</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#L%E2%80%99ordonnancement"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">L’ordonnancement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#L%E2%80%99alignement"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">L’alignement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#La-flexibilite"><span class="toc-number">1.5.2.4.</span> <span class="toc-text">La flexibilité</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ressources"><span class="toc-number">1.5.3.</span> <span class="toc-text">Ressources</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="Devfest-Paris-30-01-2015"><a href="#Devfest-Paris-30-01-2015" class="headerlink" title="Devfest Paris : 30 &#x2F; 01 &#x2F; 2015"></a>Devfest Paris : 30 &#x2F; 01 &#x2F; 2015</h1><p>J’ai eu la chance d’être retenu comme speaker au <a href="http://devfest.gdgparis.com/">DevFest Paris</a> sur un sujet autour du WebRTC.</p>
+<p><img src="/assets/2015-01-DevFest/logos.png"></p>
+<p>La journée s’est déroulée de façon assez classique et voici le programme que j’ai suivi sur cette journée : </p>
+<ul>
+<li>9h00 : Keynote avec le <a href="http://gdgparis.com/">GDG Paris</a> et <a href="http://twitter.com/alexismp">Alexis Moussine-Pouchkine</a></li>
+<li>10h00 : PolymerJS avec <a href="https://plus.google.com/u/0/+MartinGorner/posts">Martin Gorner</a> et <a href="http://twitter.com/cbalit">Cyril Balit</a>    </li>
+<li>11h00 : J’ai préféré faire une pause networking</li>
+<li>12h00 : Repas</li>
+<li>13h30 : J’ai donné ma session sur WebRTC</li>
+<li>14h30 : Angular2 avec <a href="http://twitter.com/ThierryChatel">Thierry Chatel</a></li>
+<li>16h15 : Flexbox par <a href="http://twitter.com/goetter">Raphael Goetter</a></li>
+</ul>
+<h2 id="Keynote"><a href="#Keynote" class="headerlink" title="Keynote"></a>Keynote</h2><p><img src="/assets/2015-01-DevFest/devfest_paris.jpg"></p>
+<p>Pendant la keynote, le GDG Paris a commencé par nous présenter la journée puis Alexis a pris la parole pour parler des composantes à prendre en compte pour faire des applications de qualités.</p>
+<p>Globalement, Alexis nous a expliqué en quoi Google mettait à disposition tout un ensemble d’outils aussi bien sur la partie front que sur la partie backend pour aider les développeurs. Il a donc été question de Material Design &#x2F; Plateforme Cloud &#x2F; Retours utilisateurs.</p>
+<ul>
+<li>Matérial design est le nouveau thème par défaut dans lolipop mais il s’adresse aussi aux applications desktop via Polymer par exemple.</li>
+<li>L’offre cloud s’est beaucoup diversifiée ces derniers temps surtout avec l’intégration d’outils comme docker par exemple.</li>
+</ul>
+<p>Je ne mettrais qu’une citation d’Alexis qui m’a bien fait sourire : </p>
+<blockquote>On ne désire pas les choses par ce qu'elles sont belles mais c'est par ce qu'elles sont belles qu'on les désire</blockquote>
+
+
+<h2 id="Les-WebComponents-Polymer-une-revolution"><a href="#Les-WebComponents-Polymer-une-revolution" class="headerlink" title="Les WebComponents &amp; Polymer : une révolution ?"></a>Les WebComponents &amp; Polymer : une révolution ?</h2><p>Cyril Balit &amp; Martin Gorner ont fait une introduction aux concepts &amp; composants disponibles via PolymerJS avec le style Paper. Ils nous ont ainsi expliqué certains des principes qui se cachent derrière Material Design.</p>
+<h3 id="L’enjeu"><a href="#L’enjeu" class="headerlink" title="L’enjeu"></a>L’enjeu</h3><p>Un des principaux objectifs de Polymer et de permettre de concevoir des IHMs  réutilisables et basées sur les nouveaux standards des webComponents</p>
+<p>Les WebComponents, c’est donc l’association de 4 standards : </p>
+<ul>
+<li>HTML Import : <ul>
+<li>Importer un fragment html depuis une page web</li>
+</ul>
+</li>
+<li>Shadow Dom<ul>
+<li>C’est la garantie de l’isolation du composant</li>
+</ul>
+</li>
+<li>Templates<ul>
+<li>Permet de définir une zone réutilisable dans votre code html qui sera disponible après coup</li>
+</ul>
+</li>
+<li>Custom Elements<ul>
+<li>La création des tags personnels ! (je tacherais de créer une balise à titre d’exemple dans un prochain article) <jef-binomed></jef-binomed></li>
+</ul>
+</li>
+</ul>
+<h3 id="Compatibilite-navigateurs"><a href="#Compatibilite-navigateurs" class="headerlink" title="Compatibilité navigateurs"></a>Compatibilité navigateurs</h3><iframe src="https://docs.google.com/spreadsheet/pub?key=0Anye-JMjUkZZdDdoblh6dTlwcWRLQkhKbTVzdHJtcXc&single=true&gid=2&output=html&range=A1:Q43" seamless style="border:none;width:100%;height:830px;"></iframe>
+
+<h3 id="Polymer"><a href="#Polymer" class="headerlink" title="Polymer !"></a>Polymer !</h3><p>C’est donc un polyfill pour les WebComponents qui propose aussi un certain nombre de composants utilisables dans nos interfaces.</p>
+<h4 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h4><p><img src="/assets/2015-01-DevFest/polymer_archi.png"></p>
+<h3 id="Paper-Material-design"><a href="#Paper-Material-design" class="headerlink" title="Paper &amp; Material design"></a>Paper &amp; Material design</h3><p>Vient ensuite Paper &amp; Material Design. Paper est une implémentation de Matérial Design pour le web. Le nom n’est pas anodin car un des principes de Material Design est de dire que l’information est proposée sur du papier (le matériel !) et donc c’est le support de base de présentation du contenu.</p>
+<p>On peut retenir qu’un des enjeux est de donner de l’information rapidement et efficacement ! Pour cela, les informations sont très colorées. Dans lolipop, on peut donner une image et il nous ressort en fonction de l’image la couleur principale correspondante. Les animations et transitions permettent de compléter l’expérience utilisateur en lui offrant une continuité graphique qui ne perd pas notre utilisateur avec un écran noir de transition !</p>
+<h4 id="Composants"><a href="#Composants" class="headerlink" title="Composants :"></a>Composants :</h4><p>PolymerJS vient avec un certain nombre de composants que l’on peut réutiliser afin d’agrémenter notre IHM. Je n’en ai noté que quelque uns mais la liste est grande et facilite grandement le travail des développeurs</p>
+<ul>
+<li>FAB : Floating Action Button : Bouton d’action principal</li>
+<li>Ripple ou Ink Effect : Retour visuel sur une interaction</li>
+<li>Hero element : Élément qui fait la transition entre 2 vues</li>
+<li>core-toolbar : L’actionbar </li>
+<li>core-header-panel : Conteneur au-dessus qui gère la toolbar et le contenu</li>
+<li>core-drawer-panel : Composant responsive </li>
+<li>paper-input : Composant de saisie avec toutes les informations nécessaire à la validation</li>
+<li><a href="https://www.polymer-project.org/docs/elements/paper-elements.html">Liste des éléments</a></li>
+</ul>
+<h4 id="Nos-propres-composants"><a href="#Nos-propres-composants" class="headerlink" title="Nos propres composants"></a>Nos propres composants</h4><p>Pour déclarer un composant personnel, il suffit simplement de déclarer un fichier HTML qui contient la déclaration de la balise (le nom doit forcément contenir un “-“ pour ne pas être confondu avec un autre élément du DOM), le HTML, le CSS et le javascript associé.</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;import&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">href</span>=<span class="string">&quot;/components/polymer/polymer.html&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">polymer-element</span> <span class="attr">name</span>=<span class="string">&quot;ready-element&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">    This element has a ready() method.</span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;el&quot;</span>&gt;</span>Not ready...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript">  </span></span><br><span class="line"><span class="language-javascript">    <span class="title class_">Polymer</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">owner</span>: <span class="string">&quot;Daniel&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">      <span class="attr">ready</span>: <span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">this</span>.<span class="property">$</span>.<span class="property">el</span>.<span class="property">textContent</span> = <span class="variable language_">this</span>.<span class="property">owner</span> +</span></span><br><span class="line"><span class="language-javascript">                                <span class="string">&quot; is ready!&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">      &#125;</span></span><br><span class="line"><span class="language-javascript">    &#125;);</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">polymer-element</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="WebRTC-Revolutionnons-le-partage-d’informations-dans-le-browser"><a href="#WebRTC-Revolutionnons-le-partage-d’informations-dans-le-browser" class="headerlink" title="WebRTC : Révolutionnons le partage d’informations dans le browser"></a>WebRTC : Révolutionnons le partage d’informations dans le browser</h2><p>Plutôt que de parler de ma session, je vous invite à aller voir les slides ou les vidéos que l’on a déjà pu filmer de cette présentation</p>
+<p><a href="http://jef.binomed.fr/binomed_docs/Prezs/WebRTC/index.html">Présentation WebRTC</a></p>
+<h2 id="AngularJS-2-0…-et-avant"><a href="#AngularJS-2-0…-et-avant" class="headerlink" title="AngularJS 2.0… et avant ?"></a>AngularJS 2.0… et avant ?</h2><p>Thierry Chatel nous a fait une présentation pour nous rassurer sur l’avenir d’Angular 2 et il a ainsi revu les principales annonces qui ont pu être faites pendant NG-Europe.</p>
+<p>Globalement, s’il y a une chose à  retenir, c’est : ne vous inquiétez pas ! Certes Angular 2 va changer beaucoup de choses mais en même temps c’est une bonne chose. Alors que le web bouge très vite et que nous sommes à l’aube de voir débarquer EMACScript 6, les webcomponents, … dans nos navigateurs, il n’était pas envisageable pour la team Angular de ne pas en tenir compte et donc Angular 2 est clairement tourné vers l’avenir !</p>
+<p>Prenons quelques-uns des arguments de Thierry.</p>
+<h3 id="Application-perdurant-dans-le-temps"><a href="#Application-perdurant-dans-le-temps" class="headerlink" title="Application perdurant dans le temps"></a>Application perdurant dans le temps</h3><p>Thierry a rencontré beaucoup de personnes lui expliquant vouloir développer des applications durant 10 ans basées sur AngularJS. Thierry s’est posé la question suivante : “c’était quoi le web il y a 10 ans ?”. Et en effet, si l’on regarde en arrière, on se rend compte qu’en février 2005 sortait “prototype” et que ce n’est qu’en juillet 2006 que le terme AJAX est apparu vraiment (même s’il existait déjà depuis quelques années). Il n’y a donc que depuis 9 ans que l’on a commencé à réaliser massivement des applications asynchrones ! Autant dire qu’il s’en est passé des choses depuis 10 ans. Il va sûrement s’en passer encore beaucoup sur les 10 prochaines années. </p>
+<p>Dire que l’on veut une application qui va durer 10, pourquoi pas, mais cela a surtout du sens côté serveur ! Le front évolue trop vite pour que l’on puisse chercher à faire durer des applications côté front sur 10 ans. Pour information, la version d’IE disponible il y a 10 ans était IE 6…</p>
+<h3 id="Maintenance-de-la-version-1-x"><a href="#Maintenance-de-la-version-1-x" class="headerlink" title="Maintenance de la version 1.x"></a>Maintenance de la version 1.x</h3><p>Pour le moment, l’équipe de Google n’a communiqué aucune date sur l’arrêt du support d’Angular en version 1.x. Mais Thierry faisait remarquer que l’adhésion à ce framework a été tellement forte par la communauté qu’il ne fait aucun doute que des gens reprendront le projet pour du support mineur lors de l’arrêt officiel du support de Google.</p>
+<h3 id="Suppression-du-scope-et-du-controleur-je-fais-comment-maintenant"><a href="#Suppression-du-scope-et-du-controleur-je-fais-comment-maintenant" class="headerlink" title="Suppression du scope et du contrôleur, je fais comment maintenant ?"></a>Suppression du scope et du contrôleur, je fais comment maintenant ?</h3><p>Thierry s’est penché sur les raisons qui ont amené à la suppression de ces 2 composants qui sont aujourd’hui au coeur du framework Angular. Il nous a expliqué que si l’on suit les bonnes pratiques du développement Angular, notre contrôleur ne sert qu’à initialiser le scope et que très souvent, il sert de “passe plat” entre nos services et nos directives. En effet, pour Thierry, le code métier doit figurer dans les services afin de séparer au mieux les couches et ainsi avoir un code propre et maintenable. Tout ça pour en venir au fait que même la déclaration d’un contrôleur dans notre application se fait via une directive ng-controller… Ne serait-il pas plus logique de faire en sorte que nos directives portent les informations directement et que la simple hiérarchie du DOM et un agencement propres de nos services suffise à faire communiquer le tout ? C’est exactement ce qui est proposé avec Angular2.</p>
+<p>Il nous a donc expliqué qu’au lieu de publier dans le scope d’un contrôleur, nous allions simplement publier dans une directive. </p>
+<p>Afin de faciliter la migration vers Angular2, Thierry propose d’utiliser par exemple la déclaration “Controller as” et il préconise aussi de bien séparer les couches (services,…) pour rendre notre contrôleur le moins important possible.</p>
+<h3 id="Slides"><a href="#Slides" class="headerlink" title="Slides"></a>Slides</h3><p>Retrouvez les slides de Thierry : <a href="http://tchatel.github.io/slides-devfestparis2015#/#/1">Slides</a></p>
+<h2 id="FlexBox-Revolution"><a href="#FlexBox-Revolution" class="headerlink" title="FlexBox Révolution"></a>FlexBox Révolution</h2><p>Raphaël Goetter nous a présenté la propriété css “flex-box”. Cette dernière ou plutôt ensemble de propriétés a 4 objectifs : </p>
+<ul>
+<li>Distribuer : Comment mes éléments vont se positionner dans le parent (verticalement &#x2F; horizontalement )</li>
+<li>Ordonnancer : Dans quel ordre vont-ils être affichés ? </li>
+<li>Alignement : Comment les éléments vont-ils être alignés ?</li>
+<li>Flexibilité : Quelle places vont prendre mes éléments dans le parent ?</li>
+</ul>
+<h3 id="Spec-compatibilite"><a href="#Spec-compatibilite" class="headerlink" title="Spec &amp; compatibilité"></a>Spec &amp; compatibilité</h3><p>Aujourd’hui c’est disponible à partir de IE10+ et dans tous les autres navigateurs (c’est même disponible dans android 2.1). Raphaël nous disait que cela représente 95% du marché ! Mais en tout cas ce qui est sûr, c’est que concernant le mobile, vous pouvez foncer les yeux fermés et utiliser flexbox dans la partie media-quieries de vos sites mobiles !</p>
+<p>Concernant la spec, elle a été rétrogradée il y a peu à l’état de brouillon. Ceci est dû à un manque de cohérence dans l’écriture de certaines propriétés. Mais Raphaël mise quand même sur une disponibilité officielle de la part du W3C prochainement. </p>
+<h3 id="Fonctionnalites"><a href="#Fonctionnalites" class="headerlink" title="Fonctionnalités"></a>Fonctionnalités</h3><p>Voici en vrac ce que l’on peut faire avec flexbox :</p>
+<ul>
+<li>Alignement vertical : oui j’ai bien dit alignement vertical ! </li>
+<li>Regroupement par catégorie grâce à la notion d’ordre</li>
+<li>Réorganisation graphique très simple de nos IHMs</li>
+</ul>
+<h4 id="La-Distribution"><a href="#La-Distribution" class="headerlink" title="La Distribution"></a>La Distribution</h4><p>Par défaut, la distribution est horizontale. C’est à dire que nos éléments, au lieu d’être les un en dessous des autres, seront les uns à côté des autres</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">display</span>:flex</span><br></pre></td></tr></table></figure>
+
+<p>Si l’on veut changer la direction sur vertical par exemple, il faudra setter la propriété flex-direction. De même si notre contenu dépasse, on peut demander à la propriété de faire un retour à la ligne automatique via</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">flex-wrap</span>: true</span><br></pre></td></tr></table></figure>
+
+<h4 id="L’ordonnancement"><a href="#L’ordonnancement" class="headerlink" title="L’ordonnancement"></a>L’ordonnancement</h4><p>Concrètement, on peut changer l’ordre d’affichage de nos éléments du dom grâce à la propriété</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;<span class="attribute">order</span> : <span class="number">0</span>&#125; </span><br></pre></td></tr></table></figure>
+
+<p>Cela fonctionne de façon comparable aux z-index. Plus l’ordre est grand, plus il sera loin dans le flux, plus le chiffre est bas (chiffres négatifs autorisés), plus l’élément sera au début du flux.</p>
+<p>L’ordonnancement peut être utilisé par exemple pour faire des regroupements graphiques d’éléments ayant quelque chose en commun. Raphaël nous a montré comment au sein d’une div contenant des liens vers des fichiers (ppt, pdf, doc, …) les regrouper visuellement grâce à flex.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="selector-attr">[href$=<span class="string">&quot;.pdf&quot;</span>]</span>&#123;</span><br><span class="line">    <span class="attribute">order</span>:<span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-attr">[href$=<span class="string">&quot;.doc&quot;</span>]</span>&#123;</span><br><span class="line">    <span class="attribute">order</span>:<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>De cette manière, tous les pdfs se retrouveront à côté, même chose pour les docs.</p>
+<h4 id="L’alignement"><a href="#L’alignement" class="headerlink" title="L’alignement"></a>L’alignement</h4><p>L’alignement permet de définir comment nos éléments vont être alignés dans leur conteneur ! </p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&#123;<span class="attribute">justify-content</span>:flex-end&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Fera par exemple alignement vers le bas si flex-orientation est en column (vertical)</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">justify-content</span>:center </span><br></pre></td></tr></table></figure>
+
+<p>Quant à lui centrera le contenu en fonction de l’orientation primaire de la flexbox.</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="attribute">align-items</span> : strech</span><br></pre></td></tr></table></figure>
+
+<p>Permettra d’aligner selon l’autre axe</p>
+<h4 id="La-flexibilite"><a href="#La-flexibilite" class="headerlink" title="La flexibilité"></a>La flexibilité</h4><p>Concernant la place prise par l’élément, 3 propriétés sont en jeux : </p>
+<p>La propriété flex est un raccourci de trois propriétés, flex-grow, flex-shrink et flex-basis, qui s’appliquent au flex-container et dont les fonctionnalités sont:</p>
+<ul>
+<li>flex-grow : capacité pour un élément à s’étirer dans l’espace restant,</li>
+<li>flex-shrink : capacité pour un élément à se contracter si nécessaire,</li>
+<li>flex-basis : taille initiale de l’élément avant que l’espace restant ne soit distribué.</li>
+</ul>
+<p>Par défaut, les valeurs de ces propriétés sont : flex-grow: 0, flex-shrink: 1 et flex-basis: auto.</p>
+<p>En clair, les flex-items n’occupent initialement que la taille minimale de leur contenu.</p>
+<h3 id="Ressources"><a href="#Ressources" class="headerlink" title="Ressources"></a>Ressources</h3><p>Je vous invite à aller consulter l’article disponible sur le site d’Alsa créations : <a href="http://www.alsacreations.com/tuto/lire/1493-css3-flexbox-layout-module.html">Article AlsaCréations</a></p>
+<p><a href="https://speakerdeck.com/goetter/flexbox-revolution">Slides de la présentation</a></p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>La journée fut riche en rencontre et en conférences de qualités, je suis donc content d’avoir pu faire partie de cette édition ! Suiviez le GDG Paris pour être tenus au courant de la publication des vidéos et slides.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/angular2/">angular2</a><a href="/tags/css/">css</a><a href="/tags/polymer/">polymer</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Event/">Event</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2015/02/04/2015-02-04--DevFest-Paris-2015/" data-title="DevFest Paris 2015 | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/02/20/2015-02-20--DevFest-Nantes-2014-Demos-Part-2-Leap-Motion/" title="DevFest Nantes 2014 - Demos Part 2 - Leap Motion">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  DevFest Nantes 2014 - Demos Part 2 - Leap Motion</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/02/02/2015-02-02--GDG-Nantes-Intel-XDK/"  title="GDG Nantes : Intel XDK">
+ <strong>NEXT:</strong><br/> 
+ <span>GDG Nantes : Intel XDK
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contenu</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Devfest-Paris-30-01-2015"><span class="toc-number">1.</span> <span class="toc-text">Devfest Paris : 30 &#x2F; 01 &#x2F; 2015</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Keynote"><span class="toc-number">1.1.</span> <span class="toc-text">Keynote</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Les-WebComponents-Polymer-une-revolution"><span class="toc-number">1.2.</span> <span class="toc-text">Les WebComponents &amp; Polymer : une révolution ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#L%E2%80%99enjeu"><span class="toc-number">1.2.1.</span> <span class="toc-text">L’enjeu</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Compatibilite-navigateurs"><span class="toc-number">1.2.2.</span> <span class="toc-text">Compatibilité navigateurs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Polymer"><span class="toc-number">1.2.3.</span> <span class="toc-text">Polymer !</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Architecture"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">Architecture</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Paper-Material-design"><span class="toc-number">1.2.4.</span> <span class="toc-text">Paper &amp; Material design</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Composants"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">Composants :</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Nos-propres-composants"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">Nos propres composants</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WebRTC-Revolutionnons-le-partage-d%E2%80%99informations-dans-le-browser"><span class="toc-number">1.3.</span> <span class="toc-text">WebRTC : Révolutionnons le partage d’informations dans le browser</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-2-0%E2%80%A6-et-avant"><span class="toc-number">1.4.</span> <span class="toc-text">AngularJS 2.0… et avant ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Application-perdurant-dans-le-temps"><span class="toc-number">1.4.1.</span> <span class="toc-text">Application perdurant dans le temps</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Maintenance-de-la-version-1-x"><span class="toc-number">1.4.2.</span> <span class="toc-text">Maintenance de la version 1.x</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Suppression-du-scope-et-du-controleur-je-fais-comment-maintenant"><span class="toc-number">1.4.3.</span> <span class="toc-text">Suppression du scope et du contrôleur, je fais comment maintenant ?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slides"><span class="toc-number">1.4.4.</span> <span class="toc-text">Slides</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FlexBox-Revolution"><span class="toc-number">1.5.</span> <span class="toc-text">FlexBox Révolution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Spec-compatibilite"><span class="toc-number">1.5.1.</span> <span class="toc-text">Spec &amp; compatibilité</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Fonctionnalites"><span class="toc-number">1.5.2.</span> <span class="toc-text">Fonctionnalités</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#La-Distribution"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">La Distribution</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#L%E2%80%99ordonnancement"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">L’ordonnancement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#L%E2%80%99alignement"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">L’alignement</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#La-flexibilite"><span class="toc-number">1.5.2.4.</span> <span class="toc-text">La flexibilité</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Ressources"><span class="toc-number">1.5.3.</span> <span class="toc-text">Ressources</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">2.</span> <span class="toc-text">Conclusion</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

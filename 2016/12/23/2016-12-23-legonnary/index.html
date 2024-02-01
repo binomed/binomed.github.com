@@ -1,0 +1,793 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA) | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="[TL;DR;]Il s’agit d’une série de 3 articles sur un jeu mis en place pour le DevFest 2016. Les grandes parties sont :   Origin Story : Pourquoi &#x2F; comment &#x2F; les enjeux ? Architecture : Quelle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA)">
+<meta property="og:url" content="http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="[TL;DR;]Il s’agit d’une série de 3 articles sur un jeu mis en place pour le DevFest 2016. Les grandes parties sont :   Origin Story : Pourquoi &#x2F; comment &#x2F; les enjeux ? Architecture : Quelle">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/devfest_photo.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/theme_lego.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/gdg_logo_legonnary.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/Legonnary_Archi.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/Legonnary_Validation.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/Legonnary_Workflow.png">
+<meta property="article:published_time" content="2016-12-23T16:04:43.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.705Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="HTML5">
+<meta property="article:tag" content="Firebase">
+<meta property="article:tag" content="DevFest">
+<meta property="article:tag" content="Progressive Web App">
+<meta property="article:tag" content="Service Worker">
+<meta property="article:tag" content="Web App Manifest">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/devfest_photo.jpg">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/23/2016-12-23-legonnary/" title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA)" itemprop="url">J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-23T16:04:43.000Z" itemprop="datePublished"> Publié 23 Dec 2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p><img src="/assets/2016-12-legonnary/devfest_photo.jpg"></p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="[TL;DR;]"></a>[TL;DR;]</h2><p>Il s’agit d’une série de 3 articles sur un jeu mis en place pour le DevFest 2016. Les grandes parties sont : </p>
+<ul>
+<li><a href="#Origin_story">Origin Story</a> : Pourquoi &#x2F; comment &#x2F; les enjeux ?</li>
+<li><a href="#Architecture">Architecture</a> : Quelle architecture j’ai choisi.</li>
+<li><a href="#Workflow_de_dev_choisi">Workflow de dev choisi</a> : Comment j’ai structuré mon code et mon workflow de dev.</li>
+<li><a href="#Progressive_Web_App">Progressive Web App</a> : Comment j’ai transformé l’application en Progressive Web App.</li>
+<li><a href="/2016/12/23/2016-12-23-legonnary-2/">Sécurisation de l’app</a> : Utilisation détaillée de firebase pour le cas du jeu.</li>
+<li><a href="/2016/12/23/2016-12-23-legonnary-3/">Challenges graphiques</a> : Problèmes et solutions graphiques rencontrées.</li>
+</ul>
+<h2 id="Tout-ca-pour-un-compte-a-rebours"><a href="#Tout-ca-pour-un-compte-a-rebours" class="headerlink" title="Tout ça pour un compte à rebours !"></a>Tout ça pour un compte à rebours !</h2><p>Dans le cadre du <a href="https://devfestnantes.gdgnantes.com/">DevFest Nantes 2016</a> j’ai voulu comme chaque année travailler un compte à rebours personnalisé.</p>
+<h3 id="Origin-Story"><a href="#Origin-Story" class="headerlink" title="Origin Story"></a>Origin Story</h3><p>Ayant eu la chance d’aller au <a href="https://events.google.com/io">Google I&#x2F;O</a>, j’ai beaucoup apprécié les animations qu’il y a eu qui permettaient aux participants de jouer avec une application codée spécialement pour l’occasion : <a href="https://paperplanes.world/">Paper Planes</a>.</p>
+<p>N’ayant pas les compétences graphiques WebGL pour faire un jeu aussi beau. J’ai donc cherché un autre concept ! </p>
+<h3 id="Theme-les-Lego-©"><a href="#Theme-les-Lego-©" class="headerlink" title="Thème : les Lego ©"></a>Thème : les Lego ©</h3><p><img src="/assets/2016-12-legonnary/theme_lego.jpg"></p>
+<p>En 2016, le thème graphique était l’univers Lego ©, je me suis donc lancé dans un gros brainstorming avec ma femme pour trouver une idée qui me permettrait de faire un jeu multijoueur basé sur les Lego ©. </p>
+<p>Ma première idée fut de laisser les participants construire en 3D des Lego © et d’afficher sur l’écran de restitution les étapes suivies par les participants ! L’idée était intéressante mais j’ai dû me rendre à l’évidence : je n’ai ni le temps, ni les compétences pour mettre en place un tel système… Il a donc fallu que je continue à chercher. Finalement c’est ma femme qui a trouvé l’idée qui était à la fois cool et réalisable : </p>
+<p>J’allais faire une application Pixel art Lego © dont le résultat final se verrait à l’écran de compte à rebours ! Legonnary était né !</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/gdg_logo_legonnary.png">
+</div>
+
+
+<h3 id="Le-concept"><a href="#Le-concept" class="headerlink" title="Le concept"></a>Le concept</h3><p>Le concept est simple : </p>
+<ol>
+<li>Un participant va se loguer pour soumettre des dessins. </li>
+<li>Un modérateur reçoit le dessin du participant (car oui, il vaut mieux modérer ;) ). Il va décider de valider ou de refuser le dessin.</li>
+<li>Si le dessin est accepté, il apparaîtra sur l’écran de compte à rebours !</li>
+<li>Si non, seul l’utilisateur à l’origine du dessin pourra le revoiravec son état : accepté &#x2F; refusé. </li>
+<li>Tous les dessins validés doivent être accessible sur un écran de restitution indépendant pour accéder simplement aux dessins créés ET validés.</li>
+</ol>
+<h2 id="Enjeux"><a href="#Enjeux" class="headerlink" title="Enjeux"></a>Enjeux</h2><p>Avant de rentrer dans le détail de l’implémentation, je me suis fixé quelques contraintes : </p>
+<ul>
+<li>Je veux faire une Progressive Web App (<a href="https://developers.google.com/web/progressive-web-apps/">PWA</a>) afin d’être : mobile first &#x2F; offline &#x2F; installable.</li>
+<li>Je veux un jeu temps réel mais où je n’ai pas à m’occuper de la partie serveur.</li>
+<li>Je veux une application sécurisée, que ce soit pour les données mais aussi par son accès. Globalement, je veux que mes utilisateurs soient logués.</li>
+<li>Afin d’éviter aux participants de saisir une URL, je veux que l’application soit détectable en physical web (https).</li>
+<li>Nous sommes en 2016, l’application doit être codée en ES6.</li>
+<li>Il faut prévoir plusieurs applications pour coller avec chacun des rôles : Joueur &#x2F; Modérateur &#x2F; Écran de compte à rebours &#x2F;  Écran de restitution.</li>
+</ul>
+<h2 id="Architecture"><a href="#Architecture" class="headerlink" title="Architecture"></a>Architecture</h2><p>Pour faire marcher tout ça ensemble, j’ai choisi l’architecture suivante : </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/Legonnary_Archi.png">
+</div>
+
+<h3 id="Firebase"><a href="#Firebase" class="headerlink" title="Firebase"></a>Firebase</h3><p>Firebase me permet en effet de répondre à beaucoup de besoins : </p>
+<ul>
+<li>En sécurisant mon arbre de données firebase, je vais sécuriser mes données. De plus grâce à <a href="https://firebase.google.com/docs/auth/">Firebase Authentication</a> je peux faire de l’authentification sécurisée sans me soucier de l’installation &#x2F; configuration des mécanismes OAuth !</li>
+<li>Je vais pouvoir “hoster” mon application en https.</li>
+<li>Mes données vont être synchronisées en temps réel et chacune des applications va pouvoir communiquer de façon instantanée sans que j’aie quoi que ce soit à coder au niveau serveur.</li>
+<li>Enfin pour finir, le jeu fonctionnera aussi offline grace à Firebase car je sais qu’il est du ressort de la librairie de gérer les push d’évènements.</li>
+</ul>
+<h3 id="Progresse-Web-App"><a href="#Progresse-Web-App" class="headerlink" title="Progresse Web App"></a>Progresse Web App</h3><p>La partie Progressive Web App a été codé de façon manuelle car je voulais comprendre les concepts et les enjeux d’une PWA. </p>
+<h3 id="Fabric-JS"><a href="#Fabric-JS" class="headerlink" title="Fabric JS"></a>Fabric JS</h3><p>Ayant déjà eu l’occasion de travailler plusieurs fois avec des canvas, je sais que la complexité de code peut vite augmenter. J’ai aussi identifié un certain nombre de points qui vont surement me poser problème. Par exemple, le fait que mes pièces Lego © doivent avoir un effet aimanté vis-à-vis d’une grille. </p>
+<p>Face à tous possibles problèmes, j’ai préféré me reposer sur une libraire plutôt que de tout coder moi-même. J’ai donc choisi <a href="http://fabricjs.com/">FabricJS</a> comme librairie car elle propose une abstraction suffisante et des fonctionnalités qui collent avec mon besoin.</p>
+<h3 id="Deploiement-automatique-avec-CodeShip"><a href="#Deploiement-automatique-avec-CodeShip" class="headerlink" title="Déploiement automatique avec CodeShip"></a>Déploiement automatique avec CodeShip</h3><p>Enfin pour pousser mon code en production, je me suis reposé sur <a href="https://codeship.com/">Codeship</a>. </p>
+<h3 id="Workflow-de-validation-des-dessins"><a href="#Workflow-de-validation-des-dessins" class="headerlink" title="Workflow de validation des dessins"></a>Workflow de validation des dessins</h3><div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/Legonnary_Validation.png">
+</div>
+
+<p>Afin de faire communiquer correctement chacun des écrans &#x2F; applications, j’ai défini une notion d’états pour les dessins. Un dessin va pouvoir se retrouver avec plusieurs états en même temps pour permettre un affichage conditionnel. </p>
+<ul>
+<li><strong>Submited</strong> : Un dessin est dans cet état juste après la validation d’un utilisateur.</li>
+<li><strong>Accepted</strong> : Un dessin est dans cet état si le modérateur a validé le dessin.</li>
+<li><strong>Rejected</strong> : Un dessin est dans cet état si le modérateur a rejeté le dessin.</li>
+</ul>
+<p>États additionnels :</p>
+<ul>
+<li><strong>Validated</strong> : Un dessin est dans cet état s’il a été validé par le modérateur et qu’il attend d’être traité par l’écran de compte à rebours</li>
+<li><strong>Archived</strong> : Un dessin est dans cet état dès que le dessin est validé. Un dessin dans cet état est considéré comme public et peut donc être consulté par n’importe qui.</li>
+</ul>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/Legonnary_Workflow.png">
+</div>
+
+
+<h2 id="Workflow-de-dev-choisi"><a href="#Workflow-de-dev-choisi" class="headerlink" title="Workflow de dev choisi"></a>Workflow de dev choisi</h2><h3 id="Structure-du-code"><a href="#Structure-du-code" class="headerlink" title="Structure du code"></a>Structure du code</h3><figure class="highlight bash"><figcaption><span>Legonnary/</span></figcaption><table><tr><td class="code"><pre><span class="line">/public <span class="comment"># Build du projet</span></span><br><span class="line">/src <span class="comment"># Sources du projet</span></span><br><span class="line">  /assets <span class="comment"># Assets audio / vidéos / font / images</span></span><br><span class="line">  /css <span class="comment"># build du sass</span></span><br><span class="line">  /sass <span class="comment"># Sources du sass</span></span><br><span class="line">  /scripts <span class="comment"># ensemble des fichiers js à transpiler</span></span><br><span class="line">  /index.html <span class="comment"># index basique pour les joueurs</span></span><br><span class="line">  /moderator.html <span class="comment"># index spécifique aux modérateurs</span></span><br><span class="line">  /screen.html <span class="comment"># index spécifique à l&#x27;écran de compte à rebours</span></span><br><span class="line">  /summary.html <span class="comment"># index spécifique à la restitution</span></span><br><span class="line">  /manifest_phone.json <span class="comment"># Manifest pour la PWA jeu</span></span><br><span class="line">  /manifest_moderator.json <span class="comment"># Manifest pour la PWA moderator</span></span><br><span class="line">  /service-worker-phone.js <span class="comment"># Service Worker pour la PWA jeu</span></span><br><span class="line">  /service-worker-moderator.js <span class="comment"># Service Worker pour la PWA moderator</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Pourquoi-pas-Angular"><a href="#Pourquoi-pas-Angular" class="headerlink" title="Pourquoi pas Angular ?"></a>Pourquoi pas Angular ?</h3><p>Comme je le disais plus haut, j’ai voulu coder mon application en ES6. Alors, la première question que l’on m’a posé, c’est pourquoi du vanillaJS plutôt qu’un Angular ou autre chose ? La réponse est simple : KISS ! Le jeu mis en place ne nécessitait pas de grande complexité de code et donc, j’ai jugé un peu “overkill” de charger une librairie type Angular. </p>
+<p>ES6 m’a permis de structurer tout aussi efficacement mon code, en créant des classes, séparant fortement mes concepts, et déléguant aussi bien les responsabilités dans chaque partie de mon code !</p>
+<h3 id="Task-runner"><a href="#Task-runner" class="headerlink" title="Task runner"></a>Task runner</h3><p>Côté build, je n’avais pas forcément envie de partir sur webpack car soyons franc, je n’avais pas l’envie d’apprendre un nouvel outil de build. J’avais déjà bien assez à apprendre avec ce jeu. Je ne voulais pas me rajouter un nouveau chalenge. Bref ! J’ai choisi Gulp &amp; Browserify. Gulp, par ce que je l’aime bien et Browserify par ce je voulais coder mon application en utilisant les imports de modules Javascript.</p>
+<p>La seule complexité que j’ai eue avec ce build a été de trouver la bonne configuration pour faire marcher ES6, Babel &amp; Browserify. Pour résoudre ce problème, je me suis appuyé sur le plugin <a href="https://github.com/babel/babelify">babelify</a>. Voici les tasks spécifiques à mon build qui gère cette partie.</p>
+<figure class="highlight javascript"><figcaption><span>gulpfile.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&quot;use strict&quot;</span>;</span><br><span class="line"><span class="comment">// Include gulp</span></span><br><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">&quot;gulp&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> sourcemaps = <span class="built_in">require</span>(<span class="string">&quot;gulp-sourcemaps&quot;</span>)</span><br><span class="line"><span class="keyword">var</span> babelify = <span class="built_in">require</span>(<span class="string">&#x27;babelify&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> gutil = <span class="built_in">require</span>(<span class="string">&#x27;gulp-util&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> browserify = <span class="built_in">require</span>(<span class="string">&quot;browserify&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> source = <span class="built_in">require</span>(<span class="string">&#x27;vinyl-source-stream&#x27;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> extensions = [<span class="string">&#x27;.js&#x27;</span>,<span class="string">&#x27;.json&#x27;</span>,<span class="string">&#x27;.es6&#x27;</span>];</span><br><span class="line"></span><br><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&#x27;browserify_phone&#x27;</span>,<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">browserify</span>(&#123;<span class="attr">entries</span>: <span class="string">&#x27;./src/scripts/app_phone.js&#x27;</span>, <span class="attr">debug</span>:<span class="literal">true</span>, <span class="attr">extensions</span>: extensions&#125;)</span><br><span class="line">    .<span class="title function_">transform</span>(babelify)</span><br><span class="line">    .<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, gutil.<span class="property">log</span>)    </span><br><span class="line">    .<span class="title function_">bundle</span>()    </span><br><span class="line">    .<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, gutil.<span class="property">log</span>)    </span><br><span class="line">    .<span class="title function_">pipe</span>(<span class="title function_">source</span>(<span class="string">&#x27;bundle_phone.js&#x27;</span>))</span><br><span class="line">    .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./src&#x27;</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>La déclaration des extensions es6 est obligatoire pour indiquer au plugin ce qu’il doit convertir &#x2F; transpiller.</p>
+<p><strong>&#x2F;!\</strong> Il est très important aussi d’ajouter à la racine de son projet un ficher <code>.babelrc</code> qui permet de spécifier quelle est la cible de compilation.</p>
+<figure class="highlight javascript"><figcaption><span>.babelrc</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/.babelrc">link</a></figcaption><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;presets&quot;</span>: [<span class="string">&quot;es2015&quot;</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Pour le reste, j’ai utilisé sass &#x2F;  browsersync afin de me garantir un workflow de dev complet. Voici le lien vers mon <a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js">Gulp File</a></p>
+<h3 id="Specifiques-du-build"><a href="#Specifiques-du-build" class="headerlink" title="Spécifiques du build"></a>Spécifiques du build</h3><p>J’ai dû prévoir un certain nombre de choses assez spécifiques car : </p>
+<ul>
+<li>J’ai plusieurs applications. J’ai donc plusieurs taches qui font des builds spécifiques pour chacune de mes applications.</li>
+<li>Toutes les applications n’ont pas de service worker.</li>
+<li>Je veux une invalidation brute de mon service worker à chaque nouvelle publication (j’en parlerais dans la partie PWA).</li>
+</ul>
+<h2 id="Progressive-Web-App"><a href="#Progressive-Web-App" class="headerlink" title="Progressive Web App"></a>Progressive Web App</h2><p>Les Progressives Web App (PWA) est un terme pour regrouper un ensemble de bonnes pratiques pour les applications web. Voici en vrac les choses que l’on peut retrouver sur une PWA : </p>
+<ul>
+<li>OffLine</li>
+<li>Responsive</li>
+<li>Installable</li>
+<li>Push Notification</li>
+<li>Background Sync</li>
+<li>…</li>
+</ul>
+<h3 id="Concepts-abordes"><a href="#Concepts-abordes" class="headerlink" title="Concepts abordés"></a>Concepts abordés</h3><p>Pour l’application legonnary, j’ai choisi d’aborder les choses suivantes : </p>
+<ul>
+<li>Application installable</li>
+<li>Disponibilité de l’application offline</li>
+<li>Responsive</li>
+</ul>
+<p>Je n’ai donc pas touché à la partie push, ni background sync.</p>
+<h3 id="Application-installable"><a href="#Application-installable" class="headerlink" title="Application installable"></a>Application installable</h3><p>Une des choses les plus simples à mettre en œuvre, c’est le manifest. Il s’agit d’un fichier JSON qui va donner un ensemble de meta-données sur votre application permettant par la suite d’installer votre application sur la “home” de votre téléphone (compatible Android &amp; un peu IOS).</p>
+<p>Prenons en exemple le manifest de l’application joueur.</p>
+<figure class="highlight json"><figcaption><span>manifest_phone.json</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/manifest_phone.json">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Legonnary&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;short_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Legonnary&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;icons&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./assets/img/launcher_144.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;144x144&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./assets/img/launcher_192.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;192x192&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;src&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./assets/img/launcher_512.png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;image/png&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;sizes&quot;</span><span class="punctuation">:</span> <span class="string">&quot;512x512&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;start_url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./index.html&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;display&quot;</span><span class="punctuation">:</span> <span class="string">&quot;standalone&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;orientation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;portrait&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;background_color&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffeb3b&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;theme_color&quot;</span><span class="punctuation">:</span> <span class="string">&quot;#ffeb3b&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Revenons sur les différents champs : </p>
+<ul>
+<li><code>name</code>: Il s’agit du nom de l’application à son lancement.</li>
+<li><code>short_name</code> : Il s’agit du nom qui sera présent sous l’icône dans la “home” de votre téléphone.</li>
+<li><code>icons</code> : Ensemble de combinaisons possibles de résolutions de votre icône. Cela va dépendre du téléphone.</li>
+<li><code>start_url</code> : URL de démarrage du site une fois qu’on a cliqué sur l’icône. On peut donc spécifier une URL spécifique dans le cas d’une PWA ! </li>
+<li><code>display</code> : Il s’agit d’un flag permettant de définir le mode de lancement de l’application. Voici les valeurs possibles : <ul>
+<li><code>standalone</code> : N’affiche pas la barre de navigation du navigateur.</li>
+<li><code>browser</code> : Affiche la barre de navigation.</li>
+</ul>
+</li>
+<li><code>orientation</code> : Définit l’orientation de l’application.</li>
+<li><code>background_color</code> : Définit la couleur de fond que vous allez avoir pour le spash screen.</li>
+<li><code>theme_color</code> : Définit une couleur de thème qui pourra être utilisée par le navigateur pour colorer la barre d’URL.</li>
+</ul>
+<p>Pour ajouter ce manifest à votre page il suffit simplement d’ajouter la balise suivante dans la partie header : </p>
+<figure class="highlight html"><figcaption><span>index.html(header)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/index.html#L9">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;manifest&quot;</span> <span class="attr">href</span>=<span class="string">&quot;manifest_phone.json&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Concernant IOS &amp; Windows, il faut ajouter quelques balises supplémentaires (toujours dans le header) pour avoir l’ajout à l’écran d’accueil.</p>
+<figure class="highlight html"><figcaption><span>index.html(header)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/index.html#L10">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Add to home screen for Safari on iOS --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;apple-mobile-web-app-capable&quot;</span> <span class="attr">content</span>=<span class="string">&quot;yes&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;apple-mobile-web-app-status-bar-style&quot;</span> <span class="attr">content</span>=<span class="string">&quot;black&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;apple-mobile-web-app-title&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Legonnary&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;apple-touch-icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;./assets/img/launcher_144.png&quot;</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Windows management --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;msapplication-TileImage&quot;</span> <span class="attr">content</span>=<span class="string">&quot;./assets/img/launcher_144.png&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;msapplication-TileColor&quot;</span> <span class="attr">content</span>=<span class="string">&quot;#ffeb3b&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>**&#x2F;!\ Le fait de préciser le manifest dans l’index.html ne suffit pas à transformer votre application en application “installable” ! En effet, une application installée sur votre home doit être capable de démarrer même sans internet !  Donc une PWA avec un manifest ne sera réellement installable que si vous avez un service worker installé. **</p>
+<p>Pour plus d’infos, vous pouvez consulter cette doc : <a href="https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/">Web App Manifest</a></p>
+<h3 id="Offline"><a href="#Offline" class="headerlink" title="Offline"></a>Offline</h3><p>Passons maintenant à la mise en place du service worker.</p>
+<p>Pour ceux qui ne savent pas ce qu’est un service worker, je vous invite à consulter ce site : <a href="https://jakearchibald.github.io/isserviceworkerready/">Is ServiceWorker Ready ?</a>. En plus de vous donner l’état d’avancement de l’implémentation de la spec sur les différents navigateurs, il vous donnera accès à plein de ressources, documentation nécessaire à la compréhension du service worker.</p>
+<p>Comme je le disais au début, j’ai préféré coder moi-même mon service worker car je souhaitais monter en compétences et comprendre précisément ce que je codais. Je n’ai donc pas utilisé d’outils pour m’aider à réaliser ce dernier et si vous êtes intéressés par de la génération de services workers, je vous invite à regarder ceci : <a href="https://github.com/GoogleChrome/sw-precache">sw-precache</a>.</p>
+<p>Concernant mon application, j’avais envie d’éviter de surcharger mon serveur en bande passante et donc je me suis appuyé sur des CDN pour délivrer mes librairies Javascript. Une des premières choses que j’ai donc mises en place, c’est la séparation entre mon cache de CDN et le cache de mes ressources que je considérais comme dynamiques (css &#x2F; js &#x2F; …) </p>
+<figure class="highlight javascript"><figcaption><span>service-worker-phone.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">&#x27;use strict&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cacheFileName = <span class="string">&quot;legonnaryCache-v&#123;timestamp&#125;&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> cacheCdnName = <span class="string">&quot;legonnaryCdnCache-v1&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> filesToCache = [</span><br><span class="line">    <span class="string">&#x27;./&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./index.html&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./bundle_phone.js&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./css/phone.css&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./assets/img/favicon.ico&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./assets/img/launcher_144.png&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./assets/img/launcher_192.png&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./assets/img/launcher_512.png&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./assets/img/lego_painter.png&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./assets/img/lego_painter_128.png&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./assets/fonts/LEGO_BRIX.ttf&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;./manifest_phone.json&#x27;</span></span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cdnToCache = [</span><br><span class="line">  <span class="string">&quot;https://fonts.googleapis.com/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;https://cdnjs.cloudflare.com/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;https://www.gstatic.com/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;https://ajax.googleapis.com/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;https://rawgit.com/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;https://www.google-analytics.com/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;https://code.getmdl.io/&quot;</span>,</span><br><span class="line">  <span class="string">&quot;https://fonts.gstatic.com/&quot;</span>  </span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<p>Ce fichier est issu des tutoriels de Google, donc on va y retrouver les éléments classiques : </p>
+<p><strong>1. Installation avec mise en cache</strong></p>
+<figure class="highlight javascript"><figcaption><span>service-worker-phone.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js#L32">link</a></figcaption><table><tr><td class="code"><pre><span class="line">self.<span class="title function_">addEventListener</span>(<span class="string">&#x27;install&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[ServiceWorker] Install&#x27;</span>);</span><br><span class="line">    e.<span class="title function_">waitUntil</span>(</span><br><span class="line">        caches.<span class="title function_">open</span>(cacheFileName)</span><br><span class="line">            .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">cache</span>) &#123;</span><br><span class="line">                <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[ServiceWorker] Caching app shell&#x27;</span>);</span><br><span class="line">                <span class="keyword">return</span> cache.<span class="title function_">addAll</span>(filesToCache);</span><br><span class="line">            &#125;)</span><br><span class="line">    );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>2. Activation du cache avec invalidation du précédent cache</strong> </p>
+<figure class="highlight javascript"><figcaption><span>service-worker-phone.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js#L43">link</a></figcaption><table><tr><td class="code"><pre><span class="line">self.<span class="title function_">addEventListener</span>(<span class="string">&#x27;activate&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[ServiceWorker] Activate&#x27;</span>);</span><br><span class="line">    e.<span class="title function_">waitUntil</span>(</span><br><span class="line">        caches.<span class="title function_">keys</span>().<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">keyList</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">all</span>(keyList.<span class="title function_">map</span>(<span class="keyword">function</span>(<span class="params">key</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (key !== cacheFileName &amp;&amp; key != cacheCdnName) &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[ServiceWorker] Removing old cache&#x27;</span>, key);</span><br><span class="line">                    <span class="keyword">return</span> caches.<span class="title function_">delete</span>(key);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;));</span><br><span class="line">        &#125;)</span><br><span class="line">    );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>La particularité de mon service worker réside au niveau de la mise en cache du CDN. J’attends en effet de voir si la ressource demandée fait partie de ma liste de ressources à mettre à cache et si c’est le cas, je délivre soit le fichier “caché”, soit je le récupère sur le réseau et ensuite je le mets en cache.</p>
+<p>Si la ressource ne fait pas partie des fichiers à mettre en cache, alors, je vais chercher la ressource sur le web.</p>
+<figure class="highlight javascript"><figcaption><span>service-worker-phone.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js#L57">link</a></figcaption><table><tr><td class="code"><pre><span class="line">self.<span class="title function_">addEventListener</span>(<span class="string">&#x27;fetch&#x27;</span>, <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[ServiceWorker] Fetch&#x27;</span>, e.<span class="property">request</span>.<span class="property">url</span>);</span><br><span class="line">    <span class="keyword">if</span> (cdnToCache.<span class="title function_">find</span>(<span class="function">(<span class="params">element</span>)=&gt;</span>&#123;<span class="keyword">return</span> e.<span class="property">request</span>.<span class="property">url</span>.<span class="title function_">indexOf</span>(element) === <span class="number">0</span>;&#125;)) &#123;</span><br><span class="line">        e.<span class="title function_">respondWith</span>(</span><br><span class="line">            caches.<span class="title function_">match</span>(e.<span class="property">request</span>.<span class="property">url</span>).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (response)&#123;</span><br><span class="line">                    <span class="keyword">return</span> response</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="title function_">fetch</span>(e.<span class="property">request</span>)</span><br><span class="line">                            .<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">                                <span class="keyword">return</span> caches.<span class="title function_">open</span>(cacheCdnName).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">cache</span>) &#123;</span><br><span class="line">                                    cache.<span class="title function_">put</span>(e.<span class="property">request</span>.<span class="property">url</span>, response.<span class="title function_">clone</span>());</span><br><span class="line">                                    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;[ServiceWorker] Fetched&amp;Cached Data&#x27;</span>);</span><br><span class="line">                                    <span class="keyword">return</span> response;</span><br><span class="line">                                &#125;);</span><br><span class="line">                            &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)            </span><br><span class="line">        );</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        e.<span class="title function_">respondWith</span>(</span><br><span class="line">            caches.<span class="title function_">match</span>(e.<span class="property">request</span>).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">response</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> response || <span class="title function_">fetch</span>(e.<span class="property">request</span>);</span><br><span class="line">            &#125;)</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Fichier complet : <a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/service-worker-phone.js">ServiceWorker Legonnary</a></p>
+<p>Enfin, n’oublions pas d’inclure l’installation du service worker dans l’application.</p>
+<figure class="highlight javascript"><figcaption><span>app_phone.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_phone.js#L186">link</a></figcaption><table><tr><td class="code"><pre><span class="line"> <span class="keyword">if</span> (<span class="string">&#x27;serviceWorker&#x27;</span> <span class="keyword">in</span> navigator) &#123;        </span><br><span class="line">    navigator.<span class="property">serviceWorker</span>.<span class="title function_">register</span>(<span class="string">&#x27;./service-worker-phone.js&#x27;</span>, &#123;scope : location.<span class="property">pathname</span>&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">reg</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Service Worker Register for scope : %s&#x27;</span>,reg.<span class="property">scope</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Gestion-du-build"><a href="#Gestion-du-build" class="headerlink" title="Gestion du build"></a>Gestion du build</h4><p>Comme je n’ai pas utilisé d’outils de build pour gérer le service worker, j’ai dû mettre en place quelques <em>“astuces”</em> pour garder un workflow de dev facile. En effet, en développement mon service worker n’est pas actif et la mise à jour du numéro de cache est gérée automatiquement par mon build. </p>
+<p><strong>1. Service worker désactivé pendant le dev</strong></p>
+<p>J’aurais très bien pu utiliser l’option des devtools qui me permet de mettre à jour mon cache à chaque refresh mais cela nécessite que les devtools soient toujours ouverts, ce qui n’était pas toujours mon cas. Pour pallier à ça, j’ai simplement commenté l’activation de mon service dans mon code et mon build va simplement supprimer ces commentaires.</p>
+<figure class="highlight javascript"><figcaption><span>app_phone.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/app_phone.js#L185">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">/* SERVICE_WORKER_REPLACE</span></span><br><span class="line"><span class="comment">if (&#x27;serviceWorker&#x27; in navigator) &#123;        </span></span><br><span class="line"><span class="comment">    navigator.serviceWorker.register(&#x27;./service-worker-phone.js&#x27;, &#123;scope : location.pathname&#125;).then(function(reg) &#123;</span></span><br><span class="line"><span class="comment">        console.log(&#x27;Service Worker Register for scope : %s&#x27;,reg.scope);</span></span><br><span class="line"><span class="comment">    &#125;);</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">SERVICE_WORKER_REPLACE */</span></span><br></pre></td></tr></table></figure>
+
+<p>Mon build s’occupe ensuite de dé-commenter le code : </p>
+<figure class="highlight javascript"><figcaption><span>gulpfile.js (task replace)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js#L98">link</a></figcaption><table><tr><td class="code"><pre><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;replace&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  gulp.<span class="title function_">src</span>([<span class="string">&#x27;./public/bundle_phone.js&#x27;</span>, <span class="string">&#x27;./public/bundle_moderator.js&#x27;</span>])</span><br><span class="line">  .<span class="title function_">pipe</span>(<span class="title function_">replace</span>(<span class="string">&#x27;/* SERVICE_WORKER_REPLACE&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">  .<span class="title function_">pipe</span>(<span class="title function_">replace</span>(<span class="string">&#x27;SERVICE_WORKER_REPLACE */&#x27;</span>, <span class="string">&#x27;&#x27;</span>))</span><br><span class="line">  .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./public/&#x27;</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>De cette manière le code final ressemble à ça : </p>
+<figure class="highlight javascript"><figcaption><span>bundle_phone.js</span></figcaption><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="string">&#x27;serviceWorker&#x27;</span> <span class="keyword">in</span> navigator) &#123;        </span><br><span class="line">    navigator.<span class="property">serviceWorker</span>.<span class="title function_">register</span>(<span class="string">&#x27;./service-worker-phone.js&#x27;</span>, &#123;scope : location.<span class="property">pathname</span>&#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">reg</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;Service Worker Register for scope : %s&#x27;</span>,reg.<span class="property">scope</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>2. Incrémentation automatique</strong></p>
+<p>Étant donné que les ressources qui vont évoluées sont à mon cache <code>let cacheFileName = &quot;legonnaryCache-v&#123;timestamp&#125;&quot;;</code> </p>
+<p>le timestamp est remplacé à la génération de la façon suivante :</p>
+<figure class="highlight javascript"><figcaption><span>gulpfile.js (task replace_timestamp)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/gulpfile.js#L105">link</a></figcaption><table><tr><td class="code"><pre><span class="line">gulp.<span class="title function_">task</span>(<span class="string">&quot;replace_timestamp&quot;</span>, <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">  gulp.<span class="title function_">src</span>([<span class="string">&#x27;./public/service-worker-phone.js&#x27;</span>, <span class="string">&#x27;./public/service-worker-moderator.js&#x27;</span>])</span><br><span class="line">  .<span class="title function_">pipe</span>(<span class="title function_">replace</span>(<span class="string">&#x27;&#123;timestamp&#125;&#x27;</span>, <span class="title class_">Date</span>.<span class="title function_">now</span>()))</span><br><span class="line">  .<span class="title function_">pipe</span>(gulp.<span class="title function_">dest</span>(<span class="string">&#x27;./public/&#x27;</span>));</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>De cette manière, le numéro de mon cache sera toujours en lien avec la dernière version de mon code.</p>
+<p><strong>3. Pour aller plus loin</strong></p>
+<p>Si je devais revoir mon service worker, je tacherais d’utiliser des outils tels que sw-precache et je séparerais encore plus mes caches pour dissocier la partie js &#x2F; css &#x2F; HTML de mes ressources graphiques &#x2F; font. </p>
+<h3 id="Responsive"><a href="#Responsive" class="headerlink" title="Responsive"></a>Responsive</h3><p>La partie responsive a été géré très simplement grâce à la librairie <a href="https://getmdl.io/">GetMdl.io</a> (Get Material Design Lite) qui me permet sans trop de complexité d’avoir une application avec un look Material Design.</p>
+<p>Un des avantages que propose cette librairie est d’utiliser une variante graphique jouant sur les couleurs primaires du material design : <a href="https://getmdl.io/customize/index.html">Customize Getmdl</a>. De cette manière, j’ai pu proposer sans surcouche un style graphique différent pour chacune des applications créés. De cette manière, j’avais un style graphique reconnaissable pour l’application “joueur” ou pour l’application “modérateur”.</p>
+<p>N’oublions quand même pas l’inclusion dans le header de la balise meta permettant de gérer le zoom navigateur pour les mobiles </p>
+<figure class="highlight html"><figcaption><span>index.html (header)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/index.html#L22">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">content</span>=<span class="string">&#x27;width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0&#x27;</span> <span class="attr">name</span>=<span class="string">&#x27;viewport&#x27;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/HTML5/">HTML5</a><a href="/tags/Firebase/">Firebase</a><a href="/tags/DevFest/">DevFest</a><a href="/tags/Progressive-Web-App/">Progressive Web App</a><a href="/tags/Service-Worker/">Service Worker</a><a href="/tags/Web-App-Manifest/">Web App Manifest</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary/" data-title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA) | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/23/2016-12-23-legonnary-2/" title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase)">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/12/23/legonnary-en/"  title="I did a real-time server-less and offline multiplayer games (Part 1 - PWA)">
+ <strong>NEXT:</strong><br/> 
+ <span>I did a real-time server-less and offline multiplayer games (Part 1 - PWA)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

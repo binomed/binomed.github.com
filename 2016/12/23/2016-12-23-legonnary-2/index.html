@@ -1,0 +1,828 @@
+
+ <!DOCTYPE HTML>
+<html lang="fr-FR">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase) | Binomed Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="jefBinomed">
+    
+
+    
+    <meta name="description" content="Deuxième partie d’une série de 3 articles :   Article 1 - PWA Article 3 - Partie Graphique   Sécurisation de l’appAux jours d’aujourd’hui, nous ne pouvons pas passer à côté d’applications sécurisées.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase)">
+<meta property="og:url" content="http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-2/index.html">
+<meta property="og:site_name" content="Binomed Blog">
+<meta property="og:description" content="Deuxième partie d’une série de 3 articles :   Article 1 - PWA Article 3 - Partie Graphique   Sécurisation de l’appAux jours d’aujourd’hui, nous ne pouvons pas passer à côté d’applications sécurisées.">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/devfest_photo.jpg">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/firebase-authentication-logo1.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/legonnary_auth.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/firebase_hosting.png">
+<meta property="og:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/firebase-database-logo.png">
+<meta property="article:published_time" content="2016-12-23T16:05:40.000Z">
+<meta property="article:modified_time" content="2024-01-26T15:18:47.705Z">
+<meta property="article:author" content="jefBinomed">
+<meta property="article:tag" content="HTML5">
+<meta property="article:tag" content="Firebase">
+<meta property="article:tag" content="DevFest">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://jef.binomed.fr/assets/2016-12-legonnary/devfest_photo.jpg">
+<meta name="twitter:creator" content="@jefBinomed">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Binomed Blog" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/binomed_alizarin.png">
+    <link rel="apple-touch-icon-precomposed" href="/img/binomed_alizarin.png">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+  <body>
+    <header>
+      
+	
+	<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/binomed_alizarin.png" alt="Binomed Blog" title="Binomed Blog"/></a>
+			</div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Binomed Blog">Binomed Blog</a></h1>
+				<h2 class="blog-motto">Another G33k blog</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Recherche" />
+						<input type="hidden" name="q" value="site:jef.binomed.fr">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+	
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/23/2016-12-23-legonnary-2/" title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase)" itemprop="url">J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" title="jefBinomed" target="_blank" itemprop="author">jefBinomed</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-23T16:05:40.000Z" itemprop="datePublished"> Publié 23 Dec 2016</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<p><img src="/assets/2016-12-legonnary/devfest_photo.jpg"></p>
+<p>Deuxième partie d’une série de 3 articles : </p>
+<ul>
+<li><a href="/2016/12/23/2016-12-23-legonnary/">Article 1 - PWA</a></li>
+<li><a href="/2016/12/23/2016-12-23-legonnary-3/">Article 3 - Partie Graphique </a></li>
+</ul>
+<h2 id="Securisation-de-l’app"><a href="#Securisation-de-l’app" class="headerlink" title="Sécurisation de l’app"></a>Sécurisation de l’app</h2><p>Aux jours d’aujourd’hui, nous ne pouvons pas passer à côté d’applications sécurisées. Je veux donc mettre en place les choses suivantes : </p>
+<ul>
+<li>Les joueurs doivent être identifiés pour jouer et je veux proposer un social login afin d’éviter d’avoir à saisir un nouveau login &#x2F; mdp.</li>
+<li>Le site est servi en https.</li>
+<li>L’accès aux données et dessins produits ne sont pas accessibles par tout le monde.</li>
+</ul>
+<p>Grâce aux dernières APIs sorties côté firebase, j’ai pu résoudre tous ces problèmes le plus simplement du monde ! </p>
+<h3 id="Authentification"><a href="#Authentification" class="headerlink" title="Authentification"></a>Authentification</h3><p>Dans mes précédents projets j’utilisais <a href="https://adodson.com/hello.js/">Hello.js</a>, cette librairie est très facile à installer et très pratique. Je vous conseille d’y jeter un coup d’œil !  Mais pour ce projet, j’ai voulu essayer quelque chose de différent pour comparer et voir les avantages inconvénients de chaque solution. Je suis donc parti sur <a href="https://firebase.google.com/docs/auth/">Firebase Authentication</a>. </p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase-authentication-logo1.png">
+</div>
+
+<p>Cette solution permet d’utiliser un mécanisme d’authentification des utilisateurs qui sera reconnu dans l’arbre Firebase. De plus, en se basant sur cette solution, on peut facilement paramétrer des solutions de social login !</p>
+<p>Afin de faciliter la vie du développeur. Firebase a mis à disposition une librairie web qui permet d’intégrer ce mécanisme : <a href="https://github.com/firebase/FirebaseUI-Web">FirebaseUI-Web</a>. Il reste quand même à configurer les différentes plateformes pour récupérer les différentes clés d’API OAuth. </p>
+<figure class="highlight javascript"><figcaption><span>firebaseAuth.js</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/src/scripts/firebase/firebaseAuth.js#L11">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> uiConfig = &#123;</span><br><span class="line">    <span class="string">&#x27;callbacks&#x27;</span>: &#123;</span><br><span class="line">        <span class="comment">// Called when the user has been successfully signed in.</span></span><br><span class="line">        <span class="string">&#x27;signInSuccess&#x27;</span>: <span class="keyword">function</span>(<span class="params">user, credential, redirectUrl</span>) &#123;</span><br><span class="line">            <span class="comment">// Do not redirect.</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// Opens IDP Providers sign-in flow in a popup.</span></span><br><span class="line">    <span class="string">&#x27;signInFlow&#x27;</span>: <span class="string">&#x27;popup&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;signInOptions&#x27;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">        <span class="attr">provider</span>: firebase.<span class="property">auth</span>.<span class="property">GoogleAuthProvider</span>.<span class="property">PROVIDER_ID</span>,</span><br><span class="line">        <span class="attr">scopes</span>: [<span class="string">&#x27;https://www.googleapis.com/auth/plus.login&#x27;</span>]</span><br><span class="line">        &#125;,</span><br><span class="line">        firebase.<span class="property">auth</span>.<span class="property">FacebookAuthProvider</span>.<span class="property">PROVIDER_ID</span>,</span><br><span class="line">        firebase.<span class="property">auth</span>.<span class="property">TwitterAuthProvider</span>.<span class="property">PROVIDER_ID</span>,</span><br><span class="line">        firebase.<span class="property">auth</span>.<span class="property">GithubAuthProvider</span>.<span class="property">PROVIDER_ID</span>,</span><br><span class="line">        firebase.<span class="property">auth</span>.<span class="property">EmailAuthProvider</span>.<span class="property">PROVIDER_ID</span></span><br><span class="line">    ],</span><br><span class="line">    <span class="comment">// Terms of service URL.</span></span><br><span class="line">    <span class="string">&#x27;tosUrl&#x27;</span>: <span class="string">&#x27;https://gdgnantes.com&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">ui</span> = <span class="keyword">new</span> firebaseui.<span class="property">auth</span>.<span class="title class_">AuthUI</span>(firebase.<span class="title function_">auth</span>());</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">ui</span>.<span class="title function_">start</span>(<span class="string">&#x27;#firebaseui-auth-container&#x27;</span>, uiConfig);</span><br></pre></td></tr></table></figure>
+
+<p>A travers ce code : </p>
+<ul>
+<li>Je suis capable gérer une popup de login</li>
+<li>Je suis capable d’avoir un login social avec Google &#x2F; Facebook &#x2F; Github &#x2F; Twitter et ça donne ça :</li>
+</ul>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/legonnary_auth.png">
+</div>
+
+<p>Un des avantages de la solution Firebase est que l’auto login est géré et qu’une API est proposée pour récupérer les informations sur le “user”.</p>
+<p><strong>Comparatif</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">Fonctionnalité</th>
+<th align="center">Hello.JS</th>
+<th align="center">FireBase</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Auto login</td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">Facile à intégrer dans firebase</td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">Peut être utilisé indépendant de firebase</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Interface graphique</td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">Single Email Login</td>
+<td align="center">✗</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">Google Login</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">Facebook Login</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">Twitter Login</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">Github Login</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="center">LinkedIn Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Live Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">DropBox Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Instagram Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Yahoo Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Joinme Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Soundcloud Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Foursquare Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Flickr Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+<tr>
+<td align="center">Vk Login</td>
+<td align="center">✓</td>
+<td align="center">✗</td>
+</tr>
+</tbody></table>
+<h3 id="Https"><a href="#Https" class="headerlink" title="Https"></a>Https</h3><div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase_hosting.png">
+</div>
+
+<p>Firebase propose depuis quelque temps déjà la possibilité de hoster son application sur leurs serveurs : <a href="https://firebase.google.com/docs/hosting/">Firebase Hosting</a></p>
+<p>Par défaut, le site est hébergé sur une URL type <code>https://[MON_APPLICATION].firebaseapp.com</code>. Cependant, si on le souhaite, on peut utiliser son propre nom de domaine. Dans mon cas l’application est disponible à l’adresse suivante : <a href="https://legonnary.firebaseapp.com/">https://legonnary.firebaseapp.com</a> </p>
+<p>Pour déployer son site, rien de plus simple : </p>
+<ol>
+<li>Installez les <a href="https://firebase.google.com/docs/cli/">firebase-tools</a> : <code>npm install -g firebase-tools</code></li>
+<li>Logguez vous : <code>firebase login</code></li>
+<li>Initialisez votre projet pour préparer le déploiement firebase : <code>firebase init</code></li>
+<li>Lancer la procédure de déploiement avec <code>firebase deploy</code></li>
+</ol>
+<p>Si vous voulez utiliser <code>firebase deploy</code> derrière une plateforme de CI, rien de plus simple : </p>
+<ol>
+<li>Tapez dans une console : <code>firebase login:ci</code>. Vous allez ainsi récupérer un token</li>
+<li>Utilisez ce token sur votre plateforme d’intégration pour déployer avec la commande suivante : <code>firebase deploy --token &lt;token&gt;</code></li>
+</ol>
+<h3 id="Structure-de-l’arbre-firebase"><a href="#Structure-de-l’arbre-firebase" class="headerlink" title="Structure de l’arbre firebase"></a>Structure de l’arbre firebase</h3><p>J’ai fait reposer mon application sur la partie <a href="https://firebase.google.com/docs/database/">Realtime Database</a> de Firebase car cela me permettait une réactivité et une interaction instantanée entre les différents acteurs. Pour ceux qui ne savent pas ce qu’est le Realtime Database, il s’agit d’un arbre JSON disponible sur firebase sur lequel on peut s’abonner. On peut écouter un ajout &#x2F; modification &#x2F; suppression de nœud ou d’attributs de l’arbre json.</p>
+<div style="text-align:center; width:100%;">
+    <img src="/assets/2016-12-legonnary/firebase-database-logo.png">
+</div>
+
+<p>Voici comment mon arbre est structuré : </p>
+<figure class="highlight json"><figcaption><span>Realtime Database</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;admins&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;mon*email@me*com&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;draw&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;XXXXX_FIREBASE_AUTO_UID_XXXX&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;instructions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;angle&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">                    <span class="attr">&quot;cellSize&quot;</span> <span class="punctuation">:</span> <span class="number">23</span></span><br><span class="line">                    <span class="attr">&quot;color&quot;</span><span class="punctuation">:</span><span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">                    <span class="attr">&quot;left&quot;</span><span class="punctuation">:</span><span class="string">&quot;115&quot;</span></span><br><span class="line">                    <span class="attr">&quot;top&quot;</span><span class="punctuation">:</span><span class="string">&quot;138&quot;</span></span><br><span class="line">                    <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;col&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                        <span class="attr">&quot;row&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;userId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;YYYY_FIREBASE_AUTO_UID_YYYY&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;drawValidated&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;ZZZZ_FIREBASE_AUTO_UID_ZZZZ&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;instructions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;angle&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">                    <span class="attr">&quot;cellSize&quot;</span> <span class="punctuation">:</span> <span class="number">23</span></span><br><span class="line">                    <span class="attr">&quot;color&quot;</span><span class="punctuation">:</span><span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">                    <span class="attr">&quot;left&quot;</span><span class="punctuation">:</span><span class="string">&quot;115&quot;</span></span><br><span class="line">                    <span class="attr">&quot;top&quot;</span><span class="punctuation">:</span><span class="string">&quot;138&quot;</span></span><br><span class="line">                    <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;col&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                        <span class="attr">&quot;row&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;userdId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;drawSaved&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;YYYY_FIREBASE_AUTO_UID_YYYY&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;accepted&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;dataUrl&quot;</span><span class="punctuation">:</span><span class="string">&quot;data:image/png;base64,XXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;userdId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;drawShow&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;ZZZZ_FIREBASE_AUTO_UID_ZZZZ&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;accepted&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dataUrl&quot;</span><span class="punctuation">:</span><span class="string">&quot;data:image/png;base64,XXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Si l’on regarde de plus près cet arbre, on peut voir 5 nœuds principaux : </p>
+<ul>
+<li><strong>admins</strong> :  Liste des emails des administrateurs.</li>
+<li><strong>draw</strong> : Liste des dessins soumis qui doivent être validés ou non par le modérateur.</li>
+<li><strong>drawValidated</strong> : Liste des dessins validés par le modérateur qui sont en attente d’affichage sur l’écran du compte à rebours.</li>
+<li><strong>drawSaved</strong> : Liste des dessins qui ont été soit validés, soit refusés par utilisateur.</li>
+<li><strong>drawShow</strong> : Liste des dessins qui ont été validés et qui sont disponibles pour l’affichage de restitution.</li>
+</ul>
+<figure class="highlight json"><figcaption><span>admins</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;admins&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;mon*email@me*com&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">true</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Pour chaque admin, on indique son email. On est obligé par contre de remplacer les “.” par des “*” car sinon firebase n’accepte pas le JSON et le considère comme invalide.</p>
+<figure class="highlight json"><figcaption><span>draw</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;draw&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;XXXXX_FIREBASE_AUTO_UID_XXXX&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;instructions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;angle&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">                    <span class="attr">&quot;cellSize&quot;</span> <span class="punctuation">:</span> <span class="number">23</span></span><br><span class="line">                    <span class="attr">&quot;color&quot;</span><span class="punctuation">:</span><span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">                    <span class="attr">&quot;left&quot;</span><span class="punctuation">:</span><span class="string">&quot;115&quot;</span></span><br><span class="line">                    <span class="attr">&quot;top&quot;</span><span class="punctuation">:</span><span class="string">&quot;138&quot;</span></span><br><span class="line">                    <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;col&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                        <span class="attr">&quot;row&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">            <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;userId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;YYYY_FIREBASE_AUTO_UID_YYYY&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Pour chaque dessin, un uuid généré automatiquement par firebase est ajouté. S’ensuit ensuite un descriptif du dessin avec l’utilisateur à l’origine du dessin et les instructions à appliquer pour reproduire le dessin. </p>
+<p>À une instruction correspond 1 brique. Sa position dans le dessin est disponible ainsi que sa couleur et son angle. Pour un dessin, nous aurons autant d’instructions qu’il y a de briques.</p>
+<figure class="highlight json"><figcaption><span>drawValidated</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;drawValidated&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;ZZZZ_FIREBASE_AUTO_UID_ZZZZ&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;instructions&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;0&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">                    <span class="attr">&quot;angle&quot;</span> <span class="punctuation">:</span> <span class="number">0</span></span><br><span class="line">                    <span class="attr">&quot;cellSize&quot;</span> <span class="punctuation">:</span> <span class="number">23</span></span><br><span class="line">                    <span class="attr">&quot;color&quot;</span><span class="punctuation">:</span><span class="string">&quot;#FFFFFF&quot;</span></span><br><span class="line">                    <span class="attr">&quot;left&quot;</span><span class="punctuation">:</span><span class="string">&quot;115&quot;</span></span><br><span class="line">                    <span class="attr">&quot;top&quot;</span><span class="punctuation">:</span><span class="string">&quot;138&quot;</span></span><br><span class="line">                    <span class="attr">&quot;size&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                        <span class="attr">&quot;col&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                        <span class="attr">&quot;row&quot;</span><span class="punctuation">:</span><span class="number">2</span></span><br><span class="line">                    <span class="punctuation">&#125;</span></span><br><span class="line">                <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;1&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">            <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;userdId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Dans cet arbre, on va retrouver toutes les informations nécessaires à l’affichage d’un dessin à savoir : qui a fait le dessin et quelles sont les instructions pour dessiner. De cette manière, l’écran de compte à rebours est capable d’afficher les bonnes informations et de reproduire le dessin.</p>
+<figure class="highlight json"><figcaption><span>drawSaved</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;drawSaved&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;YYYY_FIREBASE_AUTO_UID_YYYY&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">                <span class="attr">&quot;accepted&quot;</span><span class="punctuation">:</span><span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;dataUrl&quot;</span><span class="punctuation">:</span><span class="string">&quot;data:image/png;base64,XXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span><span class="punctuation">,</span></span><br><span class="line">                <span class="attr">&quot;userdId&quot;</span><span class="punctuation">:</span> <span class="string">&quot;XXXX_UUID_OAUTH_USER_XXXX&quot;</span></span><br><span class="line">            <span class="punctuation">&#125;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>À partir du moment où l’on se trouve dans “drawSaved”, on se situe au niveau user et on a la liste des dessins de l’utilisateur avec leur état. Contrairement aux nœuds précédents, nous n’avons pas la liste des instructions mais directement l’image finale en base64. De cette manière, on évite la phase de construction du dessin.</p>
+<figure class="highlight json"><figcaption><span>drawShow</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;drawShow&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;ZZZZ_FIREBASE_AUTO_UID_ZZZZ&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;accepted&quot;</span> <span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;dataUrl&quot;</span><span class="punctuation">:</span><span class="string">&quot;data:image/png;base64,XXXXXXXXXX&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;user&quot;</span><span class="punctuation">:</span> <span class="string">&quot;pseudo user&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Même chose dans cette partie de l’arbre, on ne stocke que le nom du user et son dessin, on s’évite ainsi la reconstruction du dessin. De plus sous cette partie de l’arbre, on a supprimé l’id du user car cette information n’est plus pertinente.</p>
+<h3 id="Gestion-de-l’admin"><a href="#Gestion-de-l’admin" class="headerlink" title="Gestion de l’admin"></a>Gestion de l’admin</h3><p>Une fois cet arbre définit, j’ai voulu appliquer un système de restrictions sur la publication &#x2F; lecture dans l’arbre. En effet, je ne voulais pas que n’importe qui puisse écrire ou lire n’importe quelles données. </p>
+<p>Heureusement Firebase propose justement un mécanisme de protection de son arbre en fonction de l’utilisateur connecté. On peut soit protégé de façon fine un nœud ou alors poser des restrictions de façon plus large. Voici le guide complet pour apprendre à protéger ses données dans une base de données firebase : <a href="https://firebase.google.com/docs/database/security/">Security &amp; Rules</a> </p>
+<p>Voici les restrictions mises en place : </p>
+<figure class="highlight json"><figcaption><span>database.rules.json</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;admins&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;draw&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;drawValidated&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;drawShow&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;drawSaved&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;$userId&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; $userId === auth.uid&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span>  </span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Revenons sur chacune de ces règles pour les détailler : </p>
+<p><strong>Partie Admin :</strong></p>
+<figure class="highlight json"><figcaption><span>database.rules.json (admin)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L3">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;admins&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Cette partie de l’arbre n’est ni disponible en lecture, ni disponible en écriture car je ne veux pas que quiconque puisse avoir accès aux emails concernés.</p>
+<p><strong>Partie dessins soumis :</strong></p>
+<figure class="highlight json"><figcaption><span>database.rules.json (admin)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L7">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;draw&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>L’écriture sur ce nœud ne peut se faire que pour un utilisateur authentifié <code>auth != null</code>.</p>
+<p>La lecture n’est disponible que par un admin : </p>
+<ul>
+<li><code>auth != null</code> : L’admin est authentifié</li>
+<li><code>root.child(&#39;admins&#39;).child(auth.token.email.replace(&#39;.&#39;, &#39;*&#39;)).exists()</code> : l’utilisateur courant a son mail qui fait partie des nœuds disponibles dans la partie “admins”. Au passage, on pense bien à remplacer les “*” par des “.” lors de la vérification</li>
+<li><code>auth.token.email_verified == true</code> : l’email est vérifié par le tiers de confiance OAuth</li>
+</ul>
+<p>**Partie Dessin validé (écran de comptes à rebours) : **</p>
+<figure class="highlight json"><figcaption><span>database.rules.json (admin)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L11">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;drawValidated&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Dans cette partie, seul l’admin peut lire ou écrire.</p>
+<p><strong>Partie dessins validés :</strong></p>
+<figure class="highlight json"><figcaption><span>database.rules.json (admin)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L15">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;drawShow&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>Seul l’admin peut écrire dans cette partie et par contre la lecture est disponible à n’importe qui. De cette manière seul le modérateur peut déplacer un dessin dans cette partie de l’arbre et une fois qu’un dessin est validé (et donc considéré comme “safe”) il n’y a aucune restriction d’appliquée.</p>
+<p><strong>Partie dessins archivés (validés ou refusés) :</strong></p>
+<figure class="highlight json"><figcaption><span>database.rules.json (admin)</span><a href="https://github.com/GDG-Nantes/CountDownDevFest2016/blob/master/database.rules.json#L19">link</a></figcaption><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;rules&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;drawSaved&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;$userId&quot;</span><span class="punctuation">:</span><span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;.read&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; $userId === auth.uid&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;.write&quot;</span><span class="punctuation">:</span> <span class="string">&quot;auth != null &amp;&amp; root.child(&#x27;admins&#x27;).child(auth.token.email.replace(&#x27;.&#x27;, &#x27;*&#x27;)).exists() &amp;&amp; auth.token.email_verified == true&quot;</span>  </span><br><span class="line">      <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>L’écriture ne peut être faite que par un admin. Par contre la lecture n’est disponible que pour le user qui a créé le dessin. </p>
+<p>Le <code>$userId</code> permet de cibler les sous-parties de l’arbre <code>drawSaved</code> pour un utilisateur donné. Et donc la condition <code>$userId === auth.uid</code> me permet de m’assurer que seul l’utilisateur courant puisse avoir accès à ses dessins ! </p>
+<p>N’importe qui ne pourra pas consulter les dessins refusés des autres et pour autant l’utilisateur pourra avoir un retour sur ses soumissions de dessins. </p>
+<script type="text/javascript" src="/assets/js_helper/jef-binomed-helper.js"></script>
+<script type="text/javascript" src="/assets/2016-12-legonnary/legonnary.js"></script>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/HTML5/">HTML5</a><a href="/tags/Firebase/">Firebase</a><a href="/tags/DevFest/">DevFest</a>
+  </div>
+
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/Tech/">Tech</a>
+</div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://jef.binomed.fr/2016/12/23/2016-12-23-legonnary-2/" data-title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 2 - FireBase) | Binomed Blog" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/12/23/2016-12-23-legonnary-3/" title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 3 - Partie graphique)">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 3 - Partie graphique)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2016/12/23/2016-12-23-legonnary/"  title="J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA)">
+ <strong>NEXT:</strong><br/> 
+ <span>J&#39;ai fait un jeux multijoueur en temps réel server-less et offline (Partie 1 - PWA)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Afficher Sidebar"></a></div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Cacher Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Catégories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/Conference/" title="Conference">Conference<sup>3</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Event/" title="Event">Event<sup>16</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/News/" title="News">News<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tech/" title="Tech">Tech<sup>8</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/Tips/" title="Tips">Tips<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/tips/" title="tips">tips<sup>3</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/Devfest/" title="Devfest">Devfest<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Organisation/" title="Organisation">Organisation<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/DevFest/" title="DevFest">DevFest<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/tips/" title="tips">tips<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/speaker/" title="speaker">speaker<sup>5</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/HTML5/" title="HTML5">HTML5<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodeJS/" title="nodeJS">nodeJS<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/myo/" title="myo">myo<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devfest/" title="devfest">devfest<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/polymer/" title="polymer">polymer<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Firebase/" title="Firebase">Firebase<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/devtools/" title="devtools">devtools<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Canvas/" title="Canvas">Canvas<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/leap-motion/" title="leap motion">leap motion<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/arduino/" title="arduino">arduino<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ev3/" title="ev3">ev3<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/canvas/" title="canvas">canvas<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/chrome/" title="chrome">chrome<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>2</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="linkslist">
+  <p class="asidetitle">Liens</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://gdgnantes.com" target="_blank" title="GDG Nantes">GDG Nantes</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.nantes-wit.fr" target="_blank" title="Nantes Wit">Nantes Wit</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.devoxx4kids.org/france/" target="_blank" title="Devoxx4Kids">Devoxx4Kids</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://nantescodinggouters.wordpress.com/" target="_blank" title="Coding Goûters">Coding Goûters</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jef.binomed.fr/binomed_docs" target="_blank" title="JefBinomed Slides">JefBinomed Slides</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://devfest.gdgnantes.com" target="_blank" title="DevFest Nantes">DevFest Nantes</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I am Jean-François Garreau, geek, dad, developer <br/>
+			I also host the GDG Nantes, Nantes WIT and Devoxx4Kids</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/jefBinomed" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		<a href="https://twitter.com/jefBinomed" target="_blank" class="icon-twitter" title="twitter"></a>
+		
+		
+		
+		<a href="https://www.linkedin.com/in/jean-françois-garreau" target="_blank" class="icon-linkedin" title="linkedin"></a>
+		
+		
+		
+		
+		<a href="https://plus.google.com/+JeanFrancoisGarreau?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2024 
+		
+		<a href="/about" target="_blank" title="jefBinomed">jefBinomed</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google_plus" target="_blank" title="Google Plus" onclick="javascript:window.open(this.href,\'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;" ></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'binomedblog';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-21310883-4', 'jef.binomed.fr');  
+ga('send', 'pageview');
+</script>
+
+
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Retour en haut"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
