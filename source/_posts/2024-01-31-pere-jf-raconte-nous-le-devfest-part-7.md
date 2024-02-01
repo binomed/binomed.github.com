@@ -14,11 +14,11 @@ Les 10 ans !!! Enfin ! Cette édition était dans nos têtes depuis déjà de no
 
 ![Image de la cité des congrès avec la virtophanie de l'édition des 10 ans](/assets/2024-01-DevFestNantesPereCastor/devfest10ans.jpeg)
 
-En effet, depuis presque 4 ans, nous commencions à penser à cette édition des 10 ans, en commençant par le thème. Je me souviens : Rex du DevFest 2018, comme chaque année, nous réfléchissons au thème de l'année suivante quand tout à coup, un thème sort : "Jules Vernes" ! À ce moment-là, toute l'équipe était unanime, ce thème est trop bien car correspond à l'identité forte de Nantes et doit donc être notre thème des 10 ans ! Ainsi petit à petit, des idées viennent se rajouter pour cette édition spéciale et sur comment la rendre à part. C'est de cette manière que nous avons travaillé notre budget de façon à nous permettre de faire une édition qui serait hors norme pour nous, années après années.
+En effet, depuis presque 4 ans, nous commencions à penser à cette édition des 10 ans, en commençant par le thème. Je me souviens : Rex du DevFest 2018, comme chaque année, nous réfléchissons au thème de l'année suivante quand tout à coup, un thème sort : "Jules Verne" ! À ce moment-là, toute l'équipe était unanime, ce thème est trop bien car correspond à l'identité forte de Nantes et doit donc être notre thème des 10 ans ! Ainsi petit à petit, des idées viennent se rajouter pour cette édition spéciale et sur comment la rendre à part. C'est de cette manière que nous avons travaillé notre budget de façon à nous permettre de faire une édition qui serait hors norme pour nous, années après années.
 
-Mais concrètement, à quoi a ressemblé cette 10ième édition ? Cette édition fut surtout l'occasion pour nous de grossir pour la dernière fois en prenant TOUTE la cité des congrès afin de proposer aux participant·es la possibilité d'entrer dans toutes les salles sans se faire rejeter. En effet, nous avons ainsi pris la salle nommée grand Auditorium que nous avons renommée "Jules Vernes" pour cette édition. Cette dernière nous offre une capacité d'accueil de 1200 places !
+Mais concrètement, à quoi a ressemblé cette 10ième édition ? Cette édition fut surtout l'occasion pour nous de grossir pour la dernière fois en prenant TOUTE la cité des congrès afin de proposer aux participant·es la possibilité d'entrer dans toutes les salles sans se faire rejeter. En effet, nous avons ainsi pris la salle nommée grand Auditorium que nous avons renommée "Jules Verne" pour cette édition. Cette dernière nous offre une capacité d'accueil de 1200 places !
 
-![vu de la salle "Jules Vernes" remplie (gros amphi-théatre de 1200 places avec sur scène un gros écran, 2 speakers)](/assets/2024-01-DevFestNantesPereCastor/grand-auditorium.jpeg)
+![vu de la salle "Jules Verne" remplie (gros amphi-théatre de 1200 places avec sur scène un gros écran, 2 speakers)](/assets/2024-01-DevFestNantesPereCastor/grand-auditorium.jpeg)
 
 Cette salle a, à elle seule représenté pour nous beaucoup de nouveautés : une scénographie différente à penser, un écran large, une régie différente, ... Bref, de beaux enjeux pour nous encore cette fois.
 
@@ -34,7 +34,7 @@ En vrac, la 10ième édition c'était aussi :
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mO9qbVavCuQ?si=F0MvarUM74oAlusy" title="Vidéo de la keynote d'ouverture qui fait la rétrospective de nos 10 dernières années" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 Vidéo de la keynote d'ouverture qui fait la rétrospective de nos 10 dernières années
 
-# Salle Jules Vernes
+# Salle Jules Verne
 
 Cette salle étant dans une dimension que nous ne connaissions pas, il a fallu nous adapter ! Déjà notre plus grande salle (Titan) avait été à l'époque un gros challenge car nous ne pouvions pas laisser cette dernière sans déco. Nous avions donc découvert à cette époque ces enjeux. Mais là, c'était encore plus flagrant ! En effet, le grand auditorium de la cité des congrès est conçu pour des spectacles et pas des salles de conférences ! Comment procéder ? Comment mettre en scène tout ça ? Comment projeter de manière qualitative une conférence dans une telle salle ? N'aurons-nous pas un effet "salle vide" ? Beaucoup de questions mais encore une fois, notre prestataire vidéo, MStream a su nous accompagner et nous proposer des solutions nous correspondant !
 
@@ -42,7 +42,7 @@ Ainsi, nous avons travaillé une scène avec un gros écran pour prendre de la p
 
 De même, nous avons rajouté plusieurs petits écrans Led pour "meubler" la scène et ainsi créer des animations entre les conférences. Et pour finir, nous gardions le concept disponible en salle Titan, des écrans latéraux permettant d'afficher en grand le·a speaker pour les personnes les plus éloignées.
 
-![Exemple de scénographie en salle Jules Vernes (un écran principal avec un info décor et en son centre, la projection d'un écran)](/assets/2024-01-DevFestNantesPereCastor/sceno-jules-vernes.jpeg)
+![Exemple de scénographie en salle Jules Verne (un écran principal avec un info décor et en son centre, la projection d'un écran)](/assets/2024-01-DevFestNantesPereCastor/sceno-jules-vernes.jpeg)
 
 Mstream nous a aussi permis de solutionner la solution de l'écran car en premier lieu, la cité des congrès ne nous proposait qu'un énorme vidéo-projecteur ce qui aurait donné un effet vide sur l'espace d'affichage. La solution retenue est en fait un double vidéo projecteur caché derrière la scène qui permet ainsi de balayer une zone horizontale très large et donc d'avoir l'effet comme sur la photo ci-dessus.
 
